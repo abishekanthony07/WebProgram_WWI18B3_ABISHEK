@@ -1,0 +1,31 @@
+html{
+    text-align: center;
+}
+body{
+
+}
+header{
+}
+main{
+
+}
+footer{
+
+}
+footer section{
+    border-top-style: solid;
+    border-width: 2px;
+    display: inline;
+}
+footer section div{
+    width: 33%;
+}
+a.sozialMedia:link{
+    text-underline-mode: none;
+    color: black;
+
+}
+.Instagram{
+    width: 3em;
+    height: 3em;
+}
