@@ -8,48 +8,67 @@ body {
     margin: auto;
 }
 
+/*---------------------------------------------------------------------------*/
 /*header*/
 header {
     color: whitesmoke;
     position: relative;
 }
-#headerContent{
+
+#headerContent {
     /*background-color: rgb(159, 96, 96);*/
-    background-image:linear-gradient(90deg, dimgray 2%,gray 100%);
+    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
 }
-h1{
-    display: inline-block;
+
+.h1 {
+    font-size: 2em;
+    display: block;
 }
 
 hr {
+    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
     border-bottom-width: 2px;
     border-bottom-color: rgb(174, 174, 174);
-    margin-top: 3px;
-    margin-bottom:-3px;
+    margin-top: 0;
+    margin-bottom: -3px;
 }
 
-#auswahlMenue button{
-    border: none;
-    background: none;
-    color: ghostwhite;
+/*zu den Buttons*/
+#auswahlMenue {
     /*in JavaScrpt wird zwischen inline-block und none geswitched*/
     display: none;
 }
+
+#auswahlMenue button {
+    border: none;
+    border-radius: 3em;
+    background: none;
+    color: ghostwhite;
+}
+
+#auswahlMenue button:hover {
+    background: rgb(159, 96, 96);
+}
+
 #auswahlMenue button:focus, #auswahlMenue button:active {
     outline: none;
 }
 
+/*Pfeil nach unten*/
 #arrowDown {
     width: 2em;
     height: 2em;
+    animation: jump .100s linear;
 }
 
+/*---------------------------------------------------------------------------*/
 /*Main*/
 main {
     top: auto;
     text-align: left;
 }
 
+/*---------------------------------------------------------------------------*/
 /*Footer*/
 footer {
     position: relative;
