@@ -68,15 +68,23 @@ main {
     text-align: left;
 }
 
+
 /*---------------------------------------------------------------------------*/
 /*Footer*/
 /*Bei einem hover auf die einzelnen divs
 (Impressum, Copyright, Soziale Medien), wird die selbe Methode verwendet wie bei den header buttons*/
 footer {
-    position: relative;
+    border-top-style: solid;
+    border-bottom-width: 2px;
+    border-color: rgb(174, 174, 174);
+    position: absolute;
+    flex: none;
     float: bottom;
     padding: 10px;
     margin: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
 }
 
@@ -89,6 +97,7 @@ footer div {
 
 a.smLink:link {
     text-decoration: none;
+    padding: 2px;
     color: black;
 }
 div#socialMedia{
@@ -105,6 +114,7 @@ div.socialMediaLinks{
 }
 div#socialMedia:hover .socialMediaLinks{
     display: block;
+    bottom: 1em;
 }
 a:visited{
     color: black;
