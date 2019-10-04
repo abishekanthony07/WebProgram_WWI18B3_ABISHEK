@@ -69,7 +69,7 @@ hr {
 /*---------------------------------------------------------------------------*/
 /*Main*/
 main {
-    background-image: url(../pics/Smartphone_background.jpg);
+    background-image: url(../resources/Smartphone_background.jpg);
     background-size: cover;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;

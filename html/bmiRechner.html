@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BMI-Rechner</title>
-</head>
-<body>
+    <title>BMI Rechner</title>
+    <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
+    <script src="../javascript/index.js"></script>
 
+</head>
+
+
+<body>
+<header>
+    <div id="headerContent">
+        <div class="h1"><b>WebFitness</b></div>
+        <nav id="auswahlMenue">
+            <button id="auswahlAbi">Maximalkraft berechnen</button>
+            <button id="auswahlSas">BMI berechnen</button>
+            <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+        </nav>
+    </div>
+    <hr>
+    <div>
+        <img src="../resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown" onclick="animateArrow()">
+    </div>
+</header>
+<main id="main">
+    <center><u><b><h1 id="headline">BMI-Rechner</h1></b></u></center>
+
+    <form>
+        <section id="eingabe">
+            <div>
+                <div>
+                    <input type="number">
+                    <label for="text">Körpergröße</label>
+                    <textarea for="Körpergröße: "></textarea>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="ausgabe">
+                <div id="bmiValue">
+
+                </div>
+        </section>
+    </form>
+
+</main>
+<footer>
+    <div id="impressum">Impressum</div>
+    <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div>
+    <div id="socialMedia">
+        Soziale Medien<br>
+        <div class="socialMediaLinks">
+            <a href="https://www.instagram.com/sascha"
+               class="smLink"><img src="../resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
+                K.</a><br>
+            <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="../resources/instagram.png"
+                                                                                 class="Instagram" alt="Instagram"/>
+                Hannah B.</a><br>
+            <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="../resources/instagram.png"
+                                                                              class="Instagram" alt="Instagram"/>
+                Abishek A.</a><br>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
