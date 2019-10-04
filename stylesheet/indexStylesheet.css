@@ -51,6 +51,11 @@ hr {
     font-size: large;
 }
 
+#auswahlMenue button a{
+    text-decoration: none;
+    color: ghostwhite;
+}
+
 #auswahlMenue button:hover, #impressum:hover, #socialMedia:hover {
     background: rgb(159, 96, 96);
 }
@@ -76,6 +81,7 @@ main {
     flex: auto;
     top: auto;
     text-align: left;
+    margin-bottom: 5em;
 }
 
 #inhalt{
