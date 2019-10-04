@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>WebFitness</title>
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
+    <link rel="stylesheet" href="../stylesheet/onetimerepititionStylesheet.css">
     <script src="../javascript/index.js"></script>
-    <script src="../javascript/orm.js"></script>
+
 </head>
 <body>
 <header>
     <div id="headerContent">
         <div class="h1"><b>WebFitness</b></div>
         <nav id="auswahlMenue">
-            <button id="auswahlAbi">Maximalkraft berechnen</button>
-            <button id="auswahlSas">BMI berechnen</button>
-            <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+            <button id="auswahlAbi"><a href="onetimerepititionmaximum.html"> Maximalkraft berechnen</a></button>
+            <button id="auswahlSas"><a href="bmiRechner.html"> BMI berechnen</a></button>
+            <button id="auswahlHan"><a href="kJouleUmrechner.html"> Kcal zu KJ Umrechner</a></button>
         </nav>
     </div>
     <hr>
@@ -25,7 +26,36 @@
 <main>
     <section>
         <div id="inhalt">
-        
+            <h1>Maximalkraft Rechner</h1>
+            <p id="beschreibungORM">
+                Im folgenden kannst du deine Maximalkraft berechnen.<br>
+                Bedenke, dass diese Formel nur dann Sinn macht, wenn du deine Übung
+                mit max. 12 Wiederholungen ausgeführt hast, sodass du nach dem 12. Mal
+                nicht mehr das Gewicht stemmen kannst.
+            </p>
+            <div id="benutzerEingabeORM">
+                <div>
+                    gestemmtes Gewicht:<br>
+                    Wiederholungszahl:
+                </div>
+                <div>
+                    <input type="number" name="gewicht" value="0"><br>
+                    <input type="number" name="gewicht" value="0"><br>
+                </div>
+            </div>
+            <p id="formelORM">
+            <div id="ergebnis">
+                Maximalkraft =
+            </div>
+            <div id="bruch">
+                <p id="gestemmtesGewichtORM">gestemmtes Gewicht</p>
+                <hr>
+                <p id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</p>
+            </div>
+            </p>
+            <p>
+                Fehlt noch.
+            </p>
         </div>
     </section>
 </main>
