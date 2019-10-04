@@ -76,7 +76,7 @@ hr {
 main {
     background-image: url(../resources/Smartphone_background.jpg);
     background-size: cover;
-    overflow-y: scroll;
+    overflow-y: -moz-hidden-unscrollable;
     -webkit-overflow-scrolling: touch;
     flex: auto;
     top: auto;
