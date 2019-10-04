@@ -1,24 +1,28 @@
-html {
+html, body {
     text-align: center;
     font-family: Arial, serif;
     display: block;
+    margin: auto;
+    height: 100%
 }
 
 body {
-    margin: auto;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /*---------------------------------------------------------------------------*/
 /*header*/
 header {
+    flex: none;
     color: whitesmoke;
     position: relative;
+
 }
 
 #headerContent {
     /*background-color: rgb(159, 96, 96);*/
-    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
+    background-image: linear-gradient(90deg, dimgray 2%, rgb(112,112,112));
 }
 
 .h1 {
@@ -27,7 +31,7 @@ header {
 }
 
 hr {
-    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
+    background-image: linear-gradient(90deg, dimgray 2%, rgb(183,184,186));
     border-bottom-width: 2px;
     border-bottom-color: rgb(174, 174, 174);
     margin: 0;
@@ -43,6 +47,12 @@ hr {
     border: none;
     border-radius: 3em;
     background: none;
+    color: ghostwhite;
+    font-size: large;
+}
+
+#auswahlMenue button a{
+    text-decoration: none;
     color: ghostwhite;
 }
 
@@ -64,9 +74,24 @@ hr {
 /*---------------------------------------------------------------------------*/
 /*Main*/
 main {
+    background-image: url(../pics/Smartphone_background.jpg);
+    background-size: cover;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    flex: auto;
     top: auto;
     text-align: left;
 }
+
+#inhalt{
+    background: rgba(245,245,245, 0.3);
+    /*margin: 15px;*/
+    border-radius: 0.5em;
+    color: black;
+    padding: 4px;
+}
+
+
 
 
 /*---------------------------------------------------------------------------*/
@@ -76,7 +101,7 @@ main {
 footer {
     border-top-style: solid;
     border-bottom-width: 2px;
-    border-color: rgb(174, 174, 174);
+    border-color: rgb(183,184,186);
     position: absolute;
     flex: none;
     float: bottom;
@@ -85,7 +110,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
+    background-image: linear-gradient(90deg, dimgray 2%, rgb(140,140,140));
 }
 
 footer div {
