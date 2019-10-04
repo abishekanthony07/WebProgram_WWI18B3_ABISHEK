@@ -1,0 +1,127 @@
+html {
+    text-align: center;
+    font-family: Arial, serif;
+    display: block;
+}
+
+body {
+    margin: auto;
+    height: 100%;
+}
+
+/*---------------------------------------------------------------------------*/
+/*header*/
+header {
+    color: whitesmoke;
+    position: relative;
+}
+
+#headerContent {
+    /*background-color: rgb(159, 96, 96);*/
+    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
+}
+
+.h1 {
+    font-size: 2em;
+    display: block;
+}
+
+hr {
+    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(174, 174, 174);
+    margin: 0;
+}
+
+/*zu den Buttons*/
+#auswahlMenue {
+    /*in JavaScrpt wird zwischen inline-block und none geswitched*/
+    display: none;
+}
+
+#auswahlMenue button, footer div {
+    border: none;
+    border-radius: 3em;
+    background: none;
+    color: ghostwhite;
+}
+
+#auswahlMenue button:hover, #impressum:hover, #socialMedia:hover {
+    background: rgb(159, 96, 96);
+}
+
+#auswahlMenue button:focus, #auswahlMenue button:active, #impressum:focus, #impressum div:active, #socialMedia:focus, #socialMedia div:active {
+    outline: none;
+}
+
+/*Pfeil nach unten*/
+#arrowDown {
+    width: 2em;
+    height: 2em;
+    animation: jump .100s linear;
+}
+
+/*---------------------------------------------------------------------------*/
+/*Main*/
+main {
+    top: auto;
+    text-align: left;
+}
+
+
+/*---------------------------------------------------------------------------*/
+/*Footer*/
+/*Bei einem hover auf die einzelnen divs
+(Impressum, Copyright, Soziale Medien), wird die selbe Methode verwendet wie bei den header buttons*/
+footer {
+    border-top-style: solid;
+    border-bottom-width: 2px;
+    border-color: rgb(174, 174, 174);
+    position: absolute;
+    flex: none;
+    float: bottom;
+    padding: 10px;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(90deg, dimgray 2%, gray 100%);
+}
+
+footer div {
+    display: inline-table;
+    padding: 1em;
+    position: relative;
+    text-align: center;
+}
+
+a.smLink:link {
+    text-decoration: none;
+    padding: 2px;
+    color: black;
+}
+div#socialMedia{
+    position: relative;
+}
+div.socialMediaLinks{
+    text-align: left;
+    position: absolute;
+    background: white;
+    display: none;
+    border: solid;
+    border-radius: 1em;
+    width: max-content;
+}
+div#socialMedia:hover .socialMediaLinks{
+    display: block;
+    bottom: 1em;
+}
+a:visited{
+    color: black;
+}
+
+
+img.Instagram {
+    width: 1em;
+    height: 1em;
+}
