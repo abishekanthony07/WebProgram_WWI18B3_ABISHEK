@@ -1,12 +1,18 @@
-#inhalt{
-
-}
-#beschreibungORM{
-
-}
-#benutzerEingabeORM{
+#editable{
     display: inline-block;
 }
-#formelORM div{
-    display: inline;
+#berechne{
+    text-align: center;
+}
+#benutzerEingabeORM div{
+    display: inline-block;
+    text-align: left;
+}
+#formelORM{
+    display: table-cell;
+    text-align: center;
+}
+#ergebnis, #bruch{
+    vertical-align: middle;
+    display: inline-block;
 }
