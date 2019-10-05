@@ -1,6 +1,14 @@
-
-function main() {
-    
+function berechne() {
+    let gewicht = document.getElementById('gewicht');
+    let wiederholungszahl = document.getElementById('wiederholungszahl');
+    let maximalkraft = document.getElementById('ergebnis');
+    let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
+    let prozentsatzORM = document.getElementById('prozentsatzORM');
+    let prozent = calculate(wiederholungszahl.value);
+    let ergebnis = gewicht.value / prozent;
+    maximalkraft.innerHTML = ergebnis.toString() + " =";
+    prozentsatzORM.innerText = prozent.toString();
+    gestemmtesGewichtORM.innerText = gewicht.value.toString();
 }
 
 /*Berechne den Prozentsatz für die bestimmte Wiederholungszahl*/
@@ -55,8 +63,8 @@ function calculate(wiederholungszahl) {
 /*Diese Methode berechnet anhand der oberen, unteren Grenze von den Wiederholungen 
 und vom Prozentsatz den jeweiligen Prozentsatz*/
 function rechne(wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnten, prozentOben) {
-    let teiler = wiederholungOben - wiederolungUnten;
-    let differenzW = wiederholungszahl - wiederolungUnten;
+    let teiler = wiederholungOben - wiederholungUnten;
+    let differenzW = wiederholungszahl - wiederholungUnten;
     let differenzP = prozentOben - prozentUnten;
     let geteilt = differenzP / teiler;
     return geteilt * differenzW + prozentUnten;

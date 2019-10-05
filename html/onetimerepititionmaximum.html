@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
     <link rel="stylesheet" href="../stylesheet/onetimerepititionStylesheet.css">
     <script src="../javascript/index.js"></script>
-
+    <script src="../javascript/orm.js"></script>
 </head>
 <body>
 <header>
@@ -23,7 +23,7 @@
         <img src="../resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown" onclick="animateArrow()">
     </div>
 </header>
-<main>
+<main onload="main()">
     <section>
         <div id="inhalt">
             <h1>Maximalkraft Rechner</h1>
@@ -43,15 +43,15 @@
                        </div>
                        <div>
                            <label>
-                               <input type="number" name="gewicht" min="0" value="0">
+                               <input type="number" name="gewicht" id="gewicht" min="0" value="0">
                            </label><br>
                            <label>
-                               <input type="number" name="wiederholungszahl" min="1" value="1">
+                               <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1" value="1">
                            </label><br>
                        </div>
                    </div>
                    <div id="berechne">
-                       <button>Berechne</button>
+                       <button id="berechneButton" onclick="berechne()">Berechne</button>
                    </div>
                </div>
                <div id="formelORM">
@@ -59,9 +59,9 @@
                        Maximalkraft =
                    </div>
                    <div id="bruch">
-                       <p id="gestemmtesGewichtORM">gestemmtes Gewicht</p>
+                       <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
                        <hr>
-                       <p id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</p>
+                       <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
                    </div>
                </div>
            </div>
