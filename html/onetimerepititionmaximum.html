@@ -33,31 +33,38 @@
                 mit max. 12 Wiederholungen ausgeführt hast, sodass du nach dem 12. Mal
                 nicht mehr das Gewicht stemmen kannst.
             </p>
-            <div id="editable">
-                <div id="benutzerEingabeORM">
-                    <div>
-                        gestemmtes Gewicht:<br>
-                        Wiederholungszahl:
-                    </div>
-                    <div>
-                        <input type="number" name="gewicht" value="0"><br>
-                        <input type="number" name="gewicht" value="0"><br>
-                    </div>
-                </div>
-                <div id="berechne">
-                    <button>Berechne</button>
-                </div>
-            </div>
-            <div id="formelORM">
-                <div id="ergebnis">
-                    Maximalkraft =
-                </div>
-                <div id="bruch">
-                    <p id="gestemmtesGewichtORM">gestemmtes Gewicht</p>
-                    <hr>
-                    <p id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</p>
-                </div>
-            </div>
+           <div id="uiORM" class="inhalt">
+               <div id="editable">
+                   <div id="benutzerEingabeORM">
+                       <div>
+                           <label>
+                               gestemmtes Gewicht:</label><br>
+                           <label>Wiederholungszahl:</label>
+                       </div>
+                       <div>
+                           <label>
+                               <input type="number" name="gewicht" min="0" value="0">
+                           </label><br>
+                           <label>
+                               <input type="number" name="wiederholungszahl" min="1" value="1">
+                           </label><br>
+                       </div>
+                   </div>
+                   <div id="berechne">
+                       <button>Berechne</button>
+                   </div>
+               </div>
+               <div id="formelORM">
+                   <div id="ergebnis">
+                       Maximalkraft =
+                   </div>
+                   <div id="bruch">
+                       <p id="gestemmtesGewichtORM">gestemmtes Gewicht</p>
+                       <hr>
+                       <p id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</p>
+                   </div>
+               </div>
+           </div>
             <p>
                 Fehlt noch.
             </p>

@@ -1,18 +1,54 @@
+.inhalt{
+    background: rgba(245,245,245, 0.7);
+    border-radius: 0.5em;
+    color: black;
+    padding: 4px;
+}
+/*Absatz 2*/
+#uiORM{
+    display: table-cell;
+    text-align: center;
+    width: 100vw;
+}
+/*Absatz 2.1*/
 #editable{
     display: inline-block;
-}
-#berechne{
-    text-align: center;
+    margin: 1em;
 }
 #benutzerEingabeORM div{
     display: inline-block;
     text-align: left;
 }
-#formelORM{
-    display: table-cell;
+#berechne{
     text-align: center;
 }
-#ergebnis, #bruch{
+#berechne button {
+    border: none;
+    border-radius: 3em;
+    background: rgba(10,10,10,1);
+    color: ghostwhite;
+    margin: 1em;
+    font-size: large;
+}
+#berechne button:hover, #berechne button:focus, #berechne button:active{
+    outline: none;
+    background: rgba(10,10,10,0.7);
+}
+/*Absatz 2.2*/
+#formelORM{
+    display: table-cell;
+    margin: 1em;
+    text-align: center;
+}
+#bruch hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid rgba(10,10,10,1);
+    margin: 1em 0;
+    padding: 0;
+}
+#ergebnis, #bruch, #editable, #formelORM{
     vertical-align: middle;
     display: inline-block;
 }
