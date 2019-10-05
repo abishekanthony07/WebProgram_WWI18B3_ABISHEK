@@ -4,7 +4,14 @@
     color: black;
     padding: 4px;
 }
-/*Absatz 2*/
+/*Absatz 1: Beschreibung*/
+h1{
+    text-align: center;
+}
+#beschreibungORM b{
+    color:  rgb(159, 96, 96);
+}
+/*Absatz 2: Rechner*/
 #uiORM{
     display: table-cell;
     text-align: center;
@@ -54,4 +61,19 @@
 #ergebnis, #bruch, #editable, #formelORM{
     vertical-align: middle;
     display: inline-block;
+}
+/*Absatz 3: Tabelle*/
+table{
+    text-align: center;
+    border-spacing: 5px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.tableHeader{
+    background:  rgb(159, 96, 96);
+}
+table, tr,th{
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
 }
