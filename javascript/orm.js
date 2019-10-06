@@ -1,3 +1,8 @@
+window.addEventListener('load', ()=>{
+    let berechneButton = document.getElementById('berechneButton');
+    berechneButton.addEventListener('click', berechne);
+});
+
 function berechne() {
     let gewicht = document.getElementById('gewicht');
     let wiederholungszahl = document.getElementById('wiederholungszahl');
