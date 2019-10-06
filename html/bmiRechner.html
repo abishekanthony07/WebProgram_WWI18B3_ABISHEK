@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
     <link rel="stylesheet" href="../stylesheet/bmiRechner.css">
     <script src="../javascript/index.js"></script>
+    <script src="../javascript/bmiRechner.js"></script>
 
 </head>
 
@@ -26,18 +27,21 @@
         <img src="../resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown" onclick="animateArrow()">
     </div>
 </header>
+
 <!----------------------------------- Main-Bereich -------------------------------->
 <main>
     <div id="inhalt">
         <section>
             <div>
                 <u><b><h1 id="headline">BMI-Rechner</h1></b></u>
+                <br>
+                <br>
 
                 <div class="einUndAusgabeFeld">
                     <section class="eingabe">
                         <!----------------------------------- Schieberegler Größe-------------------------------->
 
-                        <form oninput="x.value=parseInt(groesse.value)">
+                        <form>
                             <label for="groesse" id="n1">0 cm</label>
                             <input class="vertikal" name="groesse"
                                    type="range" min="0" value="80" max="250"
@@ -49,7 +53,7 @@
                         <form id="groesseFeld">
                             <label for="groesse">
                                 Größe:
-                                <input id="groesse" type="number" min="100" max="220" step="1" value="175">
+                                <input id="groesse" type="number" min="0" max="220" step="1" value="175">
                                 cm
                             </label>
                         </form>
@@ -58,23 +62,28 @@
                         <br>
                         <!----------------------------------- Schieberegler Gewicht-------------------------------->
 
-                        <form oninput="x.value=parseInt(gewicht.value)">
-                            <label for="gewicht" id="n1">0 kg</label>
+                        <form>
+                            <label for="gewicht" id="D1">0 kg</label>
                             <input class="vertikal" name="gewicht"
                                    type="range" min="0" value="80" max="250"
                                    orient="vertical">
-                            <label for="gewicht" id="n2">250 kg</label>
+                            <label for="gewicht" id="D3">250 kg</label>
 
                         </form>
                         <br>
                         <form id="gewicht">
                             <label for="masse">
                                 Masse:
-                                <input id="masse" type="number" min="30" max="225" step="0.5" value="75">
+                                <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
                                 kg
                             </label>
+                            <br>
+                            <br>
+                            <input id="berechnenButton" type="submit" value="BMI berechnen">
                         </form>
+                        <div id="ausgabe">
 
+                        </div>
 
                     </section>
                 </div>
