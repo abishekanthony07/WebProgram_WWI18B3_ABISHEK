@@ -1,0 +1,83 @@
+.inhalt{
+    background: rgba(245,245,245, 0.7);
+    border-radius: 0.5em;
+    color: black;
+    padding: 4px;
+}
+/*Absatz 1: Beschreibung*/
+h1{
+    text-align: center;
+}
+#beschreibungORM b{
+    color:  rgb(159, 96, 96);
+}
+/*Absatz 2: Rechner*/
+#uiORM{
+    display: table-cell;
+    text-align: center;
+    width: 100vw;
+}
+/*Absatz 2.1*/
+#editable{
+    display: inline-block;
+    margin: 1em;
+}
+#benutzerEingabeORM div{
+    display: inline-block;
+    text-align: left;
+}
+#berechne{
+    text-align: center;
+}
+#berechne button {
+    border: none;
+    border-radius: 3em;
+    background: rgba(10,10,10,1);
+    color: ghostwhite;
+    margin: 1em;
+    font-size: large;
+}
+#berechne button:hover, #berechne button:focus, #berechne button:active{
+    outline: none;
+    background: rgba(10,10,10,0.7);
+}
+/*Absatz 2.2*/
+#formelORM{
+    display: table-cell;
+    margin: 1em;
+    text-align: center;
+}
+#bruch hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid rgba(10,10,10,1);
+    margin: 0em 0;
+    padding: 0;
+}
+#bruch div{
+    padding: 2px;
+}
+#ergebnis, #bruch, #editable, #formelORM{
+    vertical-align: middle;
+    display: inline-block;
+}
+/*Absatz 3: Tabelle*/
+table{
+    text-align: center;
+    border-spacing: 5px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.tableHeader{
+    background:  rgb(159, 96, 96);
+}
+table, tr,th{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+@media (min-width: 858) {
+    
+}
