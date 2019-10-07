@@ -25,3 +25,5 @@ function rotateImage(img, degree) {
     img.style.WebkitTransitionDuration = '0.5s';
 }
 
+
+

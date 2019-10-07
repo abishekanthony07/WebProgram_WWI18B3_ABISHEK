@@ -20,7 +20,7 @@ function bmiBerechnen() {
     ergebnis = " " + ergebnis.bold();
     anzeige.innerHTML =" <b>Dein BMI ist: </b> &nbsp;"+ ergebnis + "<b>.</b>";
     anzeige.style.display = 'flex';
-
+    TESTsaveData();
 };
 
 function hintergrundAngleichen(ergebnis, anzeige){
@@ -41,6 +41,5 @@ function hintergrundAngleichen(ergebnis, anzeige){
     }else if(ergebnis >= 40){
         anzeige.style.backgroundColor = "#c08080";
     }
-
 }
 
