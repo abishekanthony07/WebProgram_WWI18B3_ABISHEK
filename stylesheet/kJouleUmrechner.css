@@ -1,0 +1,37 @@
+.kjoule {
+
+    background-image: url(../resources/Smartphone_background.jpg);
+    background-size: cover;
+    overflow-y: -moz-hidden-unscrollable;
+    -webkit-overflow-scrolling: touch;
+    flex: auto;
+    top: auto;
+    text-align: left;
+    margin-bottom: 5em;
+    font-size: 14px;
+}
+input{
+    width: 35%;
+    font-family: Arial, serif;
+    font-size: 14px;
+    color: dimgray;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px;
+    border-bottom-color: aquamarine;
+    border-bottom-width: 1.5px;
+}
+output{
+    width: 35%;
+    background-color: white;
+    font-family: Arial, serif;
+    font-size: 14px;
+    color: dimgray;
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: 1px;
+    border-bottom-color: aquamarine;
+    border-bottom-width: 1.5px;
+
+
+}
