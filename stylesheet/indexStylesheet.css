@@ -76,7 +76,7 @@ hr {
 main {
     background-image: url(../resources/Smartphone_background.jpg);
     background-size: cover;
-    overflow-y: -moz-hidden-unscrollable;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     flex: auto;
     top: auto;
@@ -112,6 +112,7 @@ footer {
     left: 0;
     right: 0;
     background-image: linear-gradient(90deg, dimgray 2%, rgb(140,140,140));
+    height: 8%;
 }
 
 footer div {
