@@ -78,6 +78,8 @@ table, tr,th{
     border-style: solid;
 }
 
-@media (min-width: 858) {
-    
+@media (max-width: 650px) {
+  #formelORM{
+      display: block;
+  }
 }

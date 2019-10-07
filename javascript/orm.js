@@ -1,6 +1,12 @@
 window.addEventListener('load', ()=>{
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
+    window.addEventListener("keypress",(event)=>{
+        if (event.key == "Enter" ){
+            event.preventDefault();
+            berechne();
+        }
+    });
 });
 
 function berechne() {
@@ -11,6 +17,8 @@ function berechne() {
     let prozentsatzORM = document.getElementById('prozentsatzORM');
     let prozent = calculate(wiederholungszahl.value);
     let ergebnis = gewicht.value / prozent;
+    ergebnis = ergebnis.toFixed(2);
+    prozent = prozent.toFixed(2);
     maximalkraft.innerHTML = ergebnis.toString() + " =";
     prozentsatzORM.innerText = prozent.toString();
     gestemmtesGewichtORM.innerText = gewicht.value.toString();
@@ -19,7 +27,7 @@ function berechne() {
 /*Berechne den Prozentsatz für die bestimmte Wiederholungszahl*/
 function calculate(wiederholungszahl) {
     if (wiederholungszahl > 30) {
-        if (wiederholungszahl >= 40) {
+        if (wiederholunnrichgszahl >= 40) {
             return 0.3;
         } else {
             return rechne(wiederholungszahl, 40, 30, 0.3, 0.4);
