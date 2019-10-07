@@ -2,9 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BMI-Rechner</title>
-</head>
-<body>
+    <title>BMI Rechner</title>
+    <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
+    <link rel="stylesheet" href="../stylesheet/bmiRechner.css">
+    <script src="../javascript/index.js"></script>
+    <script src="../javascript/bmiRechner.js"></script>
 
+</head>
+
+
+<body>
+<!-- --------------------------------- Kopf-Bereich ------------------------------>
+<header>
+    <div id="headerContent">
+        <div class="h1"><b>WebFitness</b></div>
+        <nav id="auswahlMenue">
+            <button id="auswahlAbi">Maximalkraft berechnen</button>
+            <button id="auswahlSas">BMI berechnen</button>
+            <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+        </nav>
+    </div>
+    <hr>
+    <div>
+        <img src="../resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown">
+    </div>
+</header>
+
+<!------------------------------------------------ Main-Bereich -------------------------------------------------->
+<main>
+    <div id="inhalt">
+        <section>
+            <div>
+                <u><b><h1 id="headline">BMI-Rechner</h1></b></u>
+
+                <div class="einUndAusgabeFeld">
+                    <section class="eingabe">
+                        <!----------------------------------- Schieberegler Größe-------------------------------->
+                        <p>
+                            Hier zunächst deine Größe über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                        </p>
+                        <div>
+                            <label for="groesse" id="n1">0 cm</label>
+                            <input class="vertikal" name="groesse"
+                                   type="range" min="0" value="80" max="250"
+                                   orient="horizontal">
+                            <label for="groesse" id="n2">250 cm</label>
+                        </div>
+                        <br>
+
+                        <div id="groesseFeld">
+                            <label for="groesse">
+                                Größe:
+                                <input id="groesse" type="number" min="0" max="220" step="1" value="175">
+                                cm
+                            </label>
+                        </div>
+
+                        <br>
+                        <br>
+                        <!----------------------------------- Schieberegler Gewicht-------------------------------->
+                        <p>
+                            Hier zunächst dein Gewicht über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                        </p>
+                        <div>
+                            <label for="gewicht" id="D1">0 kg</label>
+                            <input class="vertikal" name="gewicht"
+                                   type="range" min="0" value="80" max="250"
+                                   orient="horizontal">
+                            <label for="gewicht" id="D3">250 kg</label>
+
+                        </div>
+                        <br>
+                        <div id="gewicht">
+                            <label for="masse">
+                                Masse:
+                                <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
+                                kg
+                            </label>
+                            <br>
+                            <br>
+                            <button id="berechnenButton">BMI berechnen</button>
+                        </div>
+                    </section>
+
+                </div>
+                <br>
+                <div id="ausgabe" class="inhalt">
+                </div>
+            </div>
+        </section>
+
+        <!------------------------------------------------Tabelle --------------------------------------------------->
+
+        <section>
+            <p>Damit du dich selbst einordnen kannst kommt nachfolgend eine Tabelle von Wikipedia: </p>
+
+            <table class="wikitable">
+                <tbody>
+                <tr>
+                    <th style="width:7px;"></th>
+                    <th>Kategorie</th>
+                    <th>BMI (kg/m²)</th>
+                    <th>Körpergewicht</th>
+                </tr>
+                <tr>
+                    <td bgcolor="#7c7cbc">
+                    </td>
+                    <td>Starkes Untergewicht
+                    </td>
+                    <td>&lt; 16
+                    </td>
+                    <td rowspan="3" style="text-align:center;">Untergewicht</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#7c7cfc">
+                    </td>
+                    <td>Mäßiges Untergewicht
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>16<span style="visibility:hidden;">,0</span> – &lt;
+                        17<span style="visibility:hidden;">,0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#7cfcfc">
+                    </td>
+                    <td>Leichtes Untergewicht
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>17<span style="visibility:hidden;">,0</span> – &lt;
+                        18,5
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#7cfc7c">
+                    </td>
+                    <td><b>Normalgewicht</b>
+                    </td>
+                    <td><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span style="visibility:hidden;">,0</span></b>
+                    </td>
+                    <td style="text-align:center;"><b>Normalgewicht</b></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#fcfc7c">
+                    </td>
+                    <td>Präadipositas
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>25<span style="visibility:hidden;">,0</span> – &lt;
+                        30<span style="visibility:hidden;">,0</span>
+                    </td>
+                    <td style="text-align:center;">Übergewicht</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#fcbb91">
+                    </td>
+                    <td>Adipositas Grad I
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>30<span style="visibility:hidden;">,0</span> – &lt;
+                        35<span style="visibility:hidden;">,0</span>
+                    </td>
+                    <td rowspan="3" align="center">Adipositas</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#fc9191">
+                    </td>
+                    <td>Adipositas Grad II
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>35<span style="visibility:hidden;">,0</span> – &lt;
+                        40<span style="visibility:hidden;">,0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#c08080">
+                    </td>
+                    <td>Adipositas Grad III
+                    </td>
+                    <td style="text-align:center;"><span style="visibility:hidden;">&lt;0,0 – </span>≥ 40
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+    </div>
+</main>
+
+<!-------------------------------------------------- Footer ---------------------------------------------------->
+<footer>
+    <div id="impressum">Impressum</div>
+    <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div>
+    <div id="socialMedia">
+        Soziale Medien<br>
+        <div class="socialMediaLinks">
+            <a href="https://www.instagram.com/sascha"
+               class="smLink"><img src="../resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
+                K.</a><br>
+            <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="../resources/instagram.png"
+                                                                                 class="Instagram" alt="Instagram"/>
+                Hannah B.</a><br>
+            <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="../resources/instagram.png"
+                                                                              class="Instagram" alt="Instagram"/>
+                Abishek A.</a><br>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

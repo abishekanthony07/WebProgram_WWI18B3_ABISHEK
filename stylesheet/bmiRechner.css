@@ -1,0 +1,30 @@
+#headline {
+    text-align: center;
+}
+.inhalt{
+    background: rgba(245,245,245, 0.7);
+    /*margin: 15px;*/
+    border-radius: 0.5em;
+    color: black;
+    padding: 4px;
+    border-color: black;
+    border-width: 4px;
+}
+#ausgabe{
+    display: none;
+}
+.einUndAusgabeFeld {
+    padding: 2px;
+    margin: 2px;
+}
+.wikitable{
+    font-size: large;
+    border-collapse: collapse;
+    color: black;
+    padding: 4px;
+    margin: 2px;
+}
+
+#berechnenButton{
+    font-size: medium;
+}
