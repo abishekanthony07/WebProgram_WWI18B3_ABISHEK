@@ -1,8 +1,7 @@
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
     let imageArrow = document.getElementById('arrowDown');
-    imageArrow.addEventListener("click",animateArrow);
+    imageArrow.addEventListener("click", animateArrow);
 });
-
 
 let buttonsSindZusehen = false;
 
