@@ -1,0 +1,35 @@
+html {
+    text-align: center;
+    font-family: Arial, serif;
+    display: block;
+}
+
+body {
+    margin: auto;
+}
+
+header {
+    color: whitesmoke;
+    position: relative;
+    background-color: dimgray;
+}
+
+
+
+.h1 {
+    font-size: 2em;
+    display: block;
+}
+main {
+    top: auto;
+    text-align: left;
+}
+
+/*---------------------------------------------------------------------------*/
+/*Footer*/
+footer {
+    position: relative;
+    border-bottom-width: 2px;
+    border-top-color: rgb(174, 174, 174);
+    padding: 10px;
+}
