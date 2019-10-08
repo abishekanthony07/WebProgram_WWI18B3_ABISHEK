@@ -39,7 +39,12 @@
 <main class="kjoule">
         <div id="test">
         <div id="inhalt">
+<<<<<<< Updated upstream
+            <script src="../javascript/kJouleUmrechner.js"></script>
             <h3>Kalorien-Umrechner</h3>
+=======
+            <h3>Umrechner</h3>
+>>>>>>> Stashed changes
             <p>
                 <div class="Info">
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
