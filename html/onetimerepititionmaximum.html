@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
     <link rel="stylesheet" href="../stylesheet/onetimerepititionStylesheet.css">
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
 
@@ -18,7 +17,9 @@
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
     <script src="../javascript/database.js"></script>
     <script src="../javascript/index.js"></script>
+    
     <script src="../javascript/orm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
 <header>
@@ -37,6 +38,11 @@
 </header>
 <main>
     <section>
+        <div id="tabMenue">
+            <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
+            <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
+            <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
+        </div>
         <div id="inhalt">
             <h1>Maximalkraft Rechner</h1>
             <div id="beschreibungORM">
@@ -65,7 +71,7 @@
                        </div>
                        <div>
                            <label>
-                               <input type="number" name="gewicht" id="gewicht" min="0" value="0">
+                               <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
                            </label><br>
                            <label>
                                <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1" value="1">
@@ -135,6 +141,14 @@
             <p><i><small><b>Quelle:</b> <a href="https://www.akademie-sport-gesundheit.de/magazin/one-repetition-maximum.html">Akademie für Sport und Gesundheit</a></small></i>
                 <br><i><small><b>Autor:</b> Abishek Anthony</small></i>
             </p>
+        </div>
+        <div id="savedDataDiv">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div id="editDataDiv">
+            <div class="inhalt">
+            
+            </div>
         </div>
     </section>
 </main>

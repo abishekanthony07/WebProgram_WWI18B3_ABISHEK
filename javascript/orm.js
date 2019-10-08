@@ -1,13 +1,85 @@
 window.addEventListener('load', ()=>{
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
+    //wenn enter geklickt wird, wird die Berechnung ausgelöst
     window.addEventListener("keypress",(event)=>{
-        if (event.key == "Enter" ){
+        if (event.key == "Enter") {
             event.preventDefault();
             berechne();
         }
     });
+    //getAllImportantDivs
+    let inhalt = document.getElementById('inhalt');
+    let savedDataDiv = document.getElementById('savedDataDiv');
+    let editDataDiv = document.getElementById('editDataDiv');
+    //tabButtons
+    let savedData = document.getElementById('savedDataButton');
+    savedData.addEventListener('click', () => {
+        showSavedDataHtml(inhalt, savedDataDiv, editDataDiv)
+    });
+
+    let ormRechner = document.getElementById('ormRechnerButton');
+    ormRechner.addEventListener('click', () => {
+        showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv)
+    });
+
+    let editData = document.getElementById('editDataButton');
+    editData.addEventListener('click', () => {
+        showEditDataHtml(inhalt, savedDataDiv, editDataDiv)
+    });
 });
+
+/**
+ * Diese Methode zeigt alle gespeicherten Werte an.
+ */
+function showSavedDataHtml(inhalt, savedDataDiv, editDataDiv) {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'block';
+    editDataDiv.style.display = 'none';
+    getAndSetData(() => {
+        let myChartObject = document.getElementById('myChart');
+        let chart = new Chart(myChartObject, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Deine Historie der Maximalkraft in Kg",
+                    backgroundColor: 'rgba(159, 96, 96, 0.4)',
+                    borderColor: 'rgba(159, 96, 96, 1)',
+                    data: data
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        tricks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+}
+
+/**
+ * Diese Methode zeigt die Startseite von der Maximalkraft an.
+ */
+function showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv) {
+    inhalt.style.display = 'block';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'none';
+}
+
+/**
+ * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
+ */
+function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'block';
+}
+
 
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
@@ -28,17 +100,29 @@ function berechne() {
         gestemmtesGewichtORM.innerText = gewicht.value.toString();
 
         //Liste wird geupdated
-        array.push({
-            timestamp: timeStamp(),
-            gewicht: gewicht.value.toString(),
-            wiederholungszahl: wiederholungszahl.value.toString(),
-            prozent: prozent.toString(),
-            maximalkraft: ergebnis.toString()
-        });
+        if (array === 'empty') {
+            array = [{
+                timestamp: timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            }]
+        } else {
+            array.push({
+                timestamp: timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            });
+        }
         saveData('orm', array);
     });
 }
 
+let labels = [];
+let data = [];
 /**
  * Diese Methode muss bei einem Button-Click auf "Lade meine Historie" aufgerufen werden
  * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
@@ -46,17 +130,23 @@ function berechne() {
  * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
  * Feld angezeigt wird.
  */
-function getAndSetData(){
+function getAndSetData(callback) {
     getData('orm', (array)=>{
         let counter;
+        labels = [array.length];
+        data = [array.length];
         for ( counter = 0; counter<array.length; counter++){
             let element = array[counter];
             console.log("Eintrag", element);
-            // console.log(element.timestamp);
+            console.log(element.timestamp);
+            labels[counter] = element.timestamp;
+            data[counter] = element.maximalkraft;
             // console.log(element.gewicht);
             // console.log(element.wiederholungszahl);
             // console.log(element.prozent);
-            // console.log(element.maximalkraft)
+            if (counter === array.length - 1) {
+                callback();
+            }
         }
     })
 }
