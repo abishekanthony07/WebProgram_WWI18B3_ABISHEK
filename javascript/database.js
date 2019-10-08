@@ -39,22 +39,33 @@ function loginUser (){
             alert(error.message);
         }
         console.log(Error.message, error);
-
     })
 }
 
+/**
+ * Diese Methode speichert die neue Liste in der Datenbank!
+ * @param collection
+ * @param set (Das neue Array)
+ */
 function saveData(collection, set) {
-    datenbank.collection(collection).doc(userId).set(set).then(()=>{
+    datenbank.collection(collection).doc(userId).set({
+        array: set}).then(()=>{
         console.log("Status saved!")
     }).catch((error)=>{
         console.log(error.message, error);
     });
 }
 
-function getData(collection){
+/**
+ * Diese Methode holt sich die Liste mit den abgesicherten Daten.
+ * @param collection (bmi, kJoule, orm)
+ * @param callback (liste als array) WICHTIG: key von der neuen Dictionary ist array!!!
+ */
+function getData(collection, callback){
     datenbank.collection(collection).doc(userId).get().then(function(document) {
-        console.log("id", document.data())
+        console.log("id", document.data());
+        callback(document.data().array);
     }).catch(function(error) {
-            console.error("Error adding document: ", error);
+            console.error("Error getting document: ", error);
         });
 }

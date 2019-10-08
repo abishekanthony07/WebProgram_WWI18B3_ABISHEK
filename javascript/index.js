@@ -7,7 +7,7 @@ let buttonsSindZusehen = false;
 
 function timeStamp(){
     let today = new Date();
-    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+"|"+today.getDate()+"."+today.getMonth()+"."+today.getFullYear();
+    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+" am "+today.getDate()+"."+today.getMonth()+"."+today.getFullYear();
 }
 
 function animateArrow() {
