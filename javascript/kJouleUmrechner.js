@@ -10,4 +10,5 @@ function rechne() {
     summe.toFixed(2);
     console.log(summe);
     document.getElementById('output').value = summe;
+    saveData("kCalSammlung", "1234567");
 }

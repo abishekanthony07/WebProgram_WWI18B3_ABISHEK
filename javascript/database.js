@@ -41,8 +41,16 @@ function loginUser (){
     })
 }
 
-function TESTsaveData(){
-    datenbank.collection('bmiRechner').doc("oDiNNgN3ZWWs0hRQegpi").get().then(function(datenbank) {
+function saveData(collection, kCalString) {
+    datenbank.collection(collection).add({
+        kCalString: kCalString
+    }).catch((error)=>{
+        console.log(error.message, error);
+    });
+}
+
+function getData(collection){
+    datenbank.collection(collection).get().then(function(datenbank) {
         console.log("Document written with ID: ", datenbank.id);
     })
         .catch(function(error) {
