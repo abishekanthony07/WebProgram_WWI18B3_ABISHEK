@@ -8,15 +8,40 @@ window.addEventListener("load", () => {
             bmiBerechnen();
         }
     });
+//-----------------------Slider an Eingabefeld anpassen -------------------------------------
+    //Groesse
+    document.getElementById("sliderGroesse").addEventListener("input", ()=>{
+        let sliderGroesse = document.getElementById("sliderGroesse");
+        let eingabeFeldGroesse = document.getElementById("groesse");
 
-    // Variablen aus dem DOM holen für die Größe
-    let sliderGroesse = document.getElementById("sliderGroesse");
-    let eingabeFeldGroesse = document.getElementById("groesse");
+        eingabeFeldGroesse.value = sliderGroesse.value;
+    })
 
-    //in beide Richtungen verbinden
-    // eingabeFeldGroesse.value = sliderGroesse.oninput;
-    // sliderGroesse.oninput = eingabeFeldGroesse.value;
+    //Gewicht
+    document.getElementById("sliderGewicht").addEventListener("input", ()=>{
+        let sliderGewicht = document.getElementById("sliderGewicht");
+        let eingabeFeldGewicht = document.getElementById("masse");
 
+        eingabeFeldGewicht.value = sliderGewicht.value;
+    })
+//--------------------------------------------------------------------------------------------
+//---------------------- Eingabefeld an Slider anpassen-------------------------------------
+    //Groesse
+    document.getElementById("eingabeFeldGroesse").addEventListener("change", ()=>{
+        let sliderGroesse = document.getElementById("sliderGroesse");
+        let eingabeFeldGroesse = document.getElementById("groesse");
+
+        sliderGroesse.value = eingabeFeldGroesse.value;
+    })
+
+    //Gewicht
+    document.getElementById("sliderGewicht").addEventListener("input", ()=>{
+        let sliderGewicht = document.getElementById("sliderGewicht");
+        let eingabeFeldGewicht = document.getElementById("masse");
+
+        eingabeFeldGewicht.value = sliderGewicht.value;
+    })
+//---------------------------------------------------------------------------------------------
 });
 
 function bmiBerechnen() {
