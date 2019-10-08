@@ -5,6 +5,18 @@
     <title>BMI Rechner</title>
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
     <link rel="stylesheet" href="../stylesheet/bmiRechner.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+    <script src="../javascript/database.js"></script>
     <script src="../javascript/index.js"></script>
     <script src="../javascript/bmiRechner.js"></script>
 
@@ -17,9 +29,9 @@
     <div id="headerContent">
         <div class="h1"><b>WebFitness</b></div>
         <nav id="auswahlMenue">
-            <button id="auswahlAbi">Maximalkraft berechnen</button>
-            <button id="auswahlSas">BMI berechnen</button>
-            <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+            <button id="auswahlAbi"><a href="onetimerepititionmaximum.html"> Maximalkraft berechnen</a></button>
+            <button id="auswahlSas"><a href="bmiRechner.html"> BMI berechnen</a></button>
+            <button id="auswahlHan"><a href="kJouleUmrechner.html"> Kcal zu KJ Umrechner</a></button>
         </nav>
     </div>
     <hr>
@@ -42,16 +54,16 @@
                             Hier zunächst deine Größe über den Schieberegler eingeben oder direkt ins Feld eingeben.
                         </p>
                         <div>
-                            <label for="groesse" id="n1">0 cm</label>
+                            <label for="groesse">0 cm</label>
                             <input class="vertikal" name="groesse"
                                    type="range" min="0" value="80" max="250"
-                                   orient="horizontal">
+                                   orient="horizontal" id="sliderGroesse">
                             <label for="groesse" id="n2">250 cm</label>
                         </div>
                         <br>
 
                         <div id="groesseFeld">
-                            <label for="groesse">
+                            <label>
                                 Größe:
                                 <input id="groesse" type="number" min="0" max="220" step="1" value="175">
                                 cm
@@ -110,7 +122,7 @@
                     </td>
                     <td>Starkes Untergewicht
                     </td>
-                    <td>&lt; 16
+                    <td class="bmi">&lt; 16
                     </td>
                     <td rowspan="3" style="text-align:center;">Untergewicht</td>
                 </tr>
@@ -128,7 +140,7 @@
                     </td>
                     <td>Leichtes Untergewicht
                     </td>
-                    <td><span style="visibility:hidden;">&lt; </span>17<span style="visibility:hidden;">,0</span> – &lt;
+                    <td><span style="visibility:hidden;" class="bmi">&lt; </span>17<span style="visibility:hidden;" class="bmi">,0</span> – &lt;
                         18,5
                     </td>
                 </tr>
@@ -137,7 +149,7 @@
                     </td>
                     <td><b>Normalgewicht</b>
                     </td>
-                    <td><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span style="visibility:hidden;">,0</span></b>
+                    <td class="bmi"><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span style="visibility:hidden;">,0</span></b>
                     </td>
                     <td style="text-align:center;"><b>Normalgewicht</b></td>
                 </tr>

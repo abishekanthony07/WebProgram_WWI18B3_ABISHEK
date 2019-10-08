@@ -18,13 +18,23 @@
     margin: 2px;
 }
 .wikitable{
-    font-size: large;
+    font-size: medium;
     border-collapse: collapse;
     color: black;
-    padding: 4px;
-    margin: 2px;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
+table, tr, th , td{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    padding: 3px;
 
+}
+.bmi {
+    white-space: nowrap;
+    text-align: center;
+}
 #berechnenButton{
     font-size: medium;
 }
