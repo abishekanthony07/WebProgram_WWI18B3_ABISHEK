@@ -5,6 +5,11 @@ window.addEventListener("load", () => {
 
 let buttonsSindZusehen = false;
 
+function timeStamp(){
+    let today = new Date();
+    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+"|"+today.getDate()+"."+today.getMonth()+"."+today.getFullYear();
+}
+
 function animateArrow() {
     let arrowDown = document.getElementById('arrowDown');
     let auswahlMenue = document.getElementById('auswahlMenue');
