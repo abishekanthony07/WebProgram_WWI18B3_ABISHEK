@@ -1,3 +1,9 @@
+body{
+    min-width: 335px;
+}
+.center{
+    text-align: center;
+}
 .inhalt{
     background: rgba(245,245,245, 0.7);
     border-radius: 0.5em;
@@ -21,6 +27,7 @@ h1{
 #editable{
     display: inline-block;
     margin: 1em;
+    text-align: center;
 }
 #benutzerEingabeORM div{
     display: inline-block;
@@ -63,11 +70,26 @@ h1{
     display: inline-block;
 }
 /*Absatz 3: Tabelle*/
+#table{
+    display: table-cell;
+    text-align: center;
+    width: 100vw;
+}
+.inhaltTabelle{
+    width: 300px;
+    background: rgba(245,245,245, 0.7);
+    border-radius: 0.5em;
+    color: black;
+    padding: 4px;
+    display: inline-block;
+    margin: 1em;
+    text-align: center;
+}
 table{
     text-align: center;
     border-spacing: 5px;
     border-collapse: collapse;
-    width: 100%;
+    min-width: 300px;
 }
 .tableHeader{
     background:  rgb(159, 96, 96);
@@ -78,8 +100,19 @@ table, tr,th{
     border-style: solid;
 }
 
-@media (max-width: 650px) {
-  #formelORM{
-      display: block;
-  }
+@media (max-width: 500px) {
+    #editable{
+        font-size: 12px;
+    }
+    #formelORM{
+        font-size: 50%;
+    }
+}
+@media (max-width: 615px) {
+    #editable{
+        font-size: 12px;
+    }
+    #formelORM{
+        font-size: 70%;
+    }
 }
