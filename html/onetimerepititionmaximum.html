@@ -5,6 +5,18 @@
     <title>WebFitness</title>
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
     <link rel="stylesheet" href="../stylesheet/onetimerepititionStylesheet.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+    <script src="../javascript/database.js"></script>
     <script src="../javascript/index.js"></script>
     <script src="../javascript/orm.js"></script>
 </head>
@@ -119,7 +131,9 @@
                     </tr>
                 </table>
             </div>
-            <p><i><small>Quelle: <a href="https://www.akademie-sport-gesundheit.de/magazin/one-repetition-maximum.html">Akademie für Sport und Gesundheit</a> </small></i></p>
+            <p><i><small><b>Quelle:</b> <a href="https://www.akademie-sport-gesundheit.de/magazin/one-repetition-maximum.html">Akademie für Sport und Gesundheit</a></small></i>
+                <br><i><small><b>Autor:</b> Abishek Anthony</small></i>
+            </p>
         </div>
     </section>
 </main>

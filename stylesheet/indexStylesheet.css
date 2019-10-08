@@ -29,6 +29,10 @@ header {
     font-size: 2em;
     display: block;
 }
+#arrowDowndiv{
+    background-color: aquamarine;
+    height: 24px;
+}
 
 hr {
     background-image: linear-gradient(90deg, dimgray 2%, rgb(183,184,186));
@@ -66,8 +70,8 @@ hr {
 
 /*Pfeil nach unten*/
 #arrowDown {
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     animation: jump .100s linear;
 }
 
@@ -76,17 +80,18 @@ hr {
 main {
     background-image: url(../resources/Smartphone_background.jpg);
     background-size: cover;
-    overflow-y: -moz-hidden-unscrollable;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     flex: auto;
     top: auto;
     text-align: left;
     margin-bottom: 5em;
+
 }
 
 #inhalt{
     background: rgba(245,245,245, 0.7);
-    /*margin: 15px;*/
+    margin: 10px;
     border-radius: 0.5em;
     color: black;
     padding: 4px;
@@ -112,6 +117,7 @@ footer {
     left: 0;
     right: 0;
     background-image: linear-gradient(90deg, dimgray 2%, rgb(140,140,140));
+    height: 6%;
 }
 
 footer div {

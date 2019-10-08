@@ -5,6 +5,11 @@ window.addEventListener("load", () => {
 
 let buttonsSindZusehen = false;
 
+function timeStamp(){
+    let today = new Date();
+    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+" am "+today.getDate()+"."+today.getMonth()+"."+today.getFullYear();
+}
+
 function animateArrow() {
     let arrowDown = document.getElementById('arrowDown');
     let auswahlMenue = document.getElementById('auswahlMenue');
@@ -24,4 +29,6 @@ function rotateImage(img, degree) {
     img.style.transform = degree;
     img.style.WebkitTransitionDuration = '0.5s';
 }
+
+
 
