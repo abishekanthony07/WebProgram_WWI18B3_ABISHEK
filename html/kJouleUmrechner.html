@@ -5,8 +5,21 @@
     <title>KalorienUmrechner</title>
     <link rel="stylesheet" href="../stylesheet/indexStylesheet.css">
     <link rel="stylesheet" href="../stylesheet/kJouleUmrechner.css">
-    <script src="../javascript/index.js"></script>
 
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+    <script src="../javascript/database.js"></script>
+    <script src="../javascript/index.js"></script>
+    <script src="../javascript/kJouleUmrechner.js"></script>
 </head>
 <body>
 <header>
@@ -24,10 +37,9 @@
     </div>
 </header>
 <main class="kjoule">
-        <form id="test">
+        <div id="test">
         <div id="inhalt">
-            <script src="../javascript/kJouleUmrechner.js"></script>
-            <h3>Umrechner</h3>
+            <h3>Kalorien-Umrechner</h3>
             <p>
                 <div class="Info">
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
@@ -40,8 +52,10 @@
             </p>
             <p>
             KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input typ = "Enter" id="Kcal" placeholder="Enter KCAL"/>
+                <input type = "number" id="Kcal" placeholder="Enter KCAL"/>
             </p>
+            <button id="button"> BERECHNE
+            </button>
             <p>
             KJOULE: &nbsp;
                 <output id="output" for="Enter">0</output>
@@ -53,10 +67,10 @@
             </p>
             <p>
                 KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <output id="output" for="Enter1">0</output>
+                <output id="output1" for="Enter1">0</output>
             </p>
         </div>
-    </form>
+    </div>
     </section>
 </main>
 <footer>
