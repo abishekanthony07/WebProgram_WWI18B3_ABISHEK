@@ -5,10 +5,27 @@ window.addEventListener("load", ()=>{
 
 
 function rechne() {
-    let kilokalorien = document.getElementById('Kcal');
-    let summe  = kilokalorien.value * 4.1868;
-    summe.toFixed(2);
-    console.log(summe);
-    document.getElementById('output').value = summe;
-    saveData("kCalSammlung", "1234567");
+
+
+
+    getData("kJoule", (array) =>{
+        let kilokalorien = document.getElementById('Kcal');
+        let summe  = kilokalorien.value * 4.1868;
+        summe.toFixed(2);
+        console.log(summe);
+        document.getElementById('output').value = summe;
+
+        if(array==='empty'){
+            array = [{
+                kcal:kilokalorien.value
+            }]
+        }else{
+            array.push({
+                kcal:kilokalorien.value
+            });
+        }
+        saveData("kJoule", array);
+    });
 }
+
+
