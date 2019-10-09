@@ -30,7 +30,7 @@ window.addEventListener('load', ()=>{
 });
 
 /**
- * Diese Methode zeigt alle gespeicherten Werte an.
+ * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
  */
 function showSavedDataHtml(inhalt, savedDataDiv, editDataDiv) {
     inhalt.style.display = 'none';
@@ -43,7 +43,7 @@ function showSavedDataHtml(inhalt, savedDataDiv, editDataDiv) {
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Deine Historie der Maximalkraft in Kg",
+                    label: "Deine Maximalkraft in Kg",
                     backgroundColor: 'rgba(159, 96, 96, 0.4)',
                     borderColor: 'rgba(159, 96, 96, 1)',
                     data: data
@@ -78,6 +78,22 @@ function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
+
+    getData('orm', (array) => {
+        let index;
+        for (index = 0; index < array.length; index++) {
+            let element = array[index];
+            console.log("Eintrag", element);
+            console.log(element.timestamp);
+            // console.log(element.gewicht);
+            // console.log(element.wiederholungszahl);
+            // console.log(element.prozent);
+            let newEl = document.createElement("div");
+            newEl.className = "inhalt";
+            newEl.innerHTML = "<button id='index'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg";
+            editDataDiv.appendChild(newEl);
+        }
+    })
 }
 
 
@@ -124,7 +140,7 @@ function berechne() {
 let labels = [];
 let data = [];
 /**
- * Diese Methode muss bei einem Button-Click auf "Lade meine Historie" aufgerufen werden
+ * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
  * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
  * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
  * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
@@ -141,9 +157,6 @@ function getAndSetData(callback) {
             console.log(element.timestamp);
             labels[counter] = element.timestamp;
             data[counter] = element.maximalkraft;
-            // console.log(element.gewicht);
-            // console.log(element.wiederholungszahl);
-            // console.log(element.prozent);
             if (counter === array.length - 1) {
                 callback();
             }

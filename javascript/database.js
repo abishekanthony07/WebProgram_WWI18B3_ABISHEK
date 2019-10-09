@@ -67,7 +67,7 @@ function getData(collection, callback){
         if (document.exists){
             callback(document.data().array);
         }else{
-            callback('empty')
+            callback('empty');
         }
 
     }).catch(function(error) {

@@ -135,7 +135,17 @@ table, tr,th{
     color: black;
     padding: 4px;
 }
-
+#myChart{
+    background: rgba(245,245,245, 0.7);
+}
+#delete{
+    background: rgba(245,0,0, 0.7);
+    margin: 10px;
+    border-radius: 0.5em;
+    color: black;
+    padding: 4px;
+}
+/*------------*/
 @media (max-width: 500px) {
     #editable{
         font-size: 12px;
