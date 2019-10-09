@@ -78,24 +78,36 @@ function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
-
     getData('orm', (array) => {
         let index;
+        arrayList = array;
+        if (array.length===0){
+            editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+        }else{
+            editDataDiv.innerHTML ="";
+        }
         for (index = 0; index < array.length; index++) {
             let element = array[index];
-            console.log("Eintrag", element);
-            console.log(element.timestamp);
-            // console.log(element.gewicht);
-            // console.log(element.wiederholungszahl);
-            // console.log(element.prozent);
             let newEl = document.createElement("div");
             newEl.className = "inhalt";
-            newEl.innerHTML = "<button id='index'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg";
-            editDataDiv.appendChild(newEl);
+            //Inhalt wird gesetzt
+            newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
+            newEl=editDataDiv.appendChild(newEl);
+            //delete Listener wird gesetzt
+            newEl.addEventListener('click',(e)=>{
+                deleteElement(e);
+            });
         }
     })
 }
 
+function deleteElement(e){
+        let deleteIndex = e.target.parentNode.firstChild.textContent;
+        arrayList.splice(deleteIndex, 1);
+        saveData('orm', arrayList);
+        editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+        showEditDataHtml(inhalt, savedDataDiv,editDataDiv);
+    }
 
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
@@ -139,6 +151,7 @@ function berechne() {
 
 let labels = [];
 let data = [];
+let arrayList = [];
 /**
  * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
  * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
