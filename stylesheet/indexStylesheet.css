@@ -86,7 +86,6 @@ main {
     top: auto;
     text-align: left;
     margin-bottom: 9vh;
-
 }
 
 #inhalt{
@@ -95,6 +94,7 @@ main {
     border-radius: 0.5em;
     color: black;
     padding: 4px;
+    overflow-x: scroll;
 }
 
 

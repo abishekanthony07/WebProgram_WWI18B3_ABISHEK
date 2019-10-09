@@ -4,18 +4,18 @@ window.addEventListener("load", () => {
         bmiBerechnen();
     });
     window.addEventListener("keypress", (p) => {
-        if (p.key == "Enter") {
+        if (p.key === "Enter") {
             bmiBerechnen();
         }
     });
-//-----------------------Slider an Eingabefeld anpassen -------------------------------------
+    //-----------------------Slider an Eingabefeld anpassen -------------------------------------
     //Groesse
     document.getElementById("sliderGroesse").addEventListener("input", ()=>{
         let sliderGroesse = document.getElementById("sliderGroesse");
         let eingabeFeldGroesse = document.getElementById("groesse");
 
         eingabeFeldGroesse.value = sliderGroesse.value;
-    })
+    });
 
     //Gewicht
     document.getElementById("sliderGewicht").addEventListener("input", ()=>{
@@ -23,39 +23,50 @@ window.addEventListener("load", () => {
         let eingabeFeldGewicht = document.getElementById("masse");
 
         eingabeFeldGewicht.value = sliderGewicht.value;
-    })
-//--------------------------------------------------------------------------------------------
-//---------------------- Eingabefeld an Slider anpassen-------------------------------------
-    //Groesse
-    document.getElementById("eingabeFeldGroesse").addEventListener("change", ()=>{
-        let sliderGroesse = document.getElementById("sliderGroesse");
-        let eingabeFeldGroesse = document.getElementById("groesse");
+    });
+    //--------------------------------------------------------------------------------------------
+    //---------------------- Eingabefeld an Slider anpassen-------------------------------------
+/*let bmiArray = [];
+    bmiArray.push({
+        eingabeGroesse: eingabeGroesse,
+        eingabeGewicht: eingabeGewicht,
+        ergebnis: ergebnis
+    });*/
 
-        sliderGroesse.value = eingabeFeldGroesse.value;
-    })
 
-    //Gewicht
-    document.getElementById("sliderGewicht").addEventListener("input", ()=>{
-        let sliderGewicht = document.getElementById("sliderGewicht");
-        let eingabeFeldGewicht = document.getElementById("masse");
 
-        eingabeFeldGewicht.value = sliderGewicht.value;
-    })
-//---------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
 });
 
 function bmiBerechnen() {
-    let eingabeGroesse = document.getElementById("groesse").value;
-    let eingabeGewicht = document.getElementById("masse").value;
-    let ergebnis = eingabeGewicht / Math.pow(eingabeGroesse / 100, 2);
-    let anzeige = document.getElementById("ausgabe");
-    ergebnis = ergebnis.toFixed(2);
-    hintergrundAngleichen(ergebnis, anzeige);
-    ergebnis = " " + ergebnis.bold();
-    anzeige.innerHTML = " <b>Dein BMI ist: </b> &nbsp;" + ergebnis + "<b>.</b>";
-    anzeige.style.display = 'flex';
-    TESTsaveData();
-};
+    getData("bmi",  (array) => {
+        let eingabeGroesse = document.getElementById("groesse").value;
+        let eingabeGewicht = document.getElementById("masse").value;
+        let ergebnis = eingabeGewicht / Math.pow(eingabeGroesse / 100, 2);
+        let anzeige = document.getElementById("ausgabe");
+        ergebnis = ergebnis.toFixed(2);
+        if(array === 'empty'){
+            array = [{
+                eingabeGroesse: eingabeGroesse,
+                eingabeGewicht: eingabeGewicht,
+                ergebnis: ergebnis
+            }]
+        }else{
+            array.push({
+                eingabeGroesse: eingabeGroesse,
+                eingabeGewicht: eingabeGewicht,
+                ergebnis: ergebnis
+            });
+        }
+        saveData("bmi", array);
+        hintergrundAngleichen(ergebnis, anzeige);
+        ergebnis = " " + ergebnis.bold();
+        anzeige.innerHTML = " <b>Dein BMI ist: </b> &nbsp;" + ergebnis + "<b>.</b>";
+        anzeige.style.display = 'flex';
+    });
+
+
+}
 
 function hintergrundAngleichen(ergebnis, anzeige) {
     if (ergebnis < 16) {

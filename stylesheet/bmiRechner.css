@@ -22,13 +22,12 @@
     border-collapse: collapse;
     color: black;
     margin-bottom: 10px;
-    margin-left: 5px;
 }
 table, tr, th , td{
     border-color: black;
     border-width: 1px;
     border-style: solid;
-    padding: 3px;
+    padding: 2px;
 
 }
 .bmi {
