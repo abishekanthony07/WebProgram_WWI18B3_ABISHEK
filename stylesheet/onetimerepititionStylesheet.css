@@ -134,16 +134,23 @@ table, tr,th{
     border-radius: 0.5em;
     color: black;
     padding: 4px;
+    display: none;
 }
 #myChart{
     background: rgba(245,245,245, 0.7);
 }
 #delete{
-    background: rgba(245,0,0, 0.7);
+    /*background: rgba(245,0,0, 0.7);*/
     margin: 10px;
     border-radius: 0.5em;
     color: black;
     padding: 4px;
+}
+.delete{
+    background: rgba(10,10,10,0.2);
+}
+.hidden{
+    display: none;
 }
 /*------------*/
 @media (max-width: 500px) {
