@@ -1,7 +1,101 @@
 window.addEventListener('load', ()=>{
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
+    //wenn enter geklickt wird, wird die Berechnung ausgelöst
+    window.addEventListener("keypress",(event)=>{
+        if (event.key == "Enter") {
+            event.preventDefault();
+            berechne();
+        }
+    });
+    //getAllImportantDivs
+    let inhalt = document.getElementById('inhalt');
+    let savedDataDiv = document.getElementById('savedDataDiv');
+    let editDataDiv = document.getElementById('editDataDiv');
+    //tabButtons
+    let savedData = document.getElementById('savedDataButton');
+    savedData.addEventListener('click', () => {
+        showSavedDataHtml(inhalt, savedDataDiv, editDataDiv)
+    });
+
+    let ormRechner = document.getElementById('ormRechnerButton');
+    ormRechner.addEventListener('click', () => {
+        showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv)
+    });
+
+    let editData = document.getElementById('editDataButton');
+    editData.addEventListener('click', () => {
+        showEditDataHtml(inhalt, savedDataDiv, editDataDiv)
+    });
 });
+
+/**
+ * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
+ */
+function showSavedDataHtml(inhalt, savedDataDiv, editDataDiv) {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'block';
+    editDataDiv.style.display = 'none';
+    getAndSetData(() => {
+        let myChartObject = document.getElementById('myChart');
+        let chart = new Chart(myChartObject, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Deine Maximalkraft in Kg",
+                    backgroundColor: 'rgba(159, 96, 96, 0.4)',
+                    borderColor: 'rgba(159, 96, 96, 1)',
+                    data: data
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        tricks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+}
+
+/**
+ * Diese Methode zeigt die Startseite von der Maximalkraft an.
+ */
+function showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv) {
+    inhalt.style.display = 'block';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'none';
+}
+
+/**
+ * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
+ */
+function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'block';
+
+    getData('orm', (array) => {
+        let index;
+        for (index = 0; index < array.length; index++) {
+            let element = array[index];
+            console.log("Eintrag", element);
+            console.log(element.timestamp);
+            // console.log(element.gewicht);
+            // console.log(element.wiederholungszahl);
+            // console.log(element.prozent);
+            let newEl = document.createElement("div");
+            newEl.className = "inhalt";
+            newEl.innerHTML = "<button id='index'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg";
+            editDataDiv.appendChild(newEl);
+        }
+    })
+}
+
 
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
@@ -15,40 +109,57 @@ function berechne() {
         let prozentsatzORM = document.getElementById('prozentsatzORM');
         let prozent = calculate(wiederholungszahl.value);
         let ergebnis = gewicht.value / prozent;
+    ergebnis = ergebnis.toFixed(2);
+    prozent = prozent.toFixed(2);
         maximalkraft.innerHTML = ergebnis.toString() + " =";
         prozentsatzORM.innerText = prozent.toString();
         gestemmtesGewichtORM.innerText = gewicht.value.toString();
 
         //Liste wird geupdated
-        array.push({
-            timestamp: timeStamp(),
-            gewicht: gewicht.value.toString(),
-            wiederholungszahl: wiederholungszahl.value.toString(),
-            prozent: prozent.toString(),
-            maximalkraft: ergebnis.toString()
-        });
+        if (array === 'empty') {
+            array = [{
+                timestamp: timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            }]
+        } else {
+            array.push({
+                timestamp: timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            });
+        }
         saveData('orm', array);
     });
 }
 
+let labels = [];
+let data = [];
 /**
- * Diese Methode muss bei einem Button-Click auf "Lade meine Historie" aufgerufen werden
+ * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
  * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
  * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
  * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
  * Feld angezeigt wird.
  */
-function getAndSetData(){
+function getAndSetData(callback) {
     getData('orm', (array)=>{
         let counter;
+        labels = [array.length];
+        data = [array.length];
         for ( counter = 0; counter<array.length; counter++){
             let element = array[counter];
             console.log("Eintrag", element);
-            // console.log(element.timestamp);
-            // console.log(element.gewicht);
-            // console.log(element.wiederholungszahl);
-            // console.log(element.prozent);
-            // console.log(element.maximalkraft)
+            console.log(element.timestamp);
+            labels[counter] = element.timestamp;
+            data[counter] = element.maximalkraft;
+            if (counter === array.length - 1) {
+                callback();
+            }
         }
     })
 }
@@ -58,7 +169,7 @@ function getAndSetData(){
  */
 function calculate(wiederholungszahl) {
     if (wiederholungszahl > 30) {
-        if (wiederholungszahl >= 40) {
+        if (wiederholunnrichgszahl >= 40) {
             return 0.3;
         } else {
             return rechne(wiederholungszahl, 40, 30, 0.3, 0.4);

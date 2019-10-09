@@ -64,7 +64,12 @@ function saveData(collection, set) {
 function getData(collection, callback){
     datenbank.collection(collection).doc(userId).get().then(function(document) {
         console.log("id", document.data());
-        callback(document.data().array);
+        if (document.exists){
+            callback(document.data().array);
+        }else{
+            callback('empty');
+        }
+
     }).catch(function(error) {
             console.error("Error getting document: ", error);
         });

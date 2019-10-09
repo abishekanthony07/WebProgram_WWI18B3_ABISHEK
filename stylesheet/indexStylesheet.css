@@ -73,7 +73,6 @@ hr {
     width: 1.5em;
     height: 1.5em;
     animation: jump .100s linear;
-    background-color: aquamarine;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -118,7 +117,7 @@ footer {
     left: 0;
     right: 0;
     background-image: linear-gradient(90deg, dimgray 2%, rgb(140,140,140));
-    height: 8%;
+    height: 6%;
 }
 
 footer div {
