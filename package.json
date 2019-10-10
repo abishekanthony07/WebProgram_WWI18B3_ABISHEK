@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/abishekanthony07/WebProgram_WWI18B3_WiFitness#readme",
   "devDependencies": {
+    "navigo": "^7.1.2",
     "parcel-bundler": "^1.12.4",
     "shelljs": "^0.8.3"
   },

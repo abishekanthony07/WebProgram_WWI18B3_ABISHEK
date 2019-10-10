@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>WebFitness</title>
-    <link rel="stylesheet" href="stylesheet/indexStylesheet.css">
-    <link rel="stylesheet" href="stylesheet/bmiRechner.css">
-    <link rel="stylesheet" href="stylesheet/kJouleUmrechner.css">
-    <link rel="stylesheet" href="stylesheet/onetimerepititionStylesheet.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="bmi/bmiRechner.css">
+    <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
+    <link rel="stylesheet" href="maximalkraft/onetimerepititionStylesheet.css">
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
@@ -17,11 +17,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
     <!--Eigene JS-->
     <script src="app.js"></script>
-    <script src="javascript/database.js"></script>
-    <script src="javascript/bmiRechner.js"></script>
-    <script src="javascript/orm.js"></script>
-    <script src="javascript/kJouleUmrechner.js"></script>
-    <script src="javascript/index.js"></script>
+    <script src="datenbank/database.js"></script>
+    <script src="bmi/bmiRechner.js"></script>
+    <script src="maximalkraft/orm.js"></script>
+    <script src="kjoule/kJouleUmrechner.js"></script>
+    <script src="index.js"></script>
 
 </head>
 <body>
@@ -40,7 +40,7 @@
     </div>
 </header>
 <main>
-    <div id="startSeiteDiv">
+    <section id="startSeiteDiv">
         <div class="inhalt">
             <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
             <p>
@@ -64,21 +64,17 @@
                 Genug der vielen Worte. Wir wünschen euch viel Spaß mit unserer Seite! :-)
             </p>
         </div>
-    </div>
-    <div id="kJouleRechner" class="kjoule">
+    </section>
+    <section id="kJouleRechner" class="kjoule">
         <div id="test">
             <div class="inhalt">
                 <h3>Kalorien-Umrechner</h3>
-                <p>
                     <div class="Info">
                         Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
                 <p> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.</p>
             </div>
-            </p>
-
-            <p>
+            </div>
             <h4>Umrechner von KCAL in KJOULE</h4>
-            </p>
             <p>
                 KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="number" id="Kcal" placeholder="Enter KCAL"/>
@@ -89,7 +85,7 @@
                 KJOULE: &nbsp;
                 <output id="output" for="Enter">0</output>
             </p>
-            <p><h4>Umrechner von KJOULE in KCAL</h4></p>
+            <h4>Umrechner von KJOULE in KCAL</h4>
             <p>
                 KJOULE: &nbsp;
                 <input type="number" id="KJOULE" placeholder="Enter KJOULE"/>
@@ -101,9 +97,9 @@
                 <output id="output1" for="Enter1">0</output>
             </p>
         </div>
-    </div>
-    </div>
-    <div id="maximalKraftRechner">
+    </section>
+    
+    <section id="maximalKraftRechner">
         <div id="tabMenue">
             <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
             <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
@@ -218,8 +214,8 @@
         <div id="editDataDiv">
             Sie haben keine Werte gespeichert!
         </div>
-    </div>
-    <div id="bmiRechner">
+    </section>
+    <section id="bmiRechner">
         <div class="inhalt">
             <section>
                 <div>
@@ -412,7 +408,7 @@
             </section>
 
         </div>
-    </div>
+    </section>
 </main>
 <footer>
     <div id="impressum">Impressum</div>

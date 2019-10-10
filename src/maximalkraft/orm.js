@@ -1,6 +1,6 @@
 "use strict";
 import App from "../app.js";
-import stylesheet from "../stylesheet/onetimerepititionStylesheet.css";
+import stylesheet from "./onetimerepititionStylesheet.css";
 window.addEventListener('load', ()=>{
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
