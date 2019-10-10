@@ -1,0 +1,33 @@
+{
+  "name": "webprogram_wwi18b3_wifitness",
+  "version": "1.0.0",
+  "description": "Eine Sport-Fitness App zur Speicherung von errechneten BMI, Kjoule und Maximalkraft Werten",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abishekanthony07/WebProgram_WWI18B3_WiFitness.git"
+  },
+  "keywords": [
+    "BMI",
+    "Fitness",
+    "Maximalkraft",
+    "one",
+    "repition",
+    "maximum",
+    "Sport",
+    "Single",
+    "Page",
+    "App",
+    "Browser",
+    "App"
+  ],
+  "author": "Sascha Klevenhaus, Hannah Bjork, Abishek Anthony",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/abishekanthony07/WebProgram_WWI18B3_WiFitness/issues"
+  },
+  "homepage": "https://github.com/abishekanthony07/WebProgram_WWI18B3_WiFitness#readme"
+}
