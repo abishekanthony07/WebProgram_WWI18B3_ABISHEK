@@ -49,6 +49,30 @@
 
                 <div class="einUndAusgabeFeld">
                     <section class="eingabe">
+                        <!----------------------------------- Schieberegler Alter-------------------------------->
+                        <p>
+                            Hier zunächst dein Alter über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                        </p>
+                        <div>
+                            <label for="alter">0 Jahre</label>
+                            <input class="vertikal" name="alter"
+                                   type="range" min="0" value="20" max="120"
+                                   orient="horizontal" id="sliderAlter">
+                            <label for="Alter">120 Jahre</label>
+                        </div>
+                        <br>
+
+                        <div id="groesseAlter">
+                            <label>
+                                Größe:
+                                <input id="alter" type="number" min="0" max="220" step="1" value="175">
+                                cm
+                            </label>
+                        </div>
+
+                        <br>
+                        <br>
+
                         <!----------------------------------- Schieberegler Größe-------------------------------->
                         <p>
                             Hier zunächst deine Größe über den Schieberegler eingeben oder direkt ins Feld eingeben.
@@ -105,9 +129,8 @@
         </section>
 
         <!------------------------------------------------Tabelle --------------------------------------------------->
-
         <section>
-            <p>Damit du dich selbst einordnen kannst kommt nachfolgend eine Tabelle von Wikipedia: </p>
+            <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
 
             <table class="wikitable">
                 <tbody>
@@ -192,7 +215,14 @@
                 </tr>
                 </tbody>
             </table>
+            <!------------------------------------------Zusatzinformationen----------------------------------------->
+            <button id="open-dialog"> >>Schon gewusst? << </button>
 
+            <dialog role="dialog" aria-labelledby="dialog-heading">
+                <button id="close-dialog">Schließen</button>
+                <h2 id="dialog-heading">Schon gewusst?</h2>
+                <p> Hier werden demnächst Zusatzinformationen zum BMI angezeigt. </p>
+            </dialog>
         </section>
 
     </div>
