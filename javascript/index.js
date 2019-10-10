@@ -1,13 +1,65 @@
+let startseite;
+let auswahlAbi;
+let auswahlSas;
+let auswahlhan;
 window.addEventListener("load", () => {
     let imageArrow = document.getElementById('arrowDown');
     imageArrow.addEventListener("click", animateArrow);
+    startseite = document.getElementById('startseite');
+    auswahlAbi = document.getElementById('auswahlAbi');
+    auswahlSas = document.getElementById('auswahlSas');
+    auswahlhan = document.getElementById('auswahlhan');
+    showStartseite();
+
+    startseite.addEventListener("click", () => {
+        showStartseite();
+    });
+    auswahlSas.addEventListener("click", () => {
+        showBmiRechner();
+    });
+    auswahlAbi.addEventListener("click", () => {
+        showMaximalkraftRechner();
+    });
+    auswahlhan.addEventListener("click", () => {
+        showKjouleRechner();
+    });
 });
+
+function showStartseite() {
+    console.log("test");
+    startseite.style.display = 'block';
+    auswahlAbi.style.display = 'none';
+    auswahlSas.style.display = 'none';
+    auswahlhan.style.display = 'none';
+}
+
+function showMaximalkraftRechner() {
+    startseite.style.display = 'none';
+    auswahlAbi.style.display = 'block';
+    auswahlSas.style.display = 'none';
+    auswahlhan.style.display = 'none';
+}
+
+function showBmiRechner() {
+    startseite.style.display = 'none';
+    auswahlAbi.style.display = 'none';
+    auswahlSas.style.display = 'block';
+    auswahlhan.style.display = 'none';
+}
+
+function showKjouleRechner() {
+    startseite.style.display = 'none';
+    auswahlAbi.style.display = 'none';
+    auswahlSas.style.display = 'none';
+    auswahlhan.style.display = 'block';
+}
+
 
 let buttonsSindZusehen = false;
 
-function timeStamp(){
+function timeStamp() {
     let today = new Date();
-    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+" am "+today.getDate()+"."+today.getMonth()+"."+today.getFullYear();
+    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " am " + today.getDate() + "." + today.getMonth() + "." + today.getFullYear();
 }
 
 function animateArrow() {

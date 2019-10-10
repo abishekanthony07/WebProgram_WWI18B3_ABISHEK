@@ -4,12 +4,6 @@ body{
 .center{
     text-align: center;
 }
-.inhalt{
-    background: rgba(245,245,245, 0.7);
-    border-radius: 0.5em;
-    color: black;
-    padding: 4px;
-}
 
 /*Tabs*/
 #tabMenue {

@@ -30,7 +30,6 @@ header {
     display: block;
 }
 #arrowDowndiv{
-    background-color: aquamarine;
     height: 24px;
 }
 
@@ -88,7 +87,7 @@ main {
     margin-bottom: 9vh;
 }
 
-#inhalt{
+.inhalt{
     background: rgba(245,245,245, 0.7);
     margin: 10px;
     border-radius: 0.5em;
