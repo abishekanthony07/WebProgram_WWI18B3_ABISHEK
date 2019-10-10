@@ -1,3 +1,6 @@
+"use strict";
+import App from "../app.js";
+import stylesheet from "../stylesheet/kJouleUmrechner.css";
 window.addEventListener("load", ()=>{
    document.getElementById("button").addEventListener("click", rechne);
     document.getElementById("button1").addEventListener("click", rechne1);

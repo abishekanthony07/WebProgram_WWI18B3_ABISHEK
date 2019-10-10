@@ -1,5 +1,12 @@
+"use strict";
+import App from "../app.js";
 
 window.addEventListener("load", () => {
+    //Anwendung starten
+    let app = new App();
+    app.start();
+
+    //Listener für Navigation und Arrow Button setzen
     let imageArrow = document.getElementById('arrowDown');
     imageArrow.addEventListener("click", animateArrow);
     let startseiteButton = document.getElementById('startseite');
@@ -27,7 +34,6 @@ window.addEventListener("load", () => {
 });
 
 function showStartseite(startseite,bmi, kjoule, orm) {
-    console.log(startseite);
     startseite.style.display = 'block';
     orm.style.display = 'none';
     bmi.style.display = 'none';
@@ -35,7 +41,6 @@ function showStartseite(startseite,bmi, kjoule, orm) {
 }
 
 function showMaximalkraftRechner(startseite,bmi, kjoule, orm) {
-    console.log(orm);
     startseite.style.display = 'none';
     bmi.style.display = 'none';
     kjoule.style.display = 'none';
@@ -43,7 +48,6 @@ function showMaximalkraftRechner(startseite,bmi, kjoule, orm) {
 }
 
 function showBmiRechner(startseite,bmi, kjoule, orm) {
-    console.log(bmi);
     startseite.style.display = 'none';
     bmi.style.display = 'block';
     kjoule.style.display = 'none';
@@ -51,7 +55,6 @@ function showBmiRechner(startseite,bmi, kjoule, orm) {
 }
 
 function showKjouleRechner(startseite,bmi, kjoule, orm) {
-    console.log(kjoule);
     startseite.style.display = 'none';
     bmi.style.display = 'none';
     orm.style.display = 'none';
@@ -60,11 +63,6 @@ function showKjouleRechner(startseite,bmi, kjoule, orm) {
 
 
 let buttonsSindZusehen = false;
-
-function timeStamp() {
-    let today = new Date();
-    return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " am " + today.getDate() + "." + today.getMonth() + "." + today.getFullYear();
-}
 
 function animateArrow() {
     let arrowDown = document.getElementById('arrowDown');

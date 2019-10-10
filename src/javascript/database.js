@@ -1,3 +1,4 @@
+"use strict";
 window.addEventListener("load", () => {
 // Your web app's Firebase configuration
     initializeDB();

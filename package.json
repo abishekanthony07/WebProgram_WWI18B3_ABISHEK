@@ -36,5 +36,8 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "shelljs": "^0.8.3"
+  },
+  "dependencies": {
+    "run": "^1.4.0"
   }
 }

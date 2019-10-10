@@ -1,3 +1,6 @@
+"use strict";
+import App from "../app.js";
+import stylesheet from "../stylesheet/bmiRechner.css";
 window.addEventListener("load", () => {
     let buttonBerechen = document.getElementById('berechnenButton');
     buttonBerechen.addEventListener("click", () => {

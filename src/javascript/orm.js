@@ -1,3 +1,6 @@
+"use strict";
+import App from "../app.js";
+import stylesheet from "../stylesheet/onetimerepititionStylesheet.css";
 window.addEventListener('load', ()=>{
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
@@ -130,7 +133,7 @@ function berechne() {
         //Liste wird geupdated
         if (array === 'empty') {
             array = [{
-                timestamp: timeStamp(),
+                timestamp: new App().timeStamp(),
                 gewicht: gewicht.value.toString(),
                 wiederholungszahl: wiederholungszahl.value.toString(),
                 prozent: prozent.toString(),
@@ -138,7 +141,7 @@ function berechne() {
             }]
         } else {
             array.push({
-                timestamp: timeStamp(),
+                timestamp: new App().timeStamp(),
                 gewicht: gewicht.value.toString(),
                 wiederholungszahl: wiederholungszahl.value.toString(),
                 prozent: prozent.toString(),
