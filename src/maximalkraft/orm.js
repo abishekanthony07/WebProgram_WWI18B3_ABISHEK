@@ -1,7 +1,8 @@
-"use strict";
 import App from "../app.js";
-import stylesheet from "./onetimerepititionStylesheet.css";
+import Datenbank from "../datenbank/database.js";
+let db;
 window.addEventListener('load', ()=>{
+    db = new Datenbank();
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
     //wenn enter geklickt wird, wird die Berechnung ausgelöst
@@ -12,7 +13,7 @@ window.addEventListener('load', ()=>{
         }
     });
     //getAllImportantDivs
-    let inhalt = document.getElementById('inhalt');
+    let inhalt = document.getElementById('inhaltORMDiv');
     let savedDataDiv = document.getElementById('savedDataDiv');
     let editDataDiv = document.getElementById('editDataDiv');
     //tabButtons
@@ -81,7 +82,7 @@ function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
-    getData('orm', (array) => {
+    db.getData('orm', (array) => {
         let index;
         arrayList = array;
         if (array.length===0){
@@ -98,25 +99,27 @@ function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
             newEl=editDataDiv.appendChild(newEl);
             //delete Listener wird gesetzt
             newEl.addEventListener('click',(e)=>{
-                deleteElement(e);
+                deleteElement(event, inhalt, savedDataDiv, editDataDiv);
             });
         }
     })
 }
 
-function deleteElement(e){
-        let deleteIndex = e.target.parentNode.firstChild.textContent;
+function deleteElement(event, inhalt, savedDataDiv, editDataDiv){
+        let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
-        saveData('orm', arrayList);
+    db.saveData('orm', arrayList, ()=>{
         editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
         showEditDataHtml(inhalt, savedDataDiv,editDataDiv);
+    });
+
     }
 
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
  */
 function berechne() {
-    getData('orm', (array)=>{
+    db.getData('orm', (array)=>{
         let gewicht = document.getElementById('gewicht');
         let wiederholungszahl = document.getElementById('wiederholungszahl');
         let maximalkraft = document.getElementById('ergebnis');
@@ -148,7 +151,9 @@ function berechne() {
                 maximalkraft: ergebnis.toString()
             });
         }
-        saveData('orm', array);
+        db.saveData('orm', array,()=>{
+            //nothing
+        });
     });
 }
 
@@ -163,14 +168,12 @@ let arrayList = [];
  * Feld angezeigt wird.
  */
 function getAndSetData(callback) {
-    getData('orm', (array)=>{
+    db.getData('orm', (array)=>{
         let counter;
         labels = [array.length];
         data = [array.length];
         for ( counter = 0; counter<array.length; counter++){
             let element = array[counter];
-            console.log("Eintrag", element);
-            console.log(element.timestamp);
             labels[counter] = element.timestamp;
             data[counter] = element.maximalkraft;
             if (counter === array.length - 1) {

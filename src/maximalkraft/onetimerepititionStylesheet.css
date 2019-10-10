@@ -1,10 +1,12 @@
 body{
     min-width: 335px;
 }
+.inhalt{
+    overflow: hidden;
+}
 .center{
     text-align: center;
 }
-
 /*Tabs*/
 #tabMenue {
     display: table-cell;
