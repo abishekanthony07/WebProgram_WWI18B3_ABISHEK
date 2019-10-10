@@ -6,8 +6,8 @@ window.addEventListener("load", () => {
     let auswahlAbi = document.getElementById('auswahlAbi');
     let auswahlSas = document.getElementById('auswahlSas');
     let auswahlhan = document.getElementById('auswahlHan');
-    let bmi = document.getElementById('bmi');
-    let orm = document.getElementById('maximalKraft');
+    let bmi = document.getElementById('bmiRechner');
+    let orm = document.getElementById('maximalKraftRechner');
     let kjoule = document.getElementById('kJouleRechner');
     let startseite = document.getElementById('startSeiteDiv');
     showStartseite(startseite,bmi, kjoule, orm);
@@ -37,17 +37,17 @@ function showStartseite(startseite,bmi, kjoule, orm) {
 function showMaximalkraftRechner(startseite,bmi, kjoule, orm) {
     console.log(orm);
     startseite.style.display = 'none';
-    orm.style.display = 'block';
     bmi.style.display = 'none';
     kjoule.style.display = 'none';
+    orm.style.display = 'block';
 }
 
 function showBmiRechner(startseite,bmi, kjoule, orm) {
     console.log(bmi);
     startseite.style.display = 'none';
-    bmi.style.display = 'none';
-    orm.style.display = 'block';
+    bmi.style.display = 'block';
     kjoule.style.display = 'none';
+    orm.style.display = 'none';
 }
 
 function showKjouleRechner(startseite,bmi, kjoule, orm) {
