@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../stylesheet/kJouleUmrechner.css">
     <link rel="stylesheet" href="../stylesheet/onetimerepititionStylesheet.css">
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-    
+
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
-    
+
     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
-    
+
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
@@ -37,9 +37,9 @@
     </div>
 </header>
 <main>
-    <section>
+    <div id="startSeiteDiv">
         <div class="inhalt">
-           <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
+            <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
             <p>
                 Sport ist wichtig, dass weiß jedes Kind. So haben sich einige intelligente Menschen Gedanken gemacht um
                 uns mit Hilfe von einigen Berechnungen zeigen wo wir stehen und uns auch eine Richtung geben wohin wir
@@ -61,8 +61,8 @@
                 Genug der vielen Worte. Wir wünschen euch viel Spaß mit unserer Seite! :-)
             </p>
         </div>
-    </section>
-    <section id="kJouleRechner" class="kjoule">
+    </div>
+    <div id="kJouleRechner" class="kjoule">
         <div id="test">
             <div class="inhalt">
                 <h3>Kalorien-Umrechner</h3>
@@ -78,7 +78,7 @@
             </p>
             <p>
                 KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type = "number" id="Kcal" placeholder="Enter KCAL"/>
+                <input type="number" id="Kcal" placeholder="Enter KCAL"/>
             </p>
             <button id="button"> BERECHNE
             </button>
@@ -89,7 +89,7 @@
             <p><h4>Umrechner von KJOULE in KCAL</h4></p>
             <p>
                 KJOULE: &nbsp;
-                <input type = "number" id="KJOULE" placeholder="Enter KJOULE"/>
+                <input type="number" id="KJOULE" placeholder="Enter KJOULE"/>
             </p>
             <button id="button1"> BERECHNE
             </button>
@@ -98,8 +98,8 @@
                 <output id="output1" for="Enter1">0</output>
             </p>
         </div>
-    </section>
-    <section id="maximalKraft">
+    </div>
+    <div id="maximalKraft">
         <div id="tabMenue">
             <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
             <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
@@ -114,7 +114,9 @@
                 <ul>
                     <li>Muskelquerschnitt</li>
                     <li>intramuskuläre Koordination (= Anzahl der Muskelfaser, die gleichzeitig aktiviert werden)</li>
-                    <li>intermuskuläre Koordination (= Koordnination zwischen den Muskeln, die bei einer gegebenen Bewegung zusammenarbeiten)</li>
+                    <li>intermuskuläre Koordination (= Koordnination zwischen den Muskeln, die bei einer gegebenen
+                        Bewegung zusammenarbeiten)
+                    </li>
                 </ul>
                 <br>
                 Es existieren verschiedene <b>Methoden die Maximalkraft zu trainieren</b>:<br>
@@ -200,7 +202,9 @@
                     </table>
                 </div>
             </div>
-            <p><i><small><b>Quelle:</b> <a href="https://www.akademie-sport-gesundheit.de/magazin/one-repetition-maximum.html">Akademie für Sport und Gesundheit</a></small></i>
+            <p><i><small><b>Quelle:</b> <a
+                    href="https://www.akademie-sport-gesundheit.de/magazin/one-repetition-maximum.html">Akademie für
+                Sport und Gesundheit</a></small></i>
                 <br><i><small><b>Autor:</b> Abishek Anthony</small></i>
             </p>
         </div>
@@ -210,8 +214,8 @@
         <div id="editDataDiv">
             Sie haben keine Werte gespeichert!
         </div>
-    </section>
-    <section id="bmi">
+    </div>
+    <div id="bmi">
         <div class="inhalt">
             <section>
                 <div>
@@ -268,7 +272,8 @@
                             <br>
                             <!----------------------------------- Schieberegler Gewicht-------------------------------->
                             <p>
-                                Hier zunächst dein Gewicht über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                                Hier zunächst dein Gewicht über den Schieberegler eingeben oder direkt ins Feld
+                                eingeben.
                             </p>
                             <div>
                                 <label for="gewicht" id="D1">0 kg</label>
@@ -324,7 +329,8 @@
                         </td>
                         <td>Mäßiges Untergewicht
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>16<span style="visibility:hidden;">,0</span> – &lt;
+                        <td><span style="visibility:hidden;">&lt; </span>16<span style="visibility:hidden;">,0</span> –
+                            &lt;
                             17<span style="visibility:hidden;">,0</span>
                         </td>
                     </tr>
@@ -333,7 +339,9 @@
                         </td>
                         <td>Leichtes Untergewicht
                         </td>
-                        <td><span style="visibility:hidden;" class="bmi">&lt; </span>17<span style="visibility:hidden;" class="bmi">,0</span> – &lt;
+                        <td><span style="visibility:hidden;" class="bmi">&lt; </span>17<span style="visibility:hidden;"
+                                                                                             class="bmi">,0</span> –
+                            &lt;
                             18,5
                         </td>
                     </tr>
@@ -342,7 +350,8 @@
                         </td>
                         <td><b>Normalgewicht</b>
                         </td>
-                        <td class="bmi"><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span style="visibility:hidden;">,0</span></b>
+                        <td class="bmi"><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span
+                                style="visibility:hidden;">,0</span></b>
                         </td>
                         <td style="text-align:center;"><b>Normalgewicht</b></td>
                     </tr>
@@ -351,7 +360,8 @@
                         </td>
                         <td>Präadipositas
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>25<span style="visibility:hidden;">,0</span> – &lt;
+                        <td><span style="visibility:hidden;">&lt; </span>25<span style="visibility:hidden;">,0</span> –
+                            &lt;
                             30<span style="visibility:hidden;">,0</span>
                         </td>
                         <td style="text-align:center;">Übergewicht</td>
@@ -361,7 +371,8 @@
                         </td>
                         <td>Adipositas Grad I
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>30<span style="visibility:hidden;">,0</span> – &lt;
+                        <td><span style="visibility:hidden;">&lt; </span>30<span style="visibility:hidden;">,0</span> –
+                            &lt;
                             35<span style="visibility:hidden;">,0</span>
                         </td>
                         <td rowspan="3" align="center">Adipositas</td>
@@ -371,7 +382,8 @@
                         </td>
                         <td>Adipositas Grad II
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>35<span style="visibility:hidden;">,0</span> – &lt;
+                        <td><span style="visibility:hidden;">&lt; </span>35<span style="visibility:hidden;">,0</span> –
+                            &lt;
                             40<span style="visibility:hidden;">,0</span>
                         </td>
                     </tr>
@@ -386,7 +398,7 @@
                     </tbody>
                 </table>
                 <!------------------------------------------Zusatzinformationen----------------------------------------->
-                <button id="open-dialog"> >>Schon gewusst? << </button>
+                <button id="open-dialog"> >>Schon gewusst? <<</button>
 
                 <dialog role="dialog" aria-labelledby="dialog-heading">
                     <button id="close-dialog">Schließen</button>
@@ -396,7 +408,7 @@
             </section>
 
         </div>
-    </section>
+    </div>
 </main>
 <footer>
     <div id="impressum">Impressum</div>

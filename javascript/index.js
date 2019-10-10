@@ -1,57 +1,61 @@
-let startseite;
-let auswahlAbi;
-let auswahlSas;
-let auswahlhan;
+
 window.addEventListener("load", () => {
     let imageArrow = document.getElementById('arrowDown');
     imageArrow.addEventListener("click", animateArrow);
-    startseite = document.getElementById('startseite');
-    auswahlAbi = document.getElementById('auswahlAbi');
-    auswahlSas = document.getElementById('auswahlSas');
-    auswahlhan = document.getElementById('auswahlhan');
-    showStartseite();
+    let startseiteButton = document.getElementById('startseite');
+    let auswahlAbi = document.getElementById('auswahlAbi');
+    let auswahlSas = document.getElementById('auswahlSas');
+    let auswahlhan = document.getElementById('auswahlHan');
+    let bmi = document.getElementById('bmi');
+    let orm = document.getElementById('maximalKraft');
+    let kjoule = document.getElementById('kJouleRechner');
+    let startseite = document.getElementById('startSeiteDiv');
+    showStartseite(startseite,bmi, kjoule, orm);
 
-    startseite.addEventListener("click", () => {
-        showStartseite();
+    startseiteButton.addEventListener("click", () => {
+        showStartseite(startseite,bmi, kjoule, orm);
     });
     auswahlSas.addEventListener("click", () => {
-        showBmiRechner();
+        showBmiRechner(startseite,bmi, kjoule, orm);
     });
     auswahlAbi.addEventListener("click", () => {
-        showMaximalkraftRechner();
+        showMaximalkraftRechner(startseite,bmi, kjoule, orm);
     });
     auswahlhan.addEventListener("click", () => {
-        showKjouleRechner();
+        showKjouleRechner(startseite,bmi, kjoule, orm);
     });
 });
 
-function showStartseite() {
-    console.log("test");
+function showStartseite(startseite,bmi, kjoule, orm) {
+    console.log(startseite);
     startseite.style.display = 'block';
-    auswahlAbi.style.display = 'none';
-    auswahlSas.style.display = 'none';
-    auswahlhan.style.display = 'none';
+    orm.style.display = 'none';
+    bmi.style.display = 'none';
+    kjoule.style.display = 'none';
 }
 
-function showMaximalkraftRechner() {
+function showMaximalkraftRechner(startseite,bmi, kjoule, orm) {
+    console.log(orm);
     startseite.style.display = 'none';
-    auswahlAbi.style.display = 'block';
-    auswahlSas.style.display = 'none';
-    auswahlhan.style.display = 'none';
+    orm.style.display = 'block';
+    bmi.style.display = 'none';
+    kjoule.style.display = 'none';
 }
 
-function showBmiRechner() {
+function showBmiRechner(startseite,bmi, kjoule, orm) {
+    console.log(bmi);
     startseite.style.display = 'none';
-    auswahlAbi.style.display = 'none';
-    auswahlSas.style.display = 'block';
-    auswahlhan.style.display = 'none';
+    bmi.style.display = 'none';
+    orm.style.display = 'block';
+    kjoule.style.display = 'none';
 }
 
-function showKjouleRechner() {
+function showKjouleRechner(startseite,bmi, kjoule, orm) {
+    console.log(kjoule);
     startseite.style.display = 'none';
-    auswahlAbi.style.display = 'none';
-    auswahlSas.style.display = 'none';
-    auswahlhan.style.display = 'block';
+    bmi.style.display = 'none';
+    orm.style.display = 'none';
+    kjoule.style.display = 'block';
 }
 
 
