@@ -98,7 +98,7 @@ function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
             newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
             newEl=editDataDiv.appendChild(newEl);
             //delete Listener wird gesetzt
-            newEl.addEventListener('click',(e)=>{
+            newEl.addEventListener('click',(event)=>{
                 deleteElement(event, inhalt, savedDataDiv, editDataDiv);
             });
         }

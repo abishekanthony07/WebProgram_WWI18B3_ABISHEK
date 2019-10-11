@@ -1,4 +1,6 @@
 import App from "../app";
+import firebase from "firebase";
+require('firebase/app');
 
 class Datenbank {
     constructor(){

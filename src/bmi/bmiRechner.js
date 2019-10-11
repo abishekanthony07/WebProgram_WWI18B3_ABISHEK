@@ -1,7 +1,10 @@
 "use strict";
 import App from "../app.js";
+import Datenbank from "../datenbank/database";
 import stylesheet from "./bmiRechner.css";
+let db;
 window.addEventListener("load", () => {
+    db = new Datenbank();
     let buttonBerechen = document.getElementById('berechnenButton');
     buttonBerechen.addEventListener("click", () => {
         bmiBerechnen();
