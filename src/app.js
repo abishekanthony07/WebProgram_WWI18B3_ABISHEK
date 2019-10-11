@@ -5,6 +5,7 @@
  * und die angeforderten Bildschirmseiten anzuzeigen.
  */
 import Navigo from "navigo/lib/navigo.js";
+const db = require('./datenbank/database');
 class App {
     /**
      * Konstruktor.
@@ -49,6 +50,8 @@ class App {
     start() {
         console.log("Die Klasse App sagt Hallo!");
         this._router.resolve();
+        db.initializeDB();
+        db.loginUser();
     }
 
     timeStamp() {

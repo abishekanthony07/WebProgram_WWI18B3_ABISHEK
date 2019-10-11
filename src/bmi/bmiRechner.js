@@ -1,10 +1,9 @@
 "use strict";
 import App from "../app.js";
-import Datenbank from "../datenbank/database";
-import stylesheet from "./bmiRechner.css";
-let db;
+const db = require('./../datenbank/database');
 window.addEventListener("load", () => {
-    db = new Datenbank();
+    db.initializeDB();
+    db.loginUser();
     let buttonBerechen = document.getElementById('berechnenButton');
     buttonBerechen.addEventListener("click", () => {
         bmiBerechnen();
@@ -81,7 +80,7 @@ window.addEventListener("load", () => {
 });
 
 function bmiBerechnen() {
-    getData("bmi",  (array) => {
+    db.getData("bmi",  (array) => {
         let eingabeGroesse = document.getElementById("groesse").value;
         let eingabeGewicht = document.getElementById("masse").value;
         let ergebnis = eingabeGewicht / Math.pow(eingabeGroesse / 100, 2);
@@ -100,7 +99,7 @@ function bmiBerechnen() {
                 ergebnis: ergebnis
             });
         }
-        saveData("bmi", array);
+        db.saveData("bmi", array);
         hintergrundAngleichen(ergebnis, anzeige);
         ergebnis = " " + ergebnis.bold();
         anzeige.innerHTML = " <b>Dein BMI ist: </b> &nbsp;" + ergebnis + "<b>.</b>";

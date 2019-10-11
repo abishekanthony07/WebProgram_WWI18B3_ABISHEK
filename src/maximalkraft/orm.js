@@ -1,8 +1,9 @@
 import App from "../app.js";
 import Datenbank from "../datenbank/database.js";
-let db;
+const db = require('./../datenbank/database');
 window.addEventListener('load', ()=>{
-    db = new Datenbank();
+    db.initializeDB();
+    db.loginUser();
     let berechneButton = document.getElementById('berechneButton');
     berechneButton.addEventListener('click', berechne);
     //wenn enter geklickt wird, wird die Berechnung ausgelöst

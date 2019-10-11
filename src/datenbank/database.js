@@ -1,13 +1,9 @@
-import App from "../app";
 import firebase from "firebase";
+
 require('firebase/app');
 
-class Datenbank {
-    constructor(){
-        this.initializeDB();
-        this.loginUser();
-    }
-    initializeDB() {
+module.exports = {
+    initializeDB: function () {
         let firebaseConfig = {
             apiKey: "AIzaSyDfiAtnO_l-I5ZxF3BvlY0Hctt8uPXwV7k",
             authDomain: "webfitness-c165a.firebaseapp.com",
@@ -19,49 +15,47 @@ class Datenbank {
             measurementId: "G-TNEMX97BZS"
         };
         firebase.initializeApp(firebaseConfig);
-    }
+    },
+    createUser: function () {
 
-    createUser (){
-    }
-    loginUser (){
-        firebase.auth().signInWithEmailAndPassword("defaultbenutzer@email.de", "123456789").then((output)=>{
+    },
+    loginUser: function () {
+        firebase.auth().signInWithEmailAndPassword("defaultbenutzer@email.de", "123456789").then((output) => {
             console.log("Login erfolgreich!", output);
             this.userId = output.user.uid;
             this.datenbank = firebase.firestore();
-        }).catch((error)=>{
-            if(error.code === "auth/wrong-password"){
+        }).catch((error) => {
+            if (error.code === "auth/wrong-password") {
                 alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
-            }else if(error.code === "auth/too-many-requests") {
+            } else if (error.code === "auth/too-many-requests") {
                 alert("Zu viele Fehlversuche! Böse!")
-            }else{
+            } else {
                 alert(error.message);
             }
             console.log(Error.message, error);
         })
-    }
-
-    /**
+    }, /**
      * Diese Methode speichert die neue Liste in der Datenbank!
      * @param collection
      * @param set (Das neue Array)
      * @param callback
      */
-    saveData(collection, set, callback) {
+    saveData: function (collection, set, callback) {
         this.datenbank.collection(collection).doc(this.userId).set({
-            array: set}).then(()=>{
+            array: set
+        }).then(() => {
             console.log("Status saved!")
-            callback();
-        }).catch((error)=>{
+            callback;
+        }).catch((error) => {
             console.log(error.message, error);
         });
-    }
-
+    },
     /**
      * Diese Methode holt sich die Liste mit den abgesicherten Daten.
      * @param collection (bmi, kJoule, orm)
      * @param callback (liste als array) WICHTIG: key von der neuen Dictionary ist array!!!
      */
-    getData(collection, callback){
+    getData: function(collection, callback){
         this.datenbank.collection(collection).doc(this.userId).get().then(function(document) {
             if (document.exists){
                 callback(document.data().array);
@@ -73,5 +67,16 @@ class Datenbank {
             console.error("Error getting document: ", error);
         });
     }
-}
-export default Datenbank;
+};
+//
+// class Datenbank {
+//     createUser (){
+//     }
+//     loginUser (){
+//
+//     }
+//     saveData
+//
+//
+// }
+// export default Datenbank;
