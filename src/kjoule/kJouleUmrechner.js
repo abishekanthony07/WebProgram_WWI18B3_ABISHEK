@@ -16,7 +16,7 @@ function rechne1(){
 
 
 function rechne() {
-    getData("kJoule", (array) =>{
+  //  getData("kJoule", (array) =>{
         let kilokalorien = document.getElementById('Kcal');
 
         let summekilokalorien  = kilokalorien.value * 4.1868;
@@ -26,23 +26,23 @@ function rechne() {
         document.getElementById('output').value = summekilokalorien;
 
 
-        if(array==='empty'){
-            array = [{
-                kcal:kilokalorien.value,
+        //if(array==='empty'){
+           // array = [{
+             //   kcal:kilokalorien.value,
               //  kjoule:kjoulekalorien.value,
-                summekikalorien:summekilokalorien,
+               // summekikalorien:summekilokalorien,
              //   summekjkalorien:summekjoulekalorien
-            }]
-        }else{
-            array.push({
-                kcal:kilokalorien.value,
+            //}]
+        //}else{
+          //  array.push({
+            //    kcal:kilokalorien.value,
                 //kjoule:kjoulekalorien.value,
-                summekikalorien:summekilokalorien,
+              //  summekikalorien:summekilokalorien,
               //  summekjkalorien:summekjoulekalorien
-            });
-        }
-        saveData("kJoule", array);
-    });
+            //});
+      //  }
+        //saveData("kJoule", array);
+//    });
 }
 
 
