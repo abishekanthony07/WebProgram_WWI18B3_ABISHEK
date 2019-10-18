@@ -2,10 +2,10 @@
 import App from "../app.js";
 const db = require('./../datenbank/database');
 window.addEventListener("load", ()=>{
-    db.initializeDB();
-    db.loginUser();
-   document.getElementById("button").addEventListener("click", rechne);
-    document.getElementById("button1").addEventListener("click", rechne1);
+   //  db.initializeDB();
+   //  db.loginUser();
+   // document.getElementById("button").addEventListener("click", rechne);
+   //  document.getElementById("button1").addEventListener("click", rechne1);
 
 });
 function rechne1(){

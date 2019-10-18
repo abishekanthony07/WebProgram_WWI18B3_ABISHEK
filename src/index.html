@@ -1,48 +1,33 @@
-<!--<!DOCTYPE html>-->
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>WebFitness</title>
+    <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="bmi/bmiRechner.css">
     <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
     <link rel="stylesheet" href="maximalkraft/onetimerepititionStylesheet.css">
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
-    <!--    Chart-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <!--Eigene JS-->
-    <script src="app.js"></script>
-    <script src="index.js"></script>
-    <script src="datenbank/database.js"></script>
-    
-    <script src="bmi/bmiRechner.js"></script>
-    <script src="maximalkraft/orm.js"></script>
-    <script src="kjoule/kJouleUmrechner.js"></script>
 </head>
 <body>
-<header>
-    <div id="headerContent">
-        <div class="h1" id="startseite"><b>WebFitness</b></div>
-        <nav id="auswahlMenue">
-            <button id="auswahlAbi"> Maximalkraft berechnen</button>
-            <button id="auswahlSas"> BMI berechnen</button>
-            <button id="auswahlHan">Kcal zu KJ Umrechner</button>
-        </nav>
-    </div>
-    <hr>
-    <div id="arrowDowndiv">
-        <img src="resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown">
-    </div>
-</header>
-<main>
-    <section id="startSeiteDiv">
+<!--Section Startseite der App-->
+<section id="app">
+    <header>
+        <div id="headerContent">
+            <div class="h1" id="startseite"><b>WebFitness</b></div>
+            <nav id="auswahlMenue">
+                <button id="auswahlAbi"> Maximalkraft berechnen</button>
+                <button id="auswahlSas"> BMI berechnen</button>
+                <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+            </nav>
+        </div>
+        <hr>
+        <div id="arrowDowndiv">
+            <img src="resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown">
+        </div>
+    </header>
+    <!-- Hauptbereich (dynamisch je nach View)        -->
+    <main>
         <div class="inhalt">
             <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
             <p>
@@ -66,40 +51,238 @@
                 Genug der vielen Worte. Wir wünschen euch viel Spaß mit unserer Seite! :-)
             </p>
         </div>
-    </section>
-    <section id="kJouleRechner" class="kjoule">
-            <div class="inhalt">
-                <h3>Kalorien-Umrechner</h3>
-                Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
-                <p> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.</p>
+    </main>
+</section>
+<!--Section BMI-Rechner-->
+<section id="bmiSeite" class="hidden">
+    <div class="inhalt">
+        <section>
+            <div>
+                <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
 
+                <div class="einUndAusgabeFeld">
+                    <section class="eingabe">
+                        <!----------------------------------- Schieberegler Alter-------------------------------->
+                        <p>
+                            Hier zunächst dein Alter über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                        </p>
+                        <div>
+                            <label for="alter">0 Jahre</label>
+                            <input class="vertikal" name="alter"
+                                   type="range" min="0" value="20" max="120"
+                                   orient="horizontal" id="sliderAlter">
+                            <label for="Alter">120 Jahre</label>
+                        </div>
+                        <br>
 
-            <h4>Umrechner von KCAL in KJOULE</h4>
-            <p>
-                KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="number" id="Kcal" placeholder="Enter KCAL"/>
-            </p>
-            <button id="button"> BERECHNE
-            </button>
-            <p>
-                KJOULE: &nbsp;
-                <output id="output" for="Enter">0</output>
-            </p>
-            <h4>Umrechner von KJOULE in KCAL</h4>
-            <p>
-                KJOULE: &nbsp;
-                <input type="number" id="KJOULE" placeholder="Enter KJOULE"/>
-            </p>
-            <button id="button1"> BERECHNE
-            </button>
-            <p>
-                KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <output id="output1" for="Enter1">0</output>
-            </p>
+                        <div id="groesseAlter">
+                            <label>
+                                Größe:
+                                <input id="alter" type="number" min="0" max="220" step="1" value="175">
+                                cm
+                            </label>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <!----------------------------------- Schieberegler Größe-------------------------------->
+                        <p>
+                            Hier zunächst deine Größe über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                        </p>
+                        <div>
+                            <label for="groesse">0 cm</label>
+                            <input class="vertikal" name="groesse"
+                                   type="range" min="0" value="80" max="250"
+                                   orient="horizontal" id="sliderGroesse">
+                            <label for="groesse" id="n2">250 cm</label>
+                        </div>
+                        <br>
+
+                        <div id="groesseFeld">
+                            <label>
+                                Größe:
+                                <input id="groesse" type="number" min="0" max="220" step="1" value="175">
+                                cm
+                            </label>
+                        </div>
+
+                        <br>
+                        <br>
+                        <!----------------------------------- Schieberegler Gewicht-------------------------------->
+                        <p>
+                            Hier zunächst dein Gewicht über den Schieberegler eingeben oder direkt ins Feld
+                            eingeben.
+                        </p>
+                        <div>
+                            <label for="gewicht" id="D1">0 kg</label>
+                            <input class="vertikal" name="gewicht"
+                                   type="range" min="0" value="80" max="250"
+                                   orient="horizontal" id="sliderGewicht">
+                            <label for="gewicht" id="D3">250 kg</label>
+
+                        </div>
+                        <br>
+                        <div id="gewichtBMI">
+                            <label for="masse">
+                                Masse:
+                                <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
+                                kg
+                            </label>
+                            <br>
+                            <br>
+                            <button id="berechnenButton">BMI berechnen</button>
+                        </div>
+                    </section>
+
+                </div>
+                <br>
+                <div id="ausgabe" class="inhalt">
+                </div>
             </div>
-    </section>
-    
-    <section id="maximalKraftRechner">
+        </section>
+
+        <!------------------------------------------------Tabelle --------------------------------------------------->
+        <section>
+            <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
+
+            <table class="wikitable">
+                <tbody>
+                <tr>
+                    <th style="width:7px;"></th>
+                    <th>Kategorie</th>
+                    <th>BMI (kg/m²)</th>
+                    <th>Körpergewicht</th>
+                </tr>
+                <tr>
+                    <td bgcolor="#7c7cbc">
+                    </td>
+                    <td>Starkes Untergewicht
+                    </td>
+                    <td class="bmi">&lt; 16
+                    </td>
+                    <td rowspan="3" style="text-align:center;">Untergewicht</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#7c7cfc">
+                    </td>
+                    <td>Mäßiges Untergewicht
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>16<span style="visibility:hidden;">,0</span> –
+                        &lt;
+                        17<span style="visibility:hidden;">,0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#7cfcfc">
+                    </td>
+                    <td>Leichtes Untergewicht
+                    </td>
+                    <td><span style="visibility:hidden;" class="bmi">&lt; </span>17<span style="visibility:hidden;"
+                                                                                         class="bmi">,0</span> –
+                        &lt;
+                        18,5
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#7cfc7c">
+                    </td>
+                    <td><b>Normalgewicht</b>
+                    </td>
+                    <td class="bmi"><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span
+                            style="visibility:hidden;">,0</span></b>
+                    </td>
+                    <td style="text-align:center;"><b>Normalgewicht</b></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#fcfc7c">
+                    </td>
+                    <td>Präadipositas
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>25<span style="visibility:hidden;">,0</span> –
+                        &lt;
+                        30<span style="visibility:hidden;">,0</span>
+                    </td>
+                    <td style="text-align:center;">Übergewicht</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#fcbb91">
+                    </td>
+                    <td>Adipositas Grad I
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>30<span style="visibility:hidden;">,0</span> –
+                        &lt;
+                        35<span style="visibility:hidden;">,0</span>
+                    </td>
+                    <td rowspan="3" align="center">Adipositas</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#fc9191">
+                    </td>
+                    <td>Adipositas Grad II
+                    </td>
+                    <td><span style="visibility:hidden;">&lt; </span>35<span style="visibility:hidden;">,0</span> –
+                        &lt;
+                        40<span style="visibility:hidden;">,0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#c08080">
+                    </td>
+                    <td>Adipositas Grad III
+                    </td>
+                    <td style="text-align:center;"><span style="visibility:hidden;">&lt;0,0 – </span>≥ 40
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!------------------------------------------Zusatzinformationen----------------------------------------->
+            <button id="open-dialog"> >>Schon gewusst? <<</button>
+
+            <dialog role="dialog" aria-labelledby="dialog-heading">
+                <button id="close-dialog">Schließen</button>
+                <h2 id="dialog-heading">Schon gewusst?</h2>
+                <p> Hier werden demnächst Zusatzinformationen zum BMI angezeigt. </p>
+            </dialog>
+        </section>
+
+    </div>
+</section>
+<!--Section Kjoule-Rechner-->
+<section id="kjouleSeite" class="hidden">
+    <div class="inhalt">
+        <h3>Kalorien-Umrechner</h3>
+        Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
+        <p> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.</p>
+
+
+        <h4>Umrechner von KCAL in KJOULE</h4>
+        <p>
+            KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" id="Kcal" placeholder="Enter KCAL"/>
+        </p>
+        <button id="button"> BERECHNE
+        </button>
+        <p>
+            KJOULE: &nbsp;
+            <output id="output" for="Enter">0</output>
+        </p>
+        <h4>Umrechner von KJOULE in KCAL</h4>
+        <p>
+            KJOULE: &nbsp;
+            <input type="number" id="KJOULE" placeholder="Enter KJOULE"/>
+        </p>
+        <button id="button1"> BERECHNE
+        </button>
+        <p>
+            KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <output id="output1" for="Enter1">0</output>
+        </p>
+    </div>
+</section>
+<!--Section Maximalkraft-Rechner-->
+<section id="ormSeite" class="hidden">
+    <div>
         <div id="tabMenue">
             <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
             <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
@@ -214,219 +397,8 @@
         <div id="editDataDiv">
             Sie haben keine Werte gespeichert!
         </div>
-    </section>
-    <section id="bmiRechner">
-        <div class="inhalt">
-            <section>
-                <div>
-                    <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
-
-                    <div class="einUndAusgabeFeld">
-                        <section class="eingabe">
-                            <!----------------------------------- Schieberegler Alter-------------------------------->
-                            <p>
-                                Hier zunächst dein Alter über den Schieberegler eingeben oder direkt ins Feld eingeben.
-                            </p>
-                            <div>
-                                <label for="alter">0 Jahre</label>
-                                <input class="vertikal" name="alter"
-                                       type="range" min="0" value="20" max="120"
-                                       orient="horizontal" id="sliderAlter">
-                                <label for="Alter">120 Jahre</label>
-                            </div>
-                            <br>
-
-                            <div id="groesseAlter">
-                                <label>
-                                    Größe:
-                                    <input id="alter" type="number" min="0" max="220" step="1" value="175">
-                                    cm
-                                </label>
-                            </div>
-
-                            <br>
-                            <br>
-
-                            <!----------------------------------- Schieberegler Größe-------------------------------->
-                            <p>
-                                Hier zunächst deine Größe über den Schieberegler eingeben oder direkt ins Feld eingeben.
-                            </p>
-                            <div>
-                                <label for="groesse">0 cm</label>
-                                <input class="vertikal" name="groesse"
-                                       type="range" min="0" value="80" max="250"
-                                       orient="horizontal" id="sliderGroesse">
-                                <label for="groesse" id="n2">250 cm</label>
-                            </div>
-                            <br>
-
-                            <div id="groesseFeld">
-                                <label>
-                                    Größe:
-                                    <input id="groesse" type="number" min="0" max="220" step="1" value="175">
-                                    cm
-                                </label>
-                            </div>
-
-                            <br>
-                            <br>
-                            <!----------------------------------- Schieberegler Gewicht-------------------------------->
-                            <p>
-                                Hier zunächst dein Gewicht über den Schieberegler eingeben oder direkt ins Feld
-                                eingeben.
-                            </p>
-                            <div>
-                                <label for="gewicht" id="D1">0 kg</label>
-                                <input class="vertikal" name="gewicht"
-                                       type="range" min="0" value="80" max="250"
-                                       orient="horizontal" id="sliderGewicht">
-                                <label for="gewicht" id="D3">250 kg</label>
-
-                            </div>
-                            <br>
-                            <div id="gewichtBMI">
-                                <label for="masse">
-                                    Masse:
-                                    <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
-                                    kg
-                                </label>
-                                <br>
-                                <br>
-                                <button id="berechnenButton">BMI berechnen</button>
-                            </div>
-                        </section>
-
-                    </div>
-                    <br>
-                    <div id="ausgabe" class="inhalt">
-                    </div>
-                </div>
-            </section>
-
-            <!------------------------------------------------Tabelle --------------------------------------------------->
-            <section>
-                <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
-
-                <table class="wikitable">
-                    <tbody>
-                    <tr>
-                        <th style="width:7px;"></th>
-                        <th>Kategorie</th>
-                        <th>BMI (kg/m²)</th>
-                        <th>Körpergewicht</th>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#7c7cbc">
-                        </td>
-                        <td>Starkes Untergewicht
-                        </td>
-                        <td class="bmi">&lt; 16
-                        </td>
-                        <td rowspan="3" style="text-align:center;">Untergewicht</td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#7c7cfc">
-                        </td>
-                        <td>Mäßiges Untergewicht
-                        </td>
-                        <td><span style="visibility:hidden;">&lt; </span>16<span style="visibility:hidden;">,0</span> –
-                            &lt;
-                            17<span style="visibility:hidden;">,0</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#7cfcfc">
-                        </td>
-                        <td>Leichtes Untergewicht
-                        </td>
-                        <td><span style="visibility:hidden;" class="bmi">&lt; </span>17<span style="visibility:hidden;"
-                                                                                             class="bmi">,0</span> –
-                            &lt;
-                            18,5
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#7cfc7c">
-                        </td>
-                        <td><b>Normalgewicht</b>
-                        </td>
-                        <td class="bmi"><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span
-                                style="visibility:hidden;">,0</span></b>
-                        </td>
-                        <td style="text-align:center;"><b>Normalgewicht</b></td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#fcfc7c">
-                        </td>
-                        <td>Präadipositas
-                        </td>
-                        <td><span style="visibility:hidden;">&lt; </span>25<span style="visibility:hidden;">,0</span> –
-                            &lt;
-                            30<span style="visibility:hidden;">,0</span>
-                        </td>
-                        <td style="text-align:center;">Übergewicht</td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#fcbb91">
-                        </td>
-                        <td>Adipositas Grad I
-                        </td>
-                        <td><span style="visibility:hidden;">&lt; </span>30<span style="visibility:hidden;">,0</span> –
-                            &lt;
-                            35<span style="visibility:hidden;">,0</span>
-                        </td>
-                        <td rowspan="3" align="center">Adipositas</td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#fc9191">
-                        </td>
-                        <td>Adipositas Grad II
-                        </td>
-                        <td><span style="visibility:hidden;">&lt; </span>35<span style="visibility:hidden;">,0</span> –
-                            &lt;
-                            40<span style="visibility:hidden;">,0</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#c08080">
-                        </td>
-                        <td>Adipositas Grad III
-                        </td>
-                        <td style="text-align:center;"><span style="visibility:hidden;">&lt;0,0 – </span>≥ 40
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <!------------------------------------------Zusatzinformationen----------------------------------------->
-                <button id="open-dialog"> >>Schon gewusst? <<</button>
-
-                <dialog role="dialog" aria-labelledby="dialog-heading">
-                    <button id="close-dialog">Schließen</button>
-                    <h2 id="dialog-heading">Schon gewusst?</h2>
-                    <p> Hier werden demnächst Zusatzinformationen zum BMI angezeigt. </p>
-                </dialog>
-            </section>
-
-        </div>
-    </section>
-</main>
-<footer>
-    <div id="impressum">Impressum</div>
-    <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div>
-    <div id="socialMedia">
-        Soziale Medien<br>
-        <div class="socialMediaLinks">
-            <a href="https://www.instagram.com/sascha"
-               class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
-                K.</a><br>
-            <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="resources/instagram.png"
-                                                                                 class="Instagram" alt="Instagram"/>
-                Hannah B.</a><br>
-            <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="resources/instagram.png"
-                                                                              class="Instagram" alt="Instagram"/>
-                Abishek A.</a><br>
-        </div>
     </div>
-</footer>
+</section>
+
 </body>
 </html>

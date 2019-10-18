@@ -6,31 +6,31 @@ window.addEventListener("load", () => {
     let app = new App();
     app.start();
 
-    //Listener für Navigation und Arrow Button setzen
-    let imageArrow = document.getElementById('arrowDown');
-    imageArrow.addEventListener("click", animateArrow);
-    let startseiteButton = document.getElementById('startseite');
-    let auswahlAbi = document.getElementById('auswahlAbi');
-    let auswahlSas = document.getElementById('auswahlSas');
-    let auswahlhan = document.getElementById('auswahlHan');
-    let bmi = document.getElementById('bmiRechner');
-    let orm = document.getElementById('maximalKraftRechner');
-    let kjoule = document.getElementById('kJouleRechner');
-    let startseite = document.getElementById('startSeiteDiv');
-    showStartseite(startseite,bmi, kjoule, orm);
-
-    startseiteButton.addEventListener("click", () => {
-        showStartseite(startseite,bmi, kjoule, orm);
-    });
-    auswahlSas.addEventListener("click", () => {
-        showBmiRechner(startseite,bmi, kjoule, orm);
-    });
-    auswahlAbi.addEventListener("click", () => {
-        showMaximalkraftRechner(startseite,bmi, kjoule, orm);
-    });
-    auswahlhan.addEventListener("click", () => {
-        showKjouleRechner(startseite,bmi, kjoule, orm);
-    });
+    // //Listener für Navigation und Arrow Button setzen
+    // let imageArrow = document.getElementById('arrowDown');
+    // imageArrow.addEventListener("click", animateArrow);
+    // let startseiteButton = document.getElementById('startseite');
+    // let auswahlAbi = document.getElementById('auswahlAbi');
+    // let auswahlSas = document.getElementById('auswahlSas');
+    // let auswahlhan = document.getElementById('auswahlHan');
+    // let bmi = document.getElementById('bmiRechner');
+    // let orm = document.getElementById('maximalKraftRechner');
+    // let kjoule = document.getElementById('kJouleRechner');
+    // let startseite = document.getElementById('startSeiteDiv');
+    // showStartseite(startseite,bmi, kjoule, orm);
+    //
+    // startseiteButton.addEventListener("click", () => {
+    //     showStartseite(startseite,bmi, kjoule, orm);
+    // });
+    // auswahlSas.addEventListener("click", () => {
+    //     showBmiRechner(startseite,bmi, kjoule, orm);
+    // });
+    // auswahlAbi.addEventListener("click", () => {
+    //     showMaximalkraftRechner(startseite,bmi, kjoule, orm);
+    // });
+    // auswahlhan.addEventListener("click", () => {
+    //     showKjouleRechner(startseite,bmi, kjoule, orm);
+    // });
 });
 
 function showStartseite(startseite,bmi, kjoule, orm) {

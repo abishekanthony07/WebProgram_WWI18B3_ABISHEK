@@ -8,6 +8,7 @@
  * anderen importiert werden.
  */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html, body {
     text-align: center;
     font-family: Arial, serif;
@@ -19,6 +20,13 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+}
+
+/*
+ * Häufig benötigte Hilfsklassen
+ */
+.hidden {
+    display: none !important;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -87,7 +95,7 @@ hr {
 /*---------------------------------------------------------------------------*/
 /*Main*/
 main {
-    background-image: url(resources/Smartphone_background.jpg);
+    /*background-image: url(resources/Smartphone_background.jpg);*/
     background-size: cover;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -165,4 +173,8 @@ a:visited{
 img.Instagram {
     width: 1em;
     height: 1em;
+}
+
+.hidden{
+    display: none;
 }

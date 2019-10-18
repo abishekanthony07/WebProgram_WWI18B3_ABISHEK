@@ -1,38 +1,67 @@
 import App from "../app.js";
 import Datenbank from "../datenbank/database.js";
+import stylesheet from "./onetimerepititionStylesheet.css"
 const db = require('./../datenbank/database');
-window.addEventListener('load', ()=>{
-    db.initializeDB();
-    db.loginUser();
-    let berechneButton = document.getElementById('berechneButton');
-    berechneButton.addEventListener('click', berechne);
-    //wenn enter geklickt wird, wird die Berechnung ausgelöst
-    window.addEventListener("keypress",(event)=>{
-        if (event.key == "Enter") {
-            event.preventDefault();
-            berechne();
-        }
-    });
-    //getAllImportantDivs
-    let inhalt = document.getElementById('inhaltORMDiv');
-    let savedDataDiv = document.getElementById('savedDataDiv');
-    let editDataDiv = document.getElementById('editDataDiv');
-    //tabButtons
-    let savedData = document.getElementById('savedDataButton');
-    savedData.addEventListener('click', () => {
-        showSavedDataHtml(inhalt, savedDataDiv, editDataDiv)
-    });
 
-    let ormRechner = document.getElementById('ormRechnerButton');
-    ormRechner.addEventListener('click', () => {
-        showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv)
-    });
+class OneRepetitionMaximum{
+    constructor(app){
+        this._app = app;
+    }
 
-    let editData = document.getElementById('editDataButton');
-    editData.addEventListener('click', () => {
-        showEditDataHtml(inhalt, savedDataDiv, editDataDiv)
-    });
-});
+    onShow(){
+        let section = document.querySelector("#orm").cloneNode(true);
+        let content = {
+            className: "visible",
+            main: section.querySelectorAll("main > *"),
+        };
+        return content;
+    }
+
+    onLoad(){
+        console.log('Page loaded');
+
+        //Submit Function
+        window.addEventListener('load', ()=>{
+            let berechneButton = document.getElementById('berechneButton');
+            berechneButton.addEventListener('click', berechne);
+            //wenn enter geklickt wird, wird die Berechnung ausgelöst
+            window.addEventListener("keypress",(event)=>{
+                if (event.key == "Enter") {
+                    event.preventDefault();
+                    berechne();
+                }
+            });
+            //getAllImportantDivs
+            let inhalt = document.getElementById('inhaltORMDiv');
+            let savedDataDiv = document.getElementById('savedDataDiv');
+            let editDataDiv = document.getElementById('editDataDiv');
+            //tabButtons
+            let savedData = document.getElementById('savedDataButton');
+            savedData.addEventListener('click', () => {
+                showSavedDataHtml(inhalt, savedDataDiv, editDataDiv)
+            });
+
+            let ormRechner = document.getElementById('ormRechnerButton');
+            ormRechner.addEventListener('click', () => {
+                showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv)
+            });
+
+            let editData = document.getElementById('editDataButton');
+            editData.addEventListener('click', () => {
+                showEditDataHtml(inhalt, savedDataDiv, editDataDiv)
+            });
+        });
+    }
+
+    onLeave(goon){
+        return true;
+    }
+
+    get title(){
+        return "Maximalkraft Rechner";
+    }
+}
+export default OneRepetitionMaximum;
 
 /**
  * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
@@ -120,42 +149,42 @@ function deleteElement(event, inhalt, savedDataDiv, editDataDiv){
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
  */
 function berechne() {
-    db.getData('orm', (array)=>{
-        let gewicht = document.getElementById('gewicht');
-        let wiederholungszahl = document.getElementById('wiederholungszahl');
-        let maximalkraft = document.getElementById('ergebnis');
-        let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
-        let prozentsatzORM = document.getElementById('prozentsatzORM');
-        let prozent = calculate(wiederholungszahl.value);
-        let ergebnis = gewicht.value / prozent;
-    ergebnis = ergebnis.toFixed(2);
-    prozent = prozent.toFixed(2);
-        maximalkraft.innerHTML = ergebnis.toString() + " =";
-        prozentsatzORM.innerText = prozent.toString();
-        gestemmtesGewichtORM.innerText = gewicht.value.toString();
-
-        //Liste wird geupdated
-        if (array === 'empty') {
-            array = [{
-                timestamp: new App().timeStamp(),
-                gewicht: gewicht.value.toString(),
-                wiederholungszahl: wiederholungszahl.value.toString(),
-                prozent: prozent.toString(),
-                maximalkraft: ergebnis.toString()
-            }]
-        } else {
-            array.push({
-                timestamp: new App().timeStamp(),
-                gewicht: gewicht.value.toString(),
-                wiederholungszahl: wiederholungszahl.value.toString(),
-                prozent: prozent.toString(),
-                maximalkraft: ergebnis.toString()
-            });
-        }
-        db.saveData('orm', array,()=>{
-            //nothing
-        });
-    });
+    // db.getData('orm', (array)=>{
+    //     let gewicht = document.getElementById('gewicht');
+    //     let wiederholungszahl = document.getElementById('wiederholungszahl');
+    //     let maximalkraft = document.getElementById('ergebnis');
+    //     let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
+    //     let prozentsatzORM = document.getElementById('prozentsatzORM');
+    //     let prozent = calculate(wiederholungszahl.value);
+    //     let ergebnis = gewicht.value / prozent;
+    // ergebnis = ergebnis.toFixed(2);
+    // prozent = prozent.toFixed(2);
+    //     maximalkraft.innerHTML = ergebnis.toString() + " =";
+    //     prozentsatzORM.innerText = prozent.toString();
+    //     gestemmtesGewichtORM.innerText = gewicht.value.toString();
+    //
+    //     //Liste wird geupdated
+    //     if (array === 'empty') {
+    //         array = [{
+    //             timestamp: new App().timeStamp(),
+    //             gewicht: gewicht.value.toString(),
+    //             wiederholungszahl: wiederholungszahl.value.toString(),
+    //             prozent: prozent.toString(),
+    //             maximalkraft: ergebnis.toString()
+    //         }]
+    //     } else {
+    //         array.push({
+    //             timestamp: new App().timeStamp(),
+    //             gewicht: gewicht.value.toString(),
+    //             wiederholungszahl: wiederholungszahl.value.toString(),
+    //             prozent: prozent.toString(),
+    //             maximalkraft: ergebnis.toString()
+    //         });
+    //     }
+    //     db.saveData('orm', array,()=>{
+    //         //nothing
+    //     });
+    // });
 }
 
 let labels = [];
@@ -169,19 +198,19 @@ let arrayList = [];
  * Feld angezeigt wird.
  */
 function getAndSetData(callback) {
-    db.getData('orm', (array)=>{
-        let counter;
-        labels = [array.length];
-        data = [array.length];
-        for ( counter = 0; counter<array.length; counter++){
-            let element = array[counter];
-            labels[counter] = element.timestamp;
-            data[counter] = element.maximalkraft;
-            if (counter === array.length - 1) {
-                callback();
-            }
-        }
-    })
+    // db.getData('orm', (array)=>{
+    //     let counter;
+    //     labels = [array.length];
+    //     data = [array.length];
+    //     for ( counter = 0; counter<array.length; counter++){
+    //         let element = array[counter];
+    //         labels[counter] = element.timestamp;
+    //         data[counter] = element.maximalkraft;
+    //         if (counter === array.length - 1) {
+    //             callback();
+    //         }
+    //     }
+    // })
 }
 
 /**

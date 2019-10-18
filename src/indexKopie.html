@@ -1,0 +1,193 @@
+
+<!--<!DOCTYPE html>-->
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>WebFitness</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="bmi/bmiRechner.css">
+    <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
+    <link rel="stylesheet" href="maximalkraft/onetimerepititionStylesheet.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+    <!--    Chart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <!--Eigene JS-->
+    <script src="app.js"></script>
+    <script src="index.js"></script>
+    <script src="datenbank/database.js"></script>
+
+    <script src="bmi/bmiRechner.js"></script>
+    <script src="maximalkraft/orm.js"></script>
+    <script src="kjoule/kJouleUmrechner.js"></script>
+</head>
+<body>
+<header>
+    <div id="headerContent">
+        <div class="h1" id="startseite"><b>WebFitness</b></div>
+        <nav id="auswahlMenue">
+            <button id="auswahlAbi"> Maximalkraft berechnen</button>
+            <button id="auswahlSas"> BMI berechnen</button>
+            <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+        </nav>
+    </div>
+    <hr>
+    <div id="arrowDowndiv">
+        <img src="resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown">
+    </div>
+</header>
+<main id="app">
+    <section id="startSeiteDiv" class="hidden">
+    </section>
+    <section id="kJouleRechner" class="hidden">
+
+    </section>
+
+    <section id="maximalKraftRechner" class="hidden">
+        <main>
+            <div id="tabMenue">
+                <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
+                <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
+                <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
+            </div>
+            <div class="inhalt" id="inhaltORMDiv">
+                <h1>Maximalkraft Rechner</h1>
+                <div id="beschreibungORM">
+                    Die höchstmögliche Kraft, die das Nerv-Muskel-System bei maximaler Anspannung
+                    ausüben kann, wird Maximalkraft bezeichnet.<br><br>
+                    Diese <b>Maximalkraft ist abhängig von</b> folgenden Faktoren:<br>
+                    <ul>
+                        <li>Muskelquerschnitt</li>
+                        <li>intramuskuläre Koordination (= Anzahl der Muskelfaser, die gleichzeitig aktiviert werden)</li>
+                        <li>intermuskuläre Koordination (= Koordnination zwischen den Muskeln, die bei einer gegebenen
+                            Bewegung zusammenarbeiten)
+                        </li>
+                    </ul>
+                    <br>
+                    Es existieren verschiedene <b>Methoden die Maximalkraft zu trainieren</b>:<br>
+                    <ul>
+                        <li>Methode zur Hypertrophie</li>
+                        <li>Methode der intramuskulären Koordination</li>
+                        <li>Pyramidenmethode</li>
+                    </ul>
+                </div>
+                <div id="uiORM" class="inhalt">
+                    <div id="editable">
+                        <div id="benutzerEingabeORM">
+                            <div>
+                                <label>gestemmtes Gewicht:</label><br>
+                                <label>Wiederholungszahl:</label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
+                                </label><br>
+                                <label>
+                                    <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1" value="1">
+                                </label><br>
+                            </div>
+                        </div>
+                        <div id="berechne">
+                            <button id="berechneButton">Berechne</button>
+                        </div>
+                    </div>
+                    <div id="formelORM">
+                        <div id="ergebnis">
+                            Maximalkraft =
+                        </div>
+                        <div id="bruch">
+                            <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
+                            <hr>
+                            <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="center">
+                    Anhand der folgenden Tabelle wird der Anteil der Maximalkraft bestimmt:
+                </p>
+                <div id="table">
+                    <div id="1rmTabelle" class="inhaltTabelle">
+                        <table>
+                            <tr class="tableHeader">
+                                <th>Wiederholung</th>
+                                <th>% des 1 RM</th>
+                            </tr>
+                            <tr>
+                                <th>40</th>
+                                <th>30</th>
+                            </tr>
+                            <tr>
+                                <th>30</th>
+                                <th>40</th>
+                            </tr>
+                            <tr>
+                                <th>25</th>
+                                <th>50</th>
+                            </tr>
+                            <tr>
+                                <th>15</th>
+                                <th>60</th>
+                            </tr>
+                            <tr>
+                                <th>12</th>
+                                <th>70</th>
+                            </tr>
+                            <tr>
+                                <th>8</th>
+                                <th>80</th>
+                            </tr>
+                            <tr>
+                                <th>3-4</th>
+                                <th>90</th>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <th>100</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <p><i><small><b>Quelle:</b> <a
+                        href="https://www.akademie-sport-gesundheit.de/magazin/one-repetition-maximum.html">Akademie für
+                    Sport und Gesundheit</a></small></i>
+                    <br><i><small><b>Autor:</b> Abishek Anthony</small></i>
+                </p>
+            </div>
+            <div id="savedDataDiv">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div id="editDataDiv">
+                Sie haben keine Werte gespeichert!
+            </div>
+        </main>
+    </section>
+    <section id="bmiRechner" class="hidden">
+
+    </section>
+</main>
+<footer>
+    <div id="impressum">Impressum</div>
+    <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div>
+    <div id="socialMedia">
+        Soziale Medien<br>
+        <div class="socialMediaLinks">
+            <a href="https://www.instagram.com/sascha"
+               class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
+                K.</a><br>
+            <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="resources/instagram.png"
+                                                                                 class="Instagram" alt="Instagram"/>
+                Hannah B.</a><br>
+            <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="resources/instagram.png"
+                                                                              class="Instagram" alt="Instagram"/>
+                Abishek A.</a><br>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
