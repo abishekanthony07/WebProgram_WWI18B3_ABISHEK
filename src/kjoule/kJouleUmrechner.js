@@ -1,14 +1,47 @@
 "use strict";
 import App from "../app.js";
-const db = require('./../datenbank/database');
-window.addEventListener("load", ()=>{
-   //  db.initializeDB();
-   //  db.loginUser();
-   // document.getElementById("button").addEventListener("click", rechne);
-   //  document.getElementById("button1").addEventListener("click", rechne1);
 
-});
-function rechne1(){
+class KjouleRechner{
+    constructor(app, datenbank){
+        this._app = app;
+        this.db = datenbank;
+    }
+
+    onShow(){
+        let section = document.querySelector("#kjouleSeite").cloneNode(true);
+        let content = {
+            className: "visible",
+            main: section.querySelectorAll("main > *"),
+        };
+        return content;
+    }
+
+    onLoad(){
+        console.log('Page loaded');
+
+        //Submit Function
+        window.addEventListener("load", ()=>{
+            document.getElementById("button").addEventListener("click", ()=>{
+                rechne(this.db);
+            });
+             document.getElementById("button1").addEventListener("click", ()=>{
+                 rechne1(this.db);
+             });
+
+        });
+    }
+
+    onLeave(goon){
+        return true;
+    }
+
+    get title(){
+        return "Bmi-Rechner";
+    }
+}
+export default KjouleRechner;
+
+function rechne1(db){
     db.getData("kJoule", (array) =>{
     let kjoulekalorien = document.getElementById('KJOULE');
     let summekjoulekalorien = kjoulekalorien.value / 4.184;
@@ -31,7 +64,7 @@ function rechne1(){
 }
 
 
-function rechne() {
+function rechne(db) {
    db.getData("kJoule", (array) =>{
         let kilokalorien = document.getElementById('Kcal');
 

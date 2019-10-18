@@ -7,6 +7,9 @@
 import Navigo from "navigo/lib/navigo.js";
 import OneRepetitionMaximum from "./maximalkraft/orm";
 import Datenbank from "./datenbank/database";
+import BmiRechner from "./bmi/bmiRechner";
+import KjouleRechner from "./kjoule/kJouleUmrechner";
+import Startseite from "./startseite/startseite";
 class App {
     /**
      * Konstruktor.
@@ -52,24 +55,49 @@ class App {
     start() {
         console.log("Die Klasse App sagt Hallo!");
         // this._router.resolve();
-        this.showMaximalKraftrechner();
+        let imageArrow = document.getElementById('arrowDown');
+        imageArrow.addEventListener("click", animateArrow);
+        let startseiteButton = document.getElementById('startseite');
+        let auswahlAbi = document.getElementById('auswahlAbi');
+        let auswahlSas = document.getElementById('auswahlSas');
+        let auswahlhan = document.getElementById('auswahlHan');
+
+        startseiteButton.addEventListener("click",()=>{
+            this.showStartseite();
+            console.log("startseite");
+        });
+        auswahlAbi.addEventListener("click",()=>{
+
+            this.showMaximalKraftrechner();
+            console.log("max");
+        });
+        auswahlSas.addEventListener("click",()=>{
+            this.showBmi();
+            console.log("bmi");
+        });
+        auswahlhan.addEventListener("click",()=>{
+            this.showKjoule();
+            console.log("kjoule");
+        });
+        this.showStartseite();
     }
 
     showStartseite(){
-        let view = new OneRepetitionMaximum(this);
+        let view = new Startseite(this, this.db);
         this._switchVisibleView(view)
+        console.log("startseite");
     }
     showBmi(){
-        let view = new OneRepetitionMaximum(this);
+        let view = new BmiRechner(this, this.db);
         this._switchVisibleView(view)
     }
     showKjoule(){
-        let view = new OneRepetitionMaximum(this);
+        let view = new KjouleRechner(this, this.db);
         this._switchVisibleView(view)
     }
 
     showMaximalKraftrechner(){
-        let view = new OneRepetitionMaximum(this);
+        let view = new OneRepetitionMaximum(this, this.db);
         this._switchVisibleView(view)
     }
 
@@ -121,3 +149,26 @@ class App {
     }
 }
 export default App;
+
+
+let buttonsSindZusehen = false;
+
+function animateArrow() {
+    let arrowDown = document.getElementById('arrowDown');
+    let auswahlMenue = document.getElementById('auswahlMenue');
+
+    if (!buttonsSindZusehen) {
+        rotateImage(arrowDown, 'rotate(-180deg)');
+        buttonsSindZusehen = true;
+        auswahlMenue.style.display = 'inline-block';
+    } else {
+        rotateImage(arrowDown, 'rotate(0deg)');
+        buttonsSindZusehen = false;
+        auswahlMenue.style.display = 'none';
+    }
+}
+
+function rotateImage(img, degree) {
+    img.style.transform = degree;
+    img.style.WebkitTransitionDuration = '0.5s';
+}

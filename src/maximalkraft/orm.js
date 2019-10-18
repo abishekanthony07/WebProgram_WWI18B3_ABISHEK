@@ -1,15 +1,13 @@
 import App from "../app.js";
-import Datenbank from "../datenbank/database.js";
-import stylesheet from "./onetimerepititionStylesheet.css"
-const db = require('./../datenbank/database');
 
 class OneRepetitionMaximum{
-    constructor(app){
+    constructor(app, datenbank){
         this._app = app;
+        this.db = datenbank;
     }
 
     onShow(){
-        let section = document.querySelector("#orm").cloneNode(true);
+        let section = document.querySelector("#ormSeite").cloneNode(true);
         let content = {
             className: "visible",
             main: section.querySelectorAll("main > *"),
@@ -23,12 +21,14 @@ class OneRepetitionMaximum{
         //Submit Function
         window.addEventListener('load', ()=>{
             let berechneButton = document.getElementById('berechneButton');
-            berechneButton.addEventListener('click', berechne);
+            berechneButton.addEventListener('click', ()=>{
+                berechne(this.db);
+            });
             //wenn enter geklickt wird, wird die Berechnung ausgelöst
             window.addEventListener("keypress",(event)=>{
                 if (event.key == "Enter") {
                     event.preventDefault();
-                    berechne();
+                    berechne(this.db);
                 }
             });
             //getAllImportantDivs
@@ -38,7 +38,7 @@ class OneRepetitionMaximum{
             //tabButtons
             let savedData = document.getElementById('savedDataButton');
             savedData.addEventListener('click', () => {
-                showSavedDataHtml(inhalt, savedDataDiv, editDataDiv)
+                showSavedDataHtml(this.db,inhalt, savedDataDiv, editDataDiv)
             });
 
             let ormRechner = document.getElementById('ormRechnerButton');
@@ -48,7 +48,7 @@ class OneRepetitionMaximum{
 
             let editData = document.getElementById('editDataButton');
             editData.addEventListener('click', () => {
-                showEditDataHtml(inhalt, savedDataDiv, editDataDiv)
+                showEditDataHtml(this.db, inhalt, savedDataDiv, editDataDiv)
             });
         });
     }
@@ -66,11 +66,11 @@ export default OneRepetitionMaximum;
 /**
  * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
  */
-function showSavedDataHtml(inhalt, savedDataDiv, editDataDiv) {
+function showSavedDataHtml(db, inhalt, savedDataDiv, editDataDiv) {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    getAndSetData(() => {
+    getAndSetData(db, () => {
         let myChartObject = document.getElementById('myChart');
         let chart = new Chart(myChartObject, {
             type: "line",
@@ -108,7 +108,7 @@ function showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv) {
 /**
  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
  */
-function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
+function showEditDataHtml(db, inhalt, savedDataDiv, editDataDiv) {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
@@ -129,13 +129,13 @@ function showEditDataHtml(inhalt, savedDataDiv, editDataDiv) {
             newEl=editDataDiv.appendChild(newEl);
             //delete Listener wird gesetzt
             newEl.addEventListener('click',(event)=>{
-                deleteElement(event, inhalt, savedDataDiv, editDataDiv);
+                deleteElement(db,event, inhalt, savedDataDiv, editDataDiv);
             });
         }
     })
 }
 
-function deleteElement(event, inhalt, savedDataDiv, editDataDiv){
+function deleteElement(db ,event, inhalt, savedDataDiv, editDataDiv){
         let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
     db.saveData('orm', arrayList, ()=>{
@@ -148,43 +148,43 @@ function deleteElement(event, inhalt, savedDataDiv, editDataDiv){
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
  */
-function berechne() {
-    // db.getData('orm', (array)=>{
-    //     let gewicht = document.getElementById('gewicht');
-    //     let wiederholungszahl = document.getElementById('wiederholungszahl');
-    //     let maximalkraft = document.getElementById('ergebnis');
-    //     let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
-    //     let prozentsatzORM = document.getElementById('prozentsatzORM');
-    //     let prozent = calculate(wiederholungszahl.value);
-    //     let ergebnis = gewicht.value / prozent;
-    // ergebnis = ergebnis.toFixed(2);
-    // prozent = prozent.toFixed(2);
-    //     maximalkraft.innerHTML = ergebnis.toString() + " =";
-    //     prozentsatzORM.innerText = prozent.toString();
-    //     gestemmtesGewichtORM.innerText = gewicht.value.toString();
-    //
-    //     //Liste wird geupdated
-    //     if (array === 'empty') {
-    //         array = [{
-    //             timestamp: new App().timeStamp(),
-    //             gewicht: gewicht.value.toString(),
-    //             wiederholungszahl: wiederholungszahl.value.toString(),
-    //             prozent: prozent.toString(),
-    //             maximalkraft: ergebnis.toString()
-    //         }]
-    //     } else {
-    //         array.push({
-    //             timestamp: new App().timeStamp(),
-    //             gewicht: gewicht.value.toString(),
-    //             wiederholungszahl: wiederholungszahl.value.toString(),
-    //             prozent: prozent.toString(),
-    //             maximalkraft: ergebnis.toString()
-    //         });
-    //     }
-    //     db.saveData('orm', array,()=>{
-    //         //nothing
-    //     });
-    // });
+function berechne(db) {
+    db.getData('orm', (array)=>{
+        let gewicht = document.getElementById('gewicht');
+        let wiederholungszahl = document.getElementById('wiederholungszahl');
+        let maximalkraft = document.getElementById('ergebnis');
+        let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
+        let prozentsatzORM = document.getElementById('prozentsatzORM');
+        let prozent = calculate(wiederholungszahl.value);
+        let ergebnis = gewicht.value / prozent;
+    ergebnis = ergebnis.toFixed(2);
+    prozent = prozent.toFixed(2);
+        maximalkraft.innerHTML = ergebnis.toString() + " =";
+        prozentsatzORM.innerText = prozent.toString();
+        gestemmtesGewichtORM.innerText = gewicht.value.toString();
+
+        //Liste wird geupdated
+        if (array === 'empty') {
+            array = [{
+                timestamp: new App().timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            }]
+        } else {
+            array.push({
+                timestamp: new App().timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            });
+        }
+        db.saveData('orm', array,()=>{
+            //nothing
+        });
+    });
 }
 
 let labels = [];
@@ -197,20 +197,20 @@ let arrayList = [];
  * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
  * Feld angezeigt wird.
  */
-function getAndSetData(callback) {
-    // db.getData('orm', (array)=>{
-    //     let counter;
-    //     labels = [array.length];
-    //     data = [array.length];
-    //     for ( counter = 0; counter<array.length; counter++){
-    //         let element = array[counter];
-    //         labels[counter] = element.timestamp;
-    //         data[counter] = element.maximalkraft;
-    //         if (counter === array.length - 1) {
-    //             callback();
-    //         }
-    //     }
-    // })
+function getAndSetData(db, callback) {
+    db.getData('orm', (array)=>{
+        let counter;
+        labels = [array.length];
+        data = [array.length];
+        for ( counter = 0; counter<array.length; counter++){
+            let element = array[counter];
+            labels[counter] = element.timestamp;
+            data[counter] = element.maximalkraft;
+            if (counter === array.length - 1) {
+                callback();
+            }
+        }
+    })
 }
 
 /**
