@@ -1,10 +1,22 @@
 "use strict";
 import App from "../app.js";
+let db;
+
+let ablaufkJoule = () => {
+    document.getElementById("button").addEventListener("click", ()=>{
+        rechne();
+    });
+    document.getElementById("button1").addEventListener("click", ()=>{
+        rechne1();
+    });
+
+};
 
 class KjouleRechner{
     constructor(app, datenbank){
         this._app = app;
         this.db = datenbank;
+        db = this.db;
     }
 
     onShow(){
@@ -18,17 +30,9 @@ class KjouleRechner{
 
     onLoad(){
         console.log('Page loaded');
-
+        ablaufkJoule();
         //Submit Function
-        window.addEventListener("load", ()=>{
-            document.getElementById("button").addEventListener("click", ()=>{
-                rechne(this.db);
-            });
-             document.getElementById("button1").addEventListener("click", ()=>{
-                 rechne1(this.db);
-             });
 
-        });
     }
 
     onLeave(goon){
@@ -41,7 +45,7 @@ class KjouleRechner{
 }
 export default KjouleRechner;
 
-function rechne1(db){
+function rechne1(){
     db.getData("kJoule", (array) =>{
     let kjoulekalorien = document.getElementById('KJOULE');
     let summekjoulekalorien = kjoulekalorien.value / 4.184;
@@ -64,7 +68,7 @@ function rechne1(db){
 }
 
 
-function rechne(db) {
+function rechne() {
    db.getData("kJoule", (array) =>{
         let kilokalorien = document.getElementById('Kcal');
 
