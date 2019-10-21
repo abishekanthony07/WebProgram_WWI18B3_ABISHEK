@@ -1,9 +1,11 @@
 import App from "../app.js";
+let db;
 
 class OneRepetitionMaximum{
     constructor(app, datenbank){
         this._app = app;
         this.db = datenbank;
+        db = this.db;
     }
 
     onShow(){
@@ -12,46 +14,48 @@ class OneRepetitionMaximum{
             className: "visible",
             main: section.querySelectorAll("main > *"),
         };
+        console.log('Page loaded');
+
+        //Submit Function
+
         return content;
     }
 
     onLoad(){
-        console.log('Page loaded');
+        // window.addEventListener('load', ()=>{
+        let berechneButton = document.querySelector('#berechnenButton');
+        berechneButton.addEventListener('click', ()=>{
+            berechne(db);
+            alert("Message")
+        });
+        //wenn enter geklickt wird, wird die Berechnung ausgelöst
+        window.addEventListener("keypress",(event)=>{
+            if (event.key == "Enter") {
+                event.preventDefault();
+                berechne(db);
+            }
+        });
+//getAllImportantDivs
+        let inhalt = document.getElementById('inhaltORMDiv');
+        let savedDataDiv = document.getElementById('savedDataDiv');
+        let editDataDiv = document.getElementById('editDataDiv');
+//tabButtons
+        let savedData = document.getElementById('savedDataButton');
+        savedData.addEventListener('click', () => {
+            showSavedDataHtml(db,inhalt, savedDataDiv, editDataDiv)
+        });
 
-        //Submit Function
-        window.addEventListener('load', ()=>{
-            let berechneButton = document.getElementById('berechneButton');
-            berechneButton.addEventListener('click', ()=>{
-                berechne(this.db);
-            });
-            //wenn enter geklickt wird, wird die Berechnung ausgelöst
-            window.addEventListener("keypress",(event)=>{
-                if (event.key == "Enter") {
-                    event.preventDefault();
-                    berechne(this.db);
-                }
-            });
-            //getAllImportantDivs
-            let inhalt = document.getElementById('inhaltORMDiv');
-            let savedDataDiv = document.getElementById('savedDataDiv');
-            let editDataDiv = document.getElementById('editDataDiv');
-            //tabButtons
-            let savedData = document.getElementById('savedDataButton');
-            savedData.addEventListener('click', () => {
-                showSavedDataHtml(this.db,inhalt, savedDataDiv, editDataDiv)
-            });
+        let ormRechner = document.getElementById('ormRechnerButton');
+        ormRechner.addEventListener('click', () => {
+            showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv)
+        });
 
-            let ormRechner = document.getElementById('ormRechnerButton');
-            ormRechner.addEventListener('click', () => {
-                showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv)
-            });
-
-            let editData = document.getElementById('editDataButton');
-            editData.addEventListener('click', () => {
-                showEditDataHtml(this.db, inhalt, savedDataDiv, editDataDiv)
-            });
+        let editData = document.getElementById('editDataButton');
+        editData.addEventListener('click', () => {
+            showEditDataHtml(this.db, inhalt, savedDataDiv, editDataDiv)
         });
     }
+
 
     onLeave(goon){
         return true;
@@ -61,12 +65,11 @@ class OneRepetitionMaximum{
         return "Maximalkraft Rechner";
     }
 }
-export default OneRepetitionMaximum;
 
 /**
  * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
  */
-function showSavedDataHtml(db, inhalt, savedDataDiv, editDataDiv) {
+let showSavedDataHtml = (db, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
@@ -99,7 +102,7 @@ function showSavedDataHtml(db, inhalt, savedDataDiv, editDataDiv) {
 /**
  * Diese Methode zeigt die Startseite von der Maximalkraft an.
  */
-function showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv) {
+let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) =>{
     inhalt.style.display = 'block';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'none';
@@ -108,7 +111,7 @@ function showOrmRechnerHtml(inhalt, savedDataDiv, editDataDiv) {
 /**
  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
  */
-function showEditDataHtml(db, inhalt, savedDataDiv, editDataDiv) {
+let showEditDataHtml = (db, inhalt, savedDataDiv, editDataDiv) =>{
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
@@ -135,7 +138,7 @@ function showEditDataHtml(db, inhalt, savedDataDiv, editDataDiv) {
     })
 }
 
-function deleteElement(db ,event, inhalt, savedDataDiv, editDataDiv){
+let deleteElement = (db ,event, inhalt, savedDataDiv, editDataDiv)=>{
         let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
     db.saveData('orm', arrayList, ()=>{
@@ -148,7 +151,7 @@ function deleteElement(db ,event, inhalt, savedDataDiv, editDataDiv){
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
  */
-function berechne(db) {
+let berechne=(db) => {
     db.getData('orm', (array)=>{
         let gewicht = document.getElementById('gewicht');
         let wiederholungszahl = document.getElementById('wiederholungszahl');
@@ -197,7 +200,7 @@ let arrayList = [];
  * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
  * Feld angezeigt wird.
  */
-function getAndSetData(db, callback) {
+let getAndSetData = (db, callback) => {
     db.getData('orm', (array)=>{
         let counter;
         labels = [array.length];
@@ -216,7 +219,7 @@ function getAndSetData(db, callback) {
 /**
  * Berechne den Prozentsatz für die bestimmte Wiederholungszahl
  */
-function calculate(wiederholungszahl) {
+let calculate = (wiederholungszahl)=> {
     if (wiederholungszahl > 30) {
         if (wiederholunnrichgszahl >= 40) {
             return 0.3;
@@ -268,10 +271,11 @@ function calculate(wiederholungszahl) {
  * Diese Methode berechnet anhand der oberen, unteren Grenze von den Wiederholungen
  * und vom Prozentsatz den jeweiligen Prozentsatz
  */
-function rechne(wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnten, prozentOben) {
+let rechne =(wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnten, prozentOben)=> {
     let teiler = wiederholungOben - wiederholungUnten;
     let differenzW = wiederholungszahl - wiederholungUnten;
     let differenzP = prozentOben - prozentUnten;
     let geteilt = differenzP / teiler;
     return geteilt * differenzW + prozentUnten;
 }
+export default OneRepetitionMaximum;
