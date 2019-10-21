@@ -1,4 +1,5 @@
-import App from "../app.js";
+import App from "../app.js"
+import Chart from "chart.js";
 let db;
 
 class OneRepetitionMaximum{
@@ -23,7 +24,7 @@ class OneRepetitionMaximum{
 
     onLoad(){
         // window.addEventListener('load', ()=>{
-        let berechneButton = document.querySelector('#berechnenButton');
+        let berechneButton = document.getElementById('berechneButton');
         berechneButton.addEventListener('click', ()=>{
             berechne(db);
             alert("Message")
@@ -115,6 +116,7 @@ let showEditDataHtml = (db, inhalt, savedDataDiv, editDataDiv) =>{
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
+    console.log("Datenbank", db);
     db.getData('orm', (array) => {
         let index;
         arrayList = array;
@@ -185,7 +187,7 @@ let berechne=(db) => {
             });
         }
         db.saveData('orm', array,()=>{
-            //nothing
+            console.log("Saved")
         });
     });
 }

@@ -19,7 +19,9 @@ let db = "";
 
 class Datenbank {
     constructor(){
-        firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
         db = firebase.firestore();
         this.loginUser();
     }
@@ -43,7 +45,8 @@ class Datenbank {
         })
     }
     saveData (collection, set, callback){
-        this.datenbank.collection(collection).doc(this.userId).set({
+        console.log("Bin drin", set);
+        firebase.firestore().collection(collection).doc(this.userId).set({
             array: set
         }).then(() => {
             console.log("Status saved!");
@@ -54,13 +57,12 @@ class Datenbank {
     }
 
     getData(collection, callback){
-        this.datenbank.collection(collection).doc(this.userId).get().then(function(document) {
+        firebase.firestore().collection(collection).doc(this.userId).get().then(function(document) {
             if (document.exists){
                 callback(document.data().array);
             }else{
                 callback('empty');
             }
-
         }).catch(function(error) {
             console.error("Error getting document: ", error);
         });
