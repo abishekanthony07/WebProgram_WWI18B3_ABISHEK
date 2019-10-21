@@ -140,6 +140,7 @@ class App {
 
         this._currentView = view;
         this._switchVisibleContent(view.onShow());
+        view.onLoad();
         return true;
     }
 

@@ -1,99 +1,105 @@
 "use strict";
-import App from "../app.js";
+
+let db;
+
+let ablaufBMI = () => {
+    console.log("Test aufgerufen");
+    let buttonBerechen = document.getElementById('berechnenButton');
+    console.log(buttonBerechen.innerText);
+    buttonBerechen.addEventListener("click", () => {
+        console.log("blalblalba");
+        bmiBerechnen();
+    });
+    window.addEventListener("keypress", (p) => {
+        if (p.key === "Enter") {
+            bmiBerechnen();
+        }
+    });
+    //-----------------------Slider an Eingabefeld anpassen -------------------------------------
+    //Groesse
+    document.getElementById("sliderGroesse").addEventListener("input", ()=>{
+        let sliderGroesse = document.getElementById("sliderGroesse");
+        let eingabeFeldGroesse = document.getElementById("groesse");
+
+        eingabeFeldGroesse.value = sliderGroesse.value;
+    });
+
+    //Gewicht
+    document.getElementById("sliderGewicht").addEventListener("input", ()=>{
+        let sliderGewicht = document.getElementById("sliderGewicht");
+        let eingabeFeldGewicht = document.getElementById("masse");
+
+        eingabeFeldGewicht.value = sliderGewicht.value;
+    });
+
+    //Alter
+    document.getElementById("sliderAlter").addEventListener("input", ()=>{
+        let sliderAlter = document.getElementById("sliderAlter");
+        let eingabeFeldAlter = document.getElementById("alter");
+
+        eingabeFeldAlter.value = sliderAlter.value;
+    });
+
+    document.querySelector('#open-dialog').addEventListener('click', toggleDialog);
+
+    document.addEventListener("DOMContentLoaded", function () {
+        //Polyfill für dialog-Element
+        document.querySelector('#open-dialog')
+            .addEventListener('click', toggleDialog);
+    });
+
+    console.log("test zuende");
+};
+
+function toggleDialog() {
+    let dialog = document.querySelector('dialog'),
+        closeButton = document.getElementById('close-dialog');
+    if (!dialog.hasAttribute('open')) {
+        // show the dialog
+        dialog.setAttribute('open', 'open');
+        // after displaying the dialog, focus the closeButton inside it
+        closeButton.focus();
+        closeButton.addEventListener('click', toggleDialog);
+        // EventListener für ESC-Taste
+        document.addEventListener('keydown', function (event) {
+            if (event.keyCode === 27) {
+                toggleDialog();
+            }
+        }, true);
+        // only hide the background *after* you've moved focus out of the content that will be "hidden"
+        let div = document.createElement('div');
+        div.id = 'backdrop';
+        document.body.appendChild(div);
+    } else {
+        dialog.removeAttribute('open');
+        let div = document.querySelector('#backdrop');
+        div.parentNode.removeChild(div);
+        let lastFocus;
+        lastFocus.focus();
+    }
+}
+
 class BmiRechner{
     constructor(app, datenbank){
         this._app = app;
         this.db = datenbank;
+        db = this.db;
     }
 
     onShow(){
+
         let section = document.querySelector("#bmiSeite").cloneNode(true);
         let content = {
             className: "visible",
             main: section.querySelectorAll("main > *"),
         };
         return content;
+
     }
 
     onLoad(){
         console.log('Page loaded');
-
-        //Submit Function
-        window.addEventListener("load", () => {
-            let buttonBerechen = document.getElementById('berechnenButton');
-            buttonBerechen.addEventListener("click", () => {
-                bmiBerechnen();
-            });
-            window.addEventListener("keypress", (p) => {
-                if (p.key === "Enter") {
-                    bmiBerechnen();
-                }
-            });
-            //-----------------------Slider an Eingabefeld anpassen -------------------------------------
-            //Groesse
-            document.getElementById("sliderGroesse").addEventListener("input", ()=>{
-                let sliderGroesse = document.getElementById("sliderGroesse");
-                let eingabeFeldGroesse = document.getElementById("groesse");
-
-                eingabeFeldGroesse.value = sliderGroesse.value;
-            });
-
-            //Gewicht
-            document.getElementById("sliderGewicht").addEventListener("input", ()=>{
-                let sliderGewicht = document.getElementById("sliderGewicht");
-                let eingabeFeldGewicht = document.getElementById("masse");
-
-                eingabeFeldGewicht.value = sliderGewicht.value;
-            });
-
-            //Alter
-            document.getElementById("sliderAlter").addEventListener("input", ()=>{
-                let sliderAlter = document.getElementById("sliderAlter");
-                let eingabeFeldAlter = document.getElementById("alter");
-
-                eingabeFeldAlter.value = sliderAlter.value;
-            });
-            //--------------------------------------------------------------------------------------------
-            //---------------------- Eingabefeld an Slider anpassen-------------------------------------
-
-
-            //---------------------------------------------------------------------------------------------
-
-            document.querySelector('#open-dialog').addEventListener('click', toggleDialog);
-
-            document.addEventListener("DOMContentLoaded", function () {
-                //Polyfill für dialog-Element
-                document.querySelector('#open-dialog')
-                    .addEventListener('click', toggleDialog);
-            });
-                function toggleDialog() {
-                    let dialog = document.querySelector('dialog'),
-                        closeButton = document.getElementById('close-dialog');
-                    if (!dialog.hasAttribute('open')) {
-                        // show the dialog
-                        dialog.setAttribute('open', 'open');
-                        // after displaying the dialog, focus the closeButton inside it
-                        closeButton.focus();
-                        closeButton.addEventListener('click', toggleDialog);
-                        // EventListener für ESC-Taste
-                        document.addEventListener('keydown', function (event) {
-                            if (event.keyCode === 27) {
-                                toggleDialog();
-                            }
-                        }, true);
-                        // only hide the background *after* you've moved focus out of the content that will be "hidden"
-                        let div = document.createElement('div');
-                        div.id = 'backdrop';
-                        document.body.appendChild(div);
-                    } else {
-                        dialog.removeAttribute('open');
-                        let div = document.querySelector('#backdrop');
-                        div.parentNode.removeChild(div);
-                        let lastFocus;
-                        lastFocus.focus();
-                    }
-                }
-        });
+        ablaufBMI();
     }
 
     onLeave(goon){
