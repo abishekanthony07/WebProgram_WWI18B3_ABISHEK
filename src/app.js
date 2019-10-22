@@ -49,10 +49,12 @@ class App {
         });
     }
 
+
     /**
      * Ab hier beginnt die Anwendung zu laufen.
      */
     start() {
+        this.db.loginUser("", "", this.showStartseite());
         console.log("Die Klasse App sagt Hallo!");
         // this._router.resolve();
         let imageArrow = document.getElementById('arrowDown');

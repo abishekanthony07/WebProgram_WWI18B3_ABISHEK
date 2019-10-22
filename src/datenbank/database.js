@@ -3,6 +3,7 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import app from "../app";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDfiAtnO_l-I5ZxF3BvlY0Hctt8uPXwV7k",
@@ -25,11 +26,34 @@ class Datenbank {
         db = firebase.firestore();
         this.loginUser();
     }
-    createUser (){
+    // createUser (){
+    //     firebaseAuth.createUserWithEmailAndPassword(
+    //         email.getText().toString();
+    //     password.getText().toString();
+    // ).addOnSuccessListener((OnSuccessListeenr) (authResult) => {
+    //         user_id = Obejcts.requireNonNull(authResult.getUser()).getUid();
+    //         emailAdresse = authResult.getUser().getEmail();
+    //     }).addOnFailureListener (e) => {
+    //         progressBar.setVisibility(View.GONE);
+    //         if(e instanceof FirebaseAuthUserCollisionException) {
+    //             email.setError("Es existiert bereits ein Konto mit dieser Email-Adresse!");
+    //         } else {
+    //             console.log (e("Error", Objects.requireNonNull(e.getLocalizedMessage()))) ;
+    //         }
+    //     }
+    // }
 
-    }
-    loginUser (){
-        firebase.auth().signInWithEmailAndPassword("defaultbenutzer@email.de", "123456789").then((output) => {
+
+
+    loginUser (email, password, failure, success){
+        if(!firebase.auth().currentUser.emailVerified){
+            alert("E-Mail-Adresse bestätigen!" + "Bitte bestätigen Sie Ihre E-Mail Adresse und melden Sie sich an.");
+            failure();
+        }else {
+            success();
+        }
+
+        firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
             console.log("Login erfolgreich!", output);
             this.userId = output.user.uid;
             this.datenbank = firebase.firestore();
