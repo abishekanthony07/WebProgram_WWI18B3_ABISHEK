@@ -1,28 +1,14 @@
 import * as firebase from "firebase";
 
-window.addEventListener('load', () => {
-    let emailAgainSend;
-    emailAgainSend = document.getElementById("emailErneutVersenden");
-        emailAgainSend.addEventListener("click", () => {
-        firebase.auth().currentUser.sendEmailVerification();
-    });
-
-
-     let loginButton ="";
-     loginButton.addEventListener("click", () => {
-         db.loginUser(
-             "",//email
-             "",//passwort
-             ()=>{//failure
-
-             },
-             ()=>{//success
-
-             });
-     });
-});
+let db;
 
 class Anmeldevorgang {
+    constructor(){
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        this.db = firebase.firestore();
+    }
 
     onShow() {
         let section = document.querySelector("#ormSeite").cloneNode(true);
@@ -38,7 +24,25 @@ class Anmeldevorgang {
     }
 
     onLoad() {
+        let emailAgainSend;
+        emailAgainSend = document.getElementById("emailErneutVersenden");
+        emailAgainSend.addEventListener("click", () => {
+            firebase.auth().currentUser.sendEmailVerification();
+        });
 
+
+        let loginButton = document.getElementById("loginButton");
+        loginButton.addEventListener("click", () => {
+            this.db.loginUser(
+                "",//email
+                "",//passwort
+                ()=>{//failure
+                    alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
+                },
+                ()=>{//success
+                    alert("Sie sind nun eingeloggt als " + db.username );
+                });
+        });
     }
 
     onLeave(goon) {

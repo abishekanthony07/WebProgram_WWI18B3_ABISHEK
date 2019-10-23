@@ -19,18 +19,20 @@ const firebaseConfig = {
 let db = "";
 
 class Datenbank {
-    constructor(){
+    constructor() {
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConfig);
         }
         db = firebase.firestore();
-        this.loginUser();
     }
+
+
+
     // createUser (){
     //     firebaseAuth.createUserWithEmailAndPassword(
     //         email.getText().toString();
     //     password.getText().toString();
-    // ).addOnSuccessListener((OnSuccessListeenr) (authResult) => {
+    // ).addOnSuccessListener((OnSuccessListener) (authResult) => {
     //         user_id = Obejcts.requireNonNull(authResult.getUser()).getUid();
     //         emailAdresse = authResult.getUser().getEmail();
     //     }).addOnFailureListener (e) => {
@@ -43,32 +45,39 @@ class Datenbank {
     //     }
     // }
 
-
-
-    loginUser (email, password, failure, success){
-        if(!firebase.auth().currentUser.emailVerified){
+    loginUser(email, password, failure, success) {
+        if (firebase.auth().currentUser == null) {
+            console.log("Fehler du Nase");
+        } else if (!firebase.auth().currentUser.emailVerified) {
             alert("E-Mail-Adresse bestätigen!" + "Bitte bestätigen Sie Ihre E-Mail Adresse und melden Sie sich an.");
             failure();
-        }else {
+        } else {
             success();
         }
 
-        firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
-            console.log("Login erfolgreich!", output);
-            this.userId = output.user.uid;
-            this.datenbank = firebase.firestore();
-        }).catch((error) => {
-            if (error.code === "auth/wrong-password") {
-                alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
-            } else if (error.code === "auth/too-many-requests") {
-                alert("Zu viele Fehlversuche! Böse!")
-            } else {
-                alert(error.message);
-            }
-            console.log(Error.message, error);
-        })
+        if (email === "" || password === "" || email === null || password === null) {
+            failure("Wrong Credentials")
+        } else {
+            firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
+                console.log("Login erfolgreich!", output);
+                this.userId = output.user.uid;
+                this.datenbank = firebase.firestore();
+            }).catch((error) => {
+                if (error.code === "auth/wrong-password") {
+                    alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
+                } else if (error.code === "auth/too-many-requests") {
+                    alert("Zu viele Fehlversuche! Böse!")
+                } else if (error.code === "auth/argument-error") {
+                    alert(error.message);
+                    alert("Keine E-Mail vorhanden!");
+                } else {
+                    alert(Error.message, error);
+                }
+            })
+        }
     }
-    saveData (collection, set, callback){
+
+    saveData(collection, set, callback) {
         console.log("Bin drin", set);
         firebase.firestore().collection(collection).doc(this.userId).set({
             array: set
@@ -80,19 +89,20 @@ class Datenbank {
         });
     }
 
-    getData(collection, callback){
-        firebase.firestore().collection(collection).doc(this.userId).get().then(function(document) {
-            if (document.exists){
+    getData(collection, callback) {
+        firebase.firestore().collection(collection).doc(this.userId).get().then(function (document) {
+            if (document.exists) {
                 callback(document.data().array);
-            }else{
+            } else {
                 callback('empty');
             }
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.error("Error getting document: ", error);
         });
     }
 
 }
+
 export default Datenbank;
 
 // module.exports = {
