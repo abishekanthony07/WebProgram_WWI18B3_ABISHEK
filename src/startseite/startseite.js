@@ -19,9 +19,6 @@ class Startseite {
         console.log('Page loaded');
 
         //Submit Function
-        window.addEventListener('load', () => {
-            //Todo
-        });
     }
 
     onLeave(goon) {

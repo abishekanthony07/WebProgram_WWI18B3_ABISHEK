@@ -89,3 +89,43 @@ dialog #close-dialog {
     font-size: 1.5em;
     border-radius: 0 .5em .5em;
 }
+
+td#starkesUntergewicht{
+    background-color: #7c7cbc;
+}
+
+td#mäßigesUntergewicht{
+    background-color: #7c7cfc;
+}
+
+td#leichtesUntergewicht{
+    background-color: #7cfcfc;
+}
+
+td#normalgewicht{
+    background-color: #7cfc7c;
+}
+
+td#praeadipositas{
+    background-color: #fcfc7c;
+}
+
+td#adipostasI{
+    background-color: #fcbb91;
+}
+
+td#adipostasII{
+    background-color: #fc9191;
+}
+
+td#adipostasIII {
+    background-color: #c08080;
+}
+
+.center{
+    text-align: center;
+}
+.hide{
+    visibility: hidden;
+}
+
