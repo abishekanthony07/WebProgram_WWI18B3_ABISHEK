@@ -16,6 +16,43 @@ html, body {
     margin: auto;
     height: 100%
 }
+/*Media Screen nach Anleitung*/
+/*@media screen and (min-width: 786px){
+    body, input{
+        font-size: 12pt;
+    }
+    footer {
+    }
+}
+@media screen and (min-width: 992px){
+    body, input{
+        font-size: 13pt;
+    }
+    footer {
+    }
+}
+@media screen and (min-width: 1200px){
+    body, input{
+        font-size: 14pt;
+    }
+    footer {
+    }}
+ @media screen and (min-width: 85em){
+    html{
+    background-image: url(resources/Smartphone_background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    }
+    body{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    }
+    body > * {
+    flex: 1;
+    }
+ }*/
 
 body {
     display: flex;
