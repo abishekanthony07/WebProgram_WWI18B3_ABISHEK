@@ -19,16 +19,20 @@ class App {
         this._currentView = null;
 
         // Single Page Router aufsetzen
-        this._router = new Navigo();
+        this._router = new Navigo(null, false);
         this._currentUrl = "";
         this._navAborted = false;
         this.db = new Datenbank();
 
         this._router.on({
-            // "*":                       () => this.showSongOverview(),
-            // "/song/new/":              () => this.showSongDisplayEdit("", "new"),
-            // "/song/display/:id/":  params => this.showSongDisplayEdit(params.id, "display"),
-            // "/song/edit/:id/":     params => this.showSongDisplayEdit(params.id, "edit"),
+            "*":                       () => this.showStartseite(),
+            "/kjouleRechner/":              () => this.showKjoule(),
+            "/bmiRechner/":  () => this.showBmi(),
+            "/maximalkraftRechner/":     () => this.showMaximalKraftrechner(),
+        }).resolve();
+
+        this._router.notFound(()=>{
+           console.log("Not found");
         });
 
         this._router.hooks({
@@ -42,7 +46,6 @@ class App {
                     this._router.pause(true);
                     this._router.navigate(this._currentUrl);
                     this._router.pause(false);
-
                     this._navAborted = false;
                 }
             }
@@ -54,7 +57,7 @@ class App {
      */
     start() {
         console.log("Die Klasse App sagt Hallo!");
-        // this._router.resolve();
+        this._router.resolve();
         let imageArrow = document.getElementById('arrowDown');
         imageArrow.addEventListener("click", animateArrow);
         let startseiteButton = document.getElementById('startseite');
@@ -63,23 +66,27 @@ class App {
         let auswahlhan = document.getElementById('auswahlHan');
 
         startseiteButton.addEventListener("click",()=>{
-            this.showStartseite();
+            // this.showStartseite();
+            this._router.navigate('*');
             console.log("startseite");
         });
         auswahlAbi.addEventListener("click",()=>{
-
-            this.showMaximalKraftrechner();
+            this._router.navigate('/maximalkraftRechner/');
+            // this.showMaximalKraftrechner();
             console.log("max");
         });
         auswahlSas.addEventListener("click",()=>{
-            this.showBmi();
+            // this.showBmi();
+            this._router.navigate('/bmiRechner/');
             console.log("bmi");
         });
         auswahlhan.addEventListener("click",()=>{
-            this.showKjoule();
+            // this.showKjoule();
+            this._router.navigate('/kjouleRechner/');
             console.log("kjoule");
         });
-        this.showStartseite();
+        // this.showStartseite();
+        this._router.navigate('*');
     }
 
     showStartseite(){
@@ -104,7 +111,6 @@ class App {
 
     _switchVisibleContent(content){
         let app = document.querySelector("#app");
-        let header = document.querySelector("#app > header");
         let main = document.querySelector("#app main");
 
         app.className = "";
@@ -120,6 +126,9 @@ class App {
                 main.appendChild(element);
             });
         }
+
+        // Navigo an die Links in der View binden
+        this._router.updatePageLinks();
     }
 
     _switchVisibleView(view) {
@@ -128,10 +137,15 @@ class App {
         // false zurückliefert. Dadurch erhält sie die Möglichkeit, den Anwender
         // zum Beispiel zu fragen, ob er ungesicherte Daten speichern will,
         // bevor er die Seite verlässt.
-        let goon = () => this._switchVisibleView(view);
+        let newUrl = this._router.lastRouteResolved().url;
+        let goon = () => {
+            // ?goon an die URL hängen, weil der Router sonst nicht weiternavigiert
+            this._router.navigate(newUrl + "?goon");
+        }
 
         // Aktuelle View fragen, ob eine neue View aufgerufen werden darf
         if (this._currentView && !this._currentView.onLeave(goon)) {
+            this._navAborted = true;
             return false;
         }
 
