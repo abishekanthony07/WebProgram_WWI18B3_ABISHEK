@@ -57,6 +57,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    background-image: url(resources/Smartphone_background.jpg);
 }
 
 /*
@@ -86,6 +87,10 @@ header {
 }
 #arrowDowndiv{
     height: 24px;
+    background-color: rgba(255,255,255,0.1);
+}
+#arrowDown:hover {
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 hr {
@@ -124,15 +129,43 @@ hr {
 
 /*Pfeil nach unten*/
 #arrowDown {
-    width: 1.5em;
-    height: 1.5em;
+    width: 2.5em;
+    height: 2.5em;
     animation: jump .100s linear;
+    background-color: rgba(255,255,255,0.3);
+/*Runder Pfeil nach unten*/
+    border-radius: 80px;
+
+}
+/*Footer als Dropdown Menü oben links*/
+#footerMenu{
+    position: absolute;
+    left:0px;
+    /*top:0px;
+    /*height, da footer Menü im Header drinnen steckt, und daher nicht über die restliche Seite laufen kann*/
+    height: 650px;
+    display: none;
+    background-color: rgba(255,255,255,0.3);
 }
 
+/*Footer Icon formatieren*/
+#footerMenuP{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width: 3em;
+    height: 2.5em;
+    background-color: rgba(255,255,255,0.3);
+}
+
+/*Auswahl Icon des Footer wird deckend, wenn man drüber fährt*/
+#footerMenuP:hover{
+    background-color: rgba(255,255,255,0.5);
+}
 /*---------------------------------------------------------------------------*/
 /*Main*/
 main {
-    background-image: url(resources/Smartphone_background.jpg);
+    /*background-image: url(resources/Smartphone_background.jpg);*/
     background-size: cover;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -215,3 +248,4 @@ img.Instagram {
 .hidden{
     display: none;
 }
+
