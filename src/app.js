@@ -10,6 +10,7 @@ import Datenbank from "./datenbank/database";
 import BmiRechner from "./bmi/bmiRechner";
 import KjouleRechner from "./kjoule/kJouleUmrechner";
 import Startseite from "./startseite/startseite";
+import Impressum from "./impressum/impressum"
 class App {
     /**
      * Konstruktor.
@@ -29,6 +30,7 @@ class App {
             "/kjouleRechner/":              () => this.showKjoule(),
             "/bmiRechner/":  () => this.showBmi(),
             "/maximalkraftRechner/":     () => this.showMaximalKraftrechner(),
+            "/impressum/":    () => this.showImpressum(),
         }).resolve();
 
         this._router.notFound(()=>{
@@ -60,6 +62,7 @@ class App {
         this._router.resolve();
         let imageArrow = document.getElementById('arrowDown');
         imageArrow.addEventListener("click", animateArrow);
+
         /**Footer Menü wird oben mit einer Klapptafel realisiert*/
         let imageFooterMenu = document.getElementById("footerMenuP");
         imageFooterMenu.addEventListener("click", showFooterMenu);
@@ -68,6 +71,9 @@ class App {
         let auswahlAbi = document.getElementById('auswahlAbi');
         let auswahlSas = document.getElementById('auswahlSas');
         let auswahlhan = document.getElementById('auswahlHan');
+
+        /**Seite für Impressum*/
+       let auswahlImpressum = document.getElementById('impressum');
 
         startseiteButton.addEventListener("click",()=>{
             // this.showStartseite();
@@ -89,6 +95,11 @@ class App {
             this._router.navigate('/kjouleRechner/');
             console.log("kjoule");
         });
+        /**Seite für Impressum*/
+        auswahlImpressum.addEventListener("click", ()=>{
+           this._router.navigate('/impressum/');
+           console.log("impressum")
+        });
         // this.showStartseite();
         this._router.navigate('*');
     }
@@ -109,6 +120,11 @@ class App {
 
     showMaximalKraftrechner(){
         let view = new OneRepetitionMaximum(this, this.db);
+        this._switchVisibleView(view)
+    }
+    /**Seite für Impressum*/
+    showImpressum(){
+        let view = new Impressum(this, this.db);
         this._switchVisibleView(view)
     }
 
