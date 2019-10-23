@@ -9,12 +9,6 @@
  */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-#anmeldevorgang{
-    background: rgba(255,255,255, 0.6);
-    border-radius: 3px;
-    margin: 7px 7px 7px 7px;
-}
-
 html, body {
     text-align: center;
     font-family: Arial, serif;
@@ -34,6 +28,17 @@ body {
 .hidden {
     display: none !important;
 }
+
+/*---------------------------------------------------------------------------*/
+/*Login Pop-Up*/
+
+.anmeldevorgangMain{
+    background: rgba(255,255,255, 0.6);
+    border-radius: 3px;
+    margin: 7px 7px 7px 7px;
+}
+
+
 
 /*---------------------------------------------------------------------------*/
 /*header*/
