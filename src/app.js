@@ -60,6 +60,10 @@ class App {
         this._router.resolve();
         let imageArrow = document.getElementById('arrowDown');
         imageArrow.addEventListener("click", animateArrow);
+        /**Footer Menü wird oben mit einer Klapptafel realisiert*/
+        let imageFooterMenu = document.getElementById("footerMenuP");
+        imageFooterMenu.addEventListener("click", showFooterMenu);
+
         let startseiteButton = document.getElementById('startseite');
         let auswahlAbi = document.getElementById('auswahlAbi');
         let auswahlSas = document.getElementById('auswahlSas');
@@ -186,4 +190,19 @@ function animateArrow() {
 function rotateImage(img, degree) {
     img.style.transform = degree;
     img.style.WebkitTransitionDuration = '0.5s';
+}
+/**Footer-Menü wird eingeblendet*/
+let menuSindZusehen = false;
+
+function showFooterMenu() {
+    let footerIcon = document.getElementById('footerMenuP');
+    let footerMenue = document.getElementById('footerMenu');
+
+    if (!menuSindZusehen){
+        menuSindZusehen = true;
+        footerMenue.style.display = 'inline-block';
+    }else{
+        menuSindZusehen = false;
+        footerMenue.style.display = 'none';
+    }
 }
