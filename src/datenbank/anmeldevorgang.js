@@ -11,7 +11,7 @@ class Anmeldevorgang {
     }
 
     onShow() {
-        let section = document.querySelector("#ormSeite").cloneNode(true);
+        let section = document.querySelector("#anmeldevorgang").cloneNode(true);
         let content = {
             className: "visible",
             main: section.querySelectorAll("main > *"),

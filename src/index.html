@@ -275,37 +275,37 @@
 </section>
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
-   <main>
-       <div class="inhalt">
-           <h3>Kalorien-Umrechner</h3>
-           Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
-           <br> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.
+    <main>
+        <div class="inhalt">
+            <h3>Kalorien-Umrechner</h3>
+            Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
+            <br> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.
 
 
-           <h4>Umrechner von KCAL in KJOULE</h4>
-           <br>
-               KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <input type="number" id="Kcal" placeholder="Enter KCAL"/>
+            <h4>Umrechner von KCAL in KJOULE</h4>
+            <br>
+            KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" id="Kcal" placeholder="Enter KCAL"/>
 
-           <button id="button"> BERECHNE
-           </button>
-           <br>
-               KJOULE: &nbsp;
-               <output id="output" for="Enter">0</output>
+            <button id="button"> BERECHNE
+            </button>
+            <br>
+            KJOULE: &nbsp;
+            <output id="output" for="Enter">0</output>
 
-           <h4>Umrechner von KJOULE in KCAL</h4>
-           <br>
-               KJOULE: &nbsp;
-               <input type="number" id="KJOULE" placeholder="Enter KJOULE"/>
+            <h4>Umrechner von KJOULE in KCAL</h4>
+            <br>
+            KJOULE: &nbsp;
+            <input type="number" id="KJOULE" placeholder="Enter KJOULE"/>
 
-           <button id="button1"> BERECHNE
-           </button>
-           <br>
-               KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <output id="output1" for="Enter1">0</output>
+            <button id="button1"> BERECHNE
+            </button>
+            <br>
+            KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <output id="output1" for="Enter1">0</output>
 
-       </div>
-   </main>
+        </div>
+    </main>
 </section>
 <!--Section Maximalkraft-Rechner-->
 <section id="ormSeite" class="hidden">
@@ -324,7 +324,8 @@
                     Diese <b>Maximalkraft ist abhängig von</b> folgenden Faktoren:<br>
                     <ul>
                         <li>Muskelquerschnitt</li>
-                        <li>intramuskuläre Koordination (= Anzahl der Muskelfaser, die gleichzeitig aktiviert werden)</li>
+                        <li>intramuskuläre Koordination (= Anzahl der Muskelfaser, die gleichzeitig aktiviert werden)
+                        </li>
                         <li>intermuskuläre Koordination (= Koordnination zwischen den Muskeln, die bei einer gegebenen
                             Bewegung zusammenarbeiten)
                         </li>
@@ -349,7 +350,8 @@
                                     <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
                                 </label><br>
                                 <label>
-                                    <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1" value="1">
+                                    <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
+                                           value="1">
                                 </label><br>
                             </div>
                         </div>
@@ -428,6 +430,21 @@
         </div>
     </main>
 </section>
-
+<section id="anmeldevorgang" class="hidden">
+    <main>
+        <div>
+            <section id="emailSection">
+                E-Mail:
+                <input id="emailInput" type="text">
+            </section>
+            <section id="passwordSection">
+                Passwort:
+                <input id="passwordInput" type="text">
+            </section>
+            <button id="login">Login</button>
+            <button id="register">Registrieren</button>
+        </div>
+    </main>
+</section>
 </body>
 </html>

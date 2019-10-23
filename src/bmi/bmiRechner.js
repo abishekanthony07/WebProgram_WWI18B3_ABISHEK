@@ -17,7 +17,7 @@ let ablaufBMI = () => {
     });
     //-----------------------Slider an Eingabefeld anpassen -------------------------------------
     //Groesse
-    document.getElementById("sliderGroesse").addEventListener("input", ()=>{
+    document.getElementById("sliderGroesse").addEventListener("input", () => {
         let sliderGroesse = document.getElementById("sliderGroesse");
         let eingabeFeldGroesse = document.getElementById("groesse");
 
@@ -25,7 +25,7 @@ let ablaufBMI = () => {
     });
 
     //Gewicht
-    document.getElementById("sliderGewicht").addEventListener("input", ()=>{
+    document.getElementById("sliderGewicht").addEventListener("input", () => {
         let sliderGewicht = document.getElementById("sliderGewicht");
         let eingabeFeldGewicht = document.getElementById("masse");
 
@@ -33,7 +33,7 @@ let ablaufBMI = () => {
     });
 
     //Alter
-    document.getElementById("sliderAlter").addEventListener("input", ()=>{
+    document.getElementById("sliderAlter").addEventListener("input", () => {
         let sliderAlter = document.getElementById("sliderAlter");
         let eingabeFeldAlter = document.getElementById("alter");
 
@@ -79,14 +79,14 @@ function toggleDialog() {
     }
 }
 
-class BmiRechner{
-    constructor(app, datenbank){
+class BmiRechner {
+    constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
         db = this.db;
     }
 
-    onShow(){
+    onShow() {
 
         let section = document.querySelector("#bmiSeite").cloneNode(true);
         let content = {
@@ -97,36 +97,37 @@ class BmiRechner{
 
     }
 
-    onLoad(){
+    onLoad() {
         console.log('Page loaded');
         ablaufBMI();
     }
 
-    onLeave(goon){
+    onLeave(goon) {
         return true;
     }
 
-    get title(){
+    get title() {
         return "Bmi-Rechner";
     }
 }
+
 export default BmiRechner;
 
 
-function bmiBerechnen() {
-    db.getData("bmi",  (array) => {
+let bmiBerechnen = () => {
+    db.getData("bmi", (array) => {
         let eingabeGroesse = document.getElementById("groesse").value;
         let eingabeGewicht = document.getElementById("masse").value;
         let ergebnis = eingabeGewicht / Math.pow(eingabeGroesse / 100, 2);
         let anzeige = document.getElementById("ausgabe");
         ergebnis = ergebnis.toFixed(2);
-        if(array === 'empty'){
+        if (array === 'empty') {
             array = [{
                 eingabeGroesse: eingabeGroesse,
                 eingabeGewicht: eingabeGewicht,
                 ergebnis: ergebnis
             }]
-        }else{
+        } else {
             array.push({
                 eingabeGroesse: eingabeGroesse,
                 eingabeGewicht: eingabeGewicht,
