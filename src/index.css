@@ -48,14 +48,6 @@ header {
     font-size: 2em;
     display: block;
 }
-#arrowDowndiv{
-    height: 24px;
-    background-color: rgba(255,255,255,0.1);
-}
-#arrowDown:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-}
-
 hr {
     background-image: linear-gradient(90deg, dimgray 2%, rgb(183,184,186));
     border-bottom-width: 2px;
@@ -91,13 +83,23 @@ hr {
 }
 
 /*Pfeil nach unten*/
+#arrowDowndiv{
+    height: 1.3em;
+    background-color: rgba(112,112,112,1);
+    /*background-image: linear-gradient(90deg, dimgray 2%, rgba(112,112,112, 1));*/
+}
+#arrowDown:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
 #arrowDown {
     width: 2.5em;
-    height: 2.5em;
     animation: jump .100s linear;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(112,112,112,1);
+    /*background-image: linear-gradient(90deg, dimgray 2%, rgb(112,112,112));*/
 /*Runder Pfeil nach unten*/
-    border-radius: 80px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
 
 }
 /*Footer als Dropdown Menü oben links*/
@@ -133,6 +135,7 @@ main {
     flex: auto;
     top: auto;
     text-align: left;
+    margin-top: 1.5em;
     margin-bottom: 9vh;
 }
 

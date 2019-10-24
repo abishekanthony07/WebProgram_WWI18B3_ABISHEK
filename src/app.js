@@ -183,15 +183,33 @@ let buttonsSindZusehen = false;
 
 function animateArrow() {
     let arrowDown = document.getElementById('arrowDown');
+    let arrowDownDiv = document.getElementById('arrowDowndiv');
     let auswahlMenue = document.getElementById('auswahlMenue');
 
     if (!buttonsSindZusehen) {
         rotateImage(arrowDown, 'rotate(-180deg)');
         buttonsSindZusehen = true;
+        //Div vom arrowDown hintergrund entfernen
+        arrowDown.style.border = 'none';
+        //Borderstyle vom ArrowButton ändern
+        arrowDownDiv.style.background = 'none';
+        arrowDown.style.borderTopLeftRadius = '50px';
+        arrowDown.style.borderTopRightRadius = '50px';
+        arrowDown.style.borderBottomLeftRadius = '0px';
+        arrowDown.style.borderBottomRightRadius = '0px';
+        //AuswahlMenu einblenden
         auswahlMenue.style.display = 'inline-block';
     } else {
         rotateImage(arrowDown, 'rotate(0deg)');
         buttonsSindZusehen = false;
+        //Div vom arrowDown hintergrund entfernen
+        arrowDownDiv.style.background = 'rgba(112,112,112,1)';
+        //Borderstyle vom ArrowButton ändern
+        arrowDown.style.borderTopLeftRadius = '0px';
+        arrowDown.style.borderTopRightRadius = '0px';
+        arrowDown.style.borderBottomLeftRadius = '50px';
+        arrowDown.style.borderBottomRightRadius = '50px';
+        //AuswahlMenü einblenden
         auswahlMenue.style.display = 'none';
     }
 }

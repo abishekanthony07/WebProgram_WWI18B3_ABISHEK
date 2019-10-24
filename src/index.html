@@ -6,6 +6,7 @@
     <script src="index.js"></script>
     <link rel="icon" href="resources/icon_wiFitness.png">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="anmeldung/anmeldung.css">
     <link rel="stylesheet" href="bmi/bmiRechner.css">
     <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
     <link rel="stylesheet" href="maximalkraft/onetimerepititionStylesheet.css">
@@ -24,28 +25,37 @@
         </div>
         <hr>
         <div id="arrowDowndiv">
-            <img src="resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown">
+            <img src="resources/arrow_down2.png" alt="Menü anzeigen Pfeil" id="arrowDown">
         </div>
 
-            <img src="resources/footer_MenuP.png" alt="Menü Auswahlpunkte" id="footerMenuP">
+        <img src="resources/footer_MenuP.png" alt="Menü Auswahlpunkte" id="footerMenuP">
         <div id="footerMenu">
             <ul>
-           <li> <div id="impressum">Impressum</div></li>
-           <li> <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div></li>
-               <li><div id="socialMedia">
-                Soziale Medien<br>
-                <div class="socialMediaLinks">
-                    <a href="https://www.instagram.com/sascha"
-                       class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
-                        K.</a><br>
-                    <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="resources/instagram.png"
-                                                                                         class="Instagram" alt="Instagram"/>
-                        Hannah B.</a><br>
-                    <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="resources/instagram.png"
-                                                                                      class="Instagram" alt="Instagram"/>
-                        Abishek A.</a><br>
-                </div>
-            </div></li>
+                <li>
+                    <div id="impressum">Impressum</div>
+                </li>
+                <li>
+                    <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div>
+                </li>
+                <li>
+                    <div id="socialMedia">
+                        Soziale Medien<br>
+                        <div class="socialMediaLinks">
+                            <a href="https://www.instagram.com/sascha"
+                               class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/>
+                                Sascha
+                                K.</a><br>
+                            <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img
+                                    src="resources/instagram.png"
+                                    class="Instagram" alt="Instagram"/>
+                                Hannah B.</a><br>
+                            <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img
+                                    src="resources/instagram.png"
+                                    class="Instagram" alt="Instagram"/>
+                                Abishek A.</a><br>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </header>
@@ -184,7 +194,7 @@
                         <th>Körpergewicht</th>
                     </tr>
                     <tr>
-                        <td id = "starkesUntergewicht">
+                        <td id="starkesUntergewicht">
                         </td>
                         <td>Starkes Untergewicht
                         </td>
@@ -193,7 +203,7 @@
                         <td rowspan="3" class="center">Untergewicht</td>
                     </tr>
                     <tr>
-                        <td id = "mäßigesUntergewicht">
+                        <td id="mäßigesUntergewicht">
                         </td>
                         <td>Mäßiges Untergewicht
                         </td>
@@ -203,7 +213,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id = "leichtesUntergewicht">
+                        <td id="leichtesUntergewicht">
                         </td>
                         <td>Leichtes Untergewicht
                         </td>
@@ -213,7 +223,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id = "normalgewicht">
+                        <td id="normalgewicht">
                         </td>
                         <td><b>Normalgewicht</b>
                         </td>
@@ -223,7 +233,7 @@
                         <td class="center"><b>Normalgewicht</b></td>
                     </tr>
                     <tr>
-                        <td id = "praeadipositas">
+                        <td id="praeadipositas">
                         </td>
                         <td>Präadipositas
                         </td>
@@ -234,7 +244,7 @@
                         <td class="center">Übergewicht</td>
                     </tr>
                     <tr>
-                        <td id = "adipostasI">
+                        <td id="adipostasI">
                         </td>
                         <td>Adipositas Grad I
                         </td>
@@ -245,7 +255,7 @@
                         <td rowspan="3" class="center">Adipositas</td>
                     </tr>
                     <tr>
-                        <td id = "adipostasII">
+                        <td id="adipostasII">
                         </td>
                         <td>Adipositas Grad II
                         </td>
@@ -255,7 +265,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id = "adipostasIII">
+                        <td id="adipostasIII">
                         </td>
                         <td>Adipositas Grad III
                         </td>
@@ -280,11 +290,11 @@
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
     <main>
-       <div id="datenbankmenu">
-           <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
-           <button class="tab" id="kJouleRechnerButton">Kalorien Umrechner</button>
-           <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
-       </div>
+        <div id="datenbankmenu">
+            <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
+            <button class="tab" id="kJouleRechnerButton">Kalorien Umrechner</button>
+            <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
+        </div>
         <div class="inhalt">
             <h3>Kalorien-Umrechner</h3>
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
@@ -441,16 +451,32 @@
 <section id="anmeldevorgang" class="hidden">
     <main>
         <div class="inhalt">
-            <section id="emailSection">
-                E-Mail:
-                <input id="emailInput" type="text">
-            </section>
-            <section id="passwordSection">
-                Passwort:
-                <input id="passwordInput" type="text">
-            </section>
-            <button id="loginButton">Login</button>
-            <button id="register">Registrieren</button>
+            <form id="anmeldungForm">
+                <div class="grid-container">
+                    <div class="grid-itemLeft">
+                        <label class="label" for="email">E-Mail: </label>
+                    </div>
+                    <div class="grid-itemRight">
+                        <input class="input" type="email" id="email" name="E-Mail" placeholder="E-mail Adresse">
+                    </div>
+                    <div class="grid-itemLeft">
+                        <label class="label" for="password">Passwort: </label>
+                    </div>
+                    <div class="grid-itemRight">
+                        <input class="input" type="password" id="password" name="Passwort" placeholder="Passwort">
+                    </div>
+                    <div class="grid-itemLeft">
+                    </div>
+                    <div class="grid-itemRight">
+                        <input class="input" id="loginButton" type="submit" value="Anmelden">
+                    </div>
+                    <div class="grid-itemLeft">
+                    </div>
+                    <div class="grid-itemRight">
+                        <input class="input" id="registerButton" type="submit" value="Registrieren">
+                    </div>
+                </div>
+            </form>
         </div>
     </main>
 </section>
