@@ -215,9 +215,11 @@ function showFooterMenu() {
     let footerMenue = document.getElementById('footerMenu');
 
     if (!menuSindZusehen){
+        rotateImage(footerIcon, 'rotate(-180deg)')
         menuSindZusehen = true;
         footerMenue.style.display = 'inline-block';
     }else{
+        rotateImage(footerIcon, 'rotate(0deg)')
         menuSindZusehen = false;
         footerMenue.style.display = 'none';
     }
