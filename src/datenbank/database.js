@@ -27,54 +27,55 @@ class Datenbank {
     }
 
 
+    createUser(email, password) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((output) => {
+            console.log("Registrierung erfolgreich!", output);
+            this.userId = output.user.uid;
+            this.datenbank = firebase.firestore();
+            output.user.sendEmailVerification();
+            alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
+        }).catch((error) => {
+            console.log(error);
+                if (error.code === "auth/email-already-in-use") {
+                    alert("Dieser E-Mail Adresse ist bereits vergeben!\n" +
+                        "Sie können Ihr Passwort über den entsprechenden Button zurücksetzen oder " +
+                        "sich mit dem zugehörigem Passwort einloggen.");
 
-    // createUser (){
-    //     firebaseAuth.createUserWithEmailAndPassword(
-    //         email.getText().toString();
-    //     password.getText().toString();
-    // ).addOnSuccessListener((OnSuccessListener) (authResult) => {
-    //         user_id = Obejcts.requireNonNull(authResult.getUser()).getUid();
-    //         emailAdresse = authResult.getUser().getEmail();
-    //     }).addOnFailureListener (e) => {
-    //         progressBar.setVisibility(View.GONE);
-    //         if(e instanceof FirebaseAuthUserCollisionException) {
-    //             email.setError("Es existiert bereits ein Konto mit dieser Email-Adresse!");
-    //         } else {
-    //             console.log (e("Error", Objects.requireNonNull(e.getLocalizedMessage()))) ;
-    //         }
-    //     }
-    // }
+                } else if (error.code === "auth/weak-password"){
+                    alert("Passwort ist zu kurz! Es muss mindestens 6 Zeichen lang sein!")
+                     } else {
+                    alert(error.message);
+                    alert("Registriervorgang fehlgeschlagen. Bitte versuchen Sie es erneut.");
+                }
+            }
+        )
+    }
 
     loginUser(email, password, failure, success) {
-        if (firebase.auth().currentUser == null) {
-            console.log("Fehler du Nase");
-        } else if (!firebase.auth().currentUser.emailVerified) {
-            alert("E-Mail-Adresse bestätigen!" + "Bitte bestätigen Sie Ihre E-Mail Adresse und melden Sie sich an.");
-            failure();
-        } else {
-            success();
-        }
-
-        if (email === "" || password === "" || email === null || password === null) {
-            failure("Wrong Credentials")
-        } else {
-            firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
-                console.log("Login erfolgreich!", output);
+        firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
+            console.log("Login erfolgreich!", output);
+            if (output.user.emailVerified) {
                 this.userId = output.user.uid;
                 this.datenbank = firebase.firestore();
-            }).catch((error) => {
-                if (error.code === "auth/wrong-password") {
-                    alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
-                } else if (error.code === "auth/too-many-requests") {
-                    alert("Zu viele Fehlversuche! Böse!")
-                } else if (error.code === "auth/argument-error") {
-                    alert(error.message);
-                    alert("Keine E-Mail vorhanden!");
-                } else {
-                    alert(Error.message, error);
-                }
-            })
-        }
+                success();
+            } else {
+                alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
+            }
+        }).catch((error) => {
+            if (error.code === "auth/wrong-password") {
+                alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
+                // console.log(error);
+            } else if (error.code === "auth/too-many-requests") {
+                alert("Zu viele Fehlversuche! Böse!")
+            } else if (error.code === "auth/argument-error") {
+                alert("Keine E-Mail vorhanden! Bitte registrieren Sie sich!");
+                // console.log(error);
+            } else if (error.code === "auth/user-not-found") {
+                alert("Es wurde kein Benutzer gefunden. Bitte registrieren Sie sich!")
+            } else {
+                alert(error.message);
+            }
+        })
     }
 
     saveData(collection, set, callback) {

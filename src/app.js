@@ -27,7 +27,7 @@ class App {
 
         this._router.on({
             "*":                       () => this.showLogin(),
-            "wiFitness": ()=> this.showStartseite(),
+            "/wiFitness/": ()=> this.showStartseite(),
             "/kjouleRechner/":              () => this.showKjoule(),
             "/bmiRechner/":  () => this.showBmi(),
             "/maximalkraftRechner/":     () => this.showMaximalKraftrechner(),
@@ -92,8 +92,6 @@ class App {
             this._router.navigate('/kjouleRechner/');
             console.log("kjoule");
         });
-        // this.showStartseite();
-        this._router.navigate('login');
     }
 
     showLogin(){

@@ -21,24 +21,28 @@ class Anmeldevorgang {
     }
 
     onLoad() {
-        let emailAgainSend;
-        // emailAgainSend = document.getElementById("emailErneutVersenden");
-        // emailAgainSend.addEventListener("click", () => {
-        //     this.db.auth().currentUser.sendEmailVerification();
-        // });
-
-
         let loginButton = document.getElementById("loginButton");
         loginButton.addEventListener("click", () => {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
             this.db.loginUser(
-                "",//email
-                "",//passwort
+                email,//email
+                password,//passwort
                 ()=>{//failure
                     alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
                 },
                 ()=>{//success
-                    alert("Sie sind nun eingeloggt als " + db.username );
+                    this._app._router.navigate('/wiFitness/');
                 });
+        });
+
+        let registerButton = document.getElementById("registerButton");
+        registerButton.addEventListener("click", () => {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            this.db.createUser(
+                email,//email
+                password);
         });
     }
 
