@@ -119,6 +119,7 @@ class App {
            this._router.navigate('/impressum/');
            console.log("impressum")
         });
+        this._router.navigate('/wiFitness/')
     }
 
     showStartseite(){
