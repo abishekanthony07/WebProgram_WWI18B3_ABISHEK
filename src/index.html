@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>WebFitness</title>
     <script src="index.js"></script>
+    <link rel="icon" href="resources/icon_wiFitness.png">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="bmi/bmiRechner.css">
     <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
@@ -25,28 +26,32 @@
         <div id="arrowDowndiv">
             <img src="resources/arrow_down.png" alt="Menü anzeigen Pfeil" id="arrowDown">
         </div>
+
+            <img src="resources/footer_MenuP.png" alt="Menü Auswahlpunkte" id="footerMenuP">
+        <div id="footerMenu">
+            <ul>
+           <li> <div id="impressum">Impressum</div></li>
+           <li> <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div></li>
+               <li><div id="socialMedia">
+                Soziale Medien<br>
+                <div class="socialMediaLinks">
+                    <a href="https://www.instagram.com/sascha"
+                       class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
+                        K.</a><br>
+                    <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="resources/instagram.png"
+                                                                                         class="Instagram" alt="Instagram"/>
+                        Hannah B.</a><br>
+                    <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="resources/instagram.png"
+                                                                                      class="Instagram" alt="Instagram"/>
+                        Abishek A.</a><br>
+                </div>
+            </div></li>
+            </ul>
+        </div>
     </header>
     <!-- Hauptbereich (dynamisch je nach View)        -->
     <main>
     </main>
-    <footer>
-        <div id="impressum">Impressum</div>
-        <div>© WWI18B3 - Sascha Klevenhaus, Hannah Bjork, Abishek Anthony</div>
-        <div id="socialMedia">
-            Soziale Medien<br>
-            <div class="socialMediaLinks">
-                <a href="https://www.instagram.com/sascha"
-                   class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/> Sascha
-                    K.</a><br>
-                <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img src="resources/instagram.png"
-                                                                                     class="Instagram" alt="Instagram"/>
-                    Hannah B.</a><br>
-                <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img src="resources/instagram.png"
-                                                                                  class="Instagram" alt="Instagram"/>
-                    Abishek A.</a><br>
-            </div>
-        </div>
-    </footer>
 </section>
 <!--Section Startseite-->
 <section id="startseiteseite" class="hidden">
@@ -179,83 +184,82 @@
                         <th>Körpergewicht</th>
                     </tr>
                     <tr>
-                        <td bgcolor="#7c7cbc">
+                        <td id = "starkesUntergewicht">
                         </td>
                         <td>Starkes Untergewicht
                         </td>
                         <td class="bmi">&lt; 16
                         </td>
-                        <td rowspan="3" style="text-align:center;">Untergewicht</td>
+                        <td rowspan="3" class="center">Untergewicht</td>
                     </tr>
                     <tr>
-                        <td bgcolor="#7c7cfc">
+                        <td id = "mäßigesUntergewicht">
                         </td>
                         <td>Mäßiges Untergewicht
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>16<span style="visibility:hidden;">,0</span> –
+                        <td><span class="hide">&lt; </span>16<span class="hide">,0</span> –
                             &lt;
-                            17<span style="visibility:hidden;">,0</span>
+                            17<span class="hide">,0</span>
                         </td>
                     </tr>
                     <tr>
-                        <td bgcolor="#7cfcfc">
+                        <td id = "leichtesUntergewicht">
                         </td>
                         <td>Leichtes Untergewicht
                         </td>
-                        <td><span style="visibility:hidden;" class="bmi">&lt; </span>17<span style="visibility:hidden;"
-                                                                                             class="bmi">,0</span> –
+                        <td><span class="hide">&lt; </span>17<span class="hide">,0</span> –
                             &lt;
                             18,5
                         </td>
                     </tr>
                     <tr>
-                        <td bgcolor="#7cfc7c">
+                        <td id = "normalgewicht">
                         </td>
                         <td><b>Normalgewicht</b>
                         </td>
-                        <td class="bmi"><b><span style="visibility:hidden;">&lt; </span>18,5 – &lt; 25<span
+                        <td class="bmi"><b><span class="hide">&lt; </span>18,5 – &lt; 25<span
                                 style="visibility:hidden;">,0</span></b>
                         </td>
-                        <td style="text-align:center;"><b>Normalgewicht</b></td>
+                        <td class="center"><b>Normalgewicht</b></td>
                     </tr>
                     <tr>
-                        <td bgcolor="#fcfc7c">
+                        <td id = "praeadipositas">
                         </td>
                         <td>Präadipositas
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>25<span style="visibility:hidden;">,0</span> –
+                        <td><span class="hide">&lt; </span>25<span class="hide">,0</span> –
                             &lt;
-                            30<span style="visibility:hidden;">,0</span>
+                            30<span class="hide">,0</span>
                         </td>
-                        <td style="text-align:center;">Übergewicht</td>
+                        <td class="center">Übergewicht</td>
                     </tr>
                     <tr>
-                        <td bgcolor="#fcbb91">
+                        <td id = "adipostasI">
                         </td>
                         <td>Adipositas Grad I
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>30<span style="visibility:hidden;">,0</span> –
+                        <td><span class="hide">&lt; </span>30<span class="hide">,0</span> –
                             &lt;
-                            35<span style="visibility:hidden;">,0</span>
+                            35<span class="hide">,0</span>
                         </td>
-                        <td rowspan="3" align="center">Adipositas</td>
+                        <td rowspan="3" class="center">Adipositas</td>
                     </tr>
                     <tr>
-                        <td bgcolor="#fc9191">
+                        <td id = "adipostasII">
                         </td>
                         <td>Adipositas Grad II
                         </td>
-                        <td><span style="visibility:hidden;">&lt; </span>35<span style="visibility:hidden;">,0</span> –
+                        <td><span class="hide">&lt; </span>35<span class="hide">,0</span> –
                             &lt;
-                            40<span style="visibility:hidden;">,0</span>
+                            40<span class="hide">,0</span>
                         </td>
                     </tr>
                     <tr>
-                        <td bgcolor="#c08080">
+                        <td id = "adipostasIII">
                         </td>
                         <td>Adipositas Grad III
                         </td>
-                        <td style="text-align:center;"><span style="visibility:hidden;">&lt;0,0 – </span>≥ 40
+                        <td class="center"><span class="hide">&lt;0,0 – </span>≥ 40
                         </td>
                     </tr>
                     </tbody>
@@ -276,6 +280,11 @@
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
     <main>
+       <div id="datenbankmenu">
+           <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
+           <button class="tab" id="kJouleRechnerButton">Kalorien Umrechner</button>
+           <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
+       </div>
         <div class="inhalt">
             <h3>Kalorien-Umrechner</h3>
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
@@ -303,7 +312,6 @@
             <br>
             KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <output id="output1" for="Enter1">0</output>
-
         </div>
     </main>
 </section>

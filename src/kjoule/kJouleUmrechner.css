@@ -31,3 +31,13 @@ output{
     border-width: 1px;
     border-bottom-width: 1.5px;
 }
+#datenbankmenu {
+    display: table-cell;
+    width: 100vw;
+    text-align: center;
+    border-bottom: black solid 1px;
+    background: rgba(245,245,245, 0.7);
+    border-radius: 2em;
+    color: black;
+    padding: 0;
+}

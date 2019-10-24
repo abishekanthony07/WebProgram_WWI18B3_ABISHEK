@@ -20,6 +20,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    background-image: url(resources/Smartphone_background.jpg);
 }
 
 /*
@@ -49,6 +50,10 @@ header {
 }
 #arrowDowndiv{
     height: 24px;
+    background-color: rgba(255,255,255,0.1);
+}
+#arrowDown:hover {
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 hr {
@@ -87,18 +92,44 @@ hr {
 
 /*Pfeil nach unten*/
 #arrowDown {
-    width: 1.5em;
-    height: 1.5em;
+    width: 2.5em;
+    height: 2.5em;
     animation: jump .100s linear;
+    background-color: rgba(255,255,255,0.3);
+/*Runder Pfeil nach unten*/
+    border-radius: 80px;
+
+}
+/*Footer als Dropdown Menü oben links*/
+#footerMenu{
+    position: absolute;
+    left:0px;
+    /*top:0px;
+    /*height, da footer Menü im Header drinnen steckt, und daher nicht über die restliche Seite laufen kann*/
+    height: 650px;
+    display: none;
+    background-color: rgba(255,255,255,0.3);
 }
 
+/*Footer Icon formatieren*/
+#footerMenuP{
+    position: absolute;
+    left:0px;
+    top:0px;
+    width: 3em;
+    height: 2.5em;
+    background-color: rgba(255,255,255,0.3);
+}
+
+/*Auswahl Icon des Footer wird deckend, wenn man drüber fährt*/
+#footerMenuP:hover{
+    background-color: rgba(255,255,255,0.5);
+}
 /*---------------------------------------------------------------------------*/
 /*Main*/
 main {
-    background-image: url(resources/Smartphone_background.jpg);
+    /*background-image: url(resources/Smartphone_background.jpg);*/
     background-size: cover;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
     flex: auto;
     top: auto;
     text-align: left;
@@ -111,7 +142,6 @@ main {
     border-radius: 0.5em;
     color: black;
     padding: 4px;
-    overflow-x: scroll;
 }
 
 
@@ -178,3 +208,50 @@ img.Instagram {
 .hidden{
     display: none;
 }
+
+/*
+ * Größerer Bildschirm
+ */
+@media screen and (min-width: 768px) {
+    body{
+        background-image: url(resources/PC_hantel.jpg);
+    }
+}
+
+/*Media Screen nach Anleitung*/
+/*@media screen and (min-width: 786px){
+    body, input{
+        font-size: 12pt;
+    }
+    footer {
+    }
+}
+@media screen and (min-width: 992px){
+    body, input{
+        font-size: 13pt;
+    }
+    footer {
+    }
+}
+@media screen and (min-width: 1200px){
+    body, input{
+        font-size: 14pt;
+    }
+    footer {
+    }}
+ @media screen and (min-width: 85em){
+    html{
+    background-image: url(resources/Smartphone_background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    }
+    body{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    }
+    body > * {
+    flex: 1;
+    }
+ }*/
