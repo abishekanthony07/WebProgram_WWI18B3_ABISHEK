@@ -109,17 +109,23 @@ hr {
     /*top:0px;
     /*height, da footer Menü im Header drinnen steckt, und daher nicht über die restliche Seite laufen kann*/
     height: 650px;
+    width: 250px;
     display: none;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.9);
+    color: black;
+    text-align: left;
 }
-
+/*Listen ohne Listenpunkte*/
+li{
+    list-style: none;
+}
 /*Footer Icon formatieren*/
 #footerMenuP{
     position: absolute;
     left:0px;
     top:0px;
     width: 3em;
-    height: 2.5em;
+    height: 2.3em;
     background-color: rgba(255,255,255,0.3);
 }
 

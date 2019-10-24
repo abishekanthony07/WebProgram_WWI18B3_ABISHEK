@@ -11,6 +11,7 @@ import BmiRechner from "./bmi/bmiRechner";
 import KjouleRechner from "./kjoule/kJouleUmrechner";
 import Startseite from "./startseite/startseite";
 import Anmeldevorgang from "./anmeldung/anmeldevorgang";
+import Impressum from "./impressum/impressum"
 class App {
     /**
      * Konstruktor.
@@ -31,6 +32,7 @@ class App {
             "/kjouleRechner/":              () => this.showKjoule(),
             "/bmiRechner/":  () => this.showBmi(),
             "/maximalkraftRechner/":     () => this.showMaximalKraftrechner(),
+            "/impressum/":    () => this.showImpressum(),
         }).resolve();
 
         this._router.notFound(()=>{
@@ -78,6 +80,7 @@ class App {
         let imageArrowDiv = document.getElementById('arrowDowndiv');
         imageArrowDiv.style.display = 'block';
         imageArrow.addEventListener("click", animateArrow);
+
         /**Footer Menü wird oben mit einer Klapptafel realisiert*/
         let imageFooterMenu = document.getElementById("footerMenuP");
         imageFooterMenu.addEventListener("click", showFooterMenu);
@@ -87,6 +90,9 @@ class App {
         let auswahlAbi = document.getElementById('auswahlAbi');
         let auswahlSas = document.getElementById('auswahlSas');
         let auswahlhan = document.getElementById('auswahlHan');
+
+        /**Seite für Impressum*/
+       let auswahlImpressum = document.getElementById('impressum');
 
         startseiteButton.addEventListener("click",()=>{
             // this.showStartseite();
@@ -108,7 +114,11 @@ class App {
             this._router.navigate('/kjouleRechner/');
             console.log("kjoule");
         });
-        this._router.navigate("/wiFitness/")
+        /**Seite für Impressum*/
+        auswahlImpressum.addEventListener("click", ()=>{
+           this._router.navigate('/impressum/');
+           console.log("impressum")
+        });
     }
 
     showStartseite(){
@@ -127,6 +137,11 @@ class App {
 
     showMaximalKraftrechner(){
         let view = new OneRepetitionMaximum(this, this.db);
+        this._switchVisibleView(view)
+    }
+    /**Seite für Impressum*/
+    showImpressum(){
+        let view = new Impressum(this, this.db);
         this._switchVisibleView(view)
     }
 
@@ -235,9 +250,11 @@ function showFooterMenu() {
     let footerMenue = document.getElementById('footerMenu');
 
     if (!menuSindZusehen){
+        rotateImage(footerIcon, 'rotate(-180deg)')
         menuSindZusehen = true;
         footerMenue.style.display = 'inline-block';
     }else{
+        rotateImage(footerIcon, 'rotate(0deg)')
         menuSindZusehen = false;
         footerMenue.style.display = 'none';
     }
