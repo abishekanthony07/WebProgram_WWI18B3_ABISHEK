@@ -55,13 +55,48 @@
                                 Abishek A.</a><br>
                         </div>
                     </div>
-                <li><div id="Logout">Logout</div></li>
+                </li>
+                <li>
+                    <div id="logout">Logout</div>
                 </li>
             </ul>
         </div>
     </header>
     <!-- Hauptbereich (dynamisch je nach View)        -->
     <main>
+    </main>
+</section>
+<!--Section Anmeldung-->
+<section id="anmeldevorgang" class="hidden">
+    <main>
+        <div class="inhalt">
+            <!--            <form id="anmeldungForm">-->
+            <div class="grid-container">
+                <div class="grid-itemLeft">
+                    <label class="label" for="email">E-Mail: </label>
+                </div>
+                <div class="grid-itemRight">
+                    <input class="input" type="email" id="email" name="E-Mail" placeholder="E-Mail Adresse">
+                </div>
+                <div class="grid-itemLeft">
+                    <label class="label" for="password">Passwort: </label>
+                </div>
+                <div class="grid-itemRight">
+                    <input class="input" type="password" id="password" name="Passwort" placeholder="Passwort">
+                </div>
+                <div class="grid-itemLeft">
+                </div>
+                <div class="grid-itemRight">
+                    <input class="input" id="loginButton" type="submit" value="Anmelden">
+                </div>
+                <div class="grid-itemLeft">
+                </div>
+                <div class="grid-itemRight">
+                    <input class="input" id="registerButton" type="submit" value="Registrieren">
+                </div>
+            </div>
+            <!--            </form>-->
+        </div>
     </main>
 </section>
 <!--Section Startseite-->
@@ -449,48 +484,17 @@
         </div>
     </main>
 </section>
-<section id="anmeldevorgang" class="hidden">
-    <main>
-        <div class="inhalt">
-<!--            <form id="anmeldungForm">-->
-                <div class="grid-container">
-                    <div class="grid-itemLeft">
-                        <label class="label" for="email">E-Mail: </label>
-                    </div>
-                    <div class="grid-itemRight">
-                        <input class="input" type="email" id="email" name="E-Mail" placeholder="E-Mail Adresse">
-                    </div>
-                    <div class="grid-itemLeft">
-                        <label class="label" for="password">Passwort: </label>
-                    </div>
-                    <div class="grid-itemRight">
-                        <input class="input" type="password" id="password" name="Passwort" placeholder="Passwort">
-                    </div>
-                    <div class="grid-itemLeft">
-                    </div>
-                    <div class="grid-itemRight">
-                        <input class="input" id="loginButton" type="submit" value="Anmelden">
-                    </div>
-                    <div class="grid-itemLeft">
-                    </div>
-                    <div class="grid-itemRight">
-                        <input class="input" id="registerButton" type="submit" value="Registrieren">
-                    </div>
-                </div>
-<!--            </form>-->
-        </div>
-    </main>
-</section>
+<!--Section Impressum-->
 <section id="impressumSeite" class="hidden">
     <main>
-  <div class="inhalt">
-      <h3>Impressum:</h3><br>
-      WiFitness GmbH <br><br>
-      76229 Karlsruhe <br><br>
-      Tel.: 01616 0192640 <br><br>
-      E-Mail: WiFitness@web.de<br><br>
-      Inhaber: Abishek Anthony, Sascha Klevenhaus, Hannah Bjork<br><br>
-  </div>
+        <div class="inhalt">
+            <h3>Impressum:</h3><br>
+            WiFitness GmbH <br><br>
+            76229 Karlsruhe <br><br>
+            Tel.: 01616 0192640 <br><br>
+            E-Mail: WiFitness@web.de<br><br>
+            Inhaber: Abishek Anthony, Sascha Klevenhaus, Hannah Bjork<br><br>
+        </div>
     </main>
 </section>
 </body>

@@ -74,11 +74,14 @@ hr {
     color: ghostwhite;
 }
 
-#auswahlMenue button:hover, #impressum:hover, #socialMedia:hover {
+#auswahlMenue button:hover, #impressum:hover, #socialMedia:hover, #logout:hover {
     background: rgb(159, 96, 96);
 }
 
-#auswahlMenue button:focus, #auswahlMenue button:active, #impressum:focus, #impressum div:active, #socialMedia:focus, #socialMedia div:active {
+#auswahlMenue button:focus, #auswahlMenue button:active,
+#impressum:focus, #impressum div:active,
+#socialMedia:focus, #socialMedia div:active
+#logout:focus, #logout:active{
     outline: none;
 }
 
