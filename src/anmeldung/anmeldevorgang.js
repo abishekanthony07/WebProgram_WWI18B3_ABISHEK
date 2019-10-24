@@ -1,13 +1,10 @@
-import * as firebase from "firebase";
-
 let db;
 
 class Anmeldevorgang {
-    constructor(){
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-        this.db = firebase.firestore();
+    constructor(app, datenbank){
+        this._app = app;
+        this.db = datenbank;
+        db = this.db;
     }
 
     onShow() {
@@ -27,7 +24,7 @@ class Anmeldevorgang {
         let emailAgainSend;
         emailAgainSend = document.getElementById("emailErneutVersenden");
         emailAgainSend.addEventListener("click", () => {
-            firebase.auth().currentUser.sendEmailVerification();
+            this.db.auth().currentUser.sendEmailVerification();
         });
 
 

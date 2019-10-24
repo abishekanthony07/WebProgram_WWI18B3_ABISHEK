@@ -10,7 +10,7 @@ import Datenbank from "./datenbank/database";
 import BmiRechner from "./bmi/bmiRechner";
 import KjouleRechner from "./kjoule/kJouleUmrechner";
 import Startseite from "./startseite/startseite";
-import Anmeldevorgang from "./datenbank/anmeldevorgang";
+import Anmeldevorgang from "./anmeldung/anmeldevorgang";
 class App {
     /**
      * Konstruktor.
@@ -26,8 +26,8 @@ class App {
         this.db = new Datenbank();
 
         this._router.on({
-            "login": ()=> this.login(),
-            "*":                       () => this.showStartseite(),
+            "*":                       () => this.showLogin(),
+            "wiFitness": ()=> this.showStartseite(),
             "/kjouleRechner/":              () => this.showKjoule(),
             "/bmiRechner/":  () => this.showBmi(),
             "/maximalkraftRechner/":     () => this.showMaximalKraftrechner(),
@@ -92,8 +92,8 @@ class App {
         this._router.navigate('login');
     }
 
-    login(){
-        let view = new Anmeldevorgang();
+    showLogin(){
+        let view = new Anmeldevorgang(this, this.db);
         this._switchVisibleView(view);
         console.log("Anmeldung");
     }
