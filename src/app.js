@@ -61,11 +61,27 @@ class App {
     start() {
         console.log("Die Klasse App sagt Hallo!");
         this._router.resolve();
+        let imageArrow = document.getElementById('arrowDowndiv');
+        imageArrow.style.display = 'none';
+        let imageFooterMenu = document.getElementById("footerMenuP");
+        imageFooterMenu.style.display = 'none';
+    }
+
+    showLogin(){
+        let view = new Anmeldevorgang(this, this.db);
+        this._switchVisibleView(view);
+        console.log("Anmeldung");
+    }
+
+    showStartseiteAndSetListener(){
         let imageArrow = document.getElementById('arrowDown');
+        let imageArrowDiv = document.getElementById('arrowDowndiv');
+        imageArrowDiv.style.display = 'block';
         imageArrow.addEventListener("click", animateArrow);
         /**Footer Menü wird oben mit einer Klapptafel realisiert*/
         let imageFooterMenu = document.getElementById("footerMenuP");
         imageFooterMenu.addEventListener("click", showFooterMenu);
+        imageFooterMenu.style.display = 'block';
 
         let startseiteButton = document.getElementById('startseite');
         let auswahlAbi = document.getElementById('auswahlAbi');
@@ -92,12 +108,7 @@ class App {
             this._router.navigate('/kjouleRechner/');
             console.log("kjoule");
         });
-    }
-
-    showLogin(){
-        let view = new Anmeldevorgang(this, this.db);
-        this._switchVisibleView(view);
-        console.log("Anmeldung");
+        this._router.navigate("/wiFitness/")
     }
 
     showStartseite(){

@@ -1,7 +1,7 @@
 let db;
 
 class Anmeldevorgang {
-    constructor(app, datenbank){
+    constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
         db = this.db;
@@ -14,9 +14,6 @@ class Anmeldevorgang {
             main: section.querySelectorAll("main > *"),
         };
         console.log('Page loaded');
-
-        //Submit Function
-
         return content;
     }
 
@@ -28,11 +25,11 @@ class Anmeldevorgang {
             this.db.loginUser(
                 email,//email
                 password,//passwort
-                ()=>{//failure
+                () => {//failure
                     alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
                 },
-                ()=>{//success
-                    this._app._router.navigate('/wiFitness/');
+                () => {//success
+                    this._app.showStartseiteAndSetListener();
                 });
         });
 
@@ -40,9 +37,7 @@ class Anmeldevorgang {
         registerButton.addEventListener("click", () => {
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
-            this.db.createUser(
-                email,//email
-                password);
+            this.db.createUser(email, password);
         });
     }
 
@@ -54,4 +49,5 @@ class Anmeldevorgang {
         return "Login";
     }
 }
+
 export default Anmeldevorgang;
