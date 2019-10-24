@@ -22,10 +22,10 @@ class Anmeldevorgang {
 
     onLoad() {
         let emailAgainSend;
-        emailAgainSend = document.getElementById("emailErneutVersenden");
-        emailAgainSend.addEventListener("click", () => {
-            this.db.auth().currentUser.sendEmailVerification();
-        });
+        // emailAgainSend = document.getElementById("emailErneutVersenden");
+        // emailAgainSend.addEventListener("click", () => {
+        //     this.db.auth().currentUser.sendEmailVerification();
+        // });
 
 
         let loginButton = document.getElementById("loginButton");
