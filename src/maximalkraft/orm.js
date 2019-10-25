@@ -27,12 +27,10 @@ class OneRepetitionMaximum{
         let berechneButton = document.getElementById('berechneButton');
         berechneButton.addEventListener('click', ()=>{
             berechne(db);
-            alert("Message")
         });
         //wenn enter geklickt wird, wird die Berechnung ausgelöst
         window.addEventListener("keypress",(event)=>{
-            if (event.key == "Enter") {
-                event.preventDefault();
+            if (event.key === "Enter") {
                 berechne(db);
             }
         });
@@ -43,7 +41,7 @@ class OneRepetitionMaximum{
 //tabButtons
         let savedData = document.getElementById('savedDataButton');
         savedData.addEventListener('click', () => {
-            showSavedDataHtml(db,inhalt, savedDataDiv, editDataDiv)
+            showSavedDataHtml(db, this._app,inhalt, savedDataDiv, editDataDiv)
         });
 
         let ormRechner = document.getElementById('ormRechnerButton');
@@ -53,7 +51,7 @@ class OneRepetitionMaximum{
 
         let editData = document.getElementById('editDataButton');
         editData.addEventListener('click', () => {
-            showEditDataHtml(this.db, inhalt, savedDataDiv, editDataDiv)
+            showEditDataHtml(this.db, this._app,inhalt, savedDataDiv, editDataDiv)
         });
     }
 
@@ -70,52 +68,60 @@ class OneRepetitionMaximum{
 /**
  * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
  */
-let showSavedDataHtml = (db, inhalt, savedDataDiv, editDataDiv) => {
+let showSavedDataHtml = (db, app,inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    getAndSetData(db, () => {
-        let myChartObject = document.getElementById('myChart');
-        let chart = new Chart(myChartObject, {
-            type: "line",
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: "Deine Maximalkraft in Kg",
-                    backgroundColor: 'rgba(159, 96, 96, 0.4)',
-                    borderColor: 'rgba(159, 96, 96, 1)',
-                    data: data
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        tricks: {
-                            beginAtZero: true
-                        }
+    app.showLoadingscreen();
+    getAndSetData(db, (empty) => {
+        if(empty === 'empty'){
+            savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
+        }else{
+            savedDataDiv.innerHTML = "<canvas id=\"myChart\"></canvas>";
+            let myChartObject = document.getElementById('myChart');
+            let chart = new Chart(myChartObject, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Deine Maximalkraft in Kg",
+                        backgroundColor: 'rgba(159, 96, 96, 0.4)',
+                        borderColor: 'rgba(159, 96, 96, 1)',
+                        data: data
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            tricks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
                 }
-            }
-        });
+            });
+            app.hideLoadingscreen();
+        }
     });
-}
+};
 
 /**
  * Diese Methode zeigt die Startseite von der Maximalkraft an.
  */
-let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) =>{
+let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'block';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'none';
-}
+};
 
 /**
  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
  */
-let showEditDataHtml = (db, inhalt, savedDataDiv, editDataDiv) =>{
+let showEditDataHtml = (db, app,inhalt, savedDataDiv, editDataDiv) =>{
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
+    app.showLoadingscreen();
     console.log("Datenbank", db);
     db.getData('orm', (array) => {
         let index;
@@ -134,21 +140,24 @@ let showEditDataHtml = (db, inhalt, savedDataDiv, editDataDiv) =>{
             newEl=editDataDiv.appendChild(newEl);
             //delete Listener wird gesetzt
             newEl.addEventListener('click',(event)=>{
-                deleteElement(db,event, inhalt, savedDataDiv, editDataDiv);
+                deleteElement(db,app,event, inhalt, savedDataDiv, editDataDiv);
             });
         }
+        app.hideLoadingscreen();
     })
-}
+};
 
-let deleteElement = (db ,event, inhalt, savedDataDiv, editDataDiv)=>{
+let deleteElement = (db ,app,event, inhalt, savedDataDiv, editDataDiv)=>{
         let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
+        if (arrayList.length===0){
+            editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+        }
     db.saveData('orm', arrayList, ()=>{
-        editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
-        showEditDataHtml(inhalt, savedDataDiv,editDataDiv);
+        showEditDataHtml(db, app,inhalt,savedDataDiv,editDataDiv);
     });
 
-    }
+    };
 
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
@@ -162,8 +171,8 @@ let berechne=(db) => {
         let prozentsatzORM = document.getElementById('prozentsatzORM');
         let prozent = calculate(wiederholungszahl.value);
         let ergebnis = gewicht.value / prozent;
-    ergebnis = ergebnis.toFixed(2);
-    prozent = prozent.toFixed(2);
+        ergebnis = ergebnis.toFixed(2);
+        prozent = prozent.toFixed(2);
         maximalkraft.innerHTML = ergebnis.toString() + " =";
         prozentsatzORM.innerText = prozent.toString();
         gestemmtesGewichtORM.innerText = gewicht.value.toString();
@@ -171,7 +180,7 @@ let berechne=(db) => {
         //Liste wird geupdated
         if (array === 'empty') {
             array = [{
-                timestamp: new App().timeStamp(),
+                timestamp:App.timeStamp(),
                 gewicht: gewicht.value.toString(),
                 wiederholungszahl: wiederholungszahl.value.toString(),
                 prozent: prozent.toString(),
@@ -179,18 +188,16 @@ let berechne=(db) => {
             }]
         } else {
             array.push({
-                timestamp: new App().timeStamp(),
+                timestamp: App.timeStamp(),
                 gewicht: gewicht.value.toString(),
                 wiederholungszahl: wiederholungszahl.value.toString(),
                 prozent: prozent.toString(),
                 maximalkraft: ergebnis.toString()
             });
         }
-        db.saveData('orm', array,()=>{
-            console.log("Saved")
-        });
+        db.saveData('orm', array, ()=>{});
     });
-}
+};
 
 let labels = [];
 let data = [];
@@ -207,16 +214,22 @@ let getAndSetData = (db, callback) => {
         let counter;
         labels = [array.length];
         data = [array.length];
+        console.log(array);
+        if (array.length === 0){
+            console.log("fertig");
+            callback('empty');
+        }
         for ( counter = 0; counter<array.length; counter++){
             let element = array[counter];
             labels[counter] = element.timestamp;
             data[counter] = element.maximalkraft;
             if (counter === array.length - 1) {
+
                 callback();
             }
         }
     })
-}
+};
 
 /**
  * Berechne den Prozentsatz für die bestimmte Wiederholungszahl

@@ -35,7 +35,6 @@ class App {
             "/bmiRechner/": () => this.showBmi(),
             "/maximalkraftRechner/": () => this.showMaximalKraftrechner(),
             "/impressum/": () => this.showImpressum(),
-            "loading": ()=> this.showLoadingscreen(),
         }).resolve();
 
         this._router.notFound(() => {
@@ -70,8 +69,13 @@ class App {
 
     /**Zeige einen Ladebildschirm*/
     showLoadingscreen(){
-        let view = new Loading(this, this.db);
-        this._switchVisibleView(view);
+        let loading = document.getElementsByClassName('loading');
+        loading.item(0).style.display = 'block';
+    }
+    /**Blende Ladebildschirm aus*/
+    hideLoadingscreen(){
+        let loading = document.getElementsByClassName('loading');
+        loading.item(0).style.display = 'none';
     }
 
     /**Zeige die Login Seite an*/
@@ -87,7 +91,7 @@ class App {
         imageFooterMenu.style.display = 'none';
         let footerMenu = document.getElementById('footerMenu');
         footerMenu.style.display = 'none';
-
+        this.hideLoadingscreen();
         let view = new Anmeldevorgang(this, this.db);
         this._switchVisibleView(view);
         console.log("Anmeldung");
@@ -250,7 +254,7 @@ class App {
      * Diese Methode erstellt einen Zeitstempel.
      * @returns {string}
      */
-    timeStamp() {
+    static timeStamp() {
         let today = new Date();
         return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " am " + today.getDate() + "." + today.getMonth() + "." + today.getFullYear();
     }

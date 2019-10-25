@@ -83,7 +83,7 @@ class Datenbank {
         }, (error)=>{
             console.log(error);
             failure(error);
-        });;
+        });
     }
 
     saveData(collection, set, callback) {
@@ -92,9 +92,10 @@ class Datenbank {
             array: set
         }).then(() => {
             console.log("Status saved!");
-            callback;
+            callback();
         }).catch((error) => {
             console.log(error.message, error);
+            callback();
         });
     }
 

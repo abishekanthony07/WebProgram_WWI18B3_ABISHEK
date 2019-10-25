@@ -20,7 +20,7 @@ class Anmeldevorgang {
     onLoad() {
         let loginButton = document.getElementById("loginButton");
         loginButton.addEventListener("click", () => {
-            this._app._router.navigate('loading');
+            this._app.showLoadingscreen();
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
             this.db.loginUser(
@@ -31,6 +31,7 @@ class Anmeldevorgang {
                     alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
                 },
                 (datenbank) => {//success
+                    this._app.hideLoadingscreen();
                     this._app.showStartseiteAndSetListener(datenbank);
                 });
         });
