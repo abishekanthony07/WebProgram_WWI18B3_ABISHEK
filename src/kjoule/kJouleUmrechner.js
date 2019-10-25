@@ -17,6 +17,7 @@ class KjouleRechner{
         this._app = app;
         this.db = datenbank;
         db = this.db;
+        this.loadingID = 'kjouleLoading';
     }
 
     onShow(){

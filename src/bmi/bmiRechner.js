@@ -84,6 +84,7 @@ class BmiRechner {
         this._app = app;
         this.db = datenbank;
         db = this.db;
+        this.loadingID = 'bmiLoading';
     }
 
     onShow() {

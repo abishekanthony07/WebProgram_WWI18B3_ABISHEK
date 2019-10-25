@@ -68,15 +68,16 @@ class App {
     }
 
     /**Zeige einen Ladebildschirm*/
-    showLoadingscreen(){
-        let loading = document.getElementsByClassName('loading');
-        loading.item(0).style.display = 'block';
+    showLoadingscreen(id){
+       let loading = document.getElementById(id);
+       console.log(loading);
+       loading.style.display = 'block';
     }
     /**Blende Ladebildschirm aus*/
-    hideLoadingscreen(){
-        let loading = document.getElementsByClassName('loading');
-        loading.item(0).style.display = 'none';
-    }
+    hideLoadingscreen(id){
+        let loading = document.getElementById(id);
+    loading.style.display = 'none';
+}
 
     /**Zeige die Login Seite an*/
     showLogin() {
@@ -91,7 +92,6 @@ class App {
         imageFooterMenu.style.display = 'none';
         let footerMenu = document.getElementById('footerMenu');
         footerMenu.style.display = 'none';
-        this.hideLoadingscreen();
         let view = new Anmeldevorgang(this, this.db);
         this._switchVisibleView(view);
         console.log("Anmeldung");

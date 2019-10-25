@@ -1,15 +1,15 @@
-#loading {
+#anmeldeLoading, #startseiteLoading, #ormLoading, #bmiLoading, #kjouleLoading{
     display: none;
     position: fixed;
     left: 50%;
     top: 50%;
     z-index: 1;
-    width: 150px;
-    height: 150px;
-    margin: -75px 0 0 -75px;
-    border: 16px solid white;
+    width: 15em;
+    height: 15em;
+    margin: -7em 0 0 -7em;
+    border: 1em solid white;
     border-radius: 50%;
-    border-top: 16px solid rgb(159, 96, 96);
+    border-top: 1em solid rgb(159, 96, 96);
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }

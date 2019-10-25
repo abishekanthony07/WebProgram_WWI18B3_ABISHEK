@@ -5,13 +5,14 @@ class Anmeldevorgang {
         this._app = app;
         this.db = datenbank;
         db = this.db;
+        this.loadingID = 'anmeldeLoading';
     }
 
     onShow() {
-        let section = document.querySelector("#anmeldevorgang").cloneNode(true);
+        this.section = document.querySelector("#anmeldevorgang").cloneNode(true);
         let content = {
             className: "visible",
-            main: section.querySelectorAll("main > *"),
+            main: this.section.querySelectorAll("main > *"),
         };
         console.log('Page loaded');
         return content;
@@ -20,7 +21,7 @@ class Anmeldevorgang {
     onLoad() {
         let loginButton = document.getElementById("loginButton");
         loginButton.addEventListener("click", () => {
-            this._app.showLoadingscreen();
+            this._app.showLoadingscreen(this.loadingID);
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
             this.db.loginUser(
@@ -31,7 +32,7 @@ class Anmeldevorgang {
                     alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
                 },
                 (datenbank) => {//success
-                    this._app.hideLoadingscreen();
+                    this._app.hideLoadingscreen(this.loadingID);
                     this._app.showStartseiteAndSetListener(datenbank);
                 });
         });

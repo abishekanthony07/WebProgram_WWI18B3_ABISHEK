@@ -1,5 +1,6 @@
 import App from "../app.js"
 import Chart from "chart.js";
+
 let db;
 
 class OneRepetitionMaximum{
@@ -7,6 +8,7 @@ class OneRepetitionMaximum{
         this._app = app;
         this.db = datenbank;
         db = this.db;
+        this.loadingID = 'ormLoading';
     }
 
     onShow(){
@@ -26,12 +28,12 @@ class OneRepetitionMaximum{
         // window.addEventListener('load', ()=>{
         let berechneButton = document.getElementById('berechneButton');
         berechneButton.addEventListener('click', ()=>{
-            berechne(db);
+            berechne(db, this._app, this.loadingID);
         });
         //wenn enter geklickt wird, wird die Berechnung ausgelöst
         window.addEventListener("keypress",(event)=>{
             if (event.key === "Enter") {
-                berechne(db);
+                berechne(db, this._app, this.loadingID);
             }
         });
 //getAllImportantDivs
@@ -41,7 +43,7 @@ class OneRepetitionMaximum{
 //tabButtons
         let savedData = document.getElementById('savedDataButton');
         savedData.addEventListener('click', () => {
-            showSavedDataHtml(db, this._app,inhalt, savedDataDiv, editDataDiv)
+            showSavedDataHtml(db, this._app, this.loadingID, inhalt, savedDataDiv, editDataDiv)
         });
 
         let ormRechner = document.getElementById('ormRechnerButton');
@@ -51,7 +53,7 @@ class OneRepetitionMaximum{
 
         let editData = document.getElementById('editDataButton');
         editData.addEventListener('click', () => {
-            showEditDataHtml(this.db, this._app,inhalt, savedDataDiv, editDataDiv)
+            showEditDataHtml(this.db, this._app, this.loadingID, inhalt, savedDataDiv, editDataDiv)
         });
     }
 
@@ -68,14 +70,15 @@ class OneRepetitionMaximum{
 /**
  * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
  */
-let showSavedDataHtml = (db, app,inhalt, savedDataDiv, editDataDiv) => {
+let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    app.showLoadingscreen();
+    app.showLoadingscreen(loadingID);
     getAndSetData(db, (empty) => {
         if(empty === 'empty'){
             savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
+            app.hideLoadingscreen(loadingID);
         }else{
             savedDataDiv.innerHTML = "<canvas id=\"myChart\"></canvas>";
             let myChartObject = document.getElementById('myChart');
@@ -100,7 +103,7 @@ let showSavedDataHtml = (db, app,inhalt, savedDataDiv, editDataDiv) => {
                     }
                 }
             });
-            app.hideLoadingscreen();
+            app.hideLoadingscreen(loadingID);
         }
     });
 };
@@ -117,11 +120,11 @@ let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
 /**
  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
  */
-let showEditDataHtml = (db, app,inhalt, savedDataDiv, editDataDiv) =>{
+let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
-    app.showLoadingscreen();
+    app.showLoadingscreen(loadingID);
     console.log("Datenbank", db);
     db.getData('orm', (array) => {
         let index;
@@ -140,21 +143,21 @@ let showEditDataHtml = (db, app,inhalt, savedDataDiv, editDataDiv) =>{
             newEl=editDataDiv.appendChild(newEl);
             //delete Listener wird gesetzt
             newEl.addEventListener('click',(event)=>{
-                deleteElement(db,app,event, inhalt, savedDataDiv, editDataDiv);
+                deleteElement(db, app, loadingID, event, inhalt, savedDataDiv, editDataDiv);
             });
         }
-        app.hideLoadingscreen();
+        app.hideLoadingscreen(loadingID);
     })
 };
 
-let deleteElement = (db ,app,event, inhalt, savedDataDiv, editDataDiv)=>{
+let deleteElement = (db, app, loadingID, event, inhalt, savedDataDiv, editDataDiv) => {
         let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
         if (arrayList.length===0){
             editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
         }
     db.saveData('orm', arrayList, ()=>{
-        showEditDataHtml(db, app,inhalt,savedDataDiv,editDataDiv);
+        showEditDataHtml(db, app, loadingID, inhalt, savedDataDiv, editDataDiv);
     });
 
     };
@@ -162,7 +165,8 @@ let deleteElement = (db ,app,event, inhalt, savedDataDiv, editDataDiv)=>{
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
  */
-let berechne=(db) => {
+let berechne = (db, app, loadingID) => {
+    app.showLoadingscreen(loadingID);
     db.getData('orm', (array)=>{
         let gewicht = document.getElementById('gewicht');
         let wiederholungszahl = document.getElementById('wiederholungszahl');
@@ -195,7 +199,9 @@ let berechne=(db) => {
                 maximalkraft: ergebnis.toString()
             });
         }
-        db.saveData('orm', array, ()=>{});
+        db.saveData('orm', array, () => {
+            app.hideLoadingscreen(loadingID);
+        });
     });
 };
 
@@ -280,7 +286,7 @@ let calculate = (wiederholungszahl)=> {
     } else {
         return 1.0;
     }
-}
+};
 
 /**
  * Diese Methode berechnet anhand der oberen, unteren Grenze von den Wiederholungen
@@ -292,5 +298,5 @@ let rechne =(wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnte
     let differenzP = prozentOben - prozentUnten;
     let geteilt = differenzP / teiler;
     return geteilt * differenzW + prozentUnten;
-}
+};
 export default OneRepetitionMaximum;
