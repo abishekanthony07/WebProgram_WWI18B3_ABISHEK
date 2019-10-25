@@ -130,13 +130,12 @@ let hintergrundAngleichen = (ergebnis, anzeige) => {
         anzeige.style.backgroundColor = "#c08080";
     }
 }
+
 let toggleDialog = () => {
     let dialog = document.querySelector('dialog'),
         closeButton = document.getElementById('close-dialog');
     if (!dialog.hasAttribute('open')) {
-        // show the dialog
         dialog.setAttribute('open', 'open');
-        // after displaying the dialog, focus the closeButton inside it
         closeButton.focus();
         closeButton.addEventListener('click', toggleDialog);
         // EventListener für ESC-Taste
@@ -145,7 +144,6 @@ let toggleDialog = () => {
                 toggleDialog();
             }
         }, true);
-        // only hide the background *after* you've moved focus out of the content that will be "hidden"
         let div = document.createElement('div');
         div.id = 'backdrop';
         document.body.appendChild(div);
@@ -156,4 +154,124 @@ let toggleDialog = () => {
         let lastFocus;
         lastFocus.focus();
     }
+}
+
+/**
+ * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
+ */
+let showSavedDataHtml = (db, inhalt, savedDataDiv, editDataDiv) => {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'block';
+    editDataDiv.style.display = 'none';
+    getAndSetData(db, () => {
+        let myChartObject = document.getElementById('myChart');
+        let chart = new Chart(myChartObject, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Deine Maximalkraft in Kg",
+                    backgroundColor: 'rgba(159, 96, 96, 0.4)',
+                    borderColor: 'rgba(159, 96, 96, 1)',
+                    data: data
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        tricks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+}
+
+let labels = [];
+let data = [];
+let arrayList = [];
+
+/**
+ * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
+ */
+let showEditDataHtml = (db, inhalt, savedDataDiv, editDataDiv) =>{
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'block';
+    console.log("Datenbank", db);
+    db.getData('orm', (array) => {
+        let index;
+        arrayList = array;
+        if (array.length===0){
+            editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+        }else{
+            editDataDiv.innerHTML ="";
+        }
+        for (index = 0; index < array.length; index++) {
+            let element = array[index];
+            let newEl = document.createElement("div");
+            newEl.className = "inhalt";
+            //Inhalt wird gesetzt
+            newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
+            newEl=editDataDiv.appendChild(newEl);
+            //delete Listener wird gesetzt
+            newEl.addEventListener('click',(event)=>{
+                deleteElement(db,event, inhalt, savedDataDiv, editDataDiv);
+            });
+        }
+    })
+}
+
+let deleteElement = (db ,event, inhalt, savedDataDiv, editDataDiv)=>{
+    let deleteIndex = event.target.parentNode.firstChild.textContent;
+    arrayList.splice(deleteIndex, 1);
+    db.saveData('orm', arrayList, ()=>{
+        editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+        showEditDataHtml(inhalt, savedDataDiv,editDataDiv);
+    });
+
+}
+
+/**
+ * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
+ */
+let berechne=(db) => {
+    db.getData('orm', (array)=>{
+        let gewicht = document.getElementById('gewicht');
+        let wiederholungszahl = document.getElementById('wiederholungszahl');
+        let maximalkraft = document.getElementById('ergebnis');
+        let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
+        let prozentsatzORM = document.getElementById('prozentsatzORM');
+        let prozent = calculate(wiederholungszahl.value);
+        let ergebnis = gewicht.value / prozent;
+        ergebnis = ergebnis.toFixed(2);
+        prozent = prozent.toFixed(2);
+        maximalkraft.innerHTML = ergebnis.toString() + " =";
+        prozentsatzORM.innerText = prozent.toString();
+        gestemmtesGewichtORM.innerText = gewicht.value.toString();
+
+        //Liste wird geupdated
+        if (array === 'empty') {
+            array = [{
+                timestamp: new App().timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            }]
+        } else {
+            array.push({
+                timestamp: new App().timeStamp(),
+                gewicht: gewicht.value.toString(),
+                wiederholungszahl: wiederholungszahl.value.toString(),
+                prozent: prozent.toString(),
+                maximalkraft: ergebnis.toString()
+            });
+        }
+        db.saveData('orm', array,()=>{
+            console.log("Saved")
+        });
+    });
 }
