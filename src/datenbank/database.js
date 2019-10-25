@@ -48,7 +48,6 @@ class Datenbank {
     }
 
     loginUser(email, password, failure, success) {
-        console.log(email + "  " + password);
         firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
             console.log("Login erfolgreich!", output);
             if (output.user.emailVerified) {
