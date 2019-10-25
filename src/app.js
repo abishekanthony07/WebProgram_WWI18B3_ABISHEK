@@ -68,7 +68,7 @@ class App {
     showLogin() {
         /**Die Header müssen auf dieser Art und Weise entfernt werden,
          * damit die Menüs ned angezeigt werden.
-        **/
+         **/
         let imageArrow = document.getElementById('arrowDowndiv');
         imageArrow.style.display = 'none';
         let imageFooterMenu = document.getElementById("footerMenuP");
@@ -76,20 +76,27 @@ class App {
         let footerMenu = document.getElementById('footerMenu');
         footerMenu.style.display = 'none';
 
-        this.db.setDb((firebase)=>{
-            if (firebase != null){
-                let view = new Anmeldevorgang(this, this.db);
-                this._switchVisibleView(view);
-                console.log("Anmeldung");
+        let view = new Anmeldevorgang(this, this.db);
+        this._switchVisibleView(view);
+        console.log("Anmeldung");
 
-                let anmeldung = document.getElementById("loginButton");
-                window.addEventListener("keypress", (p) => {
-                    if (p.key === "Enter") {
-                        this.showStartseiteAndSetListener();
-                    }
-                });
+        //Anmelde-Button reagiert auf enter-Tastendruck
+        window.addEventListener("keypress", (p) => {
+            if (p.key === "Enter") {
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('password').value;
+                this.db.loginUser(
+                    email,//email
+                    password,//passwort
+                    () => {//failure
+                        alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
+                    },
+                    (datenbank) => {//success
+                        this.showStartseiteAndSetListener(datenbank);
+                    });
             }
         });
+
     }
 
     /**
@@ -143,10 +150,10 @@ class App {
         });
         /**Logout-Listener*/
         let logout = document.getElementById('logout');
-        logout.addEventListener("click", ()=>{
-            this.db.logoutUser(()=>{
+        logout.addEventListener("click", () => {
+            this.db.logoutUser(() => {
                 this._router.navigate("*");
-            },(error)=>{
+            }, (error) => {
                 alert(error.message);
             });
         });
@@ -157,13 +164,13 @@ class App {
         let here_kjoule = document.getElementById("here_KCalUmrechner");
         let here_maxKraft = document.getElementById("here_Maximal");
 
-        here_bmi.addEventListener("click", ()=>{
+        here_bmi.addEventListener("click", () => {
             this._router.navigate('/bmiRechner/');
         });
-        here_maxKraft.addEventListener("click", ()=>{
+        here_maxKraft.addEventListener("click", () => {
             this._router.navigate('/maximalkraftRechner/');
         });
-        here_kjoule.addEventListener("click", ()=>{
+        here_kjoule.addEventListener("click", () => {
             this._router.navigate('/kjouleRechner/');
         });
     }
@@ -277,7 +284,7 @@ let buttonsSindZusehen = false;
 /**
  * Diese Methode animiert unser Pfeil zum anzeigen der 3 verschiedenen Seiten.
  */
-function animateArrow() {
+let animateArrow = () => {
     let arrowDown = document.getElementById('arrowDown');
     let arrowDownDiv = document.getElementById('arrowDowndiv');
     let auswahlMenue = document.getElementById('auswahlMenue');
@@ -315,7 +322,7 @@ function animateArrow() {
  * @param img
  * @param degree
  */
-function rotateImage(img, degree) {
+let rotateImage = (img, degree) => {
     img.style.transform = degree;
     img.style.WebkitTransitionDuration = '0.5s';
 }
@@ -326,7 +333,7 @@ let menuSindZusehen = false;
 /**
  *'Footer'-Menü wird eingeblendet
  */
-function showFooterMenu() {
+let showFooterMenu = () => {
     let footerIcon = document.getElementById('footerMenuP');
     let footerMenue = document.getElementById('footerMenu');
 

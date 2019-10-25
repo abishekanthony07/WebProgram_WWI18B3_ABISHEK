@@ -32,13 +32,15 @@ body {
 
 /*---------------------------------------------------------------------------*/
 /*header*/
+
 header {
     flex: none;
     color: whitesmoke;
     position: relative;
-
 }
-
+#socialMedia, #logout, #impressum{
+    cursor: pointer;
+}
 #headerContent {
     /*background-color: rgb(159, 96, 96);*/
     background-image: linear-gradient(90deg, dimgray 2%, rgb(112,112,112));
@@ -103,7 +105,6 @@ hr {
 /*Runder Pfeil nach unten*/
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-
 }
 /*Footer als Dropdown Menü oben links*/
 #footerMenu{
@@ -156,9 +157,6 @@ main {
     padding: 4px;
 }
 
-
-
-
 /*---------------------------------------------------------------------------*/
 /*Footer*/
 /*Bei einem hover auf die einzelnen divs
@@ -178,14 +176,12 @@ footer {
     background-image: linear-gradient(90deg, dimgray 2%, rgb(140,140,140));
     height: 6%;
 }
-
 footer div {
     display: inline-table;
     padding: 1em;
     position: relative;
     text-align: center;
 }
-
 a.smLink:link {
     text-decoration: none;
     padding: 2px;
@@ -210,24 +206,19 @@ div#socialMedia:hover .socialMediaLinks{
 a:visited{
     color: black;
 }
-
-
 img.Instagram {
     width: 1em;
     height: 1em;
 }
-
 .hidden{
     display: none;
 }
-
 /* Größerer Bildschirm */
 @media screen and (min-width: 768px) {
     body{
         background-image: url(resources/PC_hantel.jpg);
     }
 }
-
 /* "hier"-Buttons wie Links anzeigen lassen */
 #here_Maximal, #here_BMI, #here_KCalUmrechner {
     color: blue;

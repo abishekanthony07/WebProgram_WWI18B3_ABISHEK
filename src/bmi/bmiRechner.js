@@ -111,7 +111,7 @@ let ablaufBMI = (db) => {
     console.log("test zuende");
 };
 
-function hintergrundAngleichen(ergebnis, anzeige) {
+let hintergrundAngleichen = (ergebnis, anzeige) => {
     if (ergebnis < 16) {
         anzeige.style.backgroundColor = "#7c7cbc";
     } else if (ergebnis > 16 && ergebnis < 17) {
@@ -130,7 +130,7 @@ function hintergrundAngleichen(ergebnis, anzeige) {
         anzeige.style.backgroundColor = "#c08080";
     }
 }
-function toggleDialog() {
+let toggleDialog = () => {
     let dialog = document.querySelector('dialog'),
         closeButton = document.getElementById('close-dialog');
     if (!dialog.hasAttribute('open')) {

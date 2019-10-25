@@ -3,7 +3,6 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import app from "../app";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDfiAtnO_l-I5ZxF3BvlY0Hctt8uPXwV7k",
@@ -15,24 +14,11 @@ const firebaseConfig = {
     appId: "1:758423002310:web:2fb945bc56ca20cdf90bc7",
     measurementId: "G-TNEMX97BZS"
 };
-
+let userId
 class Datenbank {
     constructor() {
-    }
-
-    setDb(callback){
-        // callback();
         if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig).then((output) => {
-               this.db = firebase.firestore();
-               callback();
-            }).catch((error) => {
-                    console.log(error);
-                }
-            )
-        }else {
-            this.db = firebase.firestore();
-            callback();
+            firebase.initializeApp(firebaseConfig);
         }
     }
 
@@ -62,11 +48,11 @@ class Datenbank {
         firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
             console.log("Login erfolgreich!", output);
             if (output.user.emailVerified) {
-                this.userId = output.user.uid;
+                userId = output.user.uid;
                 console.log("if-Anweisung -> Email vom User ist verifiziert!");
                 this.firebase = firebase;
                 this.datenbank = firebase.firestore();
-                success(this);
+                success();
             } else {
                 alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
             }
@@ -99,7 +85,7 @@ class Datenbank {
 
     saveData(collection, set, callback) {
         console.log("Bin drin", set);
-        firebase.firestore().collection(collection).doc(this.userId).set({
+        firebase.firestore().collection(collection).doc(userId).set({
             array: set
         }).then(() => {
             console.log("Status saved!");
@@ -110,7 +96,7 @@ class Datenbank {
     }
 
     getData(collection, callback) {
-        firebase.firestore().collection(collection).doc(this.userId).get().then(function (document) {
+        firebase.firestore().collection(collection).doc(userId).get().then(function (document) {
             if (document.exists) {
                 callback(document.data().array);
             } else {

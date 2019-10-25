@@ -45,7 +45,7 @@ class KjouleRechner{
 }
 export default KjouleRechner;
 
-function rechne1(){
+let rechne1 =()=>{
     db.getData("kJoule", (array) =>{
     let kjoulekalorien = document.getElementById('KJOULE');
     let summekjoulekalorien = kjoulekalorien.value / 4.184;
@@ -68,7 +68,7 @@ function rechne1(){
 }
 
 
-function rechne() {
+let rechne = () =>{
    db.getData("kJoule", (array) =>{
         let kilokalorien = document.getElementById('Kcal');
 
