@@ -73,6 +73,13 @@ class App {
         let view = new Anmeldevorgang(this, this.db);
         this._switchVisibleView(view);
         console.log("Anmeldung");
+
+        let anmeldung = document.getElementById("loginButton");
+        window.addEventListener("keypress", (p) => {
+            if (p.key === "Enter") {
+                this.showStartseiteAndSetListener();
+            }
+        });
     }
 
     showStartseiteAndSetListener(){
@@ -120,6 +127,21 @@ class App {
            console.log("impressum")
         });
         this._router.navigate('/wiFitness/')
+
+        //Navigation der "hier"-Buttons auf der Startseite
+        let here_bmi = document.getElementById("here_BMI");
+        let here_kjoule = document.getElementById("here_KCalUmrechner");
+        let here_maxKraft = document.getElementById("here_Maximal");
+
+        here_bmi.addEventListener("click", ()=>{
+            this._router.navigate('/bmiRechner/');
+        });
+        here_maxKraft.addEventListener("click", ()=>{
+            this._router.navigate('/maximalkraftRechner/');
+        });
+        here_kjoule.addEventListener("click", ()=>{
+            this._router.navigate('/kjouleRechner/');
+        });
     }
 
     showStartseite(){

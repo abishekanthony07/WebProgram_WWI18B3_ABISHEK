@@ -218,13 +218,17 @@ img.Instagram {
     display: none;
 }
 
-/*
- * Größerer Bildschirm
- */
+/* Größerer Bildschirm */
 @media screen and (min-width: 768px) {
     body{
         background-image: url(resources/PC_hantel.jpg);
     }
+}
+
+/* "hier"-Buttons wie Links anzeigen lassen */
+#here_Maximal, #here_BMI, #here_KCalUmrechner {
+    color: blue;
+    cursor: pointer;
 }
 
 /*Media Screen nach Anleitung*/
