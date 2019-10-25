@@ -18,14 +18,13 @@ class App {
      * Konstruktor.
      */
     constructor() {
-        this._title = "WiFitness";
+        this._title = "WebFitness";
         this._currentView = null;
-
+        this.db = new Datenbank();
         // Single Page Router aufsetzen
         this._router = new Navigo(null, false);
         this._currentUrl = "";
         this._navAborted = false;
-        this.db = new Datenbank();
 
         this._router.on({
             "*": () => this.showLogin(),
@@ -95,7 +94,6 @@ class App {
      * die Menüs auch angezeigt werden.
      */
     showStartseiteAndSetListener(datenbank) {
-        this.db = datenbank;
         /**einblenden von unsrerem Arrow*/
         let imageArrowDiv = document.getElementById('arrowDowndiv');
         imageArrowDiv.style.display = 'block';
