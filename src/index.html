@@ -6,6 +6,7 @@
     <script src="index.js"></script>
     <link rel="icon" href="resources/icon_wiFitness.png">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="loading/loadingScreen.css">
     <link rel="stylesheet" href="anmeldung/anmeldung.css">
     <link rel="stylesheet" href="bmi/bmiRechner.css">
     <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
@@ -71,7 +72,9 @@
 <!--Section Anmeldung-->
 <section id="anmeldevorgang" class="hidden">
     <main>
+        <div id="anmeldeLoading"></div>
         <div class="inhalt">
+            <div class="loading"></div>
             <!--            <form id="anmeldungForm">-->
             <div class="grid-container">
                 <div class="grid-itemLeft">
@@ -104,6 +107,7 @@
 <!--Section Startseite-->
 <section id="startseiteseite" class="hidden">
     <main>
+        <div id="startseiteLoading"></div>
         <div class="inhalt">
             <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
             <p>
@@ -131,6 +135,7 @@
 <!--Section BMI-Rechner-->
 <section id="bmiSeite" class="hidden">
     <main>
+        <div id="bmiLoading"></div>
         <div class="inhalt">
             <section>
                 <div>
@@ -327,7 +332,7 @@
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
     <main>
-
+        <div id="kjouleLoading"></div>
         <div id="datenbankmenu">
             <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
             <button class="tab" id="kJouleRechnerButton">Kalorien Umrechner</button>
@@ -366,12 +371,14 @@
 <section id="ormSeite" class="hidden">
     <main>
         <div>
+            <div id="ormLoading"></div>
             <div id="tabMenue">
                 <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
                 <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
                 <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
             </div>
             <div class="inhalt" id="inhaltORMDiv">
+                <div class="loading"></div>
                 <h1>Maximalkraft Rechner</h1>
                 <div id="beschreibungORM">
                     Die höchstmögliche Kraft, die das Nerv-Muskel-System bei maximaler Anspannung
@@ -480,6 +487,7 @@
                 <canvas id="myChart"></canvas>
             </div>
             <div id="editDataDiv">
+                <div class="loading"></div>
                 Sie haben keine Werte gespeichert!
             </div>
         </div>

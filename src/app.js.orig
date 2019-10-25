@@ -12,6 +12,7 @@ import KjouleRechner from "./kjoule/kJouleUmrechner";
 import Startseite from "./startseite/startseite";
 import Anmeldevorgang from "./anmeldung/anmeldevorgang";
 import Impressum from "./impressum/impressum"
+import Loading from "./loading/loading";
 
 class App {
     /**
@@ -81,9 +82,13 @@ class App {
     showLogin() {
         /**Die Header müssen auf dieser Art und Weise entfernt werden,
          * damit die Menüs ned angezeigt werden.
+<<<<<<< HEAD
          **/
+=======
+        **/
         let auswahlMenu = document.getElementById('auswahlMenue');
         auswahlMenu.style.display = 'none';
+>>>>>>> WWI18B3-016
         let imageArrow = document.getElementById('arrowDowndiv');
         imageArrow.style.display = 'none';
         let imageFooterMenu = document.getElementById("footerMenuP");
@@ -119,7 +124,12 @@ class App {
      * die Menüs auch angezeigt werden.
      */
     showStartseiteAndSetListener(datenbank) {
+<<<<<<< HEAD
+        /**einblenden von unsrerem Arrow*/
+=======
+        this.db = datenbank;
         /**einblenden von unsrerem ArrowDiv*/
+>>>>>>> WWI18B3-016
         let imageArrowDiv = document.getElementById('arrowDowndiv');
         imageArrowDiv.style.display = 'block';
         /**Listener für unserem Arrow*/

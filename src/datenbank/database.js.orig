@@ -73,8 +73,14 @@ class Datenbank {
         })
     }
 
+<<<<<<< HEAD
     logoutUser(success, failure) {
         firebase.auth().signOut().then(() => {
+            console.log(this.datenbank.getUser);
+=======
+    logoutUser(success, failure){
+        firebase.auth().signOut().then(()=>{
+>>>>>>> WWI18B3-016
             success();
         }, (error) => {
             console.log(error);
