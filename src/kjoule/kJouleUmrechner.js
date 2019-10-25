@@ -64,7 +64,7 @@ let rechne1 =()=>{
                 summekikalorien:summekjoulekalorien,
             });
         }
-        db.saveData("kJoule", array);
+        db.saveData("kJoule", array,()=>{});
     });
 }
 
@@ -84,15 +84,102 @@ let rechne = () =>{
            array = [{
                kcal:kilokalorien.value,
                summekikalorien:summekilokalorien,
+               timestamp: App.timeStamp(),
             }]
         }else{
            array.push({
                kcal:kilokalorien.value,
                summekikalorien:summekilokalorien,
+               timestamp: App.timeStamp(),
             });
        }
-       db.saveData("kJoule", array);
+       db.saveData("kJoule", array,()=>{});
    });
-}
+};
+// let labels = [];
+// let data = [];
+// let arrayList = [];
+// /**
+//  * Diese Methode zeigt alle gespeicherten Werte in einem Diagramm an.
+//  */
+// let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
+//     inhalt.style.display = 'none';
+//     savedDataDiv.style.display = 'block';
+//     editDataDiv.style.display = 'none';
+//     app.showLoadingscreen(loadingID);
+//     getAndSetData(db, (empty) => {
+//         if(empty === 'empty'){
+//             savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
+//             app.hideLoadingscreen(loadingID);
+//         }else{
+//             savedDataDiv.innerHTML = "<canvas id=\"myChart\"></canvas>";
+//             let myChartObject = document.getElementById('myChart');
+//             let chart = new Chart(myChartObject, {
+//                 type: "line",
+//                 data: {
+//                     labels: labels,
+//                     datasets: [{
+//                         label: "Deine Maximalkraft in Kg",
+//                         backgroundColor: 'rgba(159, 96, 96, 0.4)',
+//                         borderColor: 'rgba(159, 96, 96, 1)',
+//                         data: data
+//                     }]
+//                 },
+//                 options: {
+//                     scales: {
+//                         yAxes: [{
+//                             tricks: {
+//                                 beginAtZero: true
+//                             }
+//                         }]
+//                     }
+//                 }
+//             });
+//             app.hideLoadingscreen(loadingID);
+//         }
+//     });
+// };
+//
+// /**
+//  * Diese Methode zeigt die Startseite von der Maximalkraft an.
+//  */
+// let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
+//     inhalt.style.display = 'block';
+//     savedDataDiv.style.display = 'none';
+//     editDataDiv.style.display = 'none';
+// };
+//
+// /**
+//  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
+//  */
+// let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
+//     inhalt.style.display = 'none';
+//     savedDataDiv.style.display = 'none';
+//     editDataDiv.style.display = 'block';
+//     app.showLoadingscreen(loadingID);
+//     console.log("Datenbank", db);
+//     db.getData('bmi', (array) => {
+//         let index;
+//         arrayList = array;
+//         if (array.length===0){
+//             editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+//         }else{
+//             editDataDiv.innerHTML ="";
+//         }
+//         for (index = 0; index < array.length; index++) {
+//             let element = array[index];
+//             let newEl = document.createElement("div");
+//             newEl.className = "inhalt";
+//             //Inhalt wird gesetzt
+//             newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.ergebnis+" kg</div>";
+//             newEl=editDataDiv.appendChild(newEl);
+//             //delete Listener wird gesetzt
+//             newEl.addEventListener('click',(event)=>{
+//                 deleteElement(db, app, loadingID, event, inhalt, savedDataDiv, editDataDiv);
+//             });
+//         }
+//         app.hideLoadingscreen(loadingID);
+//     })
+// };
 
 

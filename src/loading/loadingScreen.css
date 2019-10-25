@@ -4,14 +4,14 @@
     left: 50%;
     top: 50%;
     z-index: 1;
-    width: 15em;
-    height: 15em;
-    margin: -7em 0 0 -7em;
+    width: 5em;
+    height: 5em;
+    margin: -3em 0 0 -3em;
     border: 1em solid white;
     border-radius: 50%;
     border-top: 1em solid rgb(159, 96, 96);
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
 @-webkit-keyframes spin {

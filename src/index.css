@@ -131,6 +131,13 @@ hr {
     justify-items: center;
     align-items: center;
 }
+#tabMenue, #datenbankmenu, #bmimenu{
+    border-bottom: black solid 1px;
+    background: rgba(245,245,245, 0.7);
+    border-radius: 2em;
+    color: black;
+    padding: 0;
+}
 
 
 /*Footer als Dropdown Menü oben links*/
