@@ -6,6 +6,7 @@
     <script src="index.js"></script>
     <link rel="icon" href="resources/icon_wiFitness.png">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="loading/loadingScreen.css">
     <link rel="stylesheet" href="anmeldung/anmeldung.css">
     <link rel="stylesheet" href="bmi/bmiRechner.css">
     <link rel="stylesheet" href="kjoule/kJouleUmrechner.css">
@@ -69,6 +70,7 @@
 <!--Section Anmeldung-->
 <section id="anmeldevorgang" class="hidden">
     <main>
+    
         <div class="inhalt">
             <!--            <form id="anmeldungForm">-->
             <div class="grid-container">
@@ -326,7 +328,6 @@
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
     <main>
-
         <div id="datenbankmenu">
             <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
             <button class="tab" id="kJouleRechnerButton">Kalorien Umrechner</button>
@@ -370,6 +371,7 @@
                 <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
                 <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
             </div>
+            <div class="loader"></div>
             <div class="inhalt" id="inhaltORMDiv">
                 <h1>Maximalkraft Rechner</h1>
                 <div id="beschreibungORM">
@@ -495,6 +497,12 @@
             E-Mail: WiFitness@web.de<br><br>
             Inhaber: Abishek Anthony, Sascha Klevenhaus, Hannah Bjork<br><br>
         </div>
+    </main>
+</section>
+<!--Section Loading-->
+<section id="loader" class="hidden">
+    <main>
+        <div id="loading"></div>
     </main>
 </section>
 </body>

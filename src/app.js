@@ -12,6 +12,7 @@ import KjouleRechner from "./kjoule/kJouleUmrechner";
 import Startseite from "./startseite/startseite";
 import Anmeldevorgang from "./anmeldung/anmeldevorgang";
 import Impressum from "./impressum/impressum"
+import Loading from "./loading/loading";
 
 class App {
     /**
@@ -34,6 +35,7 @@ class App {
             "/bmiRechner/": () => this.showBmi(),
             "/maximalkraftRechner/": () => this.showMaximalKraftrechner(),
             "/impressum/": () => this.showImpressum(),
+            "loading": ()=> this.showLoadingscreen(),
         }).resolve();
 
         this._router.notFound(() => {
@@ -66,10 +68,19 @@ class App {
         this._router.resolve();
     }
 
+    /**Zeige einen Ladebildschirm*/
+    showLoadingscreen(){
+        let view = new Loading(this, this.db);
+        this._switchVisibleView(view);
+    }
+
+    /**Zeige die Login Seite an*/
     showLogin() {
         /**Die Header müssen auf dieser Art und Weise entfernt werden,
          * damit die Menüs ned angezeigt werden.
         **/
+        let auswahlMenu = document.getElementById('auswahlMenue');
+        auswahlMenu.style.display = 'none';
         let imageArrow = document.getElementById('arrowDowndiv');
         imageArrow.style.display = 'none';
         let imageFooterMenu = document.getElementById("footerMenuP");
@@ -89,7 +100,7 @@ class App {
      */
     showStartseiteAndSetListener(datenbank) {
         this.db = datenbank;
-        /**einblenden von unsrerem Arrow*/
+        /**einblenden von unsrerem ArrowDiv*/
         let imageArrowDiv = document.getElementById('arrowDowndiv');
         imageArrowDiv.style.display = 'block';
         /**Listener für unserem Arrow*/

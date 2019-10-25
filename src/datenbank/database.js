@@ -79,7 +79,6 @@ class Datenbank {
 
     logoutUser(success, failure){
         firebase.auth().signOut().then(()=>{
-            console.log(this.datenbank.getUser);
             success();
         }, (error)=>{
             console.log(error);
