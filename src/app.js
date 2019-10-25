@@ -76,14 +76,18 @@ class App {
         let footerMenu = document.getElementById('footerMenu');
         footerMenu.style.display = 'none';
 
-        let view = new Anmeldevorgang(this, this.db);
-        this._switchVisibleView(view);
-        console.log("Anmeldung");
+        this.db.setDb((firebase)=>{
+            if (firebase != null){
+                let view = new Anmeldevorgang(this, this.db);
+                this._switchVisibleView(view);
+                console.log("Anmeldung");
 
-        let anmeldung = document.getElementById("loginButton");
-        window.addEventListener("keypress", (p) => {
-            if (p.key === "Enter") {
-                this.showStartseiteAndSetListener();
+                let anmeldung = document.getElementById("loginButton");
+                window.addEventListener("keypress", (p) => {
+                    if (p.key === "Enter") {
+                        this.showStartseiteAndSetListener();
+                    }
+                });
             }
         });
     }

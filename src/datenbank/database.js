@@ -18,10 +18,22 @@ const firebaseConfig = {
 
 class Datenbank {
     constructor() {
+    }
+
+    setDb(callback){
+        // callback();
         if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
+            firebase.initializeApp(firebaseConfig).then((output) => {
+               this.db = firebase.firestore();
+               callback();
+            }).catch((error) => {
+                    console.log(error);
+                }
+            )
+        }else {
+            this.db = firebase.firestore();
+            callback();
         }
-        this.db = firebase.firestore();
     }
 
     createUser(email, password) {
