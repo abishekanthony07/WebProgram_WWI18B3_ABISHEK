@@ -30,8 +30,6 @@ class Datenbank {
     createUser(email, password) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((output) => {
             console.log("Registrierung erfolgreich!", output);
-            this.userId = output.user.uid;
-            this.datenbank = firebase.firestore();
             output.user.sendEmailVerification();
             alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
         }).catch((error) => {
@@ -56,8 +54,9 @@ class Datenbank {
             console.log("Login erfolgreich!", output);
             if (output.user.emailVerified) {
                 this.userId = output.user.uid;
+                this.firebase = firebase;
                 this.datenbank = firebase.firestore();
-                success();
+                success(this);
             } else {
                 alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
             }
@@ -76,6 +75,16 @@ class Datenbank {
                 alert(error.message);
             }
         })
+    }
+
+    logoutUser(success, failure){
+        firebase.auth().signOut().then(()=>{
+            console.log(this.datenbank.getUser);
+            success();
+        }, (error)=>{
+            console.log(error);
+            failure(error);
+        });;
     }
 
     saveData(collection, set, callback) {

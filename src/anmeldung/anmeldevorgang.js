@@ -28,8 +28,8 @@ class Anmeldevorgang {
                 () => {//failure
                     alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
                 },
-                () => {//success
-                    this._app.showStartseiteAndSetListener();
+                (datenbank) => {//success
+                    this._app.showStartseiteAndSetListener(datenbank);
                 });
         });
 
