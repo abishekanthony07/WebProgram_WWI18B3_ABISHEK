@@ -55,13 +55,14 @@ class Datenbank {
                 success();
             } else {
                 alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
+                failure();
             }
         }).catch((error) => {
             if (error.code === "auth/wrong-password") {
                 alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
                 // console.log(error);
             } else if (error.code === "auth/too-many-requests") {
-                alert("Zu viele Fehlversuche! Böse!")
+                alert("Zu viele Fehlversuche!")
             } else if (error.code === "auth/argument-error") {
                 alert("Keine E-Mail vorhanden! Bitte registrieren Sie sich!");
                 // console.log(error);
@@ -70,6 +71,7 @@ class Datenbank {
             } else {
                 alert(error.message);
             }
+            failure();
         })
     }
 

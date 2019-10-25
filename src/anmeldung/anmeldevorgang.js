@@ -28,8 +28,7 @@ class Anmeldevorgang {
                 email,//email
                 password,//passwort
                 () => {//failure
-                    this._app._router.navigate("*");
-                    alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
+                    this._app.hideLoadingscreen(this.loadingID);
                 },
                 (datenbank) => {//success
                     this._app.hideLoadingscreen(this.loadingID);
