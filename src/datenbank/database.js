@@ -24,22 +24,21 @@ class Datenbank {
         this.db = firebase.firestore();
     }
 
-
     createUser(email, password) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((output) => {
             console.log("Registrierung erfolgreich!", output);
             output.user.sendEmailVerification();
             alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
         }).catch((error) => {
-            console.log(error);
+                console.log(error);
                 if (error.code === "auth/email-already-in-use") {
                     alert("Dieser E-Mail Adresse ist bereits vergeben!\n" +
                         "Sie können Ihr Passwort über den entsprechenden Button zurücksetzen oder " +
                         "sich mit dem zugehörigem Passwort einloggen.");
 
-                } else if (error.code === "auth/weak-password"){
+                } else if (error.code === "auth/weak-password") {
                     alert("Passwort ist zu kurz! Es muss mindestens 6 Zeichen lang sein!")
-                     } else {
+                } else {
                     alert(error.message);
                     alert("Registriervorgang fehlgeschlagen. Bitte versuchen Sie es erneut.");
                 }
@@ -53,6 +52,7 @@ class Datenbank {
             console.log("Login erfolgreich!", output);
             if (output.user.emailVerified) {
                 this.userId = output.user.uid;
+                console.log("if-Anweisung -> Email vom User ist verifiziert!");
                 this.firebase = firebase;
                 this.datenbank = firebase.firestore();
                 success(this);
@@ -76,11 +76,11 @@ class Datenbank {
         })
     }
 
-    logoutUser(success, failure){
-        firebase.auth().signOut().then(()=>{
+    logoutUser(success, failure) {
+        firebase.auth().signOut().then(() => {
             console.log(this.datenbank.getUser);
             success();
-        }, (error)=>{
+        }, (error) => {
             console.log(error);
             failure(error);
         });
