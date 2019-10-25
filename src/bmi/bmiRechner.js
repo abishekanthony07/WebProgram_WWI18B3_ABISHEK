@@ -130,7 +130,7 @@ let hintergrundAngleichen = (ergebnis, anzeige) => {
     } else if (ergebnis >= 40) {
         anzeige.style.backgroundColor = "#c08080";
     }
-}
+};
 
 let toggleDialog = () => {
     let dialog = document.querySelector('dialog'),
@@ -152,7 +152,5 @@ let toggleDialog = () => {
         dialog.removeAttribute('open');
         let div = document.querySelector('#backdrop');
         div.parentNode.removeChild(div);
-        let lastFocus;
-        lastFocus.focus();
     }
-}
+};
