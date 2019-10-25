@@ -138,7 +138,7 @@ class App {
         let auswahlhan = document.getElementById('auswahlHan');
         startseiteButton.addEventListener("click", () => {
             // this.showStartseite();
-            this._router.navigate('*');
+            this._router.navigate('/wiFitness/');
             console.log("startseite");
         });
         auswahlAbi.addEventListener("click", () => {
@@ -315,7 +315,7 @@ let animateArrow = () => {
         arrowDown.style.borderBottomLeftRadius = '0px';
         arrowDown.style.borderBottomRightRadius = '0px';
         //AuswahlMenu einblenden
-        auswahlMenue.style.display = 'inline-block';
+        auswahlMenue.style.display = 'grid';
     } else {
         rotateImage(arrowDown, 'rotate(0deg)');
         buttonsSindZusehen = false;

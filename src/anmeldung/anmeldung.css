@@ -3,7 +3,11 @@
 
 .grid-container{
     display: grid;
-    grid-template-columns: 50% auto;
+    grid-template-columns: auto auto;
+    text-align: center;
+    vertical-align: center;
+    horiz-align: center;
+
 }
 .grid-itemLeft{
     text-align: right;
@@ -12,18 +16,13 @@
     text-align: left;
 }
 .label{
-    padding-right: 1em;
+    width: 100px;
 }
 input{
     margin-bottom: 3px;
     width: 100%;
     border-style: solid;
     border-radius: 3px;
-}
-form#anmeldungForm{
-    text-align: center;
-    vertical-align: center;
-    horiz-align: center;
 }
 
 #loginButton:hover, #registerButton:hover{

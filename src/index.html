@@ -18,11 +18,11 @@
     <header>
         <div id="headerContent">
             <div class="h1" id="startseite"><b>WebFitness</b></div>
-            <nav id="auswahlMenue">
-                <button id="auswahlAbi"> Maximalkraft berechnen</button>
-                <button id="auswahlSas"> BMI berechnen</button>
-                <button id="auswahlHan">Kcal zu KJ Umrechner</button>
-            </nav>
+            <div id="auswahlMenue" class="grid-container-standard">
+                <div class="grid-item"><button id="auswahlAbi"> Maximalkraft berechnen</button></div>
+                <div class="grid-item"><button id="auswahlSas"> BMI berechnen</button></div>
+                <div class="grid-item"><button id="auswahlHan">Kcal zu KJ Umrechner</button></div>
+                </div>
         </div>
         <hr>
         <div id="arrowDowndiv">
@@ -372,10 +372,10 @@
     <main>
         <div>
             <div id="ormLoading"></div>
-            <div id="tabMenue">
-                <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
-                <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
-                <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
+            <div id="tabMenue" class="grid-container-standard">
+                <div class="grid-itemLeft"><button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button></div>
+                <div class="grid-item"> <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button></div>
+                <div class="grid-itemRight"><button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button></div>
             </div>
             <div class="inhalt" id="inhaltORMDiv">
                 <div class="loading"></div>

@@ -61,6 +61,19 @@ hr {
 #auswahlMenue {
     /*in JavaScrpt wird zwischen inline-block und none geswitched*/
     display: none;
+    -webkit-animation-name: menue;
+    -webkit-animation-duration: 1s;
+    animation-name: menue;
+    animation-duration: 1s;
+}
+@-webkit-keyframes menue {
+    from { opacity:0 }
+    to { opacity:1 }
+}
+
+@keyframes menue {
+    from{ opacity:0 }
+    to{ opacity:1 }
 }
 
 #auswahlMenue button, footer div {
@@ -92,7 +105,12 @@ hr {
     height: 1.3em;
     background-color: rgba(112,112,112,1);
     /*background-image: linear-gradient(90deg, dimgray 2%, rgba(112,112,112, 1));*/
+    -webkit-animation-name: menue;
+    -webkit-animation-duration: 1s;
+    animation-name: menue;
+    animation-duration: 1s;
 }
+
 #arrowDown:hover {
     background-color: rgba(255, 255, 255, 0.6);
 }
@@ -106,10 +124,23 @@ hr {
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
 }
+
+.grid-container-standard{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+    align-items: center;
+}
+
+
 /*Footer als Dropdown Menü oben links*/
 #footerMenu{
     position: absolute;
     left:0px;
+    -webkit-animation-name: animate;
+    -webkit-animation-duration: 1s;
+    animation-name: animate;
+    animation-duration: 1s;
     /*top:0px;
     /*height, da footer Menü im Header drinnen steckt, und daher nicht über die restliche Seite laufen kann*/
     height: 650px;
@@ -118,6 +149,15 @@ hr {
     background-color: rgba(255,255,255,0.9);
     color: black;
     text-align: left;
+}
+@-webkit-keyframes animate {
+    from { left:-100px; opacity:0 }
+    to { left:0px; opacity:1 }
+}
+
+@keyframes animate {
+    from{ left:-100px; opacity:0 }
+    to{ left:0; opacity:1 }
 }
 /*Listen ohne Listenpunkte*/
 li{
@@ -148,7 +188,12 @@ main {
     margin-top: 1.5em;
     margin-bottom: 9vh;
 }
-
+div{
+    -webkit-animation-name: menue;
+    -webkit-animation-duration: 1s;
+    animation-name: menue;
+    animation-duration: 1s;
+}
 .inhalt{
     background: rgba(245,245,245, 0.7);
     margin: 10px;
