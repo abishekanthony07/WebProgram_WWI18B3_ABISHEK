@@ -156,8 +156,6 @@ let toggleDialog = () => {
         dialog.removeAttribute('open');
         let div = document.querySelector('#backdrop');
         div.parentNode.removeChild(div);
-        let lastFocus;
-        lastFocus.focus();
     }
 };
 

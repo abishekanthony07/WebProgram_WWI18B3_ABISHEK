@@ -1,9 +1,11 @@
 #headline {
     text-align: center;
 }
+html{
+    font-size: medium;
+}
 .inhalt{
     background: rgba(245,245,245, 0.7);
-    /*margin: 15px;*/
     border-radius: 0.5em;
     color: black;
     padding: 4px;
@@ -17,18 +19,20 @@
     padding: 2px;
     margin: 2px;
 }
-.wikitable{
+table.wikitable{
     font-size: medium;
     border-collapse: collapse;
     color: black;
     margin-bottom: 10px;
+    width: 70vw;
+    height: 30vh;
+    align-items: center;
 }
 table, tr, th , td{
     border-color: black;
     border-width: 1px;
     border-style: solid;
     padding: 2px;
-
 }
 .bmi {
     white-space: nowrap;
@@ -36,6 +40,8 @@ table, tr, th , td{
 }
 #berechnenButton{
     font-size: medium;
+    width: 15vw;
+    height: 5vh;
 }
 /*Dialogfenster*/
 dialog {
@@ -92,6 +98,7 @@ dialog #close-dialog {
 
 td#starkesUntergewicht{
     background-color: #7c7cbc;
+    width: 20px;
 }
 
 td#mäßigesUntergewicht{
@@ -128,4 +135,7 @@ td#adipostasIII {
 .hide{
     visibility: hidden;
 }
-
+.eingabeBMI, .vertikal{
+    width: 80vw;
+    height: 8vh;
+}

@@ -19,10 +19,16 @@
         <div id="headerContent">
             <div class="h1" id="startseite"><b>WebFitness</b></div>
             <div id="auswahlMenue" class="grid-container-standard">
-                <div class="grid-item"><button id="auswahlAbi"> Maximalkraft berechnen</button></div>
-                <div class="grid-item"><button id="auswahlSas"> BMI berechnen</button></div>
-                <div class="grid-item"><button id="auswahlHan">Kcal zu KJ Umrechner</button></div>
+                <div class="grid-item">
+                    <button id="auswahlAbi"> Maximalkraft berechnen</button>
                 </div>
+                <div class="grid-item">
+                    <button id="auswahlSas"> BMI berechnen</button>
+                </div>
+                <div class="grid-item">
+                    <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+                </div>
+            </div>
         </div>
         <hr>
         <div id="arrowDowndiv">
@@ -137,12 +143,18 @@
     <main>
         <div id="bmiLoading"></div>
         <div id="bmimenu" class="grid-container-standard">
-            <div class="grid-itemLeft"><button class="tab" id="savingbmiButton">gespeicherten Werte anzeigen</button></div>
-            <div class="grid-item"> <button class="tab" id="bmiRechnerButton">BMI Rechner</button></div>
-            <div class="grid-itemRight"><button class="tab" id="bmiDataButton">gespeicherten Werte bearbeiten</button></div>
+            <div class="grid-itemLeft">
+                <button class="tab" id="savingbmiButton">gespeicherten Werte anzeigen</button>
+            </div>
+            <div class="grid-item">
+                <button class="tab" id="bmiRechnerButton">BMI Rechner</button>
+            </div>
+            <div class="grid-itemRight">
+                <button class="tab" id="bmiDataButton">gespeicherten Werte bearbeiten</button>
+            </div>
         </div>
         <div class="inhalt">
-            <section>
+            <div>
                 <div>
                     <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
 
@@ -150,43 +162,43 @@
                         <section class="eingabe">
                             <!----------------------------------- Schieberegler Alter-------------------------------->
                             <p>
-                                Hier zunächst dein Alter über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                                Zunächst ist Dein Alter wichtig. Das kannst Du über den Schieberegler eingeben oder
+                                direkt ins Feld eintragen.
                             </p>
                             <div>
-                                <label for="alter">0 Jahre</label>
+                                <label for="alter" class="eingabeBMI">0 Jahre</label>
                                 <input class="vertikal" name="alter"
                                        type="range" min="0" value="20" max="120"
                                        orient="horizontal" id="sliderAlter">
-                                <label for="Alter">120 Jahre</label>
+                                <label for="Alter" class="eingabeBMI">120 Jahre</label>
                             </div>
                             <br>
 
                             <div id="groesseAlter">
-                                <label>
+                                <label class="eingabeBMI">
                                     Alter:
                                     <input id="alter" type="number" min="0" max="220" step="1" value="30">
                                     Jahre
                                 </label>
                             </div>
-
                             <br>
                             <br>
-
                             <!----------------------------------- Schieberegler Größe-------------------------------->
                             <p>
-                                Hier zunächst deine Größe über den Schieberegler eingeben oder direkt ins Feld eingeben.
+                                Als nächstes ist Deine Größe über den Schieberegler einzugeben oder auch hier direkt ins
+                                Feld eintragen.
                             </p>
                             <div>
-                                <label for="groesse">0 cm</label>
+                                <label for="groesse" class="eingabeBMI">0 cm</label>
                                 <input class="vertikal" name="groesse"
                                        type="range" min="0" value="80" max="250"
                                        orient="horizontal" id="sliderGroesse">
-                                <label for="groesse" id="n2">250 cm</label>
+                                <label for="groesse" id="n2" class="eingabeBMI">250 cm</label>
                             </div>
                             <br>
 
-                            <div id="groesseFeld">
-                                <label>
+                            <div id="groesseFeld" class="eingabeBMI">
+                                <label class="eingabeBMI">
                                     Größe:
                                     <input id="groesse" type="number" min="0" max="220" step="1" value="175">
                                     cm
@@ -197,21 +209,20 @@
                             <br>
                             <!----------------------------------- Schieberegler Gewicht-------------------------------->
                             <p>
-                                Hier zunächst dein Gewicht über den Schieberegler eingeben oder direkt ins Feld
-                                eingeben.
+                                Als letzte Angabe wird Dein Gewicht benötigt um deinen BMI zu berechnen. Auch hier hast
+                                Du die Wahl zwischen Schieberegler und Feld.
                             </p>
                             <div>
-                                <label for="gewicht" id="D1">0 kg</label>
+                                <label for="gewicht" class="eingabeBMI">0 kg</label>
                                 <input class="vertikal" name="gewicht"
                                        type="range" min="0" value="80" max="250"
                                        orient="horizontal" id="sliderGewicht">
-                                <label for="gewicht" id="D3">250 kg</label>
-
+                                <label for="gewicht" class="eingabeBMI">250 kg</label>
                             </div>
                             <br>
-                            <div id="gewichtBMI">
+                            <div id="gewichtBMI" class="eingabeBMI">
                                 <label for="masse">
-                                    Masse:
+                                    Gewicht:
                                     <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
                                     kg
                                 </label>
@@ -220,22 +231,18 @@
                                 <button id="berechnenButton">BMI berechnen</button>
                             </div>
                         </section>
-
                     </div>
                     <br>
-                    <div id="ausgabe" class="inhalt">
-                    </div>
                 </div>
-            </section>
-
+            </div>
             <!------------------------------------------------Tabelle --------------------------------------------------->
-            <section>
+            <div>
                 <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
 
                 <table class="wikitable">
                     <tbody>
                     <tr>
-                        <th style="width:7px;"></th>
+                        <th></th>
                         <th>Kategorie</th>
                         <th>BMI (kg/m²)</th>
                         <th>Körpergewicht</th>
@@ -275,7 +282,7 @@
                         <td><b>Normalgewicht</b>
                         </td>
                         <td class="bmi"><b><span class="hide">&lt; </span>18,5 – &lt; 25<span
-                                style="visibility:hidden;">,0</span></b>
+                                class="hide">,0</span></b>
                         </td>
                         <td class="center"><b>Normalgewicht</b></td>
                     </tr>
@@ -326,14 +333,19 @@
                 </blockquote>
                 <!------------------------------------------Zusatzinformationen----------------------------------------->
                 <button id="open-dialog"> >>Schon gewusst? <<</button>
-
+                <!--------------------------------------------Schon gewusst?-------------------------------------------->
                 <dialog role="dialog" aria-labelledby="dialog-heading">
                     <button id="close-dialog">Schließen</button>
                     <h2 id="dialog-heading">Schon gewusst?</h2>
-                    <p> Hier werden demnächst Zusatzinformationen zum BMI angezeigt. </p>
+                    <p>
+                        Wenn dir ein Körperteil fehlt, kannst du das über eine Berechnung von deinem BMI abziehen und so
+                        erfahren,
+                        was das fehlende Körperteil für eine Auswirkung auf deinen BMI hat. Weitere Informationen
+                        findest du
+                        <a href="https://de.wikipedia.org/wiki/Body-Mass-Index">hier</a>.
+                    </p>
                 </dialog>
-            </section>
-
+            </div>
         </div>
     </main>
 </section>
@@ -342,10 +354,16 @@
     <main>
         <div id="kjouleLoading"></div>
         <div id="datenbankmenu" class="grid-container-standard">
-        <div class="grid-itemLeft"><button class="tab" id="savingButton">gespeicherten Werte anzeigen</button></div>
-        <div class="grid-item"> <button class="tab" id="kJouleRechnerButton">Kjoule Rechner</button></div>
-        <div class="grid-itemRight"><button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button></div>
-    </div>
+            <div class="grid-itemLeft">
+                <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
+            </div>
+            <div class="grid-item">
+                <button class="tab" id="kJouleRechnerButton">Kjoule Rechner</button>
+            </div>
+            <div class="grid-itemRight">
+                <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
+            </div>
+        </div>
         <div class="inhalt">
             <h3>Kalorien-Umrechner</h3>
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
@@ -380,9 +398,15 @@
         <div>
             <div id="ormLoading"></div>
             <div id="tabMenue" class="grid-container-standard">
-                <div class="grid-itemLeft"><button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button></div>
-                <div class="grid-item"> <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button></div>
-                <div class="grid-itemRight"><button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button></div>
+                <div class="grid-itemLeft">
+                    <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
+                </div>
+                <div class="grid-item">
+                    <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
+                </div>
+                <div class="grid-itemRight">
+                    <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
+                </div>
             </div>
             <div class="inhalt" id="inhaltORMDiv">
                 <div class="loading"></div>
