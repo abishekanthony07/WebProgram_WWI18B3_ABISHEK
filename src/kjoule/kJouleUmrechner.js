@@ -16,7 +16,7 @@ class KjouleRechner{
     constructor(app, datenbank){
         this._app = app;
         this.db = datenbank;
-        db = this.db;
+        db = datenbank;
         this.loadingID = 'kjouleLoading';
     }
 
@@ -32,7 +32,27 @@ class KjouleRechner{
     onLoad(){
         console.log('Page loaded');
         ablaufkJoule();
-        //Submit Function
+
+        //Tabs
+        //Container
+        let inhalt = document.getElementById("rechnertab");
+        let chart = document.getElementById("savedDataKjouleDiv");
+        let edit = document.getElementById("editDataKjouleDiv");
+        console.log("Nachteile 37 tabChart");
+        let tabChart =  document.getElementById("savingButton");
+        tabChart.addEventListener('click',()=>{
+            console.log("Jaödlsakdad#a");
+            showSavedDataHtml(this.db, this._app, null, inhalt, chart, edit);
+        });
+        let tabRechner =  document.getElementById("kJouleRechnerButton");
+        tabRechner.addEventListener('click',()=>{
+            showKjouleRechnerHtml(inhalt, chart, edit);
+        });
+        let tabEdit =  document.getElementById("editierenDataButton");
+        tabEdit.addEventListener('click',()=>{
+            showEditDataHtml(this.db, this._app, null,inhalt, chart, edit);
+        });
+        showKjouleRechnerHtml(inhalt, chart, edit);
 
     }
 
@@ -45,6 +65,26 @@ class KjouleRechner{
     }
 }
 export default KjouleRechner;
+
+let showKjouleRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
+    inhalt.style.display = 'block';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'none';
+};
+
+let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'block';
+    editDataDiv.style.display = 'none';
+};
+let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
+    inhalt.style.display = 'none';
+    savedDataDiv.style.display = 'none';
+    editDataDiv.style.display = 'block';
+    getAndSetData(db, ()=>{
+        console.log(labels);
+    })
+};
 
 let rechne1 =()=>{
     db.getData("kJoule", (array) =>{
@@ -66,7 +106,7 @@ let rechne1 =()=>{
         }
         db.saveData("kJoule", array,()=>{});
     });
-}
+};
 
 
 let rechne = () =>{
@@ -95,6 +135,37 @@ let rechne = () =>{
        }
        db.saveData("kJoule", array,()=>{});
    });
+};
+let labels = [];
+let data = [];
+let arrayList = [];
+/**
+ * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
+ * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
+ * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
+ * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
+ * Feld angezeigt wird.
+ */
+let getAndSetData = (db, callback) => {
+    db.getData('kJoule', (array)=>{
+        let counter;
+        labels = [array.length];
+        data = [array.length];
+        console.log(array);
+        if (array.length === 0){
+            console.log("fertig");
+            callback('empty');
+        }
+        for ( counter = 0; counter<array.length; counter++){
+            let element = array[counter];
+            labels[counter] = element.timestamp;
+            data[counter] = element.maximalkraft;
+            if (counter === array.length - 1) {
+
+                callback();
+            }
+        }
+    })
 };
 // let labels = [];
 // let data = [];
@@ -143,11 +214,6 @@ let rechne = () =>{
 // /**
 //  * Diese Methode zeigt die Startseite von der Maximalkraft an.
 //  */
-// let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
-//     inhalt.style.display = 'block';
-//     savedDataDiv.style.display = 'none';
-//     editDataDiv.style.display = 'none';
-// };
 //
 // /**
 //  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.

@@ -92,6 +92,7 @@
     <main>
     </main>
 </section>
+
 <!--Section Anmeldung-->
 <section id="anmeldevorgang" class="hidden">
     <main>
@@ -127,6 +128,7 @@
         </div>
     </main>
 </section>
+
 <!--Section Startseite-->
 <section id="startseiteseite" class="hidden">
     <main>
@@ -155,23 +157,24 @@
         </div>
     </main>
 </section>
+
 <!--Section BMI-Rechner-->
 <section id="bmiSeite" class="hidden">
     <main>
         <div id="bmiLoading"></div>
         <div id="bmimenu" class="grid-container-standard">
             <div class="grid-itemLeft">
-                <button class="tab" id="savingbmiButton">gespeicherten Werte anzeigen</button>
+                <button class="tab" id="savingBMIButton">gespeicherten Werte anzeigen</button>
             </div>
             <div class="grid-item">
-                <button class="tab" id="bmiRechnerButton">BMI Rechner</button>
+                <button class="tab" id="main">BMI Rechner</button>
             </div>
             <div class="grid-itemRight">
                 <button class="tab" id="bmiDataButton">gespeicherten Werte bearbeiten</button>
             </div>
         </div>
-        <div class="inhalt">
-            <div>
+        <div id="mainpage" class="inhalt">
+            <section>
                 <div>
                     <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
 
@@ -250,8 +253,10 @@
                         </section>
                     </div>
                     <br>
+                    <div id="ausgabe" class="inhalt">
+                    </div>
                 </div>
-            </div>
+            </section>
             <!------------------------------------------------Tabelle --------------------------------------------------->
             <div>
                 <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
@@ -364,8 +369,17 @@
                 </dialog>
             </div>
         </div>
+
+        <div id="savedBMIDataDiv" class="inhalt">
+            <canvas id="BMIChart"></canvas>
+        </div>
+        <div id="editBMIDataDiv" class="inhalt">
+            <div class="loading"></div>
+            Sie haben keine Werte gespeichert!
+        </div>
     </main>
 </section>
+
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
     <main>
@@ -381,7 +395,7 @@
                 <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
             </div>
         </div>
-        <div class="inhalt">
+        <div class="inhalt" id="rechnertab">
             <h3>Kalorien-Umrechner</h3>
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
             <br> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.
@@ -407,8 +421,16 @@
             KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <output id="output1" for="Enter1">0</output>
         </div>
+        <div id="savedDataKjouleDiv" class="inhalt">
+            <canvas id="myChartKjoule"></canvas>
+        </div>
+        <div id="editDataKjouleDiv" class="inhalt">
+            <div class="loading"></div>
+            Sie haben keine Werte gespeichert!
+        </div>
     </main>
 </section>
+
 <!--Section Maximalkraft-Rechner-->
 <section id="ormSeite" class="hidden">
     <main>
@@ -449,34 +471,36 @@
                     </ul>
                 </div>
                 <div id="uiORM" class="inhalt">
-                    <div id="editable">
-                        <div id="benutzerEingabeORM">
-                            <div>
-                                <label>gestemmtes Gewicht:</label><br>
-                                <label>Wiederholungszahl:</label>
+                    <div id="template" class="grid-container-standard">
+                        <div id="editable" class="grid-itemLeft">
+                            <div id="benutzerEingabeORM" class="grid-container-standard">
+                                <div class="grid-itemLeft">
+                                    <label>gestemmtes Gewicht:</label><br>
+                                    <label>Wiederholungszahl:</label>
+                                </div>
+                                <div class="grid-itemRight">
+                                    <label>
+                                        <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
+                                    </label><br>
+                                    <label>
+                                        <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
+                                               value="1">
+                                    </label><br>
+                                </div>
                             </div>
-                            <div>
-                                <label>
-                                    <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
-                                </label><br>
-                                <label>
-                                    <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
-                                           value="1">
-                                </label><br>
+                            <div id="berechne">
+                                <button id="berechneButton">Berechne</button>
                             </div>
                         </div>
-                        <div id="berechne">
-                            <button id="berechneButton">Berechne</button>
-                        </div>
-                    </div>
-                    <div id="formelORM">
-                        <div id="ergebnis">
-                            Maximalkraft =
-                        </div>
-                        <div id="bruch">
-                            <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
-                            <hr>
-                            <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                        <div id="formelORM" class="grid-container-standard center grid-itemRight">
+                            <div id="ergebnis" class="grid-itemLeft">
+                                Maximalkraft =
+                            </div>
+                            <div id="bruch" class="grid-itemRight">
+                                <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
+                                <hr>
+                                <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -541,6 +565,7 @@
         </div>
     </main>
 </section>
+
 <!--Section Impressum-->
 <section id="impressumSeite" class="hidden">
     <main>
@@ -554,5 +579,6 @@
         </div>
     </main>
 </section>
+
 </body>
 </html>
