@@ -19,10 +19,16 @@
         <div id="headerContent">
             <div class="h1" id="startseite"><b>WebFitness</b></div>
             <div id="auswahlMenue" class="grid-container-standard">
-                <div class="grid-item"><button id="auswahlAbi"> Maximalkraft berechnen</button></div>
-                <div class="grid-item"><button id="auswahlSas"> BMI berechnen</button></div>
-                <div class="grid-item"><button id="auswahlHan">Kcal zu KJ Umrechner</button></div>
+                <div class="grid-item">
+                    <button id="auswahlAbi"> Maximalkraft berechnen</button>
                 </div>
+                <div class="grid-item">
+                    <button id="auswahlSas"> BMI berechnen</button>
+                </div>
+                <div class="grid-item">
+                    <button id="auswahlHan">Kcal zu KJ Umrechner</button>
+                </div>
+            </div>
         </div>
         <hr>
         <div id="arrowDowndiv">
@@ -137,9 +143,15 @@
     <main>
         <div id="bmiLoading"></div>
         <div id="bmimenu" class="grid-container-standard">
-            <div class="grid-itemLeft"><button class="tab" id="savingbmiButton">gespeicherten Werte anzeigen</button></div>
-            <div class="grid-item"> <button class="tab" id="bmiRechnerButton">BMI Rechner</button></div>
-            <div class="grid-itemRight"><button class="tab" id="bmiDataButton">gespeicherten Werte bearbeiten</button></div>
+            <div class="grid-itemLeft">
+                <button class="tab" id="savingbmiButton">gespeicherten Werte anzeigen</button>
+            </div>
+            <div class="grid-item">
+                <button class="tab" id="bmiRechnerButton">BMI Rechner</button>
+            </div>
+            <div class="grid-itemRight">
+                <button class="tab" id="bmiDataButton">gespeicherten Werte bearbeiten</button>
+            </div>
         </div>
         <div class="inhalt">
             <section>
@@ -342,10 +354,16 @@
     <main>
         <div id="kjouleLoading"></div>
         <div id="datenbankmenu" class="grid-container-standard">
-        <div class="grid-itemLeft"><button class="tab" id="savingButton">gespeicherten Werte anzeigen</button></div>
-        <div class="grid-item"> <button class="tab" id="kJouleRechnerButton">Kjoule Rechner</button></div>
-        <div class="grid-itemRight"><button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button></div>
-    </div>
+            <div class="grid-itemLeft">
+                <button class="tab" id="savingButton">gespeicherten Werte anzeigen</button>
+            </div>
+            <div class="grid-item">
+                <button class="tab" id="kJouleRechnerButton">Kjoule Rechner</button>
+            </div>
+            <div class="grid-itemRight">
+                <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
+            </div>
+        </div>
         <div class="inhalt">
             <h3>Kalorien-Umrechner</h3>
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
@@ -380,9 +398,15 @@
         <div>
             <div id="ormLoading"></div>
             <div id="tabMenue" class="grid-container-standard">
-                <div class="grid-itemLeft"><button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button></div>
-                <div class="grid-item"> <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button></div>
-                <div class="grid-itemRight"><button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button></div>
+                <div class="grid-itemLeft">
+                    <button class="tab" id="savedDataButton">gespeicherten Werte anzeigen</button>
+                </div>
+                <div class="grid-item">
+                    <button class="tab" id="ormRechnerButton">Maximalkraft Rechner</button>
+                </div>
+                <div class="grid-itemRight">
+                    <button class="tab" id="editDataButton">gespeicherten Werte bearbeiten</button>
+                </div>
             </div>
             <div class="inhalt" id="inhaltORMDiv">
                 <div class="loading"></div>
@@ -408,34 +432,36 @@
                     </ul>
                 </div>
                 <div id="uiORM" class="inhalt">
-                    <div id="editable">
-                        <div id="benutzerEingabeORM">
-                            <div>
-                                <label>gestemmtes Gewicht:</label><br>
-                                <label>Wiederholungszahl:</label>
+                    <div id="template" class="grid-container-standard">
+                        <div id="editable" class="grid-itemLeft">
+                            <div id="benutzerEingabeORM" class="grid-container-standard">
+                                <div class="grid-itemLeft">
+                                    <label>gestemmtes Gewicht:</label><br>
+                                    <label>Wiederholungszahl:</label>
+                                </div>
+                                <div class="grid-itemRight">
+                                    <label>
+                                        <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
+                                    </label><br>
+                                    <label>
+                                        <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
+                                               value="1">
+                                    </label><br>
+                                </div>
                             </div>
-                            <div>
-                                <label>
-                                    <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
-                                </label><br>
-                                <label>
-                                    <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
-                                           value="1">
-                                </label><br>
+                            <div id="berechne">
+                                <button id="berechneButton">Berechne</button>
                             </div>
                         </div>
-                        <div id="berechne">
-                            <button id="berechneButton">Berechne</button>
-                        </div>
-                    </div>
-                    <div id="formelORM">
-                        <div id="ergebnis">
-                            Maximalkraft =
-                        </div>
-                        <div id="bruch">
-                            <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
-                            <hr>
-                            <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                        <div id="formelORM" class="grid-container-standard center grid-itemRight">
+                            <div id="ergebnis" class="grid-itemLeft">
+                                Maximalkraft =
+                            </div>
+                            <div id="bruch" class="grid-itemRight">
+                                <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
+                                <hr>
+                                <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                            </div>
                         </div>
                     </div>
                 </div>
