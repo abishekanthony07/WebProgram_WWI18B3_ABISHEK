@@ -366,7 +366,7 @@
                 <button class="tab" id="editierenDataButton">gespeicherten Werte bearbeiten</button>
             </div>
         </div>
-        <div class="inhalt">
+        <div class="inhalt" id="rechnertab">
             <h3>Kalorien-Umrechner</h3>
             Der Umrechnungsfaktor von KCAL in KJOULE beträgt um 4,2.
             <br> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.
@@ -391,6 +391,13 @@
             <br>
             KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <output id="output1" for="Enter1">0</output>
+        </div>
+        <div id="savedDataKjouleDiv" class="inhalt">
+            <canvas id="myChartKjoule"></canvas>
+        </div>
+        <div id="editDataKjouleDiv" class="inhalt">
+            <div class="loading"></div>
+            Sie haben keine Werte gespeichert!
         </div>
     </main>
 </section>
