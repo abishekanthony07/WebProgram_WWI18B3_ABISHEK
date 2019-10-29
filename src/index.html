@@ -75,6 +75,7 @@
     <main>
     </main>
 </section>
+
 <!--Section Anmeldung-->
 <section id="anmeldevorgang" class="hidden">
     <main>
@@ -110,6 +111,7 @@
         </div>
     </main>
 </section>
+
 <!--Section Startseite-->
 <section id="startseiteseite" class="hidden">
     <main>
@@ -138,22 +140,23 @@
         </div>
     </main>
 </section>
+
 <!--Section BMI-Rechner-->
 <section id="bmiSeite" class="hidden">
     <main>
         <div id="bmiLoading"></div>
         <div id="bmimenu" class="grid-container-standard">
             <div class="grid-itemLeft">
-                <button class="tab" id="savingbmiButton">gespeicherten Werte anzeigen</button>
+                <button class="tab" id="savingBMIButton">gespeicherten Werte anzeigen</button>
             </div>
             <div class="grid-item">
-                <button class="tab" id="bmiRechnerButton">BMI Rechner</button>
+                <button class="tab" id="mainPage">BMI Rechner</button>
             </div>
             <div class="grid-itemRight">
                 <button class="tab" id="bmiDataButton">gespeicherten Werte bearbeiten</button>
             </div>
         </div>
-        <div class="inhalt">
+        <div id="bmiStart" class="inhalt">
             <section>
                 <div>
                     <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
@@ -349,8 +352,17 @@
                 </dialog>
             </div>
         </div>
+
+        <div id="savedBMIDataDiv">
+            <canvas id="BMIChart"></canvas>
+        </div>
+        <div id="editBMIDataDiv">
+            <div class="loading"></div>
+            Sie haben keine Werte gespeichert!
+        </div>
     </main>
 </section>
+
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
     <main>
@@ -401,6 +413,7 @@
         </div>
     </main>
 </section>
+
 <!--Section Maximalkraft-Rechner-->
 <section id="ormSeite" class="hidden">
     <main>
@@ -535,6 +548,7 @@
         </div>
     </main>
 </section>
+
 <!--Section Impressum-->
 <section id="impressumSeite" class="hidden">
     <main>
@@ -548,5 +562,6 @@
         </div>
     </main>
 </section>
+
 </body>
 </html>

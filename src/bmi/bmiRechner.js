@@ -23,7 +23,42 @@ class BmiRechner {
     onLoad() {
         console.log('Page loaded');
         ablaufBMI(this.db);
-    }
+        let savedBMIContent = document.getElementById("bmiStart");
+        let chartContent = document.getElementById("savedBMIDataDiv");
+        let editContent = document.getElementById("editBMIDataDiv");
+        let savedBMIButton = document.getElementById('savingBMIButton');
+        let bmiRechnerButton = document.getElementById('mainPage');
+        let changeBMIData = document.getElementById('bmiDataButton');
+        console.log("savingBMIButton", savedBMIButton);
+        savedBMIButton.addEventListener("click", () => {
+            console.log("savingBMIButton", savedBMIButton);
+            showSavedDataHtml(savedBMIContent, chartContent, editContent);
+        });
+
+        bmiRechnerButton.addEventListener("click", () => {
+            showBMIHtml(savedBMIContent, chartContent, editContent);
+        });
+
+        changeBMIData.addEventListener("click", () => {
+            console.log("savingBMIButton", changeBMIData);
+            showEditDataHtml(savedBMIContent, chartContent, editContent);
+        });
+
+        let showBMIHtml = (bmiRechnerButton, savedBMIButton, bmiDataButton) => {
+            bmiRechnerButton.style.display = 'block';
+            savedBMIButton.style.display = 'none';
+            bmiDataButton.style.display = 'none';
+        };
+        let showSavedDataHtml = (inhalt, savedDataDiv, editDataDiv) => {
+     inhalt.style.display = 'none';
+     savedDataDiv.style.display = 'block';
+      editDataDiv.style.display = 'none';
+        }
+        let showEditDataHtml = (inhalt, savedDataDiv, editDataDiv) => {
+     inhalt.style.display = 'none';
+  savedDataDiv.style.display = 'none';
+  editDataDiv.style.display = 'block';
+    }}
 
     onLeave(goon) {
         return true;
@@ -59,7 +94,7 @@ let bmiBerechnen = (db) => {
                 timestamp: App.timeStamp(),
             });
         }
-        db.saveData("bmi", array);
+        db.saveData("bmi", array,()=>{});
         hintergrundAngleichen(ergebnis, anzeige);
         ergebnis = " " + ergebnis.bold();
         anzeige.innerHTML = " <b>Dein BMI ist: </b> &nbsp;" + ergebnis + "<b>.</b>";
@@ -158,6 +193,9 @@ let toggleDialog = () => {
         div.parentNode.removeChild(div);
     }
 };
+
+
+
 
 // let labels = [];
 // let data = [];
