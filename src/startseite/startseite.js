@@ -17,6 +17,11 @@ class Startseite {
 
     onLoad() {
         console.log('Page loaded');
+        document.getElementById("test").addEventListener("click", () => {
+            window.setTimeout(disablediv('tooltiptext'), 8000);
+
+        });
+
 
         //Submit Function
     }
@@ -31,3 +36,7 @@ class Startseite {
 }
 
 export default Startseite;
+let disablediv = (div) => {
+    let objDiv = document.getElementById("tooltiptext");
+    objDiv.style.display ="none";
+}

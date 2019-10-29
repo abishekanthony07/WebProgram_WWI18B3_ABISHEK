@@ -361,3 +361,5 @@ let showFooterMenu = () => {
         footerMenue.style.display = 'none';
     }
 }
+
+
