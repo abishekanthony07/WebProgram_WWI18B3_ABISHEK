@@ -2,6 +2,13 @@
 
 import App from "../app";
 
+let chartContent;
+let editContent;
+let savedBMIButton;
+let bmiRechnerButton;
+let changeBMIData;
+let savedBMIContent;
+
 class BmiRechner {
     constructor(app, datenbank) {
         this._app = app;
@@ -21,14 +28,14 @@ class BmiRechner {
     }
 
     onLoad() {
+        chartContent = document.getElementById("savedBMIDataDiv");
+        editContent = document.getElementById("editBMIDataDiv");
+        savedBMIContent = document.getElementById('mainpage');
+        savedBMIButton = document.getElementById('savingBMIButton');
+        bmiRechnerButton = document.getElementById('main');
+        changeBMIData = document.getElementById('bmiDataButton');
         console.log('Page loaded');
         ablaufBMI(this.db);
-        let savedBMIContent = document.getElementById("bmiStart");
-        let chartContent = document.getElementById("savedBMIDataDiv");
-        let editContent = document.getElementById("editBMIDataDiv");
-        let savedBMIButton = document.getElementById('savingBMIButton');
-        let bmiRechnerButton = document.getElementById('mainPage');
-        let changeBMIData = document.getElementById('bmiDataButton');
         console.log("savingBMIButton", savedBMIButton);
         savedBMIButton.addEventListener("click", () => {
             console.log("savingBMIButton", savedBMIButton);
@@ -50,15 +57,16 @@ class BmiRechner {
             bmiDataButton.style.display = 'none';
         };
         let showSavedDataHtml = (inhalt, savedDataDiv, editDataDiv) => {
-     inhalt.style.display = 'none';
-     savedDataDiv.style.display = 'block';
-      editDataDiv.style.display = 'none';
-        }
+            inhalt.style.display = 'none';
+            savedDataDiv.style.display = 'block';
+            editDataDiv.style.display = 'none';
+        };
         let showEditDataHtml = (inhalt, savedDataDiv, editDataDiv) => {
-     inhalt.style.display = 'none';
-  savedDataDiv.style.display = 'none';
-  editDataDiv.style.display = 'block';
-    }}
+            inhalt.style.display = 'none';
+            savedDataDiv.style.display = 'none';
+            editDataDiv.style.display = 'block';
+        }
+    }
 
     onLeave(goon) {
         return true;
@@ -94,7 +102,8 @@ let bmiBerechnen = (db) => {
                 timestamp: App.timeStamp(),
             });
         }
-        db.saveData("bmi", array,()=>{});
+        db.saveData("bmi", array, () => {
+        });
         hintergrundAngleichen(ergebnis, anzeige);
         ergebnis = " " + ergebnis.bold();
         anzeige.innerHTML = " <b>Dein BMI ist: </b> &nbsp;" + ergebnis + "<b>.</b>";
@@ -195,6 +204,75 @@ let toggleDialog = () => {
 };
 
 
+let labels = [];
+let data = [];
+let arrayList = [];
+/**
+ * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
+ * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
+ * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
+ * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
+ * Feld angezeigt wird.
+ */
+let getAndSetData = (db, callback) => {
+    db.getData('orm', (array)=>{
+        let counter;
+        labels = [array.length];
+        data = [array.length];
+        console.log(array);
+        if (array.length === 0){
+            console.log("fertig");
+            callback('empty');
+        }
+        for ( counter = 0; counter<array.length; counter++){
+            let element = array[counter];
+            labels[counter] = element.timestamp;
+            data[counter] = element.maximalkraft;
+            if (counter === array.length - 1) {
+
+                callback();
+            }
+        }
+    })
+};
+
+let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
+    bmiRechnerButton.style.display = 'none';
+    chartContent.style.display = 'block';
+    editContent.style.display = 'none';
+    app.showLoadingscreen(loadingID);
+    getAndSetData(db, (empty) => {
+        if (empty === 'empty') {
+            savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
+            app.hideLoadingscreen(loadingID);
+        } else {
+            savedDataDiv.innerHTML = "<canvas id=\"myChart\"></canvas>";
+            let myChartObject = document.getElementById('myChart');
+            let chart = new Chart(myChartObject, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Deine Maximalkraft in Kg",
+                        backgroundColor: 'rgba(159, 96, 96, 0.4)',
+                        borderColor: 'rgba(159, 96, 96, 1)',
+                        data: data
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            tricks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            app.hideLoadingscreen(loadingID);
+        }
+    });
+}
 
 
 // let labels = [];
