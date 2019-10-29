@@ -34,22 +34,6 @@ h1{
 #beschreibungORM b{
     color:  rgb(159, 96, 96);
 }
-/*Absatz 2: Rechner*/
-#uiORM{
-    display: table-cell;
-    text-align: center;
-    width: 100vw;
-}
-/*Absatz 2.1*/
-#editable{
-    display: inline-block;
-    margin: 1em;
-    text-align: center;
-}
-#benutzerEingabeORM div{
-    display: inline-block;
-    text-align: left;
-}
 #berechne{
     text-align: center;
 }
@@ -65,27 +49,7 @@ h1{
     outline: none;
     background: rgba(10,10,10,0.2);
 }
-/*Absatz 2.2*/
-#formelORM{
-    display: table-cell;
-    margin: 1em;
-    text-align: center;
-}
-#bruch hr{
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 2px solid rgba(10,10,10,1);
-    margin: 0;
-    padding: 0;
-}
-#bruch div{
-    padding: 2px;
-}
-#ergebnis, #bruch, #editable, #formelORM{
-    vertical-align: middle;
-    display: inline-block;
-}
+
 /*Absatz 3: Tabelle*/
 #table{
     display: table-cell;
@@ -156,5 +120,48 @@ table, tr,th{
     }
     #formelORM{
         font-size: 70%;
+    }
+}
+/* Größerer Bildschirm */
+@media only screen and (max-width: 768px) {
+    #template{
+        display: block;
+    }
+    #ergebnis, #bruch, #editable, #formelORM{
+        vertical-align: middle;
+        display: inline-block;
+    }
+    /*Absatz 2.2*/
+    #formelORM{
+        display: table-cell;
+        margin: 1em;
+        text-align: center;
+    }
+    #bruch hr{
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 2px solid rgba(10,10,10,1);
+        margin: 0;
+        padding: 0;
+    }
+    #bruch div{
+        padding: 2px;
+    }
+    /*Absatz 2: Rechner*/
+    #uiORM{
+        display: table-cell;
+        text-align: center;
+        width: 100vw;
+    }
+    /*Absatz 2.1*/
+    #editable{
+        display: inline-block;
+        margin: 1em;
+        text-align: center;
+    }
+    #benutzerEingabeORM div{
+        display: inline-block;
+        text-align: left;
     }
 }

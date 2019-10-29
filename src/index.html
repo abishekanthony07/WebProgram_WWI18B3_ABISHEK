@@ -432,34 +432,36 @@
                     </ul>
                 </div>
                 <div id="uiORM" class="inhalt">
-                    <div id="editable">
-                        <div id="benutzerEingabeORM">
-                            <div>
-                                <label>gestemmtes Gewicht:</label><br>
-                                <label>Wiederholungszahl:</label>
+                    <div id="template" class="grid-container-standard">
+                        <div id="editable" class="grid-itemLeft">
+                            <div id="benutzerEingabeORM" class="grid-container-standard">
+                                <div class="grid-itemLeft">
+                                    <label>gestemmtes Gewicht:</label><br>
+                                    <label>Wiederholungszahl:</label>
+                                </div>
+                                <div class="grid-itemRight">
+                                    <label>
+                                        <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
+                                    </label><br>
+                                    <label>
+                                        <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
+                                               value="1">
+                                    </label><br>
+                                </div>
                             </div>
-                            <div>
-                                <label>
-                                    <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
-                                </label><br>
-                                <label>
-                                    <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
-                                           value="1">
-                                </label><br>
+                            <div id="berechne">
+                                <button id="berechneButton">Berechne</button>
                             </div>
                         </div>
-                        <div id="berechne">
-                            <button id="berechneButton">Berechne</button>
-                        </div>
-                    </div>
-                    <div id="formelORM">
-                        <div id="ergebnis">
-                            Maximalkraft =
-                        </div>
-                        <div id="bruch">
-                            <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
-                            <hr>
-                            <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                        <div id="formelORM" class="grid-container-standard center grid-itemRight">
+                            <div id="ergebnis" class="grid-itemLeft">
+                                Maximalkraft =
+                            </div>
+                            <div id="bruch" class="grid-itemRight">
+                                <div id="gestemmtesGewichtORM">gestemmtes Gewicht</div>
+                                <hr>
+                                <div id="prozentsatzORM">Prozentsatz der Maximalkraft anhand der Wiederholungszahl</div>
+                            </div>
                         </div>
                     </div>
                 </div>
