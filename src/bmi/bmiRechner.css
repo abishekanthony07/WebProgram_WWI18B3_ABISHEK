@@ -40,8 +40,6 @@ table, tr, th , td{
 }
 #berechnenButton{
     font-size: medium;
-    width: 15vw;
-    height: 5vh;
 }
 /*Dialogfenster*/
 dialog {
