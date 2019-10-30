@@ -3,15 +3,15 @@ import Chart from "chart.js";
 
 let db;
 
-class OneRepetitionMaximum{
-    constructor(app, datenbank){
+class OneRepetitionMaximum {
+    constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
         db = this.db;
         this.loadingID = 'ormLoading';
     }
 
-    onShow(){
+    onShow() {
         let section = document.querySelector("#ormSeite").cloneNode(true);
         let content = {
             className: "visible",
@@ -24,14 +24,14 @@ class OneRepetitionMaximum{
         return content;
     }
 
-    onLoad(){
+    onLoad() {
         // window.addEventListener('load', ()=>{
         let berechneButton = document.getElementById('berechneButton');
-        berechneButton.addEventListener('click', ()=>{
+        berechneButton.addEventListener('click', () => {
             berechne(db, this._app, this.loadingID);
         });
         //wenn enter geklickt wird, wird die Berechnung ausgelöst
-        window.addEventListener("keypress",(event)=>{
+        window.addEventListener("keypress", (event) => {
             if (event.key === "Enter") {
                 berechne(db, this._app, this.loadingID);
             }
@@ -58,11 +58,11 @@ class OneRepetitionMaximum{
     }
 
 
-    onLeave(goon){
+    onLeave(goon) {
         return true;
     }
 
-    get title(){
+    get title() {
         return "Maximalkraft Rechner";
     }
 }
@@ -74,7 +74,7 @@ let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) 
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    app.getAndSetData('orm', savedDataDiv, "ormLoading", "ORMChart", "Maximalkraft - Ergebnisse", ()=>{
+    app.getAndSetData('orm', savedDataDiv, "ormLoading", "ORMChart", "Maximalkraft - Ergebnisse", () => {
         console.log("ORM - getAndSetData bin fertig");
     });
 };
@@ -92,11 +92,12 @@ let showOrmRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
  * Diese Methode zeigt alle gespeicherten Werte im Editiermodus an.
  */
 let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
-    inhalt.style.display = 'none';
-    savedDataDiv.style.display = 'none';
-    editDataDiv.style.display = 'block';
-    this._app.getAndSetEditData("orm", editDataDiv, loadingID, inhalt, savedDataDiv, ()=>{
-        console.log("bin fertig ")
+    app.getAndSetEditDataFirebase("orm", editDataDiv, loadingID, inhalt, savedDataDiv, () => {
+        inhalt.style.display = 'none';
+        savedDataDiv.style.display = 'none';
+        editDataDiv.style.display = 'block';
+    }, () => {
+        showEditDataHtml(db, app, loadingID, inhalt, savedDataDiv, editDataDiv);
     })
 };
 
@@ -105,7 +106,7 @@ let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) =
  */
 let berechne = (db, app, loadingID) => {
     app.showLoadingscreen(loadingID);
-    db.getData('orm', (array)=>{
+    db.getData('orm', (array) => {
         let gewicht = document.getElementById('gewicht');
         let wiederholungszahl = document.getElementById('wiederholungszahl');
         let maximalkraft = document.getElementById('ergebnis');
@@ -122,7 +123,7 @@ let berechne = (db, app, loadingID) => {
         //Liste wird geupdated
         if (array === 'empty') {
             array = [{
-                timestamp:App.timeStamp(),
+                timestamp: App.timeStamp(),
                 gewicht: gewicht.value.toString(),
                 wiederholungszahl: wiederholungszahl.value.toString(),
                 prozent: prozent.toString(),
@@ -146,7 +147,7 @@ let berechne = (db, app, loadingID) => {
 /**
  * Berechne den Prozentsatz für die bestimmte Wiederholungszahl
  */
-let calculate = (wiederholungszahl)=> {
+let calculate = (wiederholungszahl) => {
     if (wiederholungszahl > 30) {
         if (wiederholunnrichgszahl >= 40) {
             return 0.3;
@@ -198,7 +199,7 @@ let calculate = (wiederholungszahl)=> {
  * Diese Methode berechnet anhand der oberen, unteren Grenze von den Wiederholungen
  * und vom Prozentsatz den jeweiligen Prozentsatz
  */
-let rechne =(wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnten, prozentOben)=> {
+let rechne = (wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnten, prozentOben) => {
     let teiler = wiederholungOben - wiederholungUnten;
     let differenzW = wiederholungszahl - wiederholungUnten;
     let differenzP = prozentOben - prozentUnten;

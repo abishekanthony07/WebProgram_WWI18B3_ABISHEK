@@ -89,9 +89,12 @@ let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) =
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
-    app.getAndSetEditData("kJoule", editDataDiv, "kjouleLoading", inhalt, savedDataDiv, () => {
+    app.getAndSetEditDataFirebase("kJoule", editDataDiv, "kjouleLoading", inhalt, savedDataDiv, () => {
         console.log("bin fertig");
-    })
+    },
+        ()=> {
+         showEditDataHtml(db, app, loadingID, inhalt, savedDataDiv, editDataDiv);
+        })
 };
 
 let rechne1 = () => {

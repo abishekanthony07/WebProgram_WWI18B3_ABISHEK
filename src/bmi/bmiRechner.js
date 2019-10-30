@@ -76,7 +76,7 @@ let showSavedDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
     });
 };
 let showEditDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
-    app.getAndSetEditData('bmi', editDataDiv, "bimLoading", inhalt, savedDataDiv, ()=>{
+    app.getAndSetEditDataFirebase('bmi', editDataDiv, "bimLoading", inhalt, savedDataDiv, ()=>{
         inhalt.style.display = 'none';
         savedDataDiv.style.display = 'none';
         editDataDiv.style.display = 'block';

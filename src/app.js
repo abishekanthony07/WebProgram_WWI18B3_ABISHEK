@@ -334,7 +334,7 @@ class App {
      * @param callback () Zeige Div-Container vom edit in der jeweiligen Klasse
      * @param callbackDelete
      */
-    getAndSetEditData(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete){
+    getAndSetEditDataFirebase(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete){
         this.showLoadingscreen(loadingID);
         console.log("Datenbank", this.db);
         this.db.getData(collection, (array) => {
@@ -356,7 +356,7 @@ class App {
                 } else if (collection === "bmi") {
                     newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Dein BMI beträgt &nbsp;"+element.ergebnis+"</div>";
                 } else if (collection === "kJoule") {
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Gespeicherte Kcal: &nbsp;"+element.summekjoulekalorien+" kcal</div>";
                 }
                 newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
@@ -364,6 +364,7 @@ class App {
                     deleteElement(this.db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callbackDelete);
                 });
             }
+            this.hideLoadingscreen(loadingID);
             callback();
         })
     }
@@ -418,7 +419,7 @@ export default App;
  * @param editDataDiv EditDiv
  * @param callback ???
  */
-let deleteElement = (db, collection, loadingID, event, inhalt, savedDataDiv, editDataDiv, callback) => {
+let deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
     console.log(event.target);
     let deleteIndex = event.target.parentNode.firstChild.textContent;
     arrayList.splice(deleteIndex, 1);
