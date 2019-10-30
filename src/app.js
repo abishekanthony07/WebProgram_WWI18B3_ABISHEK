@@ -99,20 +99,34 @@ class App {
         //Anmelde-Button reagiert auf enter-Tastendruck
         window.addEventListener("keypress", (p) => {
             if (p.key === "Enter") {
-                let email = document.getElementById('email').value;
-                let password = document.getElementById('password').value;
-                this.db.loginUser(
-                    email,//email
-                    password,//passwort
-                    () => {//failure
-                        alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
-                    },
-                    (datenbank) => {//success
-                        this.showStartseiteAndSetListener(datenbank);
+                if (this.db.firebase === undefined || this.db.firebase === null) {
+                    this.login();
+                } else {
+                    this.db.firebase.auth().onAuthStateChanged((user) => {
+                        if (user) {
+                            // User is signed in.
+                        } else {
+                            this.login();
+                        }
+
                     });
+                }
             }
         });
+    }
 
+    login() {
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        this.db.loginUser(
+            email,//email
+            password,//passwort
+            () => {//failure
+                alert("Anmeldevorgang fehlgeschlagen. Bitte erneut versuchen.");
+            },
+            (datenbank) => {//success
+                this.showStartseiteAndSetListener(datenbank);
+            });
     }
 
     /**
@@ -322,7 +336,8 @@ class App {
                 }
             }
         })
-    };
+    }
+    ;
 
     /**
      * Hole die Daten von der Datebank und setze die Listener für die Buttons
@@ -334,7 +349,7 @@ class App {
      * @param callback () Zeige Div-Container vom edit in der jeweiligen Klasse
      * @param callbackDelete
      */
-    getAndSetEditDataFirebase(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete){
+    getAndSetEditDataFirebase(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete) {
         this.showLoadingscreen(loadingID);
         console.log("Datenbank", this.db);
         this.db.getData(collection, (array) => {
@@ -354,9 +369,9 @@ class App {
                 if (collection === "orm") {
                     newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
                 } else if (collection === "bmi") {
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Dein BMI beträgt &nbsp;"+element.ergebnis+"</div>";
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
                 } else if (collection === "kJoule") {
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Gespeicherte Kcal: &nbsp;"+element.summekjoulekalorien+" kcal</div>";
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Kcal: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
                 }
                 newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
@@ -419,90 +434,99 @@ export default App;
  * @param editDataDiv EditDiv
  * @param callback ???
  */
-let deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
-    console.log(event.target);
-    let deleteIndex = event.target.parentNode.firstChild.textContent;
-    arrayList.splice(deleteIndex, 1);
-    console.log(arrayList);
-    if (arrayList.length === 0) {
-        editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
-    }
-    db.saveData(collection, arrayList, () => {
-        callback();
-    });
-};
+let
+    deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
+        console.log(event.target);
+        let deleteIndex = event.target.parentNode.firstChild.textContent;
+        arrayList.splice(deleteIndex, 1);
+        console.log(arrayList);
+        if (arrayList.length === 0) {
+            editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
+        }
+        db.saveData(collection, arrayList, () => {
+            callback();
+        });
+    };
 
-let buttonsSindZusehen = false;
+let
+    buttonsSindZusehen = false;
 /**
  * Diese Methode animiert unser Pfeil zum anzeigen der 3 verschiedenen Seiten.
  */
-let animateArrow = () => {
-    let arrowDown = document.getElementById('arrowDown');
-    let arrowDownDiv = document.getElementById('arrowDowndiv');
-    let auswahlMenue = document.getElementById('auswahlMenue');
+let
+    animateArrow = () => {
+        let arrowDown = document.getElementById('arrowDown');
+        let arrowDownDiv = document.getElementById('arrowDowndiv');
+        let auswahlMenue = document.getElementById('auswahlMenue');
 
-    if (!buttonsSindZusehen) {
-        rotateImage(arrowDown, 'rotate(-180deg)');
-        buttonsSindZusehen = true;
-        //Div vom arrowDown hintergrund entfernen
-        arrowDown.style.border = 'none';
-        //Borderstyle vom ArrowButton ändern
-        arrowDownDiv.style.background = 'none';
-        arrowDown.style.borderTopLeftRadius = '50px';
-        arrowDown.style.borderTopRightRadius = '50px';
-        arrowDown.style.borderBottomLeftRadius = '0px';
-        arrowDown.style.borderBottomRightRadius = '0px';
-        //AuswahlMenu einblenden
-        auswahlMenue.style.display = 'grid';
-    } else {
-        rotateImage(arrowDown, 'rotate(0deg)');
-        buttonsSindZusehen = false;
-        //Div vom arrowDown hintergrund entfernen
-        arrowDownDiv.style.background = 'rgba(112,112,112,1)';
-        //Borderstyle vom ArrowButton ändern
-        arrowDown.style.borderTopLeftRadius = '0px';
-        arrowDown.style.borderTopRightRadius = '0px';
-        arrowDown.style.borderBottomLeftRadius = '50px';
-        arrowDown.style.borderBottomRightRadius = '50px';
-        //AuswahlMenü einblenden
-        auswahlMenue.style.display = 'none';
-    }
-};
+        if (!buttonsSindZusehen) {
+            rotateImage(arrowDown, 'rotate(-180deg)');
+            buttonsSindZusehen = true;
+            //Div vom arrowDown hintergrund entfernen
+            arrowDown.style.border = 'none';
+            //Borderstyle vom ArrowButton ändern
+            arrowDownDiv.style.background = 'none';
+            arrowDown.style.borderTopLeftRadius = '50px';
+            arrowDown.style.borderTopRightRadius = '50px';
+            arrowDown.style.borderBottomLeftRadius = '0px';
+            arrowDown.style.borderBottomRightRadius = '0px';
+            //AuswahlMenu einblenden
+            auswahlMenue.style.display = 'grid';
+        } else {
+            rotateImage(arrowDown, 'rotate(0deg)');
+            buttonsSindZusehen = false;
+            //Div vom arrowDown hintergrund entfernen
+            arrowDownDiv.style.background = 'rgba(112,112,112,1)';
+            //Borderstyle vom ArrowButton ändern
+            arrowDown.style.borderTopLeftRadius = '0px';
+            arrowDown.style.borderTopRightRadius = '0px';
+            arrowDown.style.borderBottomLeftRadius = '50px';
+            arrowDown.style.borderBottomRightRadius = '50px';
+            //AuswahlMenü einblenden
+            auswahlMenue.style.display = 'none';
+        }
+    };
 
 /**
  * Diese Methode sorgt dafür, dass ein Bild rotiert wird.
  * @param img
  * @param degree
  */
-let rotateImage = (img, degree) => {
-    img.style.transform = degree;
-    img.style.WebkitTransitionDuration = '0.5s';
-};
+let
+    rotateImage = (img, degree) => {
+        img.style.transform = degree;
+        img.style.WebkitTransitionDuration = '0.5s';
+    };
 
 
-let menuSindZusehen = false;
+let
+    menuSindZusehen = false;
 
 /**
  *'Footer'-Menü wird eingeblendet
  */
-let showFooterMenu = () => {
-    let footerIcon = document.getElementById('footerMenuP');
-    let footerMenue = document.getElementById('footerMenu');
+let
+    showFooterMenu = () => {
+        let footerIcon = document.getElementById('footerMenuP');
+        let footerMenue = document.getElementById('footerMenu');
 
-    if (!menuSindZusehen) {
-        rotateImage(footerIcon, 'rotate(-90deg)')
-        menuSindZusehen = true;
-        footerMenue.style.display = 'inline-block';
-    } else {
-        rotateImage(footerIcon, 'rotate(0deg)')
-        menuSindZusehen = false;
-        footerMenue.style.display = 'none';
-    }
-};
+        if (!menuSindZusehen) {
+            rotateImage(footerIcon, 'rotate(-90deg)')
+            menuSindZusehen = true;
+            footerMenue.style.display = 'inline-block';
+        } else {
+            rotateImage(footerIcon, 'rotate(0deg)')
+            menuSindZusehen = false;
+            footerMenue.style.display = 'none';
+        }
+    };
 
-let labels = [];
-let data = [];
-let arrayList = [];
+let
+    labels = [];
+let
+    data = [];
+let
+    arrayList = [];
 
 /**
  * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden

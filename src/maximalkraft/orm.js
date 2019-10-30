@@ -149,7 +149,7 @@ let berechne = (db, app, loadingID) => {
  */
 let calculate = (wiederholungszahl) => {
     if (wiederholungszahl > 30) {
-        if (wiederholunnrichgszahl >= 40) {
+        if (wiederholungszahl >= 40) {
             return 0.3;
         } else {
             return rechne(wiederholungszahl, 40, 30, 0.3, 0.4);
