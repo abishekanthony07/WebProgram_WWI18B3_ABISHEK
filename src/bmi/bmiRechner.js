@@ -24,7 +24,6 @@ class BmiRechner {
             main: section.querySelectorAll("main > *"),
         };
         return content;
-
     }
 
     onLoad() {
@@ -41,11 +40,9 @@ class BmiRechner {
             console.log("savingBMIButton", savedBMIButton);
             showSavedDataHtml(this._app, savedBMIContent, chartContent, editContent);
         });
-
         bmiRechnerButton.addEventListener("click", () => {
             showBMIHtml(savedBMIContent, chartContent, editContent);
         });
-
         changeBMIData.addEventListener("click", () => {
             console.log("savingBMIButton", changeBMIData);
             showEditDataHtml(savedBMIContent, chartContent, editContent);

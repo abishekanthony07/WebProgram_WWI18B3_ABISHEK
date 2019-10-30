@@ -1,26 +1,27 @@
 "use strict";
 import App from "../app.js";
+
 let db;
 
 let ablaufkJoule = () => {
-    document.getElementById("button").addEventListener("click", ()=>{
+    document.getElementById("button").addEventListener("click", () => {
         rechne();
     });
-    document.getElementById("button1").addEventListener("click", ()=>{
+    document.getElementById("button1").addEventListener("click", () => {
         rechne1();
     });
 
 };
 
-class KjouleRechner{
-    constructor(app, datenbank){
+class KjouleRechner {
+    constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
         db = datenbank;
         this.loadingID = 'kjouleLoading';
     }
 
-    onShow(){
+    onShow() {
         let section = document.querySelector("#kjouleSeite").cloneNode(true);
         let content = {
             className: "visible",
@@ -29,7 +30,7 @@ class KjouleRechner{
         return content;
     }
 
-    onLoad(){
+    onLoad() {
         console.log('Page loaded');
         ablaufkJoule();
 
@@ -39,31 +40,35 @@ class KjouleRechner{
         let chart = document.getElementById("savedDataKjouleDiv");
         let edit = document.getElementById("editDataKjouleDiv");
         console.log("Nachteile 37 tabChart");
-        let tabChart =  document.getElementById("savingButton");
-        tabChart.addEventListener('click',()=>{
+        //"gespeicherten Werte anzeigen"
+        let tabChart = document.getElementById("savingButton");
+        tabChart.addEventListener('click', () => {
             console.log("Jaödlsakdad#a");
             showSavedDataHtml(this.db, this._app, null, inhalt, chart, edit);
         });
-        let tabRechner =  document.getElementById("kJouleRechnerButton");
-        tabRechner.addEventListener('click',()=>{
+        //"Kjoule Rechner"
+        let tabRechner = document.getElementById("kJouleRechnerButton");
+        tabRechner.addEventListener('click', () => {
             showKjouleRechnerHtml(inhalt, chart, edit);
         });
-        let tabEdit =  document.getElementById("editierenDataButton");
-        tabEdit.addEventListener('click',()=>{
-            showEditDataHtml(this.db, this._app, null,inhalt, chart, edit);
+        //"gespeicherten Werte bearbeiten"
+        let tabEdit = document.getElementById("editierenDataButton");
+        tabEdit.addEventListener('click', () => {
+            showEditDataHtml(this.db, this._app, null, inhalt, chart, edit);
         });
         showKjouleRechnerHtml(inhalt, chart, edit);
 
     }
 
-    onLeave(goon){
+    onLeave(goon) {
         return true;
     }
 
-    get title(){
+    get title() {
         return "Bmi-Rechner";
     }
 }
+
 export default KjouleRechner;
 
 let showKjouleRechnerHtml = (inhalt, savedDataDiv, editDataDiv) => {
@@ -76,97 +81,100 @@ let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) 
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
+    app.getAndSetData('kJoule', savedDataDiv, "kjouleLoading", "myChartKjoule", "kcal - Ergebnisse", () => {
+        console.log("getAndSetData bin fertig");
+    });
 };
 let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
-    getAndSetData(db, ()=>{
-        console.log(labels);
+    app.getAndSetEditData("kJoule", editDataDiv, "kjouleLoading", inhalt, savedDataDiv, () => {
+        console.log("bin fertig");
     })
 };
 
-let rechne1 =()=>{
-    db.getData("kJoule", (array) =>{
-    let kjoulekalorien = document.getElementById('KJOULE');
-    let summekjoulekalorien = kjoulekalorien.value / 4.184;
-    console.log(summekjoulekalorien);
-    summekjoulekalorien.toFixed(2);
-    document.getElementById('output1').value = summekjoulekalorien;
-        if(array==='empty'){
+let rechne1 = () => {
+    db.getData("kJoule", (array) => {
+        let kjoulekalorien = document.getElementById('KJOULE');
+        let summekjoulekalorien = kjoulekalorien.value / 4.184;
+        console.log(summekjoulekalorien);
+        summekjoulekalorien = summekjoulekalorien.toFixed(2);
+        document.getElementById('output1').value = summekjoulekalorien;
+        if (array === 'empty') {
             array = [{
-                kjoule:kjoulekalorien.value,
-                summekjoulekalorien:summekjoulekalorien,
+                kjoule: kjoulekalorien.value,
+                summekjoulekalorien: summekjoulekalorien,
             }]
-        }else{
+        } else {
             array.push({
-                kjoule:kjoulekalorien.value,
-                summekjoulekalorien:summekjoulekalorien,
+                kjoule: kjoulekalorien.value,
+                summekjoulekalorien: summekjoulekalorien,
+                timestamp: App.timeStamp(),
             });
         }
-        db.saveData("kJoule", array,()=>{});
+        db.saveData("kJoule", array, () => {
+        });
     });
 };
 
-
-let rechne = () =>{
-   db.getData("kJoule", (array) =>{
+let rechne = () => {
+    db.getData("Kcal", (array) => {
         let kilokalorien = document.getElementById('Kcal');
-
-        let summekilokalorien  = kilokalorien.value * 4.1868;
-
-        summekilokalorien.toFixed(2);
+        let summekilokalorien = kilokalorien.value * 4.1868;
+        summekilokalorien = summekilokalorien.toFixed(2);
         console.log(summekilokalorien);
         document.getElementById('output').value = summekilokalorien;
 
-
-        if(array==='empty'){
-           array = [{
-               kcal:kilokalorien.value,
-               summekikalorien:summekilokalorien,
-               timestamp: App.timeStamp(),
+        if (array === 'empty') {
+            array = [{
+                kcal: kilokalorien.value,
+                summekikalorien: summekilokalorien,
+                timestamp: App.timeStamp(),
             }]
-        }else{
-           array.push({
-               kcal:kilokalorien.value,
-               summekikalorien:summekilokalorien,
-               timestamp: App.timeStamp(),
+        } else {
+            array.push({
+                kcal: kilokalorien.value,
+                summekikalorien: summekilokalorien,
+                timestamp: App.timeStamp(),
             });
-       }
-       db.saveData("kJoule", array,()=>{});
-   });
+        }
+        db.saveData("Kcal", array, () => {
+        });
+    });
 };
 let labels = [];
 let data = [];
 let arrayList = [];
-/**
- * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
- * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
- * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
- * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
- * Feld angezeigt wird.
- */
-let getAndSetData = (db, callback) => {
-    db.getData('kJoule', (array)=>{
-        let counter;
-        labels = [array.length];
-        data = [array.length];
-        console.log(array);
-        if (array.length === 0){
-            console.log("fertig");
-            callback('empty');
-        }
-        for ( counter = 0; counter<array.length; counter++){
-            let element = array[counter];
-            labels[counter] = element.timestamp;
-            data[counter] = element.maximalkraft;
-            if (counter === array.length - 1) {
-
-                callback();
-            }
-        }
-    })
-};
+// /**
+//  * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
+//  * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
+//  * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
+//  * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
+//  * Feld angezeigt wird.
+//  */
+// let getAndSetData = (db, callback) => {
+//     db.getData('kJoule', (array) => {
+//         let counter;
+//         labels = [array.length];
+//         data = [array.length];
+//         console.log(array);
+//         if (array.length === 0) {
+//             console.log("fertig");
+//             callback('empty');
+//         }
+//         for (counter = 0; counter < array.length; counter++) {
+//             let element = array[counter];
+//             labels[counter] = element.timestamp;
+//             data[counter] = element.maximalkraft;
+//             if (counter === array.length - 1) {
+//
+//                 callback();
+//             }
+//         }
+//     })
+// };
+// let labels = [];
 // let labels = [];
 // let data = [];
 // let arrayList = [];
