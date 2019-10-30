@@ -185,32 +185,26 @@ li.hiddenStyle {
 }
 
 /*ToolTip Funktion für FooterMenu*/
-.tooltip{
-    position:relative;
-    /*display: inline-block;*/
-}
+/*#tooltip{*/
+/*    position:relative;*/
+/*    display: inline-block;*/
+/*}*/
+/*#tooltiptext{*/
+/*    display: none;*/
+/*}*/
+/*#tooltip #tooltiptext{*/
+/*    visibility: hidden;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    padding: 5px 0;*/
+/*    left: 105%;*/
+/*}*/
+/*#test:hover, #tooltiptext {*/
+/*    display: inline-block;*/
+/*    animation-name: menue;*/
+/*    animation-duration: 1s;*/
+/*}*/
 
-
-
-.tooltip .tooltiptext{
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    top: -5px;
-    left: 105%;
-
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    animation-name: menue;
-    animation-duration: 1s;
-
-}
 /*---------------------------------------------------------------------------*/
 /*Main*/
 main {
@@ -293,7 +287,7 @@ img.Instagram {
     display: none;
 }
 /* Größerer Bildschirm */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 50em) {
     body{
         background-image: url(resources/PC_hantel.jpg);
     }

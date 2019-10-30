@@ -521,46 +521,6 @@ let
         }
     };
 
-let
-    labels = [];
-let
-    data = [];
-let
-    arrayList = [];
-
-/**
- * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
- * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
- * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
- * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
- * Feld angezeigt wird.
- */
-// let getAndSetData = (db, collection, callback) => {
-//     db.getData('orm', (array) => {
-//         let counter;
-//         labels = [array.length];
-//         data = [array.length];
-//         console.log(array);
-//         if (array.length === 0) {
-//             console.log("fertig");
-//             callback('empty');
-//         }
-//         for (counter = 0; counter < array.length; counter++) {
-//             let element = array[counter];
-//             if (collection === 'orm') {
-//                 labels[counter] = element.timestamp;
-//                 data[counter] = element.maximalkraft;
-//             }else if(collection === 'bmi'){
-//                 labels[counter] = element.timestamp;
-//                 data[counter] = element.ergebnis;
-//                 //toDO
-//                 // }else if(collection === 'kJoule'){
-//                 //     labels[counter] = element.timestamp;
-//                 //     data[counter] = element.maximalkraft;
-//             }
-//             if (counter === array.length - 1) {
-//                 callback(labels, data, arrayList);
-//             }
-//         }
-//     })
-// };
+let labels = [];
+let data = [];
+let arrayList = [];
