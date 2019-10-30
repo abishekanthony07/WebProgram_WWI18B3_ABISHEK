@@ -95,13 +95,13 @@ let rechne1 =()=>{
     document.getElementById('output1').value = summekjoulekalorien;
         if(array==='empty'){
             array = [{
-                kcal:kjoulekalorien.value,
-                summekikalorien:summekjoulekalorien,
+                kjoule:kjoulekalorien.value,
+                summekjoulekalorien:summekjoulekalorien,
             }]
         }else{
             array.push({
-                kcal:kjoulekalorien.value,
-                summekikalorien:summekjoulekalorien,
+                kjoule:kjoulekalorien.value,
+                summekjoulekalorien:summekjoulekalorien,
             });
         }
         db.saveData("kJoule", array,()=>{});
