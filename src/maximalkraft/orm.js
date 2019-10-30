@@ -74,37 +74,8 @@ let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) 
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    app.showLoadingscreen(loadingID);
-    getAndSetData(db, (empty) => {
-        if(empty === 'empty'){
-            savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
-            app.hideLoadingscreen(loadingID);
-        }else{
-            savedDataDiv.innerHTML = "<canvas id=\"myChart\"></canvas>";
-            let myChartObject = document.getElementById('myChart');
-            let chart = new Chart(myChartObject, {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: "Deine Maximalkraft in Kg",
-                        backgroundColor: 'rgba(159, 96, 96, 0.4)',
-                        borderColor: 'rgba(159, 96, 96, 1)',
-                        data: data
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            tricks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-            app.hideLoadingscreen(loadingID);
-        }
+    app.getAndSetData('orm', savedDataDiv, "ormLoading", "ORMChart", "Maximalkraft - Ergebnisse", ()=>{
+        console.log("ORM - getAndSetData bin fertig");
     });
 };
 
@@ -124,43 +95,10 @@ let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) =
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
     editDataDiv.style.display = 'block';
-    app.showLoadingscreen(loadingID);
-    console.log("Datenbank", db);
-    db.getData('orm', (array) => {
-        let index;
-        arrayList = array;
-        if (array.length===0){
-            editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
-        }else{
-            editDataDiv.innerHTML ="";
-        }
-        for (index = 0; index < array.length; index++) {
-            let element = array[index];
-            let newEl = document.createElement("div");
-            newEl.className = "inhalt";
-            //Inhalt wird gesetzt
-            newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
-            newEl=editDataDiv.appendChild(newEl);
-            //delete Listener wird gesetzt
-            newEl.addEventListener('click',(event)=>{
-                deleteElement(db, app, loadingID, event, inhalt, savedDataDiv, editDataDiv);
-            });
-        }
-        app.hideLoadingscreen(loadingID);
+    this._app.getAndSetEditData("orm", editDataDiv, loadingID, inhalt, savedDataDiv, ()=>{
+        console.log("bin fertig ")
     })
 };
-
-let deleteElement = (db, app, loadingID, event, inhalt, savedDataDiv, editDataDiv) => {
-        let deleteIndex = event.target.parentNode.firstChild.textContent;
-        arrayList.splice(deleteIndex, 1);
-        if (arrayList.length===0){
-            editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
-        }
-    db.saveData('orm', arrayList, ()=>{
-        showEditDataHtml(db, app, loadingID, inhalt, savedDataDiv, editDataDiv);
-    });
-
-    };
 
 /**
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
@@ -203,38 +141,6 @@ let berechne = (db, app, loadingID) => {
             app.hideLoadingscreen(loadingID);
         });
     });
-};
-
-let labels = [];
-let data = [];
-let arrayList = [];
-/**
- * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
- * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
- * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
- * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
- * Feld angezeigt wird.
- */
-let getAndSetData = (db, callback) => {
-    db.getData('orm', (array)=>{
-        let counter;
-        labels = [array.length];
-        data = [array.length];
-        console.log(array);
-        if (array.length === 0){
-            console.log("fertig");
-            callback('empty');
-        }
-        for ( counter = 0; counter<array.length; counter++){
-            let element = array[counter];
-            labels[counter] = element.timestamp;
-            data[counter] = element.maximalkraft;
-            if (counter === array.length - 1) {
-
-                callback();
-            }
-        }
-    })
 };
 
 /**

@@ -12,6 +12,7 @@ import KjouleRechner from "./kjoule/kJouleUmrechner";
 import Startseite from "./startseite/startseite";
 import Anmeldevorgang from "./anmeldung/anmeldevorgang";
 import Impressum from "./impressum/impressum"
+import Chart from "chart.js";
 
 class App {
     /**
@@ -66,16 +67,17 @@ class App {
     }
 
     /**Zeige einen Ladebildschirm*/
-    showLoadingscreen(id){
-       let loading = document.getElementById(id);
-       console.log(loading);
-       loading.style.display = 'block';
-    }
-    /**Blende Ladebildschirm aus*/
-    hideLoadingscreen(id){
+    showLoadingscreen(id) {
         let loading = document.getElementById(id);
-    loading.style.display = 'none';
-}
+        console.log(loading);
+        loading.style.display = 'block';
+    }
+
+    /**Blende Ladebildschirm aus*/
+    hideLoadingscreen(id) {
+        let loading = document.getElementById(id);
+        loading.style.display = 'none';
+    }
 
     /**Zeige die Login Seite an*/
     showLogin() {
@@ -253,6 +255,115 @@ class App {
         this._router.updatePageLinks();
     }
 
+    /**
+     * Hole die Daten von der Datenbank und baue ein Diagramm
+     * @param collection Datenbanktabellenname
+     * @param savedDataDiv Div-Container vom Chart
+     * @param loadingID Id vom Ladebalken-Container
+     * @param chartID Id vom Chart
+     * @param ueberschrift Überschrift für das Diagramm
+     * @param callback (chart)
+     */
+    getAndSetData(collection, savedDataDiv, loadingID, chartID, ueberschrift, callback) {
+        this.hideLoadingscreen(loadingID);
+        this.db.getData(collection, (array) => {
+            let counter;
+            labels = [array.length];
+            data = [array.length];
+            console.log(array);
+            if (array.length === 0) {
+                console.log("fertig");
+                savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
+                this.hideLoadingscreen(loadingID);
+            }
+            for (counter = 0; counter < array.length; counter++) {
+                let element = array[counter];
+                if (collection === 'orm') {
+                    labels[counter] = element.timestamp;
+                    data[counter] = element.maximalkraft;
+                } else if (collection === 'bmi') {
+                    labels[counter] = element.timestamp;
+                    data[counter] = element.ergebnis;
+                    //toDO
+                    // }else if(collection === 'kJoule'){
+                    //     labels[counter] = element.timestamp;
+                    //     data[counter] = element.maximalkraft;
+                }
+                //Verarbeite die Daten und gebe einen Chart zurück
+                if (counter === array.length - 1) {
+                    savedDataDiv.innerHTML = "<canvas id=\""+chartID+"\">";
+                    let myChartObject = document.getElementById(chartID);
+                    console.log(myChartObject);
+                    let chart = new Chart(myChartObject, {
+                        type: "line",
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: ueberschrift,
+                                backgroundColor: 'rgba(159, 96, 96, 0.4)',
+                                borderColor: 'rgba(159, 96, 96, 1)',
+                                data: data
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    tricks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    this.hideLoadingscreen(loadingID);
+                    callback();
+                }
+            }
+        })
+    };
+
+    /**
+     * Hole die Daten von der Datebank und setze die Listener für die Buttons
+     * @param collection Datenbanktabellenname
+     * @param editDataDiv Div-Container vom Editcontainer
+     * @param loadingID Id vom Ladebalken-Container
+     * @param inhalt Div-Container vom MainContent
+     * @param savedDataDiv Div-Container vom Chart
+     * @param callback () Zeige Div-Container vom edit in der jeweiligen Klasse
+     */
+    getAndSetEditData(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback){
+        this.showLoadingscreen(loadingID);
+        console.log("Datenbank", db);
+        this.db.getData(collection, (array) => {
+            let index;
+            arrayList = array;
+            if (array.length===0){
+                editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+            }else{
+                editDataDiv.innerHTML ="";
+            }
+            for (index = 0; index < array.length; index++) {
+                let element = array[index];
+                let newEl = document.createElement("div");
+                newEl.className = "inhalt";
+                //Inhalt wird gesetzt
+                if (collection==="orm"){
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
+                } else if (collection==="bmi"){
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.ergebnis+" kg</div>";
+                } else if (collection==="kJoule"){
+                    // newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
+                }
+                newEl=editDataDiv.appendChild(newEl);
+                //delete Listener wird gesetzt
+                newEl.addEventListener('click',(event)=>{
+                    deleteElement(this.db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback);
+                });
+            }
+            this.hideLoadingscreen(loadingID);
+        })
+    }
+
     _switchVisibleView(view) {
         // Callback, mit dem die noch sichtbare View den Seitenwechsel zu einem
         // späteren Zeitpunkt fortführen kann, wenn sie in der Methode onLeave()
@@ -263,7 +374,7 @@ class App {
         let goon = () => {
             // ?goon an die URL hängen, weil der Router sonst nicht weiternavigiert
             this._router.navigate(newUrl + "?goon");
-        }
+        };
 
         // Aktuelle View fragen, ob eine neue View aufgerufen werden darf
         if (this._currentView && !this._currentView.onLeave(goon)) {
@@ -291,10 +402,31 @@ class App {
 }
 
 export default App;
-
+/**
+ * Falls die Liste leer ist wird dementsprechend eine Nachricht angezeigt.
+ *
+ * @param db Datenbank
+ * @param app App
+ * @param collection Datenbanktabellenname
+ * @param loadingID LadebildschirmID
+ * @param event Event vom einzelnen Container eines gesopeicherten Elements
+ * @param inhalt MainContent
+ * @param savedDataDiv ChartDiv
+ * @param editDataDiv EditDiv
+ * @param callback ???
+ */
+let deleteElement = (db, app, collection, loadingID, event, inhalt, savedDataDiv, editDataDiv, callback) => {
+    let deleteIndex = event.target.parentNode.firstChild.textContent;
+    arrayList.splice(deleteIndex, 1);
+    if (arrayList.length===0){
+        editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+    }
+    db.saveData(collection, arrayList, ()=>{
+        callback();
+    });
+};
 
 let buttonsSindZusehen = false;
-
 /**
  * Diese Methode animiert unser Pfeil zum anzeigen der 3 verschiedenen Seiten.
  */
@@ -360,6 +492,45 @@ let showFooterMenu = () => {
         menuSindZusehen = false;
         footerMenue.style.display = 'none';
     }
-}
+};
 
+let labels = [];
+let data = [];
+let arrayList = [];
 
+/**
+ * Diese Methode muss bei einem Button-Click auf "gespeicherte Werte anzeigen" aufgerufen werden
+ * Diese Funktion verarbeitet die vom Server zurückgelieferte Liste.
+ * Es muss gewährleistet werden, dass die Elemente die auf  der Datenbank
+ * liegen auch dem entsprechend nach einem Button-Click auf dem entsprechendem
+ * Feld angezeigt wird.
+ */
+// let getAndSetData = (db, collection, callback) => {
+//     db.getData('orm', (array) => {
+//         let counter;
+//         labels = [array.length];
+//         data = [array.length];
+//         console.log(array);
+//         if (array.length === 0) {
+//             console.log("fertig");
+//             callback('empty');
+//         }
+//         for (counter = 0; counter < array.length; counter++) {
+//             let element = array[counter];
+//             if (collection === 'orm') {
+//                 labels[counter] = element.timestamp;
+//                 data[counter] = element.maximalkraft;
+//             }else if(collection === 'bmi'){
+//                 labels[counter] = element.timestamp;
+//                 data[counter] = element.ergebnis;
+//                 //toDO
+//                 // }else if(collection === 'kJoule'){
+//                 //     labels[counter] = element.timestamp;
+//                 //     data[counter] = element.maximalkraft;
+//             }
+//             if (counter === array.length - 1) {
+//                 callback(labels, data, arrayList);
+//             }
+//         }
+//     })
+// };
