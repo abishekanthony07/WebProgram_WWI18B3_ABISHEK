@@ -278,20 +278,22 @@ class App {
             }
             for (counter = 0; counter < array.length; counter++) {
                 let element = array[counter];
+                //ORM
                 if (collection === 'orm') {
                     labels[counter] = element.timestamp;
                     data[counter] = element.maximalkraft;
+                    //BMI
                 } else if (collection === 'bmi') {
                     labels[counter] = element.timestamp;
                     data[counter] = element.ergebnis;
-                    //toDO
-                    // }else if(collection === 'kJoule'){
-                    //     labels[counter] = element.timestamp;
-                    //     data[counter] = element.maximalkraft;
+                    //KCal->KJoule
+                } else if (collection === 'kJoule') {
+                    labels[counter] = element.timestamp;
+                    data[counter] = element.summekjoulekalorien;
                 }
                 //Verarbeite die Daten und gebe einen Chart zurück
                 if (counter === array.length - 1) {
-                    savedDataDiv.innerHTML = "<canvas id=\""+chartID+"\">";
+                    savedDataDiv.innerHTML = "<canvas id=\"" + chartID + "\">";
                     let myChartObject = document.getElementById(chartID);
                     console.log(myChartObject);
                     let chart = new Chart(myChartObject, {
@@ -339,26 +341,26 @@ class App {
             let index;
             arrayList = array;
             console.log(arrayList);
-            if (array.length===0){
-                editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
-            }else{
-                editDataDiv.innerHTML ="";
+            if (array.length === 0) {
+                editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
+            } else {
+                editDataDiv.innerHTML = "";
             }
             for (index = 0; index < array.length; index++) {
                 let element = array[index];
                 let newEl = document.createElement("div");
                 newEl.className = "inhalt";
                 //Inhalt wird gesetzt
-                if (collection==="orm"){
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
-                } else if (collection==="bmi"){
+                if (collection === "orm") {
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
+                } else if (collection === "bmi") {
                     newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Dein BMI beträgt &nbsp;"+element.ergebnis+"</div>";
-                } else if (collection==="kJoule"){
-                    // newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
+                } else if (collection === "kJoule") {
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
                 }
-                newEl=editDataDiv.appendChild(newEl);
+                newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
-                newEl.addEventListener('click',(event)=>{
+                newEl.addEventListener('click', (event) => {
                     deleteElement(this.db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callbackDelete);
                 });
             }
@@ -421,10 +423,10 @@ let deleteElement = (db, collection, loadingID, event, inhalt, savedDataDiv, edi
     let deleteIndex = event.target.parentNode.firstChild.textContent;
     arrayList.splice(deleteIndex, 1);
     console.log(arrayList);
-    if (arrayList.length===0){
-        editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
+    if (arrayList.length === 0) {
+        editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
     }
-    db.saveData(collection, arrayList, ()=>{
+    db.saveData(collection, arrayList, () => {
         callback();
     });
 };
