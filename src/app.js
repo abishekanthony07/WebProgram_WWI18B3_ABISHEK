@@ -330,13 +330,15 @@ class App {
      * @param inhalt Div-Container vom MainContent
      * @param savedDataDiv Div-Container vom Chart
      * @param callback () Zeige Div-Container vom edit in der jeweiligen Klasse
+     * @param callbackDelete
      */
-    getAndSetEditData(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback){
+    getAndSetEditData(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete){
         this.showLoadingscreen(loadingID);
-        console.log("Datenbank", db);
+        console.log("Datenbank", this.db);
         this.db.getData(collection, (array) => {
             let index;
             arrayList = array;
+            console.log(arrayList);
             if (array.length===0){
                 editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
             }else{
@@ -350,17 +352,17 @@ class App {
                 if (collection==="orm"){
                     newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
                 } else if (collection==="bmi"){
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.ergebnis+" kg</div>";
+                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Dein BMI beträgt &nbsp;"+element.ergebnis+"</div>";
                 } else if (collection==="kJoule"){
                     // newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>"+index+"</div><button id='delete'>Löschen?</button>&nbsp;<b>["+element.timestamp+"]&nbsp;</b>Maximalkraft von&nbsp;"+element.maximalkraft+" kg</div>";
                 }
                 newEl=editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
                 newEl.addEventListener('click',(event)=>{
-                    deleteElement(this.db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback);
+                    deleteElement(this.db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callbackDelete);
                 });
             }
-            this.hideLoadingscreen(loadingID);
+            callback();
         })
     }
 
@@ -406,7 +408,6 @@ export default App;
  * Falls die Liste leer ist wird dementsprechend eine Nachricht angezeigt.
  *
  * @param db Datenbank
- * @param app App
  * @param collection Datenbanktabellenname
  * @param loadingID LadebildschirmID
  * @param event Event vom einzelnen Container eines gesopeicherten Elements
@@ -415,9 +416,11 @@ export default App;
  * @param editDataDiv EditDiv
  * @param callback ???
  */
-let deleteElement = (db, app, collection, loadingID, event, inhalt, savedDataDiv, editDataDiv, callback) => {
+let deleteElement = (db, collection, loadingID, event, inhalt, savedDataDiv, editDataDiv, callback) => {
+    console.log(event.target);
     let deleteIndex = event.target.parentNode.firstChild.textContent;
     arrayList.splice(deleteIndex, 1);
+    console.log(arrayList);
     if (arrayList.length===0){
         editDataDiv.innerHTML ="Sie haben keine Werte gespeichert!";
     }
@@ -461,7 +464,7 @@ let animateArrow = () => {
         //AuswahlMenü einblenden
         auswahlMenue.style.display = 'none';
     }
-}
+};
 
 /**
  * Diese Methode sorgt dafür, dass ein Bild rotiert wird.
@@ -471,7 +474,7 @@ let animateArrow = () => {
 let rotateImage = (img, degree) => {
     img.style.transform = degree;
     img.style.WebkitTransitionDuration = '0.5s';
-}
+};
 
 
 let menuSindZusehen = false;
