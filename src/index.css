@@ -43,7 +43,15 @@ header {
 #auswahlHan, #auswahlSas, #footerMenu {
     cursor: pointer;
 }
-
+#impressum{
+    text-align: center;
+    align-items: center;
+}
+li img{
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 1em;
+}
 #headerContent {
     /*background-color: rgb(159, 96, 96);*/
     background-image: linear-gradient(90deg, dimgray 2%, rgb(112, 112, 112));
@@ -80,15 +88,6 @@ hr {
     }
 }
 
-@keyframes menue {
-    from {
-        opacity: 0
-    }
-    to {
-        opacity: 1
-    }
-}
-
 #auswahlMenue button, footer div {
     border: none;
     border-radius: 3em;
@@ -101,8 +100,10 @@ hr {
     text-decoration: none;
     color: ghostwhite;
 }
-
-#auswahlMenue button:hover, #impressum:hover, #socialMedia:hover, #logout:hover {
+#footerMenu .grid-item-right:hover {
+    background: dimgray;
+}
+#auswahlMenue button:hover{
     background: rgb(159, 96, 96);
 }
 
@@ -144,6 +145,17 @@ hr {
     justify-items: center;
     align-items: center;
 }
+
+.grid-container-center{
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    vertical-align: center;
+    horiz-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
 
 #tabMenue, #datenbankmenu, #bmimenu {
     border-bottom: black solid 1px;

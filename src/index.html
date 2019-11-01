@@ -31,72 +31,90 @@
             </div>
         </div>
         <hr>
-        <div id="arrowDowndiv">
-            <img src="resources/arrow_down2.png" alt="Menü anzeigen Pfeil" id="arrowDown">
-        </div>
-
-        <img src="resources/footer_MenuP.png" alt="Menü Auswahlpunkte" id="footerMenuP">
         <div id="footerMenu">
             <section id="footerHeader">
-<!--                <ul>-->
-
-<!--                    <div id="tooltip">-->
-<!--                        <li class="hiddenStyle">-->
-<!--                            <div id="test">© WWI18B3 </div>-->
-<!--                        </li>-->
-<!--                        <span id="tooltiptext">-->
-<!--                             Sascha Klevenhaus, <br>-->
-<!--                            Hannah Bjork, <br>-->
-<!--                            Abishek Anthony-->
-<!--                        </span>-->
-<!--                    </div>-->
-<!--                </ul>-->
+                <!--                <ul>-->
+    
+                <!--                    <div id="tooltip">-->
+                <!--                        <li class="hiddenStyle">-->
+                <!--                            <div id="test">© WWI18B3 </div>-->
+                <!--                        </li>-->
+                <!--                        <span id="tooltiptext">-->
+                <!--                             Sascha Klevenhaus, <br>-->
+                <!--                            Hannah Bjork, <br>-->
+                <!--                            Abishek Anthony-->
+                <!--                        </span>-->
+                <!--                    </div>-->
+                <!--                </ul>-->
             </section>
             <section id="footerMain">
                 <ul>
                     <li class="hiddenStyle">
-                        <div id="impressum">Impressum</div>
-                    </li>
-                    <li class="hiddenStyle">
-                        <div id="socialMedia">
-                            <br>
-                            Soziale Medien
-                            <br>
-                            <div class="socialMediaLinks">
-                                <a href="https://www.instagram.com/wildhunter.spreadshirt/"
-                                   class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/>
-                                    Sascha
-                                    K.</a><br>
-                                <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img
-                                        src="resources/instagram.png"
-                                        class="Instagram" alt="Instagram"/>
-                                    Hannah B.</a><br>
-                                <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img
-                                        src="resources/instagram.png"
-                                        class="Instagram" alt="Instagram"/>
-                                    Abishek A.</a><br>
+                        <div class="grid-container-center">
+                            <div class="grid-itemRight center">
+                                <img src="resources/impressum.png">
+                            </div>
+                            <div id="impressum">
+                                Impressum
+                            </div>
+                            <div class="center">
+                                <img src="resources/socialMedia.png">
+                            </div>
+                            <div id="socialMedia" >
+                                Soziale Medien
+                                <div class="socialMediaLinks">
+                                    <a href="https://www.instagram.com/wildhunter.spreadshirt/"
+                                       class="smLink"><img src="resources/instagram.png" class="Instagram" alt="Instagram"/>
+                                        Sascha
+                                        K.</a><br>
+                                    <a href="https://www.instagram.com/hannah_bjork" class="smLink"><img
+                                            src="resources/instagram.png"
+                                            class="Instagram" alt="Instagram"/>
+                                        Hannah B.</a><br>
+                                    <a href="https://www.instagram.com/abi.sh.ek" class="smLink"><img
+                                            src="resources/instagram.png"
+                                            class="Instagram" alt="Instagram"/>
+                                        Abishek A.</a><br>
+                                </div>
+                            </div>
+                            <div></div>
+                            <div></div>
+                            <div class="grid-itemRight center">
+                                <img src="resources/logout.png" alt="">
+                            </div>
+                            <div class="center" >
+                                <div id="logout">Logout</div>
                             </div>
                         </div>
                     </li>
                 </ul>
             </section>
-            <section id="footerBody">
-                <ul>
-                    <li class="hiddenStyle">
-                        <div id="logout">Logout</div>
-                    </li>
-                </ul>
-            </section>
+<!--            <section id="footerBody">-->
+<!--                <ul>-->
+<!--                    <li class="hiddenStyle grid-container-center">-->
+<!--                        <div class="grid-itemRight center">-->
+<!--                            <img src="resources/logout.png" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="center" >-->
+<!--                            <div id="logout">Logout</div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </section>-->
         </div>
+        <div id="arrowDowndiv">
+            <img src="resources/arrow_down2.png" alt="Menü anzeigen Pfeil" id="arrowDown">
+        </div>
+        <img src="resources/footer_MenuP.png" alt="Menü Auswahlpunkte" id="footerMenuP">
     </header>
     <!-- Hauptbereich (dynamisch je nach View)        -->
-    <main>
+    <main class="main">
     </main>
 </section>
 
 <!--Section Anmeldung-->
 <section id="anmeldevorgang" class="hidden">
-    <main>
+    <main class="main">
         <div id="anmeldeLoading"></div>
         <div class="inhalt">
             <div class="loading"></div>
@@ -137,7 +155,7 @@
 
 <!--Section Startseite-->
 <section id="startseiteseite" class="hidden">
-    <main>
+    <main class="main">
         <div id="startseiteLoading"></div>
         <div class="inhalt">
             <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
@@ -166,7 +184,7 @@
 
 <!--Section BMI-Rechner-->
 <section id="bmiSeite" class="hidden">
-    <main>
+    <main class="main">
         <div id="bmiLoading"></div>
         <div id="bmimenu" class="grid-container-standard">
             <div class="grid-itemLeft">
@@ -387,7 +405,7 @@
 
 <!--Section Kjoule-Rechner-->
 <section id="kjouleSeite" class="hidden">
-    <main>
+    <main class="main">
         <div id="kjouleLoading"></div>
         <div id="datenbankmenu" class="grid-container-standard">
             <div class="grid-itemLeft">
@@ -438,7 +456,7 @@
 
 <!--Section Maximalkraft-Rechner-->
 <section id="ormSeite" class="hidden">
-    <main>
+    <main class="main">
         <div>
             <div id="ormLoading"></div>
             <div id="tabMenue" class="grid-container-standard">
@@ -576,7 +594,7 @@
 
 <!--Section Impressum-->
 <section id="impressumSeite" class="hidden">
-    <main>
+    <main class="main">
         <div class="inhalt">
             <h3>Impressum:</h3><br>
             WiFitness GmbH <br><br>

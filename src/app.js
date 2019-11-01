@@ -172,6 +172,17 @@ class App {
             this._router.navigate('/kjouleRechner/');
             console.log("kjoule");
         });
+        /**
+         * Ausblenden des Menüs wenn auf inhalt geklickt wird.
+         * @type {HTMLCollectionOf<Element>}
+         */
+        let mains = document.getElementsByClassName('main');
+        let counter;
+        for (counter = 0; counter < mains.length; counter++){
+            mains.item(counter).addEventListener('click', ()=>{
+                closeArrowAndMenu();
+            });
+        }
         /**Impressum-Listener*/
         let auswahlImpressum = document.getElementById('impressum');
         auswahlImpressum.addEventListener("click", () => {
@@ -385,6 +396,7 @@ class App {
     }
 
     _switchVisibleView(view) {
+        closeArrowAndMenu();
         // Callback, mit dem die noch sichtbare View den Seitenwechsel zu einem
         // späteren Zeitpunkt fortführen kann, wenn sie in der Methode onLeave()
         // false zurückliefert. Dadurch erhält sie die Möglichkeit, den Anwender
@@ -448,13 +460,23 @@ let
         });
     };
 
-let
-    buttonsSindZusehen = false;
+/**
+ * Schließt das Menü und lässt die 3 Verinkungen im Header verschwinden.
+ */
+let closeArrowAndMenu = () =>{
+  if (buttonsSindZusehen){
+      animateArrow();
+  }
+  if (menuSindZusehen){
+      showFooterMenu();
+  }
+};
+
+let buttonsSindZusehen = false;
 /**
  * Diese Methode animiert unser Pfeil zum anzeigen der 3 verschiedenen Seiten.
  */
-let
-    animateArrow = () => {
+let animateArrow = () => {
         let arrowDown = document.getElementById('arrowDown');
         let arrowDownDiv = document.getElementById('arrowDowndiv');
         let auswahlMenue = document.getElementById('auswahlMenue');
@@ -492,21 +514,18 @@ let
  * @param img
  * @param degree
  */
-let
-    rotateImage = (img, degree) => {
+let rotateImage = (img, degree) => {
         img.style.transform = degree;
         img.style.WebkitTransitionDuration = '0.5s';
     };
 
 
-let
-    menuSindZusehen = false;
+let menuSindZusehen = false;
 
 /**
  *'Footer'-Menü wird eingeblendet
  */
-let
-    showFooterMenu = () => {
+let showFooterMenu = () => {
         let footerIcon = document.getElementById('footerMenuP');
         let footerMenue = document.getElementById('footerMenu');
 

@@ -4,16 +4,12 @@ body{
 .visible{
     display: block;
 }
-.inhalt{
-    /*overflow: hidden;*/
-}
 .center{
     vertical-align: center;
     horiz-align: center;
     text-align: center;
 }
 /*Tabs*/
-
 .tab {
     display: inline-block;
     margin: 1em;
