@@ -350,9 +350,9 @@ class App {
      * @param callbackDelete
      */
     getAndSetEditDataFirebase(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete) {
-        this.showLoadingscreen(loadingID);
         console.log("Datenbank", this.db);
         this.db.getData(collection, (array) => {
+            this.showLoadingscreen(loadingID);
             let index;
             arrayList = array;
             console.log(arrayList);
