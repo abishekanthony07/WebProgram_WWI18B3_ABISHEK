@@ -5,7 +5,7 @@ body{
     display: block;
 }
 .inhalt{
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .center{
     vertical-align: center;

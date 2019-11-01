@@ -42,6 +42,16 @@ class Anmeldevorgang {
             let password = document.getElementById('password').value;
             this.db.createUser(email, password);
         });
+
+        let forgotPassowrd = document.getElementById('forgottenPWButton');
+        forgotPassowrd.addEventListener("click", () => {
+            let email = document.getElementById('email').value;
+            this.db.firebase.auth().sendPasswordResetEmail(email).then(()=>{
+                alert("Wenn die eingegeben E-Mail Adresse bei uns hinterlegt ist, bekommen Sie eine E-Mail zum Zurücksetzen des Passworts.");
+            }).catch((error)=>{
+                alert("Es ist etwas schief gelaufen. Bitte erneut ausführen.");
+            });
+        });
     }
 
     onLeave(goon) {
