@@ -363,15 +363,15 @@ class App {
                 newEl.className = "inhalt";
                 //Inhalt wird gesetzt
                 if (collection === "orm") {
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
                 } else if (collection === "bmi") {
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
                 } else if (collection === "kJoule") {
-                    newEl.innerHTML = "<div class='delete'><div class='hidden' id='index'>" + index + "</div><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Kcal: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Kcal: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
                 }
                 newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
-                newEl.addEventListener('click', (event) => {
+                newEl.firstChild.firstChild.addEventListener('click', (event) => {
                     deleteElement(this.db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callbackDelete);
                 });
             }

@@ -3,12 +3,12 @@ import App from "../app.js";
 
 let db;
 
-let ablaufkJoule = () => {
+let ablaufkJoule = (app) => {
     document.getElementById("button").addEventListener("click", () => {
         rechne();
     });
     document.getElementById("button1").addEventListener("click", () => {
-        rechne1();
+        rechne1(app);
     });
 
 };
@@ -32,7 +32,7 @@ class KjouleRechner {
 
     onLoad() {
         console.log('Page loaded');
-        ablaufkJoule();
+        ablaufkJoule(this._app);
 
         //Tabs
         //Container
@@ -44,7 +44,7 @@ class KjouleRechner {
         let tabChart = document.getElementById("savingButton");
         tabChart.addEventListener('click', () => {
             console.log("Jaödlsakdad#a");
-            showSavedDataHtml(this.db, this._app, null, inhalt, chart, edit);
+            showSavedDataHtml(this.db, this._app, "kjouleLoading", inhalt, chart, edit);
         });
         //"Kjoule Rechner"
         let tabRechner = document.getElementById("kJouleRechnerButton");
@@ -54,7 +54,7 @@ class KjouleRechner {
         //"gespeicherten Werte bearbeiten"
         let tabEdit = document.getElementById("editierenDataButton");
         tabEdit.addEventListener('click', () => {
-            showEditDataHtml(this.db, this._app, null, inhalt, chart, edit);
+            showEditDataHtml(this.db, this._app, "kjouleLoading", inhalt, chart, edit);
         });
         showKjouleRechnerHtml(inhalt, chart, edit);
 
@@ -97,7 +97,8 @@ let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) =
         })
 };
 
-let rechne1 = () => {
+let rechne1 = (app) => {
+    app.showLoadingscreen("kjouleLoading");
     db.getData("kJoule", (array) => {
         let kjoulekalorien = document.getElementById('KJOULE');
         let summekjoulekalorien = kjoulekalorien.value / 4.184;
@@ -117,6 +118,7 @@ let rechne1 = () => {
             });
         }
         db.saveData("kJoule", array, () => {
+            app.hideLoadingscreen("kjouleLoading");
         });
     });
 };
