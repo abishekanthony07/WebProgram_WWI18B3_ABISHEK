@@ -17,6 +17,21 @@ class Startseite {
 
     onLoad() {
         console.log('Page loaded');
+
+        //Navigation der "hier"-Buttons auf der Startseite
+        let here_bmi = document.getElementById("here_BMI");
+        let here_kjoule = document.getElementById("here_KCalUmrechner");
+        let here_maxKraft = document.getElementById("here_Maximal");
+
+        here_bmi.addEventListener("click", () => {
+            this._app._router.navigate('/bmiRechner/');
+        });
+        here_maxKraft.addEventListener("click", () => {
+            this._app._router.navigate('/maximalkraftRechner/');
+        });
+        here_kjoule.addEventListener("click", () => {
+            this._app._router.navigate('/kjouleRechner/');
+        });
     }
 
     onLeave(goon) {
