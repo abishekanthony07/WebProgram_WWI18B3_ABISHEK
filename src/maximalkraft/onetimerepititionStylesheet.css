@@ -8,6 +8,8 @@ body{
     overflow: hidden;
 }
 .center{
+    vertical-align: center;
+    horiz-align: center;
     text-align: center;
 }
 /*Tabs*/
@@ -34,6 +36,9 @@ h1{
 #beschreibungORM b{
     color:  rgb(159, 96, 96);
 }
+#formelORM, #editable{
+    margin: 1em;
+}
 #berechne{
     text-align: center;
 }
@@ -42,8 +47,16 @@ h1{
     border-radius: 3em;
     background: rgba(10,10,10,0.7);;
     color: ghostwhite;
-    margin: 1em;
+    margin-top: 1em;
     font-size: large;
+}
+#bruch hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid rgba(10,10,10,1);
+    margin: 0;
+    padding: 0;
 }
 #berechne button:hover, #berechne button:focus, #berechne button:active{
     outline: none;
@@ -123,27 +136,18 @@ table, tr,th{
     }
 }
 /* Größerer Bildschirm */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 72.5em) {
     #template{
         display: block;
     }
     #ergebnis, #bruch, #editable, #formelORM{
         vertical-align: middle;
+        horzontal-align: center;
         display: inline-block;
     }
     /*Absatz 2.2*/
     #formelORM{
-        display: table-cell;
-        margin: 1em;
-        text-align: center;
-    }
-    #bruch hr{
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 2px solid rgba(10,10,10,1);
-        margin: 0;
-        padding: 0;
+        display: inline-block;
     }
     #bruch div{
         padding: 2px;
@@ -157,8 +161,6 @@ table, tr,th{
     /*Absatz 2.1*/
     #editable{
         display: inline-block;
-        margin: 1em;
-        text-align: center;
     }
     #benutzerEingabeORM div{
         display: inline-block;
