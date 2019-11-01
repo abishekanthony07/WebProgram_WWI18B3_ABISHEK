@@ -113,7 +113,7 @@ let bmiBerechnen = (db) => {
         });
         hintergrundAngleichen(ergebnis, anzeige);
         ergebnis = " " + ergebnis.bold();
-        anzeige.innerHTML = " <b>Dein BMI ist: </b> &nbsp;" + ergebnis + "<b>.</b>";
+        anzeige.innerHTML = " <b>Dein BMI beträgt: </b> &nbsp;" + ergebnis + "<b>.</b>";
         anzeige.style.display = 'flex';
     });
 };
