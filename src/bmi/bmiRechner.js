@@ -71,12 +71,12 @@ let showSavedDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    app.getAndSetData('bmi', savedDataDiv, "bimLoading", "BMIChart", "BMI - Ergebnisse", ()=>{
+    app.getAndSetData('bmi', savedDataDiv, "bmiLoading", "BMIChart", "BMI - Ergebnisse", ()=>{
         console.log("getAndSetData bin fertig");
     });
 };
 let showEditDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
-    app.getAndSetEditDataFirebase('bmi', editDataDiv, "bimLoading", inhalt, savedDataDiv, ()=>{
+    app.getAndSetEditDataFirebase('bmi', editDataDiv, "bmiLoading", inhalt, savedDataDiv, ()=>{
         inhalt.style.display = 'none';
         savedDataDiv.style.display = 'none';
         editDataDiv.style.display = 'block';

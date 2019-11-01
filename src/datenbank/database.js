@@ -14,7 +14,7 @@ const firebaseConfig = {
     appId: "1:758423002310:web:2fb945bc56ca20cdf90bc7",
     measurementId: "G-TNEMX97BZS"
 };
-let userId
+let userId;
 class Datenbank {
     constructor() {
         if (!firebase.apps.length) {

@@ -279,7 +279,7 @@ class App {
      * @param callback (chart)
      */
     getAndSetData(collection, savedDataDiv, loadingID, chartID, ueberschrift, callback) {
-        this.hideLoadingscreen(loadingID);
+        this.showLoadingscreen(loadingID);
         this.db.getData(collection, (array) => {
             let counter;
             labels = [array.length];
@@ -351,8 +351,8 @@ class App {
      */
     getAndSetEditDataFirebase(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete) {
         console.log("Datenbank", this.db);
+        this.showLoadingscreen(loadingID);
         this.db.getData(collection, (array) => {
-            this.showLoadingscreen(loadingID);
             let index;
             arrayList = array;
             console.log(arrayList);
