@@ -100,9 +100,6 @@ hr {
     text-decoration: none;
     color: ghostwhite;
 }
-#footerMenu .grid-item-right:hover {
-    background: dimgray;
-}
 #auswahlMenue button:hover{
     background: rgb(159, 96, 96);
 }
@@ -167,6 +164,7 @@ hr {
 
 
 /*Footer als Dropdown Menü oben links*/
+
 #footerMenu {
     position: absolute;
     left: 0px;
@@ -176,7 +174,7 @@ hr {
     animation-duration: 1s;
     /*top:0px;
     /*height, da footer Menü im Header drinnen steckt, und daher nicht über die restliche Seite laufen kann*/
-    height: 650px;
+    height: 95vh;
     display: none;
     background-color: rgba(255, 255, 255, 0.9);
     color: black;
@@ -308,6 +306,7 @@ a.smLink:link {
 
 div#socialMedia {
     position: relative;
+    margin-right: 2em;
 }
 
 div.socialMediaLinks {

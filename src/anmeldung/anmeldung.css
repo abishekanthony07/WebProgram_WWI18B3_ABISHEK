@@ -25,7 +25,7 @@ input{
     border-radius: 3px;
 }
 
-#loginButton:hover, #registerButton:hover{
+#loginButton:hover, #registerButton:hover, #forgottenPWButton:hover{
     background: rgb(159, 96, 96);
     color: white;
 }
