@@ -352,12 +352,18 @@ img.Instagram {
     cursor: pointer;
 }
 
+/*Startseite Text und Video formatieren*/
 #infoVid{
     text-align: center;
 }
 
 .infoText{
     padding: 2em;
+}
+
+#vid{
+    height: 45vh;
+    width: 55%;
 }
 /*Media Screen nach Anleitung*/
 /*@media screen and (min-width: 49.125em){
