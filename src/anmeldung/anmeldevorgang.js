@@ -16,7 +16,6 @@ class Anmeldevorgang {
             className: "visible",
             main: this.section.querySelectorAll("main > *"),
         };
-        console.log('Page loaded');
         return content;
     }
 

@@ -10,6 +10,7 @@ let changeBMIData;
 let savedBMIContent;
 
 class BmiRechner {
+    //Konstruktor zum Zuweisen von Datenbank und App
     constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
@@ -17,13 +18,11 @@ class BmiRechner {
     }
 
     onShow() {
-
         let section = document.querySelector("#bmiSeite").cloneNode(true);
-        let content = {
+        return {
             className: "visible",
             main: section.querySelectorAll("main > *"),
         };
-        return content;
     }
 
     onLoad() {
@@ -33,25 +32,21 @@ class BmiRechner {
         savedBMIButton = document.getElementById('savingBMIButton');
         bmiRechnerButton = document.getElementById('main');
         changeBMIData = document.getElementById('bmiDataButton');
-        console.log('Page loaded');
         ablaufBMI(this.db);
-        console.log("savingBMIButton", savedBMIButton);
+
         savedBMIButton.addEventListener("click", () => {
-            console.log("savingBMIButton", savedBMIButton);
             showSavedDataHtml(this._app, savedBMIContent, chartContent, editContent);
         });
         bmiRechnerButton.addEventListener("click", () => {
             showBMIHtml(savedBMIContent, chartContent, editContent);
         });
         changeBMIData.addEventListener("click", () => {
-            console.log("savingBMIButton", changeBMIData);
-            console.log(editContent);
             showEditDataHtml(this._app,savedBMIContent, chartContent, editContent);
         });
         showBMIHtml(savedBMIContent, chartContent, editContent);
     }
 
-    onLeave(goon) {
+    onLeave() {
         return true;
     }
 
@@ -67,26 +62,26 @@ let showBMIHtml = (bmiRechnerButton, savedBMIButton, bmiDataButton) => {
     savedBMIButton.style.display = 'none';
     bmiDataButton.style.display = 'none';
 };
+
 let showSavedDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
     app.getAndSetData('bmi', savedDataDiv, "bmiLoading", "BMIChart", "BMI - Ergebnisse", ()=>{
-        console.log("getAndSetData bin fertig");
     });
 };
+
 let showEditDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
     app.getAndSetEditDataFirebase('bmi', editDataDiv, "bmiLoading", inhalt, savedDataDiv, ()=>{
         inhalt.style.display = 'none';
         savedDataDiv.style.display = 'none';
         editDataDiv.style.display = 'block';
     }, ()=>{
-        console.log("Erfolgreich gelöscht");
         showEditDataHtml(app, inhalt, savedDataDiv, editDataDiv);
     })
 };
 
-//
+//Methode zum Berechnen vom BMI und anpassen des Hintergrunds
 let bmiBerechnen = (db) => {
     db.getData("bmi", (array) => {
         let eingabeGroesse = document.getElementById("groesse").value;
@@ -119,11 +114,8 @@ let bmiBerechnen = (db) => {
 };
 
 let ablaufBMI = (db) => {
-    console.log("Test aufgerufen", db);
     let buttonBerechen = document.getElementById('berechnenButton');
-    console.log(buttonBerechen.innerText);
     buttonBerechen.addEventListener("click", () => {
-        console.log("blalblalba");
         bmiBerechnen(db);
     });
     window.addEventListener("keypress", (p) => {
@@ -163,10 +155,9 @@ let ablaufBMI = (db) => {
         document.querySelector('#open-dialog')
             .addEventListener('click', toggleDialog);
     });
-
-    console.log("test zuende");
 };
 
+//Zum Angleichen des Hintergrunds
 let hintergrundAngleichen = (ergebnis, anzeige) => {
     if (ergebnis < 16) {
         anzeige.style.backgroundColor = "#7c7cbc";
@@ -186,7 +177,7 @@ let hintergrundAngleichen = (ergebnis, anzeige) => {
         anzeige.style.backgroundColor = "#c08080";
     }
 };
-
+//"Schon gewusst" Button
 let toggleDialog = () => {
     let dialog = document.querySelector('dialog'),
         closeButton = document.getElementById('close-dialog');
