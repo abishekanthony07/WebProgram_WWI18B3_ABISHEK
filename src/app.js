@@ -367,7 +367,7 @@ class App {
                 } else if (collection === "bmi") {
                     newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
                 } else if (collection === "kJoule") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Kcal: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Ergebnisse der KJoule in Kcal Umrechnung: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
                 }
                 newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt

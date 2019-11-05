@@ -350,6 +350,13 @@ img.Instagram {
     cursor: pointer;
 }
 
+#infoVid{
+    text-align: center;
+}
+
+.infoText{
+    padding: 2em;
+}
 /*Media Screen nach Anleitung*/
 /*@media screen and (min-width: 49.125em){
     body, input{
