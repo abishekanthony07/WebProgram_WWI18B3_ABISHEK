@@ -14,6 +14,7 @@ const firebaseConfig = {
     appId: "1:758423002310:web:2fb945bc56ca20cdf90bc7",
     measurementId: "G-TNEMX97BZS"
 };
+
 let userId;
 class Datenbank {
     constructor() {
@@ -24,7 +25,6 @@ class Datenbank {
 
     createUser(email, password) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((output) => {
-            console.log("Registrierung erfolgreich!", output);
             output.user.sendEmailVerification();
             alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
         }).catch((error) => {
@@ -46,10 +46,8 @@ class Datenbank {
 
     loginUser(email, password, failure, success) {
         firebase.auth().signInWithEmailAndPassword(email, password).then((output) => {
-            console.log("Login erfolgreich!", output);
             if (output.user.emailVerified) {
                 userId = output.user.uid;
-                console.log("if-Anweisung -> Email vom User ist verifiziert!");
                 this.firebase = firebase;
                 this.datenbank = firebase.firestore();
                 success();
@@ -60,12 +58,10 @@ class Datenbank {
         }).catch((error) => {
             if (error.code === "auth/wrong-password") {
                 alert("Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!");
-                // console.log(error);
             } else if (error.code === "auth/too-many-requests") {
                 alert("Zu viele Fehlversuche!")
             } else if (error.code === "auth/argument-error") {
                 alert("Keine E-Mail vorhanden! Bitte registrieren Sie sich!");
-                // console.log(error);
             } else if (error.code === "auth/user-not-found") {
                 alert("Es wurde kein Benutzer gefunden. Bitte registrieren Sie sich!")
             } else {
@@ -85,11 +81,9 @@ class Datenbank {
     }
 
     saveData(collection, set, callback) {
-        console.log("Bin drin", set);
         firebase.firestore().collection(collection).doc(userId).set({
             array: set
         }).then(() => {
-            console.log("Status saved!");
             callback();
         }).catch((error) => {
             console.log(error.message, error);
@@ -108,7 +102,6 @@ class Datenbank {
             console.error("Error getting document: ", error);
         });
     }
-
 }
 
 export default Datenbank;

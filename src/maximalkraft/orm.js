@@ -17,7 +17,6 @@ class OneRepetitionMaximum {
             className: "visible",
             main: section.querySelectorAll("main > *"),
         };
-        console.log('Page loaded');
 
         //Submit Function
 
@@ -75,7 +74,6 @@ let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) 
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
     app.getAndSetData('orm', savedDataDiv, "ormLoading", "ORMChart", "Maximalkraft - Ergebnisse", () => {
-        console.log("ORM - getAndSetData bin fertig");
     });
 };
 

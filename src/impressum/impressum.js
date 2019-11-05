@@ -19,10 +19,9 @@ class Impressum{
     }
 
     onLoad(){
-        console.log('Page loaded');
     }
 
-    onLeave(goon){
+    onLeave(){
         return true;
     }
 

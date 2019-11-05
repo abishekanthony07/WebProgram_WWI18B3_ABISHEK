@@ -37,7 +37,7 @@ class App {
         }).resolve();
 
         this._router.notFound(() => {
-            console.log("Not found");
+            console.log("Page not found");
         });
 
         this._router.hooks({
@@ -62,14 +62,12 @@ class App {
      * Ab hier beginnt die Anwendung zu laufen.
      */
     start() {
-        console.log("Die Klasse App sagt Hallo!");
         this._router.resolve();
     }
 
     /**Zeige einen Ladebildschirm*/
     showLoadingscreen(id) {
         let loading = document.getElementById(id);
-        console.log(loading);
         loading.style.display = 'block';
     }
 
@@ -94,7 +92,6 @@ class App {
         footerMenu.style.display = 'none';
         let view = new Anmeldevorgang(this, this.db);
         this._switchVisibleView(view);
-        console.log("Anmeldung");
 
         //Anmelde-Button reagiert auf enter-Tastendruck
         window.addEventListener("keypress", (p) => {
@@ -153,24 +150,16 @@ class App {
         let auswahlSas = document.getElementById('auswahlSas');
         let auswahlhan = document.getElementById('auswahlHan');
         startseiteButton.addEventListener("click", () => {
-            // this.showStartseite();
             this._router.navigate('/wiFitness/');
-            console.log("startseite");
         });
         auswahlAbi.addEventListener("click", () => {
             this._router.navigate('/maximalkraftRechner/');
-            // this.showMaximalKraftrechner();
-            console.log("max");
         });
         auswahlSas.addEventListener("click", () => {
-            // this.showBmi();
             this._router.navigate('/bmiRechner/');
-            console.log("bmi");
         });
         auswahlhan.addEventListener("click", () => {
-            // this.showKjoule();
             this._router.navigate('/kjouleRechner/');
-            console.log("kjoule");
         });
         /**
          * Ausblenden des Menüs wenn auf inhalt geklickt wird.
@@ -187,7 +176,6 @@ class App {
         let auswahlImpressum = document.getElementById('impressum');
         auswahlImpressum.addEventListener("click", () => {
             this._router.navigate('/impressum/');
-            console.log("impressum")
         });
         /**Logout-Listener*/
         let logout = document.getElementById('logout');
@@ -207,7 +195,6 @@ class App {
     showStartseite() {
         let view = new Startseite(this, this.db);
         this._switchVisibleView(view)
-        console.log("startseite");
     }
 
     /**
@@ -280,9 +267,7 @@ class App {
             let counter;
             labels = [array.length];
             data = [array.length];
-            console.log(array);
             if (array.length === 0) {
-                console.log("fertig");
                 savedDataDiv.innerHTML = "Sie haben keine Werte abgespeichert!";
                 this.hideLoadingscreen(loadingID);
             }
@@ -305,7 +290,6 @@ class App {
                 if (counter === array.length - 1) {
                     savedDataDiv.innerHTML = "<canvas id=\"" + chartID + "\">";
                     let myChartObject = document.getElementById(chartID);
-                    console.log(myChartObject);
                     let chart = new Chart(myChartObject, {
                         type: "line",
                         data: {
@@ -346,12 +330,10 @@ class App {
      * @param callbackDelete
      */
     getAndSetEditDataFirebase(collection, editDataDiv, loadingID, inhalt, savedDataDiv, callback, callbackDelete) {
-        console.log("Datenbank", this.db);
         this.showLoadingscreen(loadingID);
         this.db.getData(collection, (array) => {
             let index;
             arrayList = array;
-            console.log(arrayList);
             if (array.length === 0) {
                 editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
             } else {
@@ -435,10 +417,8 @@ export default App;
  */
 let
     deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
-        console.log(event.target);
         let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
-        console.log(arrayList);
         if (arrayList.length === 0) {
             editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
         }
