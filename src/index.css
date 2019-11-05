@@ -15,15 +15,13 @@ html, body {
     display: block;
     margin: auto;
     height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    background-image: url(resources/Smartphone_background.jpg);
-}
+/*body {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    background-image: url(resources/Smartphone_background.jpg);*/
+/*}*/
 
 /*
  * Häufig benötigte Hilfsklassen
@@ -333,7 +331,25 @@ img.Instagram {
 /* Größerer Bildschirm */
 @media screen and (min-width: 50em) {
     body {
-        background-image: url(resources/PC_hantel.jpg);
+        background: url(resources/PC_hantel.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    #infoVid iframe, #infoVid object, #infoVid embed{
+        width: 45vw;
+        height: 25vw;
+    }
+}
+/*kleinere Bildschirme*/
+@media screen and (max-width: 50em){
+    body{
+        background: url(resources/Smartphone_background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 }
 
@@ -343,19 +359,17 @@ img.Instagram {
     cursor: pointer;
 }
 
-/*Startseite Text und Video formatieren*/
+/*Startseite Text formatieren*/
 #infoVid{
     text-align: center;
 }
-
 .infoText{
-    padding: 2em;
+    padding: 3px;
 }
-
-#vid{
-    height: 45vh;
-    width: 55%;
-}
+/*#vid{*/
+/*    height: 40vh;*/
+/*    width: 50vw;*/
+/*}*/
 /*Media Screen nach Anleitung*/
 /*@media screen and (min-width: 49.125em){
     body, input{

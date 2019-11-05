@@ -1,6 +1,8 @@
 let db;
 
 class Anmeldevorgang {
+    //Konstruktor für den Anmeldevorgang
+    //LadebildschirmcontainerID wird gesetzt
     constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
@@ -18,6 +20,7 @@ class Anmeldevorgang {
         return content;
     }
 
+    //Login, registrieren und Passwort vergessen -> EventListener wird gesetzt
     onLoad() {
         let loginButton = document.getElementById("loginButton");
         loginButton.addEventListener("click", () => {
@@ -46,15 +49,15 @@ class Anmeldevorgang {
         let forgotPassowrd = document.getElementById('forgottenPWButton');
         forgotPassowrd.addEventListener("click", () => {
             let email = document.getElementById('email').value;
-            this.db.firebase.auth().sendPasswordResetEmail(email).then(()=>{
+            this.db.firebase.auth().sendPasswordResetEmail(email).then(() => {
                 alert("Wenn die eingegeben E-Mail Adresse bei uns hinterlegt ist, bekommen Sie eine E-Mail zum Zurücksetzen des Passworts.");
-            }).catch((error)=>{
+            }).catch(() => {
                 alert("Es ist etwas schief gelaufen. Bitte erneut ausführen.");
             });
         });
     }
 
-    onLeave(goon) {
+    onLeave() {
         return true;
     }
 

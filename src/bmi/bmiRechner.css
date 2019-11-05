@@ -1,9 +1,11 @@
 #headline {
     text-align: center;
 }
+
 html{
     font-size: medium;
 }
+
 .inhalt{
     background: rgba(245,245,245, 0.7);
     border-radius: 0.5em;
@@ -11,17 +13,16 @@ html{
     border-color: black;
     border-width: 4px;
 }
+
 #ausgabe{
     display: none;
 }
-body{
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 .einUndAusgabeFeld {
     padding: 2px;
     margin: 2px;
 }
+
 table.wikitable{
     font-size: medium;
     border-collapse: collapse;
@@ -31,19 +32,23 @@ table.wikitable{
     height: 30vh;
     align-items: center;
 }
+
 table, tr, th , td{
     border-color: black;
     border-width: 1px;
     border-style: solid;
     padding: 2px;
 }
+
 .bmi {
     white-space: nowrap;
     text-align: center;
 }
+
 #berechnenButton{
     font-size: medium;
 }
+
 /*Dialogfenster*/
 dialog {
     display: none;
@@ -72,8 +77,7 @@ dialog[open="open"] {
     }
 }
 
-dialog::backdrop,
-#backdrop {
+dialog::backdrop, #backdrop {
     /* Ebene zwischen Hintergrund und Dialog-Box, Pseudoelement noch nicht implementiert */
 
     position: fixed;
