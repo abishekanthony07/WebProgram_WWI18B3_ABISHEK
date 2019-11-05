@@ -45,10 +45,6 @@ header {
 #auswahlHan, #auswahlSas, #footerMenu {
     cursor: pointer;
 }
-#impressum{
-    text-align: center;
-    align-items: center;
-}
 li img{
     width: 1.5em;
     height: 1.5em;
@@ -295,12 +291,20 @@ a.smLink:link {
     color: black;
 }
 
-div#socialMedia {
+div#impressum {
     position: relative;
-    margin-right: 2em;
+    margin-right: 1.8em;
+}
+div#logout{
+    position: relative;
+    margin-right: 3.7em;
 }
 
-div.socialMediaLinks {
+#menue{
+    padding-right: 1.5em;
+}
+
+#socialMediaLinks {
     text-align: left;
     position: absolute;
     background: white;
@@ -310,9 +314,8 @@ div.socialMediaLinks {
     width: max-content;
 }
 
-div#socialMedia:hover .socialMediaLinks {
+div#socialMedia:hover #socialMediaLinks {
     display: block;
-    bottom: 1em;
 }
 
 a:visited {
@@ -341,12 +344,18 @@ img.Instagram {
     cursor: pointer;
 }
 
+/*Startseite Text und Video formatieren*/
 #infoVid{
     text-align: center;
 }
 
 .infoText{
     padding: 2em;
+}
+
+#vid{
+    height: 45vh;
+    width: 55%;
 }
 /*Media Screen nach Anleitung*/
 /*@media screen and (min-width: 49.125em){
