@@ -14,7 +14,9 @@ html, body {
     font-family: Arial, serif;
     display: block;
     margin: auto;
-    height: 100%
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
@@ -353,6 +355,19 @@ img.Instagram {
     cursor: pointer;
 }
 
+/*Startseite Text und Video formatieren*/
+#infoVid{
+    text-align: center;
+}
+
+.infoText{
+    padding: 2em;
+}
+
+#vid{
+    height: 45vh;
+    width: 55%;
+}
 /*Media Screen nach Anleitung*/
 /*@media screen and (min-width: 49.125em){
     body, input{

@@ -161,11 +161,20 @@
         <div class="inhalt">
             <u><b><h1 id="headline">Sport ist wichtig!</h1></b></u>
             <p>
+            <div class="infoText">
+
                 Sport ist wichtig, dass weiß jedes Kind. So haben sich einige intelligente Menschen Gedanken gemacht um
                 uns mit Hilfe von einigen Berechnungen zeigen wo wir stehen und uns auch eine Richtung geben wohin wir
                 gehen können, wenn wir es wirklich wollen.
-                <br>
-                <br>
+            </div>
+            </p>
+
+            <div id="infoVid">
+            <iframe src="https://www.youtube.com/embed/woR9b01N6mQ" id="vid" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p>
+            <div class="infoText">
                 Daher kann man auf unserer Seite zum Einen <u><a id="here_Maximal">hier</a></u> seine
                 Maximalkraftrechner berechnen, welche
                 dir sagt, wie viel du (in der Theorie) maximal stemmen kannst. Zum Anderen bietet dir diese Seite die
@@ -178,6 +187,7 @@
                 <br>
                 <br>
                 Genug der vielen Worte. Wir wünschen euch viel Spaß auf und mit unserer Seite! :-)
+            </div>
             </p>
         </div>
     </main>
@@ -410,7 +420,7 @@
         <div id="kjouleLoading"></div>
         <div id="datenbankmenu" class="grid-container-standard">
             <div class="grid-itemLeft">
-                <button class="tab" id="savingButton">Gespeicherten Werte anzeigen</button>
+                <button class="tab" id="savingButton">Berechnete KCAL Werte anzeigen</button>
             </div>
             <div class="grid-item">
                 <button class="tab" id="kJouleRechnerButton">Kjoule Rechner</button>
@@ -425,11 +435,11 @@
             <br> Das heißt: 1 KCAL beträgt 4,2 KJOULE. 1 KJOULE beträgt 0,23 KCAL.
 
             <h4>Umrechner von KCAL in KJOULE</h4>
-            Die Umrechnung von KJOULE in KCAL wird nach der Berechnung, automatisch in der Datenbank abgespeichert.
+         <div id="kursiv">  Die Umrechnung von KJOULE in KCAL wird nach der Berechnung automatisch in der Datenbank abgespeichert.</div>
             <br>
             KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="number" id="Kcal" min="0" value= "0" placeholder="Enter KCAL"/>
-            <button id="button"> BERECHNE
+            <button id="button"> BERECHNEN & SPEICHERN
             </button>
             <br>
             KJOULE: &nbsp;
@@ -440,7 +450,7 @@
             KJOULE: &nbsp;
             <input type="number" id="KJOULE" min="0" value= "0" placeholder="Enter KJOULE"/>
 
-            <button id="button1"> BERECHNE
+            <button id="button1"> BERECHNEN
             </button>
             <br>
             KCAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -81,7 +81,7 @@ let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) 
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
-    app.getAndSetData('kJoule', savedDataDiv, "kjouleLoading", "myChartKjoule", "kcal - Ergebnisse", () => {
+    app.getAndSetData('kJoule', savedDataDiv, "kjouleLoading", "myChartKjoule", "Umrechnung kjoule in kcal Ergebnisse", () => {
         console.log("getAndSetData bin fertig");
     });
 };
