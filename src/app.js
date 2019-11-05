@@ -363,11 +363,11 @@ class App {
                 newEl.className = "inhalt";
                 //Inhalt wird gesetzt
                 if (collection === "orm") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b><br>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
                 } else if (collection === "bmi") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b><br>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
                 } else if (collection === "kJoule") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Ergebnisse der KJoule in Kcal Umrechnung: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
+                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b><br>Gespeicherte Ergebnisse der KJoule in Kcal Umrechnung: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
                 }
                 newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
