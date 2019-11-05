@@ -363,11 +363,11 @@ class App {
                 newEl.className = "inhalt";
                 //Inhalt wird gesetzt
                 if (collection === "orm") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b><br>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div>";
+                    newEl.innerHTML = "<div class='delete grid-container-standard'><div class='grid-itemLeft'><button id='delete'>Löschen?</button>&nbsp;<b></div><div class='grid-itemRight'>[" + element.timestamp + "]&nbsp;</b>Maximalkraft von&nbsp;" + element.maximalkraft + " kg</div></div>";
                 } else if (collection === "bmi") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b><br>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div>";
+                    newEl.innerHTML = "<div class='delete grid-container-standard'><div class='grid-itemLeft'><button id='delete'>Löschen?</button>&nbsp;<b></div><div class='grid-itemRight'>[" + element.timestamp + "]&nbsp;</b>Dein BMI beträgt &nbsp;" + element.ergebnis + "</div></div>";
                 } else if (collection === "kJoule") {
-                    newEl.innerHTML = "<div class='delete'><button id='delete'>Löschen?</button>&nbsp;<b>[" + element.timestamp + "]&nbsp;</b><br>Gespeicherte Ergebnisse der KJoule in Kcal Umrechnung: &nbsp;" + element.summekjoulekalorien + " kcal</div>";
+                    newEl.innerHTML = "<div class='delete grid-container-standard'><div class='grid-itemLeft'><button id='delete'>Löschen?</button>&nbsp;<b></div><div class='grid-itemRight'>[" + element.timestamp + "]&nbsp;</b>Gespeicherte Ergebnisse der KJoule in Kcal Umrechnung: &nbsp;" + element.summekjoulekalorien + " kcal</div></div>";
                 }
                 newEl = editDataDiv.appendChild(newEl);
                 //delete Listener wird gesetzt
@@ -413,8 +413,10 @@ class App {
      * @returns {string}
      */
     static timeStamp() {
+        const dateformat = require('dateformat');
         let today = new Date();
-        return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " am " + today.getDate() + "." + today.getMonth() + "." + today.getFullYear();
+        return dateformat(today, 'hh:MM:ss dd-mm-yyyy')
+        // return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " am " + today.getDate() + "." + today.getMonth() + "." + today.getFullYear();
     }
 }
 
@@ -515,11 +517,11 @@ let showFooterMenu = () => {
         let footerMenue = document.getElementById('footerMenu');
 
         if (!menuSindZusehen) {
-            rotateImage(footerIcon, 'rotate(-90deg)')
+            rotateImage(footerIcon, 'rotate(-90deg)');
             menuSindZusehen = true;
             footerMenue.style.display = 'inline-block';
         } else {
-            rotateImage(footerIcon, 'rotate(0deg)')
+            rotateImage(footerIcon, 'rotate(0deg)');
             menuSindZusehen = false;
             footerMenue.style.display = 'none';
         }

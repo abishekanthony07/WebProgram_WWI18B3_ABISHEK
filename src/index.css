@@ -292,11 +292,9 @@ a.smLink:link {
 }
 
 div#impressum {
-    position: relative;
     margin-right: 1.8em;
 }
 div#logout{
-    position: relative;
     margin-right: 3.7em;
 }
 
@@ -310,6 +308,7 @@ div#logout{
     background: white;
     display: none;
     border: solid;
+    border-width: 1.5px;
     border-radius: 1em;
     width: max-content;
 }
