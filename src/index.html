@@ -212,10 +212,9 @@
             </div>
         </div>
         <div id="mainpage" class="inhalt">
-            <section>
-                <div>
-                    <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
-
+            <u><b><h1 id="headlineBMI">BMI-Rechner</h1></b></u>
+            <div id="alles" class="grid-container-center">
+                <div id="rechner">
                     <div class="einUndAusgabeFeld">
                         <section class="eingabe">
                             <!----------------------------------- Schieberegler Alter-------------------------------->
@@ -223,21 +222,23 @@
                                 Zunächst ist Dein Alter wichtig. Das kannst Du über den Schieberegler eingeben oder
                                 direkt ins Feld eintragen.
                             </p>
-                            <div>
-                                <label for="alter" class="eingabeBMI breite">0 Jahre</label>
+                            <div class="grid-container-standard">
+                                <div class="grid-itemLeft saschasLinke"><label for="alter" class="eingabeBMI breite">0 Jahre</label></div>
                                 <input class="vertikal" name="alter"
                                        type="range" min="0" value="20" max="120"
                                        orient="horizontal" id="sliderAlter">
-                                <label for="Alter" class="eingabeBMI breite">120 Jahre</label>
+                                <div class="grid-itemRight saschasRechte"><label for="Alter" class="eingabeBMI breite">120 Jahre</label></div>
                             </div>
                             <br>
 
-                            <div id="groesseAlter">
+                            <div id="groesseAlter" class="grid-container-standard">
+                                <div></div>
                                 <label class="eingabeBMI">
                                     Alter:
                                     <input id="alter" type="number" min="0" max="220" step="1" value="30">
                                     Jahre
                                 </label>
+                                <div></div>
                             </div>
                             <br>
                             <br>
@@ -246,21 +247,23 @@
                                 Als nächstes ist Deine Größe über den Schieberegler einzugeben oder auch hier direkt ins
                                 Feld eintragen.
                             </p>
-                            <div>
-                                <label for="groesse" class="eingabeBMI breite">0 cm</label>
+                            <div class="grid-container-standard">
+                                <div class="grid-itemLeft saschasLinke"><label for="groesse" class="eingabeBMI breite">0 cm</label></div>
                                 <input class="vertikal" name="groesse"
                                        type="range" min="0" value="80" max="250"
                                        orient="horizontal" id="sliderGroesse">
-                                <label for="groesse" id="n2" class="eingabeBMI breite">250 cm</label>
+                                <div class="grid-itemRight saschasRechte"><label for="groesse" id="n2" class="eingabeBMI breite">250 cm</label></div>
                             </div>
                             <br>
 
-                            <div id="groesseFeld">
+                            <div id="groesseFeld" class="grid-container-standard">
+                                <div></div>
                                 <label class="eingabeBMI">
                                     Größe:
                                     <input id="groesse" type="number" min="0" max="220" step="1" value="175">
                                     cm
                                 </label>
+                                <div></div>
                             </div>
 
                             <br>
@@ -270,15 +273,17 @@
                                 Als letzte Angabe wird Dein Gewicht benötigt um deinen BMI zu berechnen. Auch hier hast
                                 Du die Wahl zwischen Schieberegler und Feld.
                             </p>
-                            <div>
-                                <label for="gewicht" class="eingabeBMI breite">0 kg</label>
+                            <div class="grid-container-standard">
+                                <div class="grid-itemLeft saschasLinke"><label for="gewicht" class="eingabeBMI breite">0 kg</label></div>
                                 <input class="vertikal" name="gewicht"
                                        type="range" min="0" value="80" max="250"
                                        orient="horizontal" id="sliderGewicht">
-                                <label for="gewicht" class="eingabeBMI breite">250 kg</label>
+                                <div class="grid-itemRight saschasRechte"><label for="gewicht" class="eingabeBMI breite">250 kg</label></div>
                             </div>
                             <br>
-                            <div id="gewichtBMI">
+                            <div id="gewichtBMI" class="grid-container-standard">
+                                <div></div>
+                                <div>
                                 <label for="masse">
                                     Gewicht:
                                     <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
@@ -287,125 +292,127 @@
                                 <br>
                                 <br>
                                 <button id="berechnenButton">BMI berechnen</button>
+                                </div>
                             </div>
                         </section>
                     </div>
                     <br>
                     <div id="ausgabe" class="inhalt">
                     </div>
+                    <div>
+                        Quelle: <a href="https://de.wikipedia.org/wiki/Body-Mass-Index">Wikipedia</a>
+                    </div>
                 </div>
-            </section>
-            <!------------------------------------------------Tabelle --------------------------------------------------->
-            <div>
-                <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
+                <!------------------------------------------------Tabelle --------------------------------------------------->
+                <div id="tabelleBMI">
+                    <p>Nachfolgend die Adipositas-Klassifikation der Weltgesundheitsorganisation (WHO): </p>
 
-                <table class="wikitable">
-                    <tbody>
-                    <tr>
-                        <th></th>
-                        <th>Kategorie</th>
-                        <th>BMI (kg/m²)</th>
-                        <th>Körpergewicht</th>
-                    </tr>
-                    <tr>
-                        <td id="starkesUntergewicht">
-                        </td>
-                        <td>Starkes Untergewicht
-                        </td>
-                        <td class="bmi">&lt; 16
-                        </td>
-                        <td rowspan="3" class="center">Untergewicht</td>
-                    </tr>
-                    <tr>
-                        <td id="mäßigesUntergewicht">
-                        </td>
-                        <td>Mäßiges Untergewicht
-                        </td>
-                        <td><span class="hide">&lt; </span>16<span class="hide">,0</span> –
-                            &lt;
-                            17<span class="hide">,0</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="leichtesUntergewicht">
-                        </td>
-                        <td>Leichtes Untergewicht
-                        </td>
-                        <td><span class="hide">&lt; </span>17<span class="hide">,0</span> –
-                            &lt;
-                            18,5
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="normalgewicht">
-                        </td>
-                        <td><b>Normalgewicht</b>
-                        </td>
-                        <td class="bmi"><b><span class="hide">&lt; </span>18,5 – &lt; 25<span
-                                class="hide">,0</span></b>
-                        </td>
-                        <td class="center"><b>Normalgewicht</b></td>
-                    </tr>
-                    <tr>
-                        <td id="praeadipositas">
-                        </td>
-                        <td>Präadipositas
-                        </td>
-                        <td><span class="hide">&lt; </span>25<span class="hide">,0</span> –
-                            &lt;
-                            30<span class="hide">,0</span>
-                        </td>
-                        <td class="center">Übergewicht</td>
-                    </tr>
-                    <tr>
-                        <td id="adipostasI">
-                        </td>
-                        <td>Adipositas Grad I
-                        </td>
-                        <td><span class="hide">&lt; </span>30<span class="hide">,0</span> –
-                            &lt;
-                            35<span class="hide">,0</span>
-                        </td>
-                        <td rowspan="3" class="center">Adipositas</td>
-                    </tr>
-                    <tr>
-                        <td id="adipostasII">
-                        </td>
-                        <td>Adipositas Grad II
-                        </td>
-                        <td><span class="hide">&lt; </span>35<span class="hide">,0</span> –
-                            &lt;
-                            40<span class="hide">,0</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="adipostasIII">
-                        </td>
-                        <td>Adipositas Grad III
-                        </td>
-                        <td class="center"><span class="hide">&lt;0,0 – </span>≥ 40
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <blockquote>
-                    Quelle: <a href="https://de.wikipedia.org/wiki/Body-Mass-Index">Wikipedia</a>
-                </blockquote>
-                <!------------------------------------------Zusatzinformationen----------------------------------------->
-                <button id="open-dialog"> >>Schon gewusst? <<</button>
-                <!--------------------------------------------Schon gewusst?-------------------------------------------->
-                <dialog role="dialog" aria-labelledby="dialog-heading">
-                    <button id="close-dialog">Schließen</button>
-                    <h2 id="dialog-heading">Schon gewusst?</h2>
-                    <p>
-                        Wenn dir ein Körperteil fehlt, kannst du das über eine Berechnung von deinem BMI abziehen und so
-                        erfahren,
-                        was das fehlende Körperteil für eine Auswirkung auf deinen BMI hat. Weitere Informationen
-                        findest du
-                        <a href="https://de.wikipedia.org/wiki/Body-Mass-Index">hier</a>.
-                    </p>
-                </dialog>
+                    <table class="wikitable">
+                        <tbody>
+                        <tr>
+                            <th></th>
+                            <th>Kategorie</th>
+                            <th>BMI (kg/m²)</th>
+                            <th>Körpergewicht</th>
+                        </tr>
+                        <tr>
+                            <td id="starkesUntergewicht">
+                            </td>
+                            <td>Starkes Untergewicht
+                            </td>
+                            <td class="bmi">&lt; 16
+                            </td>
+                            <td rowspan="3" class="center">Untergewicht</td>
+                        </tr>
+                        <tr>
+                            <td id="mäßigesUntergewicht">
+                            </td>
+                            <td>Mäßiges Untergewicht
+                            </td>
+                            <td><span class="hide">&lt; </span>16<span class="hide">,0</span> –
+                                &lt;
+                                17<span class="hide">,0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="leichtesUntergewicht">
+                            </td>
+                            <td>Leichtes Untergewicht
+                            </td>
+                            <td><span class="hide">&lt; </span>17<span class="hide">,0</span> –
+                                &lt;
+                                18,5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="normalgewicht">
+                            </td>
+                            <td><b>Normalgewicht</b>
+                            </td>
+                            <td class="bmi"><b><span class="hide">&lt; </span>18,5 – &lt; 25<span
+                                    class="hide">,0</span></b>
+                            </td>
+                            <td class="center"><b>Normalgewicht</b></td>
+                        </tr>
+                        <tr>
+                            <td id="praeadipositas">
+                            </td>
+                            <td>Präadipositas
+                            </td>
+                            <td><span class="hide">&lt; </span>25<span class="hide">,0</span> –
+                                &lt;
+                                30<span class="hide">,0</span>
+                            </td>
+                            <td class="center">Übergewicht</td>
+                        </tr>
+                        <tr>
+                            <td id="adipostasI">
+                            </td>
+                            <td>Adipositas Grad I
+                            </td>
+                            <td><span class="hide">&lt; </span>30<span class="hide">,0</span> –
+                                &lt;
+                                35<span class="hide">,0</span>
+                            </td>
+                            <td rowspan="3" class="center">Adipositas</td>
+                        </tr>
+                        <tr>
+                            <td id="adipostasII">
+                            </td>
+                            <td>Adipositas Grad II
+                            </td>
+                            <td><span class="hide">&lt; </span>35<span class="hide">,0</span> –
+                                &lt;
+                                40<span class="hide">,0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="adipostasIII">
+                            </td>
+                            <td>Adipositas Grad III
+                            </td>
+                            <td class="center"><span class="hide">&lt;0,0 – </span>≥ 40
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!------------------------------------------Zusatzinformationen----------------------------------------->
+                    <button id="open-dialog"> >>Schon gewusst? <<</button>
+                    <!--------------------------------------------Schon gewusst?-------------------------------------------->
+                    <dialog role="dialog" aria-labelledby="dialog-heading">
+                        <button id="close-dialog">Schließen</button>
+                        <h2 id="dialog-heading">Schon gewusst?</h2>
+                        <p>
+                            Wenn dir ein Körperteil fehlt, kannst du das über eine Berechnung von deinem BMI abziehen und so
+                            erfahren,
+                            was das fehlende Körperteil für eine Auswirkung auf deinen BMI hat. Weitere Informationen
+                            findest du
+                            <a href="https://de.wikipedia.org/wiki/Body-Mass-Index">hier</a>.
+                        </p>
+                    </dialog>
+                </div>
             </div>
+
         </div>
         <div id="savedBMIDataDiv" class="inhalt">
             <canvas id="BMIChart"></canvas>

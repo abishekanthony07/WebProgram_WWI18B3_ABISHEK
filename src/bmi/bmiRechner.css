@@ -27,8 +27,9 @@ table.wikitable{
     font-size: medium;
     border-collapse: collapse;
     color: black;
+    margin-right: 2em;
     margin-bottom: 10px;
-    width: 70vw;
+    width: 100%;
     height: 30vh;
     align-items: center;
 }
@@ -143,19 +144,32 @@ td#adipostasIII {
 }
 
 .eingabeBMI, .vertikal{
-    width: 80vw;
+    width: 100vw;
     height: 8vh;
 }
 
 .breite{
     width: 7em;
 }
-
+.saschasLinke{
+    text-align: right;
+    width: 40px;
+}
+.inputFelder{
+    width: 50%;
+}
+.saschasRechte{
+    text-align: right;
+    width: 40px;
+}
 input#sliderAlter, input#sliderGroesse, input#sliderGewicht{
     background: none;
     border: none;
+    width: 100%;
 }
-
+#groesseAlter, #groesseFeld, #gewichtBMI{
+    width: 100%;
+}
 #mainpage input[type=range] {
     -webkit-appearance: none;
     margin: 7.3px 0;
@@ -166,7 +180,7 @@ input#sliderAlter, input#sliderGroesse, input#sliderGewicht{
 }
 
 #mainpage input[type=range]::-webkit-slider-runnable-track {
-    /*width: 100%;*/
+    width: 100%;
     height: 8.4px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0 0 1px #0d0d0d;
@@ -250,4 +264,21 @@ input#sliderAlter, input#sliderGroesse, input#sliderGewicht{
 
 #mainpage input[type=range]:focus::-ms-fill-upper {
     background: #7d7d7d;
+}
+#alles{
+    text-align: left;
+}
+
+@media only screen and (max-width: 70em) {
+    #alles{
+        display: block;
+    }
+    #rechner, #tabelleBMI{
+        display: inline-block;
+    }
+}
+@media only screen and (min-width: 70em) {
+    #rechner, #tabelleBMI{
+        width: 90%;
+    }
 }

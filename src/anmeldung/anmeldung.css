@@ -8,10 +8,12 @@
 
 .grid-itemLeft{
     text-align: right;
+    horiz-align: right;
 }
 
 .grid-itemRight{
     text-align: left;
+    horiz-align: left;
 }
 
 .label{
