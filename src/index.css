@@ -340,9 +340,10 @@ img.Instagram {
     }
     #infoVid iframe, #infoVid object, #infoVid embed{
         width: 45vw;
-        height: 25em;
+        height: 25vw;
     }
 }
+/*kleinere Bildschirme*/
 @media screen and (max-width: 50em){
     body{
         background: url(resources/Smartphone_background.jpg) no-repeat center center fixed;
@@ -359,14 +360,10 @@ img.Instagram {
     cursor: pointer;
 }
 
-/*Startseite Text und Video formatieren*/
+/*Startseite Text formatieren*/
 #infoVid{
     text-align: center;
 }
-/*#vid iframe, #vid object, #vid embed{*/
-/*    width: 80%;*/
-/*    height: 40vw;*/
-/*}*/
 .infoText{
     padding: 3px;
 }
