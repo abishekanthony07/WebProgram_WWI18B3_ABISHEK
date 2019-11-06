@@ -51,13 +51,18 @@ diese Daten einsehen können.<br>
     </tr>
     <tr>
         <td>
-            Mobile Darstellung
+            Anmeldeseite - Tragen Sie im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort. <br>
+            Betätigen Sie den Button "Registrieren", um sich auf der Website neu anzumelden. <br>
+            Hierdurch bekommen Sie von Firebase aus eine Standard-E-Mail zugesendet, mit der Sie Ihre Registrierung abschließen können, <br>
+            indem Sie auf den zugesendeten Link drücken.
+            Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und <br>
+            den Button "Anmelden" betätigen. 
         </td>
         <td>
-            Übersicht der Songtexte
+            Übersicht der Startseite in der Desktopversion
         </td>
         <td>
-            Anzeige eines Songtexts
+            Übersicht der Startseite in der Handyversion
         </td>
     </tr>
 </table>
