@@ -37,13 +37,27 @@ ihren BMI- oder Kalorienwert. Dabei werden die eingegebenen Daten pro Nutzer abg
 diese Daten einsehen können.<br><br>
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
              Anmeldeseite - <br><br>
-                        1.) Um die Website verwenden zu können, müssen Sie sich als erstes Anmelden. 
-                            Tragen Sie hierfür im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.<br><br>
-                            1.1.) Betätigen Sie den Button "Registrieren", um sich auf der Website neu anzumelden. 
-                                  Hierdurch bekommen Sie von Firebase aus eine Standard-E-Mail zugesendet, mit der Sie Ihre Registrierung abschließen können,
-                                  indem Sie auf den zugesendeten Link drücken. <br><br>
-                            1.2.) Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und
-                                  den Button "Anmelden" betätigen. <br><br>
+                       <ol> 
+                       <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern ein.<br>
+                       <ol> 
+                       <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „REGISTRIEREN“.</li>
+                       <li>Wenn das Eingabefeld „Email“ leer ist, wird ein Error (-Icon) rechts am Bildschirm im Eingabefeld „Email darf nicht leer sein!“ angezeigt.</li>
+                       </ol>
+                       </li>
+                       <li>Führen Sie die Anweisung „3.“ erneut aus<br>
+                       <ol>
+                       <li>Wenn das Eingabefeld „Passwort“ leer ist, wird ein Error (-Icon) rechts am Bildschirm im Eingabefeld „Passwort darf nicht leer sein!“ angezeigt.</li>
+                       </ol>
+                       </li>
+                       <li>Führen Sie die Anweisung „3.“ erneut aus <br>
+                       <ol>
+                       <li>Es erscheint ein Dialog in dem Sie aufgefordert werden das Passwort erneut einzugeben.</li>
+                       <li>Geben Sie Ihr Passwort erneut ein.</li>
+                       </ol>
+                       <li></li>
+                       <li></li>
+                       <li></li>
+                       <li><br>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
                         Übersicht der Startseite in der Desktopversion <br><br>
             <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" /> <br><br>
@@ -51,7 +65,7 @@ diese Daten einsehen können.<br><br>
      
 
 Copyright
----------
+----------
 
 Dieses Projekt ist lizenziert unter
 [_Creative Commons Namensnennung 4.0 International_](http://creativecommons.org/licenses/by/4.0/)
