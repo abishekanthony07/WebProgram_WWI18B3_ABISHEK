@@ -40,13 +40,13 @@ diese Daten einsehen können.<br>
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <img src="mockup1.png" style="display: block; width: 100%;" />
+            <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" />
         </td>
         <td>
-            <img src="mockup2.png" style="display: block; width: 100%;" />
+            <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" />
         </td>
         <td>
-            <img src="mockup3.png" style="display: block; width: 100%;" />
+            <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" />
         </td>
     </tr>
     <tr>
