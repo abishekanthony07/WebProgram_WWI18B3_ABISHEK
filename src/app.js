@@ -41,7 +41,7 @@ class App {
         });
 
         this._router.hooks({
-            after: (params) => {
+            after: () => {
                 if (!this._navAborted) {
                     // Navigation durchführen, daher die neue URL merken
                     this._currentUrl = this._router.lastRouteResolved().url;
@@ -56,7 +56,6 @@ class App {
             }
         });
     }
-
 
     /**
      * Ab hier beginnt die Anwendung zu laufen.
@@ -131,7 +130,7 @@ class App {
      * der Startseite gesetzt werden, und
      * die Menüs auch angezeigt werden.
      */
-    showStartseiteAndSetListener(datenbank) {
+    showStartseiteAndSetListener() {
         /**einblenden von unsrerem ArrowDiv*/
         let imageArrowDiv = document.getElementById('arrowDowndiv');
         imageArrowDiv.style.display = 'block';
@@ -290,7 +289,7 @@ class App {
                 if (counter === array.length - 1) {
                     savedDataDiv.innerHTML = "<canvas id=\"" + chartID + "\">";
                     let myChartObject = document.getElementById(chartID);
-                    let chart = new Chart(myChartObject, {
+                    new Chart(myChartObject, {
                         type: "line",
                         data: {
                             labels: labels,
@@ -415,8 +414,7 @@ export default App;
  * @param editDataDiv EditDiv
  * @param callback ???
  */
-let
-    deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
+let deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
         let deleteIndex = event.target.parentNode.firstChild.textContent;
         arrayList.splice(deleteIndex, 1);
         if (arrayList.length === 0) {
@@ -485,7 +483,6 @@ let rotateImage = (img, degree) => {
         img.style.transform = degree;
         img.style.WebkitTransitionDuration = '0.5s';
     };
-
 
 let menuSindZusehen = false;
 

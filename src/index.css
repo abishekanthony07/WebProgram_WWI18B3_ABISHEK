@@ -17,15 +17,6 @@ html, body {
     height: 100%;
 }
 
-/*body {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    background-image: url(resources/Smartphone_background.jpg);*/
-/*}*/
-
-/*
- * Häufig benötigte Hilfsklassen
- */
 .hidden {
     display: none !important;
 }
@@ -101,7 +92,7 @@ hr {
 
 #auswahlMenue button:focus, #auswahlMenue button:active,
 #impressum:focus, #impressum div:active,
-#socialMedia:focus, #socialMedia div:active
+#socialMedia:focus, #socialMedia div:active,
 #logout:focus, #logout:active {
     outline: none;
 }
@@ -163,7 +154,7 @@ hr {
 
 #footerMenu {
     position: absolute;
-    left: 0px;
+    left: 0;
     -webkit-animation-name: animate;
     -webkit-animation-duration: 1s;
     animation-name: animate;
@@ -183,7 +174,7 @@ hr {
         opacity: 0
     }
     to {
-        left: 0px;
+        left: 0;
         opacity: 1
     }
 }
@@ -217,8 +208,8 @@ li.hiddenStyle {
 /*Footer Icon formatieren*/
 #footerMenuP {
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 3em;
     height: 2.3em;
     background-color: rgba(255, 255, 255, 0.3);
@@ -366,47 +357,6 @@ img.Instagram {
 .infoText{
     padding: 3px;
 }
-/*#vid{*/
-/*    height: 40vh;*/
-/*    width: 50vw;*/
-/*}*/
-/*Media Screen nach Anleitung*/
-/*@media screen and (min-width: 49.125em){
-    body, input{
-        font-size: 12pt;
-    }
-    footer {
-    }
-}
-@media screen and (min-width: 62em){
-    body, input{
-        font-size: 13pt;
-    }
-    footer {
-    }
-}
-@media screen and (min-width: 75px){
-    body, input{
-        font-size: 14pt;
-    }
-    footer {
-    }}
- @media screen and (min-width: 85em){
-    html{
-    background-image: url(resources/Smartphone_background.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    }
-    body{
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    }
-    body > * {
-    flex: 1;
-    }
- }*/
 
 @media screen and (max-width: 820px){
     #savingBMIButton, #bmiDataButton, #main{

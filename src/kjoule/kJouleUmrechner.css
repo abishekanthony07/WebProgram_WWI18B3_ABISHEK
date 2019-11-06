@@ -10,6 +10,7 @@
     margin-bottom: 5em;
     font-size: 14px;
 }
+
 input{
     width: 35%;
     font-family: Arial, serif;
@@ -20,6 +21,7 @@ input{
     border-width: 1px;
     border-bottom-width: 1.5px;
 }
+
 output{
     width: 35%;
     background-color: white;

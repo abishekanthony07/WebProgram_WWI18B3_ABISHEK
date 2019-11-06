@@ -1,6 +1,7 @@
 import App from "../app.js";
 
 class Startseite {
+
     constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
@@ -16,8 +17,6 @@ class Startseite {
     }
 
     onLoad() {
-        console.log('Page loaded');
-
         //Navigation der "hier"-Buttons auf der Startseite
         let here_bmi = document.getElementById("here_BMI");
         let here_kjoule = document.getElementById("here_KCalUmrechner");
@@ -34,7 +33,7 @@ class Startseite {
         });
     }
 
-    onLeave(goon) {
+    onLeave() {
         return true;
     }
 

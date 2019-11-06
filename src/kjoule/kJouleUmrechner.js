@@ -14,6 +14,7 @@ let ablaufkJoule = (app) => {
 };
 
 class KjouleRechner {
+
     constructor(app, datenbank) {
         this._app = app;
         this.db = datenbank;
@@ -55,7 +56,6 @@ class KjouleRechner {
             showEditDataHtml(this.db, this._app, "kjouleLoading", inhalt, chart, edit);
         });
         showKjouleRechnerHtml(inhalt, chart, edit);
-
     }
 
     onLeave(goon) {
@@ -80,9 +80,9 @@ let showSavedDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) 
     savedDataDiv.style.display = 'block';
     editDataDiv.style.display = 'none';
     app.getAndSetData('kJoule', savedDataDiv, "kjouleLoading", "myChartKjoule", "Umrechnung kjoule in kcal Ergebnisse", () => {
-
     });
 };
+
 let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) => {
     inhalt.style.display = 'none';
     savedDataDiv.style.display = 'none';
@@ -125,7 +125,6 @@ let rechne = () => {
         let summekilokalorien = kilokalorien.value * 4.1868;
         summekilokalorien = summekilokalorien.toFixed(2);
         document.getElementById('output').value = summekilokalorien;
-
         if (array === 'empty') {
             array = [{
                 kcal: kilokalorien.value,

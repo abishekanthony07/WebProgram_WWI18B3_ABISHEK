@@ -19,7 +19,6 @@ class OneRepetitionMaximum {
         };
 
         //Submit Function
-
         return content;
     }
 
@@ -35,10 +34,12 @@ class OneRepetitionMaximum {
                 berechne(db, this._app, this.loadingID);
             }
         });
+
 //getAllImportantDivs
         let inhalt = document.getElementById('inhaltORMDiv');
         let savedDataDiv = document.getElementById('savedDataDiv');
         let editDataDiv = document.getElementById('editDataDiv');
+
 //tabButtons
         let savedData = document.getElementById('savedDataButton');
         savedData.addEventListener('click', () => {
@@ -55,7 +56,6 @@ class OneRepetitionMaximum {
             showEditDataHtml(this.db, this._app, this.loadingID, inhalt, savedDataDiv, editDataDiv)
         });
     }
-
 
     onLeave(goon) {
         return true;
@@ -204,4 +204,5 @@ let rechne = (wiederholungszahl, wiederholungOben, wiederholungUnten, prozentUnt
     let geteilt = differenzP / teiler;
     return geteilt * differenzW + prozentUnten;
 };
+
 export default OneRepetitionMaximum;

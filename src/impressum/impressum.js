@@ -1,5 +1,4 @@
 "use strict";
-import App from "../app.js";
 let db1;
 
 class Impressum{
@@ -11,11 +10,10 @@ class Impressum{
 
     onShow(){
         let section = document.querySelector("#impressumSeite").cloneNode(true);
-        let content = {
+        return {
             className: "visible",
             main: section.querySelectorAll("main > *"),
         };
-        return content;
     }
 
     onLoad(){
