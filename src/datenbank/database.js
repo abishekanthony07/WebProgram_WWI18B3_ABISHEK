@@ -25,8 +25,11 @@ class Datenbank {
 
     createUser(email, password) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((output) => {
-            output.user.sendEmailVerification();
-            alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
+            output.user.sendEmailVerification().then(r => {
+                console.log(r);
+                alert("Bitte bestätigen Sie Ihre E-Mail Adresse, um fortzufahren!");
+                }
+            );
         }).catch((error) => {
                 console.log(error);
                 if (error.code === "auth/email-already-in-use") {
