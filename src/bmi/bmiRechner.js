@@ -83,34 +83,38 @@ let showEditDataHtml = (app, inhalt, savedDataDiv, editDataDiv) => {
 
 //Methode zum Berechnen vom BMI und anpassen des Hintergrunds
 let bmiBerechnen = (db) => {
-    db.getData("bmi", (array) => {
-        let eingabeGroesse = document.getElementById("groesse").value;
-        let eingabeGewicht = document.getElementById("masse").value;
-        let ergebnis = eingabeGewicht / Math.pow(eingabeGroesse / 100, 2);
-        let anzeige = document.getElementById("ausgabe");
-        ergebnis = ergebnis.toFixed(2);
-        if (array === 'empty') {
-            array = [{
-                eingabeGroesse: eingabeGroesse,
-                eingabeGewicht: eingabeGewicht,
-                ergebnis: ergebnis,
-                timestamp: App.timeStamp(),
-            }]
-        } else {
-            array.push({
-                eingabeGroesse: eingabeGroesse,
-                eingabeGewicht: eingabeGewicht,
-                ergebnis: ergebnis,
-                timestamp: App.timeStamp(),
+    let eingabeGroesse = document.getElementById("groesse");
+    let eingabeGewicht = document.getElementById("masse");
+    if (eingabeGroesse.checkValidity() && eingabeGewicht.checkValidity()) {
+        eingabeGewicht = eingabeGewicht.value;
+        eingabeGroesse = eingabeGroesse.value;
+        db.getData("bmi", (array) => {
+            let ergebnis = eingabeGewicht / Math.pow(eingabeGroesse / 100, 2);
+            let anzeige = document.getElementById("ausgabe");
+            ergebnis = ergebnis.toFixed(2);
+            if (array === 'empty') {
+                array = [{
+                    eingabeGroesse: eingabeGroesse,
+                    eingabeGewicht: eingabeGewicht,
+                    ergebnis: ergebnis,
+                    timestamp: App.timeStamp(),
+                }]
+            } else {
+                array.push({
+                    eingabeGroesse: eingabeGroesse,
+                    eingabeGewicht: eingabeGewicht,
+                    ergebnis: ergebnis,
+                    timestamp: App.timeStamp(),
+                });
+            }
+            db.saveData("bmi", array, () => {
             });
-        }
-        db.saveData("bmi", array, () => {
+            hintergrundAngleichen(ergebnis, anzeige);
+            ergebnis = " " + ergebnis.bold();
+            anzeige.innerHTML = " <b>Dein BMI beträgt: </b> &nbsp;" + ergebnis + "<b>.</b>";
+            anzeige.style.display = 'flex';
         });
-        hintergrundAngleichen(ergebnis, anzeige);
-        ergebnis = " " + ergebnis.bold();
-        anzeige.innerHTML = " <b>Dein BMI beträgt: </b> &nbsp;" + ergebnis + "<b>.</b>";
-        anzeige.style.display = 'flex';
-    });
+    }
 };
 
 let ablaufBMI = (db) => {

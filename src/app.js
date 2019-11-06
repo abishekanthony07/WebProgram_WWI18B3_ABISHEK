@@ -396,8 +396,7 @@ class App {
     static timeStamp() {
         const dateformat = require('dateformat');
         let today = new Date();
-        return dateformat(today, 'hh:MM:ss dd-mm-yyyy')
-        // return today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + " am " + today.getDate() + "." + today.getMonth() + "." + today.getFullYear();
+        return dateformat(today, 'hh:MM:ss dd-mm-yyyy');
     }
 }
 

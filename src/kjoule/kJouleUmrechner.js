@@ -95,50 +95,54 @@ let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) =
 };
 
 let rechne1 = (app) => {
-    app.showLoadingscreen("kjouleLoading");
-    db.getData("kJoule", (array) => {
-        let kjoulekalorien = document.getElementById('KJOULE');
-        let summekjoulekalorien = kjoulekalorien.value / 4.184;
-        summekjoulekalorien = summekjoulekalorien.toFixed(2);
-        document.getElementById('output1').value = summekjoulekalorien;
-        if (array === 'empty') {
-            array = [{
-                kjoule: kjoulekalorien.value,
-                summekjoulekalorien: summekjoulekalorien,
-            }]
-        } else {
-            array.push({
-                kjoule: kjoulekalorien.value,
-                summekjoulekalorien: summekjoulekalorien,
-                timestamp: App.timeStamp(),
+    let kjoulekalorien = document.getElementById('KJOULE');
+    if(kjoulekalorien.checkValidity()){
+        db.getData("kJoule", (array) => {
+            app.showLoadingscreen("kjouleLoading");
+            let summekjoulekalorien = kjoulekalorien.value / 4.184;
+            summekjoulekalorien = summekjoulekalorien.toFixed(2);
+            document.getElementById('output1').value = summekjoulekalorien;
+            if (array === 'empty') {
+                array = [{
+                    kjoule: kjoulekalorien.value,
+                    summekjoulekalorien: summekjoulekalorien,
+                }]
+            } else {
+                array.push({
+                    kjoule: kjoulekalorien.value,
+                    summekjoulekalorien: summekjoulekalorien,
+                    timestamp: App.timeStamp(),
+                });
+            }
+            db.saveData("kJoule", array, () => {
+                app.hideLoadingscreen("kjouleLoading");
             });
-        }
-        db.saveData("kJoule", array, () => {
-            app.hideLoadingscreen("kjouleLoading");
         });
-    });
+    }
 };
 
 let rechne = () => {
-    db.getData("Kcal", (array) => {
-        let kilokalorien = document.getElementById('Kcal');
-        let summekilokalorien = kilokalorien.value * 4.1868;
-        summekilokalorien = summekilokalorien.toFixed(2);
-        document.getElementById('output').value = summekilokalorien;
-        if (array === 'empty') {
-            array = [{
-                kcal: kilokalorien.value,
-                summekikalorien: summekilokalorien,
-                timestamp: App.timeStamp(),
-            }]
-        } else {
-            array.push({
-                kcal: kilokalorien.value,
-                summekikalorien: summekilokalorien,
-                timestamp: App.timeStamp(),
+    let kilokalorien = document.getElementById('Kcal');
+    if (kilokalorien.checkValidity()){
+        db.getData("Kcal", (array) => {
+            let summekilokalorien = kilokalorien.value * 4.1868;
+            summekilokalorien = summekilokalorien.toFixed(2);
+            document.getElementById('output').value = summekilokalorien;
+            if (array === 'empty') {
+                array = [{
+                    kcal: kilokalorien.value,
+                    summekikalorien: summekilokalorien,
+                    timestamp: App.timeStamp(),
+                }]
+            } else {
+                array.push({
+                    kcal: kilokalorien.value,
+                    summekikalorien: summekilokalorien,
+                    timestamp: App.timeStamp(),
+                });
+            }
+            db.saveData("Kcal", array, () => {
             });
-        }
-        db.saveData("Kcal", array, () => {
         });
-    });
+    }
 };

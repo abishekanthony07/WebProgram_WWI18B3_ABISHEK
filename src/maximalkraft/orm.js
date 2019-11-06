@@ -103,43 +103,46 @@ let showEditDataHtml = (db, app, loadingID, inhalt, savedDataDiv, editDataDiv) =
  * Diese Methode berechnet und ergänzt die vom Server geholte Liste mit neuen Werten.
  */
 let berechne = (db, app, loadingID) => {
-    app.showLoadingscreen(loadingID);
-    db.getData('orm', (array) => {
-        let gewicht = document.getElementById('gewicht');
-        let wiederholungszahl = document.getElementById('wiederholungszahl');
-        let maximalkraft = document.getElementById('ergebnis');
-        let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
-        let prozentsatzORM = document.getElementById('prozentsatzORM');
-        let prozent = calculate(wiederholungszahl.value);
-        let ergebnis = gewicht.value / prozent;
-        ergebnis = ergebnis.toFixed(2);
-        prozent = prozent.toFixed(2);
-        maximalkraft.innerHTML = ergebnis.toString() + " =";
-        prozentsatzORM.innerText = prozent.toString();
-        gestemmtesGewichtORM.innerText = gewicht.value.toString();
+    let gewicht = document.getElementById('gewicht');
+    let wiederholungszahl = document.getElementById('wiederholungszahl');
+    if (gewicht.checkValidity() && wiederholungszahl.checkValidity()){
+        db.getData('orm', (array) => {
+            app.showLoadingscreen(loadingID);
+            let maximalkraft = document.getElementById('ergebnis');
+            let gestemmtesGewichtORM = document.getElementById('gestemmtesGewichtORM');
+            let prozentsatzORM = document.getElementById('prozentsatzORM');
+            let prozent = calculate(wiederholungszahl.value);
+            let ergebnis = gewicht.value / prozent;
+            ergebnis = ergebnis.toFixed(2);
+            prozent = prozent.toFixed(2);
+            maximalkraft.innerHTML = ergebnis.toString() + " =";
+            prozentsatzORM.innerText = prozent.toString();
+            gestemmtesGewichtORM.innerText = gewicht.value.toString();
 
-        //Liste wird geupdated
-        if (array === 'empty') {
-            array = [{
-                timestamp: App.timeStamp(),
-                gewicht: gewicht.value.toString(),
-                wiederholungszahl: wiederholungszahl.value.toString(),
-                prozent: prozent.toString(),
-                maximalkraft: ergebnis.toString()
-            }]
-        } else {
-            array.push({
-                timestamp: App.timeStamp(),
-                gewicht: gewicht.value.toString(),
-                wiederholungszahl: wiederholungszahl.value.toString(),
-                prozent: prozent.toString(),
-                maximalkraft: ergebnis.toString()
+            //Liste wird geupdated
+            if (array === 'empty') {
+                array = [{
+                    timestamp: App.timeStamp(),
+                    gewicht: gewicht.value.toString(),
+                    wiederholungszahl: wiederholungszahl.value.toString(),
+                    prozent: prozent.toString(),
+                    maximalkraft: ergebnis.toString()
+                }]
+            } else {
+                array.push({
+                    timestamp: App.timeStamp(),
+                    gewicht: gewicht.value.toString(),
+                    wiederholungszahl: wiederholungszahl.value.toString(),
+                    prozent: prozent.toString(),
+                    maximalkraft: ergebnis.toString()
+                });
+            }
+            db.saveData('orm', array, () => {
+                app.hideLoadingscreen(loadingID);
             });
-        }
-        db.saveData('orm', array, () => {
-            app.hideLoadingscreen(loadingID);
         });
-    });
+
+    }
 };
 
 /**
