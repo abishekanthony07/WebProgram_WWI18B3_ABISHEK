@@ -31,3 +31,6 @@ input{
     background: rgb(159, 96, 96);
     color: white;
 }
+.input:invalid{
+    border-color: red;
+}

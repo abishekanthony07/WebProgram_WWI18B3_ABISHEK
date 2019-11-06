@@ -126,13 +126,13 @@
                     <label class="label" for="email">E-Mail: </label>
                 </div>
                 <div class="grid-itemRight">
-                    <input class="input" type="email" id="email" name="E-Mail" placeholder="E-Mail Adresse">
+                    <input class="input"  required type="email" id="email" name="E-Mail" placeholder="E-Mail Adresse">
                 </div>
                 <div class="grid-itemLeft">
                     <label class="label" for="password">Passwort: </label>
                 </div>
                 <div class="grid-itemRight">
-                    <input class="input" type="password" id="password" name="Passwort" placeholder="Passwort">
+                    <input class="input" required type="password" id="password" name="Passwort" placeholder="Passwort">
                 </div>
                 <div class="grid-itemLeft">
                 </div>
@@ -234,7 +234,7 @@
                             <div id="groesseAlter" class="center">
                                 <label class="eingabeBMI">
                                     Alter:
-                                    <input id="alter" type="number" min="0" max="220" step="1" value="30">
+                                    <input id="alter" class="input" required type="number" min="0" max="220" step="1" value="30">
                                     Jahre
                                 </label>
                             </div>
@@ -260,7 +260,7 @@
                             <div id="groesseFeld" class="center">
                                 <label class="eingabeBMI">
                                     Größe:
-                                    <input id="groesse" type="number" min="0" max="220" step="1" value="175">
+                                    <input id="groesse" class="input" required type="number" min="0" max="220" step="1" value="175">
                                     cm
                                 </label>
                             </div>
@@ -287,7 +287,7 @@
                                 <div class="center">
                                     <label for="masse">
                                         Gewicht:
-                                        <input id="masse" type="number" min="0" max="225" step="0.5" value="75">
+                                        <input id="masse" class="input" required type="number" min="0" max="225" step="0.5" value="75">
                                         kg
                                     </label>
                                     <br>
@@ -457,7 +457,7 @@
             </div>
             <br>
             KCAL: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="number" id="Kcal" min="0" value="0" placeholder="Enter KCAL"/>
+            <input class="input" required type="number" id="Kcal" min="0" value="0" placeholder="Enter KCAL"/>
             <button id="button"> BERECHNEN & SPEICHERN
             </button>
             <br>
@@ -467,7 +467,7 @@
             <h4>Umrechner von KJOULE in KCAL</h4>
             <br>
             KJOULE: &nbsp;
-            <input type="number" id="KJOULE" min="0" value="0" placeholder="Enter KJOULE"/>
+            <input class="input" required type="number" id="KJOULE" min="0" value="0" placeholder="Enter KJOULE"/>
 
             <button id="button1"> BERECHNEN
             </button>
@@ -534,10 +534,10 @@
                                 </div>
                                 <div class="grid-itemRight">
                                     <label>
-                                        <input type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
+                                        <input class="input" required type="number" name="gewicht" id="gewicht" min="0" value="0"> kg
                                     </label><br>
                                     <label>
-                                        <input type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
+                                        <input class="input" required type="number" name="wiederholungszahl" id="wiederholungszahl" min="1"
                                                value="1">
                                     </label><br>
                                 </div>
