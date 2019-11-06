@@ -49,7 +49,7 @@ diese Daten einsehen können.<br>
             <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" />
         </tr>
     </td>
-    <tr>
+    <td>
         <tr>
             Anmeldeseite - <br>
             1.) Um die Website verwenden zu können, müssen Sie sich als erstes Anmelden. 
@@ -66,7 +66,7 @@ diese Daten einsehen können.<br>
         <tr>
             Übersicht der Startseite in der Handyversion
         </tr>
-    </tr>
+    </td>
 </table>
 
 Copyright
