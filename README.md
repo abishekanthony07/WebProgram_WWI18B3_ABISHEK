@@ -34,19 +34,19 @@ UI-Skizzen und Screenshots
 
 Die App richtet sich an Sportler, die anhand von wenigen Daten ihre Maximalkraft eines bestimmten Muskels,
 ihren BMI- oder Kalorienwert. Dabei werden die eingegebenen Daten pro Nutzer abgespeichert, sodass keine anderen
-diese Daten einsehen können.<br>
-            <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br>
-             Anmeldeseite - <br>
+diese Daten einsehen können.<br><br>
+            <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
+             Anmeldeseite - <br><br>
                         1.) Um die Website verwenden zu können, müssen Sie sich als erstes Anmelden. 
-                            Tragen Sie hierfür im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.<br>
+                            Tragen Sie hierfür im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.<br><br>
                             1.1.) Betätigen Sie den Button "Registrieren", um sich auf der Website neu anzumelden. 
                                   Hierdurch bekommen Sie von Firebase aus eine Standard-E-Mail zugesendet, mit der Sie Ihre Registrierung abschließen können,
-                                  indem Sie auf den zugesendeten Link drücken. <br>
+                                  indem Sie auf den zugesendeten Link drücken. <br><br>
                             1.2.) Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und
-                                  den Button "Anmelden" betätigen. <br>
-            <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br>
-                        Übersicht der Startseite in der Desktopversion <br>
-            <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" /> <br>
+                                  den Button "Anmelden" betätigen. <br><br>
+            <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
+                        Übersicht der Startseite in der Desktopversion <br><br>
+            <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" /> <br><br>
             Übersicht der Startseite in der Handyversion
      
 
