@@ -38,19 +38,19 @@ diese Daten einsehen können.<br>
 
 
 <table style="max-width: 100%;">
-    <tr>
-        <td>
+    <td>
+        <tr>
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" />
-        </td>
-        <td>
+        </tr>
+        <tr>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" />
-        </td>
-        <td>
+        </tr>
+        <tr>
             <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" />
-        </td>
-    </tr>
+        </tr>
+    </td>
     <tr>
-        <td>
+        <tr>
             Anmeldeseite - <br>
             1.) Um die Website verwenden zu können, müssen Sie sich als erstes Anmelden. 
                 Tragen Sie hierfür im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.<br>
@@ -59,13 +59,13 @@ diese Daten einsehen können.<br>
                       indem Sie auf den zugesendeten Link drücken. <br>
                 1.2.) Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und
                       den Button "Anmelden" betätigen. 
-        </td>
-        <td>
+        </tr>
+        <tr>
             Übersicht der Startseite in der Desktopversion
-        </td>
-        <td>
+        </tr>
+        <tr>
             Übersicht der Startseite in der Handyversion
-        </td>
+        </tr>
     </tr>
 </table>
 
