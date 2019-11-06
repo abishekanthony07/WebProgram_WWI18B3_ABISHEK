@@ -35,11 +35,7 @@ UI-Skizzen und Screenshots
 Die App richtet sich an Sportler, die anhand von wenigen Daten ihre Maximalkraft eines bestimmten Muskels,
 ihren BMI- oder Kalorienwert. Dabei werden die eingegebenen Daten pro Nutzer abgespeichert, sodass keine anderen
 diese Daten einsehen können.<br>
-
-
-
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br>
-            
              Anmeldeseite - <br>
                         1.) Um die Website verwenden zu können, müssen Sie sich als erstes Anmelden. 
                             Tragen Sie hierfür im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.<br>
@@ -48,13 +44,9 @@ diese Daten einsehen können.<br>
                                   indem Sie auf den zugesendeten Link drücken. <br>
                             1.2.) Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und
                                   den Button "Anmelden" betätigen. <br>
-        
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br>
-            
                         Übersicht der Startseite in der Desktopversion <br>
-
             <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" /> <br>
-       
             Übersicht der Startseite in der Handyversion
      
 
