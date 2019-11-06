@@ -51,12 +51,14 @@ diese Daten einsehen können.<br>
     </tr>
     <tr>
         <td>
-            Anmeldeseite - Tragen Sie im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.
-            Betätigen Sie den Button "Registrieren", um sich auf der Website neu anzumelden. <br>
-            Hierdurch bekommen Sie von Firebase aus eine Standard-E-Mail zugesendet, mit der Sie Ihre Registrierung abschließen können,
-            indem Sie auf den zugesendeten Link drücken.
-            Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und
-            den Button "Anmelden" betätigen. 
+            Anmeldeseite - <br>
+            1.) Um die Website verwenden zu können, müssen Sie sich als erstes Anmelden. 
+                Tragen Sie hierfür im Feld "E-Mail" Ihre E-Mail Adresse ein sowie im Feld "Passwort" ein beliebiges Passwort.<br>
+                1.1.) Betätigen Sie den Button "Registrieren", um sich auf der Website neu anzumelden. 
+                      Hierdurch bekommen Sie von Firebase aus eine Standard-E-Mail zugesendet, mit der Sie Ihre Registrierung abschließen können,
+                      indem Sie auf den zugesendeten Link drücken. <br>
+                1.2.) Nach dem die Registrierung erfolgt ist, können Sie sich stets anmelden, indem Sie "E-Mail" sowie "Passwort" befüllen und
+                      den Button "Anmelden" betätigen. 
         </td>
         <td>
             Übersicht der Startseite in der Desktopversion
