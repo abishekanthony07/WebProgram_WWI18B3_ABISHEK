@@ -34,6 +34,8 @@ class Anmeldevorgang {
                         this._app.hideLoadingscreen(this.loadingID);
                     },
                     (datenbank) => {//success
+                        this.db = datenbank;
+                        db = this.db;
                         this._app.hideLoadingscreen(this.loadingID);
                         this._app.showStartseiteAndSetListener(datenbank);
                     });
@@ -53,11 +55,9 @@ class Anmeldevorgang {
         forgotPassowrd.addEventListener("click", () => {
             let email = document.getElementById('email');
             if (email.checkValidity()) {
-                this.db.firebase.auth().sendPasswordResetEmail(email.value).then(() => {
-                    alert("Wenn die eingegeben E-Mail Adresse bei uns hinterlegt ist, bekommen Sie eine E-Mail zum Zurücksetzen des Passworts.");
-                }).catch(() => {
-                    alert("Es ist etwas schief gelaufen. Bitte erneut ausführen.");
-                });
+                console.log(db.fire);
+                console.log(this.db);
+                this.db.sendPassword(email.value);
             }
         });
     }

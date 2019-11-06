@@ -166,8 +166,8 @@ class App {
          */
         let mains = document.getElementsByClassName('main');
         let counter;
-        for (counter = 0; counter < mains.length; counter++){
-            mains.item(counter).addEventListener('click', ()=>{
+        for (counter = 0; counter < mains.length; counter++) {
+            mains.item(counter).addEventListener('click', () => {
                 closeArrowAndMenu();
             });
         }
@@ -192,6 +192,7 @@ class App {
      * Diese Methode zeigt die Startseite an.
      */
     showStartseite() {
+        showMenueAndArrowDown();
         let view = new Startseite(this, this.db);
         this._switchVisibleView(view)
     }
@@ -414,26 +415,38 @@ export default App;
  * @param callback ???
  */
 let deleteElement = (db, loadingID, collection, event, inhalt, savedDataDiv, editDataDiv, callback) => {
-        let deleteIndex = event.target.parentNode.firstChild.textContent;
-        arrayList.splice(deleteIndex, 1);
-        if (arrayList.length === 0) {
-            editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
-        }
-        db.saveData(collection, arrayList, () => {
-            callback();
-        });
-    };
+    let deleteIndex = event.target.parentNode.firstChild.textContent;
+    arrayList.splice(deleteIndex, 1);
+    if (arrayList.length === 0) {
+        editDataDiv.innerHTML = "Sie haben keine Werte gespeichert!";
+    }
+    db.saveData(collection, arrayList, () => {
+        callback();
+    });
+};
 
 /**
  * Schließt das Menü und lässt die 3 Verinkungen im Header verschwinden.
  */
-let closeArrowAndMenu = () =>{
-  if (buttonsSindZusehen){
-      animateArrow();
-  }
-  if (menuSindZusehen){
-      showFooterMenu();
-  }
+let closeArrowAndMenu = () => {
+    if (buttonsSindZusehen) {
+        animateArrow();
+    }
+    if (menuSindZusehen) {
+        showFooterMenu();
+    }
+};
+
+/**
+ * Diese Methode zeigt unser Menü und unseren Pfeil wieder an.
+ */
+let showMenueAndArrowDown = ()=>{
+    let arrowDownDiv = document.getElementById('arrowDowndiv');
+    let footerIcon = document.getElementById('footerMenuP');
+    let footerMenue = document.getElementById('footerMenu');
+    arrowDownDiv.classList.remove("hide");
+    footerMenue.classList.remove("hide");
+    footerIcon.classList.remove("hide");
 };
 
 let buttonsSindZusehen = false;
@@ -441,37 +454,37 @@ let buttonsSindZusehen = false;
  * Diese Methode animiert unser Pfeil zum anzeigen der 3 verschiedenen Seiten.
  */
 let animateArrow = () => {
-        let arrowDown = document.getElementById('arrowDown');
-        let arrowDownDiv = document.getElementById('arrowDowndiv');
-        let auswahlMenue = document.getElementById('auswahlMenue');
+    let arrowDown = document.getElementById('arrowDown');
+    let arrowDownDiv = document.getElementById('arrowDowndiv');
+    let auswahlMenue = document.getElementById('auswahlMenue');
 
-        if (!buttonsSindZusehen) {
-            rotateImage(arrowDown, 'rotate(-180deg)');
-            buttonsSindZusehen = true;
-            //Div vom arrowDown hintergrund entfernen
-            arrowDown.style.border = 'none';
-            //Borderstyle vom ArrowButton ändern
-            arrowDownDiv.style.background = 'none';
-            arrowDown.style.borderTopLeftRadius = '50px';
-            arrowDown.style.borderTopRightRadius = '50px';
-            arrowDown.style.borderBottomLeftRadius = '0px';
-            arrowDown.style.borderBottomRightRadius = '0px';
-            //AuswahlMenu einblenden
-            auswahlMenue.style.display = 'grid';
-        } else {
-            rotateImage(arrowDown, 'rotate(0deg)');
-            buttonsSindZusehen = false;
-            //Div vom arrowDown hintergrund entfernen
-            arrowDownDiv.style.background = 'rgba(112,112,112,1)';
-            //Borderstyle vom ArrowButton ändern
-            arrowDown.style.borderTopLeftRadius = '0px';
-            arrowDown.style.borderTopRightRadius = '0px';
-            arrowDown.style.borderBottomLeftRadius = '50px';
-            arrowDown.style.borderBottomRightRadius = '50px';
-            //AuswahlMenü einblenden
-            auswahlMenue.style.display = 'none';
-        }
-    };
+    if (!buttonsSindZusehen) {
+        rotateImage(arrowDown, 'rotate(-180deg)');
+        buttonsSindZusehen = true;
+        //Div vom arrowDown hintergrund entfernen
+        arrowDown.style.border = 'none';
+        //Borderstyle vom ArrowButton ändern
+        arrowDownDiv.style.background = 'none';
+        arrowDown.style.borderTopLeftRadius = '50px';
+        arrowDown.style.borderTopRightRadius = '50px';
+        arrowDown.style.borderBottomLeftRadius = '0px';
+        arrowDown.style.borderBottomRightRadius = '0px';
+        //AuswahlMenu einblenden
+        auswahlMenue.style.display = 'grid';
+    } else {
+        rotateImage(arrowDown, 'rotate(0deg)');
+        buttonsSindZusehen = false;
+        //Div vom arrowDown hintergrund entfernen
+        arrowDownDiv.style.background = 'rgba(112,112,112,1)';
+        //Borderstyle vom ArrowButton ändern
+        arrowDown.style.borderTopLeftRadius = '0px';
+        arrowDown.style.borderTopRightRadius = '0px';
+        arrowDown.style.borderBottomLeftRadius = '50px';
+        arrowDown.style.borderBottomRightRadius = '50px';
+        //AuswahlMenü einblenden
+        auswahlMenue.style.display = 'none';
+    }
+};
 
 /**
  * Diese Methode sorgt dafür, dass ein Bild rotiert wird.
@@ -479,9 +492,9 @@ let animateArrow = () => {
  * @param degree
  */
 let rotateImage = (img, degree) => {
-        img.style.transform = degree;
-        img.style.WebkitTransitionDuration = '0.5s';
-    };
+    img.style.transform = degree;
+    img.style.WebkitTransitionDuration = '0.5s';
+};
 
 let menuSindZusehen = false;
 
@@ -489,19 +502,18 @@ let menuSindZusehen = false;
  *'Footer'-Menü wird eingeblendet
  */
 let showFooterMenu = () => {
-        let footerIcon = document.getElementById('footerMenuP');
-        let footerMenue = document.getElementById('footerMenu');
-
-        if (!menuSindZusehen) {
-            rotateImage(footerIcon, 'rotate(-90deg)');
-            menuSindZusehen = true;
-            footerMenue.style.display = 'inline-block';
-        } else {
-            rotateImage(footerIcon, 'rotate(0deg)');
-            menuSindZusehen = false;
-            footerMenue.style.display = 'none';
-        }
-    };
+    let footerIcon = document.getElementById('footerMenuP');
+    let footerMenue = document.getElementById('footerMenu');
+    if (!menuSindZusehen) {
+        rotateImage(footerIcon, 'rotate(-90deg)');
+        menuSindZusehen = true;
+        footerMenue.style.display = 'inline-block';
+    } else {
+        rotateImage(footerIcon, 'rotate(0deg)');
+        menuSindZusehen = false;
+        footerMenue.style.display = 'none';
+    }
+};
 
 let labels = [];
 let data = [];

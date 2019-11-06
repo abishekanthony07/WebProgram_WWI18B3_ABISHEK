@@ -74,6 +74,14 @@ class Datenbank {
         })
     }
 
+    sendPassword(email){
+        firebase.auth().sendPasswordResetEmail(email).then(() => {
+            alert("Wenn die eingegeben E-Mail Adresse bei uns hinterlegt ist, bekommen Sie eine E-Mail zum Zurücksetzen des Passworts.");
+        }).catch(() => {
+            alert("Es ist etwas schief gelaufen. Bitte erneut ausführen.");
+        });
+    }
+
     logoutUser(success, failure) {
         firebase.auth().signOut().then(() => {
             success();
