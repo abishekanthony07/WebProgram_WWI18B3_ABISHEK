@@ -153,14 +153,23 @@ td#adipostasIII {
 }
 .saschasLinke{
     text-align: right;
-    width: 40px;
+    width: 10em;
 }
 .inputFelder{
-    width: 50%;
+    width: 100%;
 }
 .saschasRechte{
-    text-align: right;
-    width: 40px;
+    text-align: left;
+    width: 12em;
+}
+#alter{
+    width: 20%;
+}
+#groesse{
+    width: 20%;
+}
+#masse{
+    width: 20%;
 }
 input#sliderAlter, input#sliderGroesse, input#sliderGewicht{
     background: none;
