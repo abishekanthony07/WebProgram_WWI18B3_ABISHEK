@@ -55,11 +55,25 @@ diese Daten einsehen können.<br><br>
                                     <li>Es erscheint ein Dialog in dem Sie aufgefordert werden das Passwort erneut einzugeben.</li>
                                     <li>Geben Sie Ihr Passwort erneut ein.</li>
                                 </ol>
-                             <li>
-                                    <ol>
-                                        <li></li>
-                                    </ol>
-                             </li>
+                             <li>Wenn das Passwort nicht übereinstimmt, wird ein Error (-Icon) in der Ansicht wie in „2.“ beschrieben rechts am Bildschirm im Eingabefeld „Passwort“ mit der Nachricht „Die Passwörter stimmen nicht überein!“ angezeigt.</li>
+                       <li>Klicken Sie auf den Button "Registrieren"</li>
+                       <li>Führen Sie die Anweisung "3.b" erneut aus.</li>
+                       <li>Bestätigen Sie die von uns versendete E-Mail im Postfach von der angegebene E-Mail-Adresse
+                       <ol>
+                       <li>Klicken Sie auf den Button "Anmelden"
+                       <ol>
+                       <li>Wenn das Eingabefeld "E-Mail" leer ist, wird ein Error angezeigt "E-Mail darf nicht leer sein!"</li>
+                       </ol>
+                       </li>
+                       </ol>
+                       </li> 
+                       <li>Führen Sie die Anweisung "3" erneut aus.
+                       <ol>
+                       <li>Wenn die E-Mail-Adresse und das Passwort nicht übereinstimmen, werden rechts am Bildschrim bei beiden Eingabefelder ein Error mit der Nachricht "E-Mail oder Passwort falsch!" angezeigt.</li>
+                       </ol>
+                       </li>
+                       <li>Geben Sie eine registrierte E-Mail-Adresse und das dazugehörige Passwort ein</li>
+                       <li>Führen Sie die Anweisung "3.b" erneut aus </li>
                        <br>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
                         Übersicht der Startseite in der Desktopversion <br><br>
