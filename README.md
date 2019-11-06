@@ -38,26 +38,29 @@ diese Daten einsehen können.<br><br>
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
              Anmeldeseite - <br><br>
                        <ol> 
-                       <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern ein.<br>
-                       <ol> 
-                       <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „REGISTRIEREN“.</li>
-                       <li>Wenn das Eingabefeld „Email“ leer ist, wird ein Error (-Icon) rechts am Bildschirm im Eingabefeld „Email darf nicht leer sein!“ angezeigt.</li>
-                       </ol>
-                       </li>
-                       <li>Führen Sie die Anweisung „3.“ erneut aus<br>
-                       <ol>
-                       <li>Wenn das Eingabefeld „Passwort“ leer ist, wird ein Error (-Icon) rechts am Bildschirm im Eingabefeld „Passwort darf nicht leer sein!“ angezeigt.</li>
-                       </ol>
-                       </li>
-                       <li>Führen Sie die Anweisung „3.“ erneut aus <br>
-                       <ol>
-                       <li>Es erscheint ein Dialog in dem Sie aufgefordert werden das Passwort erneut einzugeben.</li>
-                       <li>Geben Sie Ihr Passwort erneut ein.</li>
-                       </ol>
-                       <li></li>
-                       <li></li>
-                       <li></li>
-                       <li><br>
+                            <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern ein.<br>
+                                <ol> 
+                                    <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“.</li>
+                                    <li>Wenn das Eingabefeld „Email“ invalide ist, wird dieser rot umrandet</li>
+                                <li>Wenn das Eingabefeld „Passwort“ invalide ist, wird dieser rot umrandet</li>
+                                </ol>
+                            </li>
+                            <li>Führen Sie die Anweisung „3.“ erneut aus<br>
+                                <ol>
+                                    <li>Wenn das Eingabefeld „Passwort“ leer ist, wird ein Error (-Icon) rechts am Bildschirm im Eingabefeld „Passwort darf nicht leer sein!“ angezeigt.</li>
+                                </ol>
+                            </li>
+                            <li>Führen Sie die Anweisung „3.“ erneut aus <br>
+                                <ol>
+                                    <li>Es erscheint ein Dialog in dem Sie aufgefordert werden das Passwort erneut einzugeben.</li>
+                                    <li>Geben Sie Ihr Passwort erneut ein.</li>
+                                </ol>
+                             <li>
+                                    <ol>
+                                        <li></li>
+                                    </ol>
+                             </li>
+                       <br>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
                         Übersicht der Startseite in der Desktopversion <br><br>
             <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" /> <br><br>
