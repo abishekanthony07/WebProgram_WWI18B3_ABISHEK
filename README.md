@@ -67,7 +67,9 @@ diese Daten einsehen können.<br><br>
                              </li>
                              <li>Wenn Sie ihr Passwort vergessen haben sollten, tragen Sie ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet
                              <ol>
-                             <li>Betätigen Sie die von uns gesendete E-Mail</li> 
+                             <li>Gehen Sie auf den von uns gesendeten Link</li>
+                             <li>Sie werden weitergeleitet und aufgefordert, ein neues Passwort zu vergeben. Tragen Sie ihr neues Passwort ein und drücken Sie auf "speichern"</li>
+                             <li>Das neue Passwort können Sie nun bei uns anwenden</li>  
                              </ol>
                              </li>
                        <br>
