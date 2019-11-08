@@ -68,7 +68,7 @@ diese Daten einsehen können.<br><br>
                              <li>Wenn die E-Mail-Adresse und das Passwort nicht übereinstimmen, werden rechts am Bildschrim bei beiden Eingabefelder ein Error mit der Nachricht "E-Mail oder Passwort falsch!" angezeigt.
                              <ol>
                              <li>Geben Sie eine registrierte E-Mail-Adresse und das dazugehörige Passwort ein</li>
-                             <li>Führen Sie die Anweisung "4" erneut aus </li>
+                             <li>Führen Sie die Anweisung "2" erneut aus </li>
                              </ol>
                              </li>
                              </ol>
