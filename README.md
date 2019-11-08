@@ -41,37 +41,44 @@ diese Daten einsehen können.<br><br>
                             <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern.
                                 <ol> 
                                     <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“. 
-                                    <ol>                               
-                                    <li>Wenn das Eingabefeld „Email“ invalide ist, wird dieser rot umrandet
-                                    <ol><li>Führen Sie die Anweisung „1.“ erneut aus</li></ol>
+                                        <ol>                               
+                                          <li>Wenn das Eingabefeld „Email“ invalide ist, wird dieser rot umrandet
+                                                <ol>
+                                                    <li>Führen Sie die Anweisung „1.“ erneut aus</li>
+                                                </ol>
+                                          </li>
+                                          <li>Wenn das Eingabefeld „Passwort“ invalide ist, wird dieser rot umrandet
+                                                <ol>
+                                                    <li>Führen Sie die Anweisung „1.“ erneut aus</li>
+                                                </ol>
+                                          </li>
+                                          <li>Bestätigen Sie die von uns versendete E-Mail im Postfach von der angegebene E-Mail-Adresse</li>
+                                        </ol>
                                     </li>
-                                    <li>Wenn das Eingabefeld „Passwort“ invalide ist, wird dieser rot umrandet
-                                    <ol><li>Führen Sie die Anweisung „1.“ erneut aus</li></ol>
-                                    </li>
-                             <li>Bestätigen Sie die von uns versendete E-Mail im Postfach von der angegebene E-Mail-Adresse</li>
-                             </ol>
-                             </li>
-                              </ol>
-                              </li>
-                              <li>Klicken Sie auf den Button "Anmelden"
-                              <ol>
+                                </ol>
+                            </li>
+                            <li>Klicken Sie auf den Button "Anmelden"
+                                <ol>
                                    <li>Wenn das Eingabefeld "E-Mail" leer ist, wird das Feld rot umrandet
-                            <ol><li>Führen Sie die Anweisung "2" erneut aus.</li></ol></li>
-                             <li>Wenn die E-Mail-Adresse und das Passwort nicht übereinstimmen, wird oben am Bildschrim ein Errorfeld mit der Nachricht "Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!" angezeigt.
-                             <ol>
-                             <li>Geben Sie eine registrierte E-Mail-Adresse und das dazugehörige Passwort ein</li>
-                             <li>Führen Sie die Anweisung "2" erneut aus </li>
-                             </ol>
-                             </li>
-                             </ol>
-                             </li>
-                             <li>Wenn Sie ihr Passwort vergessen haben sollten, tragen Sie ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet
-                             <ol>
-                             <li>Gehen Sie auf den von uns gesendeten Link</li>
-                             <li>Sie werden weitergeleitet und aufgefordert, ein neues Passwort zu vergeben. Tragen Sie ihr neues Passwort ein und drücken Sie auf "speichern"</li>
-                             <li>Das neue Passwort können Sie nun bei uns anwenden</li>  
-                             </ol>
-                             </li>
+                                      <ol>
+                                        <li>Führen Sie die Anweisung "2" erneut aus.</li>
+                                      </ol>
+                                   </li>
+                                   <li>Wenn die E-Mail-Adresse und das Passwort nicht übereinstimmen, wird oben am Bildschrim ein Errorfeld mit der Nachricht "Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!" angezeigt.
+                                      <ol>
+                                        <li>Geben Sie eine registrierte E-Mail-Adresse und das dazugehörige Passwort ein</li>
+                                        <li>Führen Sie die Anweisung "2" erneut aus </li>
+                                      </ol>
+                                   </li>
+                                </ol>
+                            </li>
+                            <li>Wenn Sie ihr Passwort vergessen haben sollten, tragen Sie ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet
+                                <ol>
+                                    <li>Gehen Sie auf den von uns gesendeten Link</li>
+                                    <li>Sie werden weitergeleitet und aufgefordert, ein neues Passwort zu vergeben. Tragen Sie ihr neues Passwort ein im Feld "Neues Passwort" und drücken Sie anschließend auf "SPEICHERN"</li>
+                                    <li>Das neue Passwort können Sie nun bei uns anwenden</li>  
+                                </ol>
+                            </li>
                        <br>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
                         Übersicht der Startseite in der Desktopversion <br><br>
