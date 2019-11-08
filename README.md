@@ -38,7 +38,7 @@ diese Daten einsehen können.<br><br>
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
              Anmeldeseite - <br><br>
                        <ol> 
-                            <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern.<br>
+                            <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern.
                                 <ol> 
                                     <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“. 
                                     <ol>                               
@@ -48,15 +48,7 @@ diese Daten einsehen können.<br><br>
                                     <li>Wenn das Eingabefeld „Passwort“ invalide ist, wird dieser rot umrandet
                                     <ol><li>Führen Sie die Anweisung „1.“ erneut aus</li></ol>
                                     </li>
-                                    <li>Es erscheint ein Dialog in dem Sie aufgefordert werden das Passwort erneut einzugeben.</li>
-                                    <li>Geben Sie Ihr Passwort erneut ein.
-                                <ol>
-                             <li>Wenn das Passwort nicht übereinstimmt, wird ein Errorfeld oben am Bildschirm mit der Nachricht „Ungültiges Passwort und/oder falsche E-Mail Adresse. Zugriff verweigert!“ angezeigt.</li>
-                             <li>Klicken Sie auf den Button "Registrieren"</li>
-                             <li>Führen Sie die Anweisung "2" erneut aus.</li>
-                             <li>Bestätigen Sie die von uns versendete E-Mail im Postfach von der angegebene E-Mail-Adresse
-                             </ol>
-                             </li>
+                             <li>Bestätigen Sie die von uns versendete E-Mail im Postfach von der angegebene E-Mail-Adresse</li>
                              </ol>
                              </li>
                               </ol>
@@ -73,7 +65,11 @@ diese Daten einsehen können.<br><br>
                              </li>
                              </ol>
                              </li>
-                             <li>Wenn Sie ihr Passwort vergessen haben sollten, tragen Sie ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet</li>
+                             <li>Wenn Sie ihr Passwort vergessen haben sollten, tragen Sie ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet
+                             <ol>
+                             <li>Betätigen Sie die von uns gesendete E-Mail</li> 
+                             </ol>
+                             </li>
                        <br>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
                         Übersicht der Startseite in der Desktopversion <br><br>
