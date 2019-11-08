@@ -38,43 +38,42 @@ diese Daten einsehen können.<br><br>
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
              Anmeldeseite - <br><br>
                        <ol> 
-                            <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern ein.<br>
+                            <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort ein in den jeweiligen Eingabefeldern.<br>
                                 <ol> 
-                                    <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“.</li>
-                                    <li>Wenn das Eingabefeld „Email“ invalide ist, wird dieser rot umrandet</li>
-                                <li>Wenn das Eingabefeld „Passwort“ invalide ist, wird dieser rot umrandet</li>
-                                </ol>
-                            </li>
-                            <li>Führen Sie die Anweisung „3.“ erneut aus<br>
-                                <ol>
-                                    <li>Wenn das Eingabefeld „Passwort“ leer ist, wird ein Error (-Icon) rechts am Bildschirm im Eingabefeld „Passwort darf nicht leer sein!“ angezeigt.</li>
-                                </ol>
-                            </li>
-                            <li>Führen Sie die Anweisung „3.“ erneut aus <br>
-                                <ol>
+                                    <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“. 
+                                    <ol>                               
+                                    <li>Wenn das Eingabefeld „Email“ invalide ist, wird dieser rot umrandet
+                                    <ol><li>Führen Sie die Anweisung „1.“ erneut aus</li></ol>
+                                    </li>
+                                    <li>Wenn das Eingabefeld „Passwort“ invalide ist, wird dieser rot umrandet
+                                    <ol><li>Führen Sie die Anweisung „1.“ erneut aus</li></ol>
+                                    </li>
                                     <li>Es erscheint ein Dialog in dem Sie aufgefordert werden das Passwort erneut einzugeben.</li>
-                                    <li>Geben Sie Ihr Passwort erneut ein.</li>
-                                </ol>
+                                    <li>Geben Sie Ihr Passwort erneut ein.
+                                <ol>
                              <li>Wenn das Passwort nicht übereinstimmt, wird ein Error (-Icon) in der Ansicht wie in „2.“ beschrieben rechts am Bildschirm im Eingabefeld „Passwort“ mit der Nachricht „Die Passwörter stimmen nicht überein!“ angezeigt.</li>
                              <li>Klicken Sie auf den Button "Registrieren"</li>
-                             <li>Führen Sie die Anweisung "3.b" erneut aus.</li>
+                             <li>Führen Sie die Anweisung "2" erneut aus.</li>
                              <li>Bestätigen Sie die von uns versendete E-Mail im Postfach von der angegebene E-Mail-Adresse
-                                <ol>
-                                    <li>Klicken Sie auf den Button "Anmelden"
-                                   <ol>
-                                        <li>Wenn das Eingabefeld "E-Mail" leer ist, wird ein Error angezeigt "E-Mail darf nicht leer sein!"</li>
-                                   </ol>
-                                   </li>
-                                </ol>
-                             </li> 
-                             <li>Führen Sie die Anweisung "3" erneut aus.
-                                <ol>
-                                    <li>Wenn die E-Mail-Adresse und das Passwort nicht übereinstimmen, werden rechts am Bildschrim bei beiden Eingabefelder ein Error mit der Nachricht "E-Mail oder Passwort falsch!" angezeigt.</li>
-                                </ol>
+                             </ol>
                              </li>
+                             </ol>
+                             </li>
+                              </ol>
+                              </li>
+                              <li>Klicken Sie auf den Button "Anmelden"
+                              <ol>
+                                   <li>Wenn das Eingabefeld "E-Mail" leer ist, wird das Feld rot umrandet
+                            <ol><li>Führen Sie die Anweisung "2" erneut aus.</li></ol></li>
+                             <li>Wenn die E-Mail-Adresse und das Passwort nicht übereinstimmen, werden rechts am Bildschrim bei beiden Eingabefelder ein Error mit der Nachricht "E-Mail oder Passwort falsch!" angezeigt.
+                             <ol>
                              <li>Geben Sie eine registrierte E-Mail-Adresse und das dazugehörige Passwort ein</li>
-                             <li>Führen Sie die Anweisung "3.b" erneut aus </li>
-                             <li>Hier gegebenenfalls noch Part über Passwort vergessen schreiben</li>
+                             <li>Führen Sie die Anweisung "4" erneut aus </li>
+                             </ol>
+                             </li>
+                             </ol>
+                             </li>
+                             <li>Wenn Sie ihr Passwort vergessen haben sollten, tragen Sie ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet</li>
                        <br>
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br><br>
                         Übersicht der Startseite in der Desktopversion <br><br>
