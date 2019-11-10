@@ -45,8 +45,8 @@ diese Daten einsehen können.
                        <ol> 
                             <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort in den jeweiligen Eingabefeldern ein.
                                 <ol> 
-                                    <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“. 
-                                        <ol>                               
+                                    <li>Falls Sie noch nicht registriert sind, klicken Sie auf den Button „Registrieren“.
+                                    <ol>                               
                                           <li>Wenn das Eingabefeld „E-Mail“ invalide ist, wird dieses rot umrandet.
                                                 <ol>
                                                     <li>Führen Sie die Anweisung „1.“ erneut aus.</li>
@@ -62,6 +62,7 @@ diese Daten einsehen können.
                                     </li>
                                 </ol>
                             </li>
+                            <br>
                             <li>Klicken Sie auf den Button "Anmelden".
                                 <ol>
                                    <li>Wenn das Eingabefeld "E-Mail" leer ist, wird das Feld rot umrandet.
@@ -77,6 +78,7 @@ diese Daten einsehen können.
                                    </li>
                                 </ol>
                             </li>
+                            <br>
                             <li>Wenn Sie Ihr Passwort vergessen haben sollten, tragen Sie Ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet.
                                 <ol>
                                     <li>Gehen Sie auf den von uns gesendeten Link.</li>
