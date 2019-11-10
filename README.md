@@ -35,12 +35,13 @@ UI-Skizzen und Screenshots
 
 Die App richtet sich an Sportler, die anhand von wenigen Daten ihre Maximalkraft eines bestimmten Muskels,
 ihren BMI- und/oder Kalorienwert berechnen wollen. Dabei werden die eingegebenen Daten pro Nutzer abgespeichert, sodass keine anderen Nutzer
-diese Daten einsehen können.
+diese Daten einsehen können. Sie können über den Menüpfeil in der Mitte der Seite oder über die "hier"-Verlinkung im Text zu den verschiedenen Seiten gelangen.
+Der Menü-Button oben links in der Ecke gibt Ihnen die Möglichkeit sich auszuloggen, auf die einzelnen Instagram-Profile der Schöpfer dieser Seite zu kommen und sowie
+ist dort das Impressum verlinkt.   
              <br>
              <br>
              Anmeldeseite 
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> 
-             <br>
              <br>
                        <ol> 
                             <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort in den jeweiligen Eingabefeldern ein.
@@ -75,13 +76,13 @@ diese Daten einsehen können.
                                         <li>Führen Sie die Anweisung "2" erneut aus.</li>
                                       </ol>
                                    </li>
-                                </ol>
-                            </li>
-                            <li>Wenn Sie Ihr Passwort vergessen haben sollten, tragen Sie Ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet.
-                                <ol>
-                                    <li>Gehen Sie auf den von uns gesendeten Link.</li>
-                                    <li>Folgen Sie den Anweisungen zum Ändern Ihres Passwortes.</li>
-                                    <li>Führen Sie die Anweisung "2." erneut aus.</li>
+                                   <li>Wenn Sie Ihr Passwort vergessen haben sollten, tragen Sie Ihre E-Mail Adresse im Feld "E-Mail" ein und drücken Sie den Button "Passwort vergessen". Sie bekommen hierdurch eine E-Mail von Firebase zugesendet.
+                                        <ol>
+                                            <li>Gehen Sie auf den von uns gesendeten Link.</li>
+                                            <li>Folgen Sie den Anweisungen zum Ändern Ihres Passwortes.</li>
+                                            <li>Führen Sie die Anweisung "2." erneut aus.</li>
+                                       </ol>
+                                   </li>
                                 </ol>
                             </li>
                        </ol>
