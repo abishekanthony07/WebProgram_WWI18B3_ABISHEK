@@ -80,9 +80,10 @@ diese Daten einsehen können.<br><br>
                                 </ol>
                             </li>
                        </ol>
-            <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> <br>
+                       <br>
+            <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> 
                         Übersicht der Startseite in der Desktopversion <br><br>
-            <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" /> <br>
+            <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" />
             Übersicht der Startseite in der Handyversion
      
 
