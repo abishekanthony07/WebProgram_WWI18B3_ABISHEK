@@ -20,6 +20,7 @@ Einführung zu speziell sind und viele wesentliche Details verbergen.
 
 Folgende Entwicklungswerkzeuge kommen stattdessen zum Einsatz:
 
+ * [MobileBrowser Emulator:](https://chrome.google.com/webstore/detail/mobile-browser-emulator/lbofcampnkjmiomohpbaihdcbjhbfepf?hl=de) Google Chrome Addon: Emulator zum Simulieren von mobilen Endgeräten 
  * [git:](https://sourceforge.net/projects/gitextensions/") Versionsverwaltung zur gemeinsamen Arbeit am Quellcode
  * [npm:](https://nodejs.org/") Paketverwaltung zum automatischen Download abhängiger Bibliotheken
  * [Parcel:](https://parceljs.org/") Web Application Bundler und Entwicklungsserver
@@ -34,9 +35,13 @@ UI-Skizzen und Screenshots
 
 Die App richtet sich an Sportler, die anhand von wenigen Daten ihre Maximalkraft eines bestimmten Muskels,
 ihren BMI- und/oder Kalorienwert berechnen wollen. Dabei werden die eingegebenen Daten pro Nutzer abgespeichert, sodass keine anderen Nutzer
-diese Daten einsehen können.<br><br>
+diese Daten einsehen können.
+             <br>
+             <br>
+             Anmeldeseite 
             <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
-             Anmeldeseite <br><br>
+             <br>
+             <br>
                        <ol> 
                             <li>Geben Sie ihre E-Mail-Adresse und das dazugehörige Passwort in den jeweiligen Eingabefeldern ein.
                                 <ol> 
@@ -81,10 +86,13 @@ diese Daten einsehen können.<br><br>
                             </li>
                        </ol>
                        <br>
+                       Übersicht der Startseite in der Desktopversion
             <img src="src/resources/readMePics/Startseite_desktop.png" style="display: block; width: 100%;" /> 
-                        Übersicht der Startseite in der Desktopversion <br><br>
+                       <br>
+                       <br>
+                        Übersicht der Startseite in der Handyversion
             <img src="src/resources/readMePics/Startseite_handy.PNG" style="display: block; width: 100%;" />
-            Übersicht der Startseite in der Handyversion
+            
      
 
 Copyright
