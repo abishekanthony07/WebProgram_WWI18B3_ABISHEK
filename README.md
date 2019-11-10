@@ -39,7 +39,7 @@ diese Daten einsehen können.
              <br>
              <br>
              Anmeldeseite 
-            <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> <br><br>
+            <img src="src/resources/readMePics/Anmeldeseite.png" style="display: block; width: 100%;" /> 
              <br>
              <br>
                        <ol> 
